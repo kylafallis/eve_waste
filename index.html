@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EvE Modular Industrial</title>
+  <meta name="description" content="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.">
+  <!-- FAVICON: Upload icon to assets/favicon.ico for browser tabs and Google search results.
+       Tip: also add assets/favicon-32.png (32x32) for sharper display on modern browsers. -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <nav class="nav nav--light" id="nav">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">
+        <!-- LOGO: Upload logo to assets/logo.svg (or .png/.webp)
+             Then replace the span below with: <img src="assets/logo.svg" alt="EvE" class="nav__logo-img"> -->
+        <span class="nav__logo-mark">EvE</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="platform.html" class="nav__link">Platform</a></li>
+        <li><a href="use-cases.html" class="nav__link">Use Cases</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="team.html" class="nav__link">Team</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--cta">Request Demo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero — background image goes in css/home.css -->
+    <section class="hero" id="hero">
+      <canvas id="heroCanvas" class="hero__canvas"></canvas>
+      <div class="hero__bg-grid"></div>
+      <div class="container hero__container">
+        <div class="hero__content fade-up">
+          <span class="type-label hero__eyebrow">Modular Industrial Systems</span>
+          <h1 class="type-headline-xl hero__headline">
+            Lorem ipsum dolor sit amet<br>consectetur adipiscing elit
+          </h1>
+          <p class="type-body-lg hero__sub">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris.
+          </p>
+          <div class="hero__ctas">
+            <a href="platform.html" class="btn btn--primary btn--lg">Explore the Platform</a>
+            <a href="contact.html" class="btn btn--ghost btn--lg">Request a Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="section intro">
+      <div class="container">
+        <div class="intro__grid">
+          <div class="fade-up">
+            <span class="section__eyebrow">Our Approach</span>
+            <h2 class="section__title">Lorem ipsum dolor sit amet consectetur adipiscing</h2>
+            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+            <a href="about.html" class="btn btn--secondary mt-32">Why We Build</a>
+          </div>
+          <div class="intro__stats fade-up stagger-2">
+            <div class="intro__stat">
+              <div class="stat__value">XX%</div>
+              <div class="stat__label">Lorem ipsum recovery rate</div>
+            </div>
+            <div class="intro__stat">
+              <div class="stat__value">XX%</div>
+              <div class="stat__label">Lorem ipsum cost reduction</div>
+            </div>
+            <div class="intro__stat">
+              <div class="stat__value">XX&times;</div>
+              <div class="stat__label">Lorem ipsum within first year</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section section--tinted" id="products">
+      <div class="container">
+        <div class="section__header fade-up">
+          <span class="section__eyebrow">The Platform</span>
+          <h2 class="section__title">Three modules. One integrated system.</h2>
+          <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+        </div>
+        <div class="products__grid grid grid--3">
+          <div class="card product-card fade-up stagger-1">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <span class="card__label">Module 01</span>
+            <h3 class="card__title">Product 1</h3>
+            <p class="card__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+            <div class="product-specs">
+              <div class="spec"><span>Throughput</span><strong>XX t/day</strong></div>
+              <div class="spec"><span>Recovery</span><strong>XX%</strong></div>
+            </div>
+            <a href="platform.html#product-1" class="btn btn--secondary btn--sm mt-24">Learn More</a>
+          </div>
+          <div class="card product-card fade-up stagger-2">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="card__label">Module 02</span>
+            <h3 class="card__title">Product 2</h3>
+            <p class="card__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+            <div class="product-specs">
+              <div class="spec"><span>Efficiency</span><strong>XX%</strong></div>
+              <div class="spec"><span>Output</span><strong>XX kWh</strong></div>
+            </div>
+            <a href="platform.html#product-2" class="btn btn--secondary btn--sm mt-24">Learn More</a>
+          </div>
+          <div class="card product-card fade-up stagger-3">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            </div>
+            <span class="card__label">Module 03</span>
+            <h3 class="card__title">Product 3</h3>
+            <p class="card__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+            <div class="product-specs">
+              <div class="spec"><span>Latency</span><strong>&lt;XX sec</strong></div>
+              <div class="spec"><span>Uptime SLA</span><strong>XX%</strong></div>
+            </div>
+            <a href="platform.html#product-3" class="btn btn--secondary btn--sm mt-24">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Metrics -->
+    <section class="section section--dark" id="impact">
+      <div class="container">
+        <div class="section__header section__header--centered fade-up">
+          <span class="section__eyebrow">Measured Impact</span>
+          <h2 class="section__title">Results you can report</h2>
+        </div>
+        <div class="grid grid--4 impact-grid">
+          <div class="impact-stat fade-up stagger-1">
+            <div class="stat__value">XX%</div>
+            <div class="stat__label">Lorem ipsum system uptime</div>
+          </div>
+          <div class="impact-stat fade-up stagger-2">
+            <div class="stat__value">XX t</div>
+            <div class="stat__label">Lorem ipsum CO2 equivalent avoided</div>
+          </div>
+          <div class="impact-stat fade-up stagger-3">
+            <div class="stat__value">XX mo</div>
+            <div class="stat__label">Lorem ipsum time to full ROI</div>
+          </div>
+          <div class="impact-stat fade-up stagger-4">
+            <div class="stat__value">XX+</div>
+            <div class="stat__label">Lorem ipsum deployments globally</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology -->
+    <section class="section tech-section" id="technology">
+      <div class="container">
+        <div class="tech-grid">
+          <div class="fade-up">
+            <span class="section__eyebrow">How It Works</span>
+            <h2 class="section__title">Lorem ipsum dolor sit amet consectetur</h2>
+            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+            <div class="tech-pillars">
+              <div class="tech-pillar fade-up stagger-1">
+                <span class="tech-pillar__num">01</span>
+                <div>
+                  <h4 class="tech-pillar__title">Technology</h4>
+                  <p class="tech-pillar__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+              </div>
+              <div class="tech-pillar fade-up stagger-2">
+                <span class="tech-pillar__num">02</span>
+                <div>
+                  <h4 class="tech-pillar__title">Research</h4>
+                  <p class="tech-pillar__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+              </div>
+              <div class="tech-pillar fade-up stagger-3">
+                <span class="tech-pillar__num">03</span>
+                <div>
+                  <h4 class="tech-pillar__title">Integration</h4>
+                  <p class="tech-pillar__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+              </div>
+            </div>
+            <a href="platform.html" class="btn btn--primary mt-32">View Full Platform</a>
+          </div>
+          <div class="tech-diagram fade-in stagger-2">
+            <div class="diag-node--top">
+              <span>Waste Input Stream</span>
+            </div>
+            <div class="diag-flow">
+              <div class="diag-module">
+                <strong>Product 1</strong>
+                <p>Material Separation &amp; Recovery</p>
+              </div>
+              <div class="diag-arrow">&#8595;</div>
+              <div class="diag-module">
+                <strong>Product 2</strong>
+                <p>Thermal Energy Extraction</p>
+              </div>
+              <div class="diag-arrow">&#8595;</div>
+              <div class="diag-module">
+                <strong>Product 3</strong>
+                <p>Monitor, Analyze &amp; Report</p>
+              </div>
+            </div>
+            <div class="diag-outputs">
+              <div class="diag-output"><span>Materials</span></div>
+              <div class="diag-output"><span>Energy</span></div>
+              <div class="diag-output"><span>Data</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ecosystem -->
+    <section class="section section--slate ecosystem">
+      <div class="container">
+        <div class="ecosystem-grid">
+          <div class="fade-up">
+            <span class="section__eyebrow">Long-Term Vision</span>
+            <h2 class="section__title">Lorem ipsum dolor sit amet<br>consectetur</h2>
+            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris.</p>
+            <a href="about.html" class="btn btn--ghost mt-32">Our Mission</a>
+          </div>
+          <div class="ecosystem-features fade-up stagger-2">
+            <div class="eco-feature">
+              <div class="eco-feature__icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <h4>Lorem ipsum dolor sit amet</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+              </div>
+            </div>
+            <div class="eco-feature">
+              <div class="eco-feature__icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              </div>
+              <div>
+                <h4>Lorem ipsum dolor sit amet</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+              </div>
+            </div>
+            <div class="eco-feature">
+              <div class="eco-feature__icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div>
+                <h4>Lorem ipsum dolor sit amet</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-inner fade-up">
+          <span class="section__eyebrow">Get Started</span>
+          <h2 class="section__title">Lorem ipsum dolor sit amet<br>consectetur adipiscing?</h2>
+          <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</p>
+          <div class="cta-actions mt-32">
+            <a href="contact.html" class="btn btn--primary btn--lg">Request a Site Assessment</a>
+            <a href="use-cases.html" class="btn btn--secondary btn--lg">Explore Use Cases</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo">
+          <span class="nav__logo-mark">EvE</span>
+        </a>
+        <p>Industrial infrastructure for a regenerative economy.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="platform.html">Technology Overview</a></li>
+            <li><a href="platform.html#product-1">Product 1</a></li>
+            <li><a href="platform.html#product-2">Product 2</a></li>
+            <li><a href="platform.html#product-3">Product 3</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="use-cases.html#manufacturing">Manufacturing</a></li>
+            <li><a href="use-cases.html#municipal">Municipal</a></li>
+            <li><a href="use-cases.html#agriculture">Agriculture</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About EvE</a></li>
+            <li><a href="team.html">Meet the Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html#careers">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 EvE Modular Industrial. All rights reserved.</p>
+      <p>Regenerative industry, engineered.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

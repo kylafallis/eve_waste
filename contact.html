@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — EvE Modular Industrial</title>
+  <meta name="description" content="Lorem ipsum dolor sit amet consectetur adipiscing elit.">
+  <!-- FAVICON: Upload icon to assets/favicon.ico for browser tabs and Google search results.
+       Tip: also add assets/favicon-32.png (32x32) for sharper display on modern browsers. -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+  <nav class="nav nav--light" id="nav">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">
+        <!-- LOGO: Upload logo to assets/logo.svg (or .png/.webp)
+             Then replace the span below with: <img src="assets/logo.svg" alt="EvE" class="nav__logo-img"> -->
+        <span class="nav__logo-mark">EvE</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="platform.html" class="nav__link">Platform</a></li>
+        <li><a href="use-cases.html" class="nav__link">Use Cases</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="team.html" class="nav__link">Team</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--cta">Request Demo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__strip">
+          <a href="index.html" class="page-hero__back">Home</a>
+          <span class="page-hero__sep">/</span>
+          <h1 class="page-hero__title">Contact</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-form-wrap fade-up">
+            <h2 class="type-headline-lg">Send us a message</h2>
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="firstName">First name <span class="required">*</span></label>
+                  <input type="text" id="firstName" name="firstName" required autocomplete="given-name" placeholder="Jamie">
+                </div>
+                <div class="form-field">
+                  <label for="lastName">Last name <span class="required">*</span></label>
+                  <input type="text" id="lastName" name="lastName" required autocomplete="family-name" placeholder="Chen">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="email">Work email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="j.chen@company.com">
+              </div>
+              <div class="form-field">
+                <label for="company">Company / Organization</label>
+                <input type="text" id="company" name="company" autocomplete="organization" placeholder="Acme Industrial">
+              </div>
+              <div class="form-field">
+                <label for="inquiry">Inquiry type</label>
+                <select id="inquiry" name="inquiry">
+                  <option value="">Select one...</option>
+                  <option value="assessment">Site assessment request</option>
+                  <option value="demo">Platform demo</option>
+                  <option value="partnership">Partnership / distribution</option>
+                  <option value="investor">Investment inquiry</option>
+                  <option value="press">Press / media</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="message">Message <span class="required">*</span></label>
+                <textarea id="message" name="message" required rows="5" placeholder="Tell us about your operation, waste stream, or question..."></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary">Send Message</button>
+              <div class="form-success" id="formSuccess" aria-live="polite">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Message sent. We'll be in touch within 1-2 business days.
+              </div>
+            </form>
+          </div>
+          <div class="contact-info fade-up stagger-2">
+            <div class="contact-info__block">
+              <h4>General inquiries</h4>
+              <a href="mailto:hello@eve-modular.com">hello@eve-modular.com</a>
+            </div>
+            <div class="contact-info__block">
+              <h4>Engineering &amp; technical</h4>
+              <a href="mailto:engineering@eve-modular.com">engineering@eve-modular.com</a>
+            </div>
+            <div class="contact-info__block">
+              <h4>Careers</h4>
+              <a href="mailto:careers@eve-modular.com">careers@eve-modular.com</a>
+            </div>
+            <div class="contact-info__block">
+              <h4>Headquarters</h4>
+              <address>
+                EvE Modular Industrial<br>
+                [Street Address]<br>
+                [City, Province Postal Code]<br>
+                Canada
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tinted" id="careers">
+      <div class="container">
+        <div class="section__header fade-up">
+          <span class="section__eyebrow">Careers</span>
+          <h2 class="section__title">Join the team</h2>
+          <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+        </div>
+        <div class="jobs-list fade-up">
+          <div class="job-card">
+            <div class="job-card__info">
+              <h3>Process Engineer</h3>
+              <div class="job-card__meta">
+                <strong class="job-category">Engineering</strong>
+                <span class="type-mono">Toronto, ON &middot; Hybrid</span>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+            </div>
+            <a href="mailto:careers@eve-modular.com?subject=Process Engineer Application" class="btn btn--secondary btn--sm">Apply</a>
+          </div>
+          <div class="job-card">
+            <div class="job-card__info">
+              <h3>Senior Full-Stack Engineer</h3>
+              <div class="job-card__meta">
+                <strong class="job-category">Software</strong>
+                <span class="type-mono">Remote &middot; North America</span>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+            </div>
+            <a href="mailto:careers@eve-modular.com?subject=Senior Full-Stack Engineer Application" class="btn btn--secondary btn--sm">Apply</a>
+          </div>
+          <div class="job-card">
+            <div class="job-card__info">
+              <h3>Field Commissioning Specialist</h3>
+              <div class="job-card__meta">
+                <strong class="job-category">Operations</strong>
+                <span class="type-mono">Toronto, ON &middot; Travel 40%</span>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+            </div>
+            <a href="mailto:careers@eve-modular.com?subject=Field Commissioning Specialist Application" class="btn btn--secondary btn--sm">Apply</a>
+          </div>
+          <div class="job-card">
+            <div class="job-card__info">
+              <h3>Materials Science Researcher</h3>
+              <div class="job-card__meta">
+                <strong class="job-category">R&amp;D</strong>
+                <span class="type-mono">Toronto, ON &middot; On-site</span>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+            </div>
+            <a href="mailto:careers@eve-modular.com?subject=Materials Science Researcher Application" class="btn btn--secondary btn--sm">Apply</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="partners">
+      <div class="container">
+        <div class="partners-grid fade-up">
+          <div>
+            <span class="section__eyebrow">Partnerships</span>
+            <h2 class="section__title">Build with EvE</h2>
+            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+          </div>
+          <div class="partners-types">
+            <div class="partner-type fade-up stagger-1">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div>
+                <h4>Distribution partners</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+              </div>
+            </div>
+            <div class="partner-type fade-up stagger-2">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <div>
+                <h4>Technology integration</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+              </div>
+            </div>
+            <div class="partner-type fade-up stagger-3">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="0" ry="0"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+              <div>
+                <h4>EPC &amp; consultancy</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="partners-cta fade-up mt-32">
+          <a href="mailto:partnerships@eve-modular.com" class="btn btn--primary">Contact Partnerships Team</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo"><span class="nav__logo-mark">EvE</span></a>
+        <p>Industrial infrastructure for a regenerative economy.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col"><h4>Platform</h4><ul>
+          <li><a href="platform.html">Technology Overview</a></li>
+          <li><a href="platform.html#product-1">Product 1</a></li>
+          <li><a href="platform.html#product-2">Product 2</a></li>
+          <li><a href="platform.html#product-3">Product 3</a></li>
+        </ul></div>
+        <div class="footer__col"><h4>Solutions</h4><ul>
+          <li><a href="use-cases.html">Use Cases</a></li>
+          <li><a href="use-cases.html#manufacturing">Manufacturing</a></li>
+          <li><a href="use-cases.html#municipal">Municipal</a></li>
+          <li><a href="use-cases.html#agriculture">Agriculture</a></li>
+        </ul></div>
+        <div class="footer__col"><h4>Company</h4><ul>
+          <li><a href="about.html">About EvE</a></li>
+          <li><a href="team.html">Meet the Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#careers">Careers</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 EvE Modular Industrial. All rights reserved.</p>
+      <p>Regenerative industry, engineered.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

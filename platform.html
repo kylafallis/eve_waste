@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform — EvE Modular Industrial</title>
+  <meta name="description" content="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.">
+  <!-- FAVICON: Upload icon to assets/favicon.ico for browser tabs and Google search results.
+       Tip: also add assets/favicon-32.png (32x32) for sharper display on modern browsers. -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/platform.css">
+</head>
+<body>
+
+  <nav class="nav nav--light" id="nav">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">
+        <!-- LOGO: Upload logo to assets/logo.svg (or .png/.webp)
+             Then replace the span below with: <img src="assets/logo.svg" alt="EvE" class="nav__logo-img"> -->
+        <span class="nav__logo-mark">EvE</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="platform.html" class="nav__link">Platform</a></li>
+        <li><a href="use-cases.html" class="nav__link">Use Cases</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="team.html" class="nav__link">Team</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--cta">Request Demo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__strip">
+          <a href="index.html" class="page-hero__back">Home</a>
+          <span class="page-hero__sep">/</span>
+          <h1 class="page-hero__title">Platform</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="section section--tinted platform-tabs-section">
+      <div class="container">
+        <div class="platform-tabs">
+          <button class="platform-tab is-active" data-tab="tech">Technology</button>
+          <button class="platform-tab" data-tab="research">Research</button>
+          <button class="platform-tab" data-tab="infrastructure">Infrastructure</button>
+        </div>
+        <div class="platform-tab-content is-active" id="tab-tech">
+          <div class="tab-grid">
+            <div class="fade-up">
+              <span class="section__eyebrow">Core Technology</span>
+              <h2 class="section__title">Lorem ipsum dolor sit amet consectetur</h2>
+              <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco.</p>
+              <ul class="tech-list">
+                <li><strong>Mechanical:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>Chemical:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>Thermal:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>Digital:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+              </ul>
+            </div>
+            <div class="tech-metric-card fade-up stagger-2">
+              <div class="metric"><span class="metric__val">XX%</span><span class="metric__label">Lorem ipsum versus conventional</span></div>
+              <div class="metric"><span class="metric__val">XX hr</span><span class="metric__label">Lorem ipsum commissioning time</span></div>
+              <div class="metric"><span class="metric__val">ISO XX</span><span class="metric__label">Lorem ipsum certification</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="platform-tab-content" id="tab-research">
+          <div class="tab-grid">
+            <div class="fade-up">
+              <span class="section__eyebrow">Research &amp; Development</span>
+              <h2 class="section__title">Lorem ipsum dolor sit amet consectetur</h2>
+              <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco.</p>
+              <ul class="tech-list">
+                <li><strong>Materials:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>Process:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>Analytics:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>Compliance:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+              </ul>
+            </div>
+            <div class="tech-metric-card fade-up stagger-2">
+              <div class="metric"><span class="metric__val">Monthly</span><span class="metric__label">Lorem ipsum update cadence</span></div>
+              <div class="metric"><span class="metric__val">XX+</span><span class="metric__label">Lorem ipsum characterizations</span></div>
+              <div class="metric"><span class="metric__val">XX mo</span><span class="metric__label">Lorem ipsum development cycle</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="platform-tab-content" id="tab-infrastructure">
+          <div class="tab-grid">
+            <div class="fade-up">
+              <span class="section__eyebrow">Infrastructure &amp; Integration</span>
+              <h2 class="section__title">Lorem ipsum dolor sit amet consectetur</h2>
+              <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco.</p>
+              <ul class="tech-list">
+                <li><strong>SCADA:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>ERP:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>Energy:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+                <li><strong>Cloud:</strong> Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+              </ul>
+            </div>
+            <div class="tech-metric-card fade-up stagger-2">
+              <div class="metric"><span class="metric__val">&lt;XX hr</span><span class="metric__label">Lorem ipsum integration time</span></div>
+              <div class="metric"><span class="metric__val">XX%</span><span class="metric__label">Lorem ipsum uptime SLA</span></div>
+              <div class="metric"><span class="metric__val">Full</span><span class="metric__label">Lorem ipsum commissioning included</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module: Convert -->
+    <section class="section" id="product-1">
+      <div class="container">
+        <div class="module-section fade-up">
+          <div class="module-header">
+            <span class="section__eyebrow">Module 01</span>
+            <h2 class="section__title">Product 1</h2>
+            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris.</p>
+          </div>
+          <div class="module-grid">
+            <div class="module-feature fade-up stagger-1">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+            <div class="module-feature fade-up stagger-2">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="0"/><path d="M8 21h8M12 17v4"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+            <div class="module-feature fade-up stagger-3">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+          </div>
+          <div class="specs-table fade-up">
+            <h3 class="specs-table__title">Technical Specifications</h3>
+            <div class="specs-rows">
+              <div class="specs-row"><span>Throughput range</span><strong>XX t/day per unit</strong></div>
+              <div class="specs-row"><span>Material recovery rate</span><strong>Up to XX%</strong></div>
+              <div class="specs-row"><span>Power requirement</span><strong>XX kW</strong></div>
+              <div class="specs-row"><span>Footprint (single unit)</span><strong>XX m x XX m x XX m</strong></div>
+              <div class="specs-row"><span>Operating temperature</span><strong>XX to XX deg C</strong></div>
+              <div class="specs-row"><span>Commissioning time</span><strong>XX hours</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module: Recover -->
+    <section class="section section--tinted" id="product-2">
+      <div class="container">
+        <div class="module-section fade-up">
+          <div class="module-header">
+            <span class="section__eyebrow">Module 02</span>
+            <h2 class="section__title">Product 2</h2>
+            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris.</p>
+          </div>
+          <div class="module-grid">
+            <div class="module-feature fade-up stagger-1">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+            <div class="module-feature fade-up stagger-2">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+            <div class="module-feature fade-up stagger-3">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+          </div>
+          <div class="specs-table fade-up">
+            <h3 class="specs-table__title">Technical Specifications</h3>
+            <div class="specs-rows">
+              <div class="specs-row"><span>Energy recovery efficiency</span><strong>Up to XX%</strong></div>
+              <div class="specs-row"><span>Output range</span><strong>XX kWh per unit</strong></div>
+              <div class="specs-row"><span>Input temperature range</span><strong>XX to XX deg C</strong></div>
+              <div class="specs-row"><span>Grid compatibility</span><strong>XX, XX</strong></div>
+              <div class="specs-row"><span>Response time</span><strong>&lt;XX ms</strong></div>
+              <div class="specs-row"><span>Maintenance interval</span><strong>XX operating hours</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module: Trace -->
+    <section class="section" id="product-3">
+      <div class="container">
+        <div class="module-section fade-up">
+          <div class="module-header">
+            <span class="section__eyebrow">Module 03</span>
+            <h2 class="section__title">Product 3</h2>
+            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris.</p>
+          </div>
+          <div class="module-grid">
+            <div class="module-feature fade-up stagger-1">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+            <div class="module-feature fade-up stagger-2">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+            <div class="module-feature fade-up stagger-3">
+              <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+              <h4>Lorem ipsum dolor sit</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+          </div>
+          <div class="specs-table fade-up">
+            <h3 class="specs-table__title">Technical Specifications</h3>
+            <div class="specs-rows">
+              <div class="specs-row"><span>Data latency</span><strong>&lt;XX seconds</strong></div>
+              <div class="specs-row"><span>Sensor capacity</span><strong>Up to XX points per site</strong></div>
+              <div class="specs-row"><span>Platform uptime SLA</span><strong>XX%</strong></div>
+              <div class="specs-row"><span>Data retention</span><strong>XX years standard</strong></div>
+              <div class="specs-row"><span>Regulatory frameworks</span><strong>XX, XX, XX</strong></div>
+              <div class="specs-row"><span>Integrations</span><strong>SCADA, XX, XX, REST API</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark">
+      <div class="container text-center fade-up">
+        <span class="section__eyebrow">Ready to deploy?</span>
+        <h2 class="section__title">Lorem ipsum dolor sit amet</h2>
+        <p class="section__lead" style="margin: 0 auto 32px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a href="contact.html" class="btn btn--ghost btn--lg">Request an Assessment</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo"><span class="nav__logo-mark">EvE</span></a>
+        <p>Industrial infrastructure for a regenerative economy.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col"><h4>Platform</h4><ul>
+          <li><a href="platform.html">Technology Overview</a></li>
+          <li><a href="platform.html#product-1">Product 1</a></li>
+          <li><a href="platform.html#product-2">Product 2</a></li>
+          <li><a href="platform.html#product-3">Product 3</a></li>
+        </ul></div>
+        <div class="footer__col"><h4>Solutions</h4><ul>
+          <li><a href="use-cases.html">Use Cases</a></li>
+          <li><a href="use-cases.html#manufacturing">Manufacturing</a></li>
+          <li><a href="use-cases.html#municipal">Municipal</a></li>
+          <li><a href="use-cases.html#agriculture">Agriculture</a></li>
+        </ul></div>
+        <div class="footer__col"><h4>Company</h4><ul>
+          <li><a href="about.html">About EvE</a></li>
+          <li><a href="team.html">Meet the Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#careers">Careers</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 EvE Modular Industrial. All rights reserved.</p>
+      <p>Regenerative industry, engineered.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/platform.js"></script>
+</body>
+</html>

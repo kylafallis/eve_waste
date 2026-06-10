@@ -1,0 +1,83 @@
+/* About page styles — sharp corners */
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.mission-statement .section__title { font-size: clamp(28px, 3.5vw, 44px); }
+.mission-body { display: flex; flex-direction: column; gap: 20px; }
+.mission-body p { font-size: 17px; line-height: 1.7; color: var(--on-surface-variant); }
+.mission-body p:first-child { font-size: 18px; color: var(--on-surface); font-weight: 500; }
+
+.values-grid { align-items: start; }
+.value-card { display: flex; flex-direction: column; gap: 12px; }
+
+/* --- Timeline --- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 100px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 72px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary), var(--outline-variant));
+}
+.timeline-item {
+  position: relative;
+  padding: 0 0 48px 40px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  background-color: var(--primary);
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item__year {
+  position: absolute;
+  left: -100px;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--bio-moss);
+  letter-spacing: 0.04em;
+  width: 60px;
+  text-align: right;
+}
+.timeline-item__content h4 {
+  font-family: var(--font-headline);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin-bottom: 8px;
+}
+.timeline-item__content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--on-surface-variant);
+  max-width: 560px;
+}
+
+@media (max-width: 1024px) {
+  .mission-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  .timeline { padding-left: 60px; }
+  .timeline::before { left: 36px; }
+  .timeline-item__year { left: -56px; width: 44px; font-size: 11px; }
+}
