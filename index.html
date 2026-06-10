@@ -10,31 +10,55 @@
   <link rel="icon" href="assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 
-  <nav class="nav nav--light" id="nav">
-    <div class="nav__container">
-      <a href="index.html" class="nav__logo">
-        <!-- LOGO: Upload logo to assets/logo.svg (or .png/.webp)
-             Then replace the span below with: <img src="assets/logo.svg" alt="EvE" class="nav__logo-img"> -->
-        <span class="nav__logo-mark">EvE</span>
+  <!-- ════ HEADER ════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo" aria-label="EvE — Home">
+        <!-- LOGO: Upload to assets/logo.svg then replace the span with:
+             <img src="assets/logo.svg" alt="EvE" class="logo-img"> -->
+        <span class="logo-mark">EvE</span>
       </a>
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="menu-toggle" id="menuToggle"
+        aria-expanded="false" aria-controls="menuOverlay"
+        aria-label="Open navigation menu">
+        <span class="menu-toggle__icon" aria-hidden="true">
+          <span></span><span></span>
+        </span>
       </button>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="platform.html" class="nav__link">Platform</a></li>
-        <li><a href="use-cases.html" class="nav__link">Use Cases</a></li>
-        <li><a href="about.html" class="nav__link">About</a></li>
-        <li><a href="team.html" class="nav__link">Team</a></li>
-        <li><a href="contact.html" class="nav__link nav__link--cta">Request Demo</a></li>
-      </ul>
     </div>
-  </nav>
+  </header>
+
+  <!-- ════ OVERLAY MENU ════ -->
+  <div class="menu-overlay" id="menuOverlay"
+    role="dialog" aria-modal="true"
+    aria-label="Site navigation" aria-hidden="true">
+    <nav class="menu-overlay__nav" aria-label="Main navigation">
+      <ul class="menu-overlay__links">
+        <li><a href="platform.html" class="menu-link">Platform<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
+        <li><a href="use-cases.html" class="menu-link">Use Cases<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
+        <li><a href="about.html" class="menu-link">About<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
+        <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
+      </ul>
+      <div class="menu-overlay__aside">
+        <a href="contact.html" class="btn btn--lime menu-cta">Request Demo</a>
+        <div class="menu-contact">
+          <p class="menu-contact__label">Get in touch</p>
+          <a href="mailto:hello@eve-modular.com" class="menu-contact__link">hello@eve-modular.com</a>
+        </div>
+      </div>
+    </nav>
+    <div class="menu-overlay__footer">
+      <span>&copy; 2026 EvE Modular Industrial</span>
+      <span class="menu-overlay__location">Toronto, ON</span>
+    </div>
+  </div>
 
   <main>
 

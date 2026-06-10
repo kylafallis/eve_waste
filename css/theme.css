@@ -1,0 +1,185 @@
+/*
+ * css/theme.css — Single source of truth for all design tokens.
+ * Load this FIRST in every page's <head> (before styles.css).
+ *
+ * Design language: Rainmaker-inspired layout + motion.
+ * Color palette:   EvE brand (dark forest green, warm cream, lime accent).
+ * Headline font:   Fraunces (Google Fonts variable serif, loaded in HTML).
+ *                  Swapped from IBM Plex Sans — closest free match to
+ *                  Rainmaker's high-contrast editorial serif.
+ */
+
+:root {
+
+  /* ═══════════════════════════════════════
+     SURFACES
+  ═══════════════════════════════════════ */
+  --surface:                 #F4F0E6;   /* warm cream — editorial / body bg       */
+  --surface-dim:             #E8E2D5;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low:   #EDE8DE;
+  --surface-container:       #E6E0D4;
+  --surface-container-high:  #DDD7CA;
+  --on-surface:              #181c1c;
+  --on-surface-variant:      #414943;
+  --inverse-surface:         #2d3131;
+  --inverse-on-surface:      #eef1f0;
+
+  /* ═══════════════════════════════════════
+     DARK SURFACE  (header / overlay / footer)
+  ═══════════════════════════════════════ */
+  --dark-surface:            #0e3725;   /* EvE deep forest green                  */
+  --dark-surface-mid:        #174d35;   /* slightly lighter — cards on dark        */
+  --dark-surface-rim:        #1c5a3e;   /* borders / dividers on dark             */
+  --dark-border:             rgba(255, 255, 255, 0.10);
+  --on-dark:                 #ffffff;
+  --on-dark-dim:             rgba(255, 255, 255, 0.58);
+
+  /* ═══════════════════════════════════════
+     PRIMARY GREEN  (EvE brand — unchanged)
+  ═══════════════════════════════════════ */
+  --primary:                 #0e3725;
+  --on-primary:              #ffffff;
+  --primary-container:       #274e3a;
+  --on-primary-container:    #94bea5;
+  --inverse-primary:         #a5d0b6;
+  --primary-fixed:           #c1edd1;
+  --primary-fixed-dim:       #a5d0b6;
+
+  /* ═══════════════════════════════════════
+     LIME ACCENT  (new — Rainmaker chartreuse)
+  ═══════════════════════════════════════ */
+  --lime:                    #BFEE44;   /* primary action, hover, brackets, active */
+  --lime-dark:               #a3d038;   /* pressed / focus                         */
+  --on-lime:                 #0e3725;   /* text/icons placed on lime               */
+
+  /* ═══════════════════════════════════════
+     SECONDARY / TERTIARY  (backward-compat)
+  ═══════════════════════════════════════ */
+  --secondary:               #516167;
+  --on-secondary:            #ffffff;
+  --secondary-container:     #d1e2e9;
+  --on-secondary-container:  #55656b;
+  --tertiary:                #023544;
+  --on-tertiary:             #ffffff;
+  --tertiary-container:      #214c5b;
+  --on-tertiary-container:   #92bbcd;
+  --tertiary-fixed:          #bee9fc;
+
+  /* ═══════════════════════════════════════
+     LEGACY BRAND  (kept for backward-compat)
+  ═══════════════════════════════════════ */
+  --industrial-slate:        #2D373C;
+  --bio-moss:                #6B8E7B;
+  --circuit-blue:            #E0E9ED;
+
+  /* ═══════════════════════════════════════
+     OUTLINES
+  ═══════════════════════════════════════ */
+  --outline:                 #717973;
+  --outline-variant:         #c1c8c1;
+  --outline-cream:           rgba(24, 28, 28, 0.10);
+
+  /* ═══════════════════════════════════════
+     TYPOGRAPHY  — font families
+  ═══════════════════════════════════════ */
+  --font-headline: 'Fraunces', 'Georgia', serif;
+  /* ^ was 'IBM Plex Sans'. Fraunces (Google Fonts variable serif) is the
+       closest freely-usable substitute for Rainmaker's editorial headline face. */
+  --font-serif:    'Fraunces', 'Georgia', serif;   /* alias for new rules */
+  --font-body:     'Outfit', -apple-system, 'Helvetica Neue', sans-serif;
+  --font-sans:     'Outfit', -apple-system, 'Helvetica Neue', sans-serif;
+  --font-mono:     'Space Grotesk', -apple-system, monospace;
+  --font-label:    'Space Grotesk', -apple-system, sans-serif;
+
+  /* ── type scale ── */
+  --text-hero:       clamp(3rem, 9vw, 8rem);       /* full-bleed hero h1        */
+  --text-display:    clamp(2.5rem, 6vw, 5.5rem);   /* section h2                */
+  --text-heading:    clamp(1.75rem, 3.5vw, 3rem);  /* h3                        */
+  --text-subhead:    clamp(1.25rem, 2vw, 1.875rem);/* h4 / card titles          */
+  --text-body-lg:    1.125rem;
+  --text-body:       1rem;
+  --text-sm:         0.875rem;
+  --text-label:      0.6875rem;   /* 11px */
+
+  /* ── leading ── */
+  --leading-tight:   1.05;
+  --leading-snug:    1.2;
+  --leading-normal:  1.55;
+  --leading-loose:   1.7;
+
+  /* ── tracking ── */
+  --tracking-tight:  -0.03em;
+  --tracking-wide:    0.12em;
+
+  /* ═══════════════════════════════════════
+     SPACING
+  ═══════════════════════════════════════ */
+  --unit:              4px;
+  --gutter:            24px;
+  --margin-desktop:    64px;
+  --margin-mobile:     16px;
+  --max-width:         1440px;
+  --section-padding:   clamp(4rem, 8vw, 7rem);
+  --container-pad:     clamp(1.25rem, 5vw, 4.5rem);
+  --header-h:          72px;
+
+  /* named scale */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-32:  8rem;      /* 128px */
+
+  /* ═══════════════════════════════════════
+     BORDERS & RADIUS
+  ═══════════════════════════════════════ */
+  --radius-sm:   0px;
+  --radius:      0px;
+  --radius-md:   0px;
+  --radius-lg:   0px;
+  --radius-xl:   0px;
+  --radius-full: 0px;
+  --radius-pill: 100px;   /* pill buttons — the Rainmaker signature shape */
+
+  /* ═══════════════════════════════════════
+     TRANSITIONS
+  ═══════════════════════════════════════ */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:   300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   600ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-menu:   450ms cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* ═══════════════════════════════════════
+     SHADOWS
+  ═══════════════════════════════════════ */
+  --shadow-sm: 0 1px 3px rgba(14, 55, 37, 0.08);
+  --shadow-md: 0 4px 16px rgba(14, 55, 37, 0.12);
+  --shadow-lg: 0 12px 40px rgba(14, 55, 37, 0.18);
+
+  /* ═══════════════════════════════════════
+     Z-INDEX
+  ═══════════════════════════════════════ */
+  --z-base:    1;
+  --z-above:   10;
+  --z-header:  100;
+  --z-overlay: 200;
+}
+
+/* ── Reduced motion: zero all durations site-wide ── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast:   0ms;
+    --transition-base:   0ms;
+    --transition-slow:   0ms;
+    --transition-spring: 0ms;
+    --transition-menu:   0ms;
+  }
+}
