@@ -1,5 +1,32 @@
-/* Home page — hero canvas particle network */
+/* Home page interactions */
 
+// Dot timeline (How It Works)
+const timelineEl = document.getElementById('howTimeline');
+if (timelineEl) {
+  const dots = timelineEl.querySelectorAll('.timeline__dot');
+  const panels = timelineEl.querySelectorAll('.timeline__panel');
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const step = dot.dataset.step;
+      dots.forEach(d => { d.classList.remove('is-active'); d.setAttribute('aria-expanded', 'false'); });
+      panels.forEach(p => p.classList.remove('is-active'));
+      dot.classList.add('is-active');
+      dot.setAttribute('aria-expanded', 'true');
+      timelineEl.querySelector(`[data-panel="${step}"]`).classList.add('is-active');
+    });
+  });
+}
+
+// Vision values accordion (Long-Term Vision)
+document.querySelectorAll('.vision-value').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.vision-value').forEach(b => b.setAttribute('aria-expanded', 'false'));
+    if (!isOpen) btn.setAttribute('aria-expanded', 'true');
+  });
+});
+
+// Hero canvas (disabled — background is now CSS gradient)
 const heroCanvas = document.getElementById('heroCanvas');
 if (heroCanvas) {
   const ctx = heroCanvas.getContext('2d');

@@ -38,13 +38,13 @@
   /* ═══════════════════════════════════════
      PRIMARY GREEN  (EvE brand — unchanged)
   ═══════════════════════════════════════ */
-  --primary:                 #0e3725;
+  --primary:                 #527A65;   /* EvE logo leaf sage — updated from dark forest */
   --on-primary:              #ffffff;
-  --primary-container:       #274e3a;
-  --on-primary-container:    #94bea5;
-  --inverse-primary:         #a5d0b6;
-  --primary-fixed:           #c1edd1;
-  --primary-fixed-dim:       #a5d0b6;
+  --primary-container:       #2E5242;
+  --on-primary-container:    #A8CCBA;
+  --inverse-primary:         #8CC4A8;
+  --primary-fixed:           #C2E8D5;
+  --primary-fixed-dim:       #9ABCAB;
 
   /* ═══════════════════════════════════════
      LIME ACCENT  (new — Rainmaker chartreuse)

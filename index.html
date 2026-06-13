@@ -56,16 +56,14 @@
     </nav>
     <div class="menu-overlay__footer">
       <span>&copy; 2026 EvE Modular Industrial</span>
-      <span class="menu-overlay__location">Toronto, ON</span>
+      <span class="menu-overlay__location">Columbus, OH</span>
     </div>
   </div>
 
   <main>
 
-    <!-- Hero — background image goes in css/home.css -->
+    <!-- Hero — replace gradient in css/home.css with background-image when ready -->
     <section class="hero" id="hero">
-      <canvas id="heroCanvas" class="hero__canvas"></canvas>
-      <div class="hero__bg-grid"></div>
       <div class="container hero__container">
         <div class="hero__content fade-up">
           <span class="type-label hero__eyebrow">Modular Industrial Systems</span>
@@ -83,17 +81,11 @@
       </div>
     </section>
 
-    <!-- Intro -->
+    <!-- Our Approach -->
     <section class="section intro">
       <div class="container">
         <div class="intro__grid">
-          <div class="fade-up">
-            <span class="section__eyebrow">Our Approach</span>
-            <h2 class="section__title">Lorem ipsum dolor sit amet consectetur adipiscing</h2>
-            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-            <a href="about.html" class="btn btn--secondary mt-32">Why We Build</a>
-          </div>
-          <div class="intro__stats fade-up stagger-2">
+          <div class="intro__stats fade-up">
             <div class="intro__stat">
               <div class="stat__value">XX%</div>
               <div class="stat__label">Lorem ipsum recovery rate</div>
@@ -107,58 +99,67 @@
               <div class="stat__label">Lorem ipsum within first year</div>
             </div>
           </div>
+          <div class="fade-up stagger-2">
+            <span class="section__eyebrow">Our Approach</span>
+            <h2 class="intro__headline">Lorem ipsum dolor sit amet consectetur adipiscing</h2>
+            <a href="about.html" class="btn btn--secondary mt-32">Why We Build</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Products -->
-    <section class="section section--tinted" id="products">
-      <div class="container">
-        <div class="section__header fade-up">
-          <span class="section__eyebrow">The Platform</span>
-          <h2 class="section__title">Three modules. One integrated system.</h2>
-          <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+    <!-- Products — half-screen split blocks -->
+    <section id="products">
+      <div class="section__header container fade-up" style="padding-top: var(--section-padding);">
+        <span class="section__eyebrow">The Platform</span>
+        <h2 class="section__title">Three modules. One integrated system.</h2>
+      </div>
+
+      <div class="product-split fade-up">
+        <div class="product-split__image" style="background-color: #1a2e24;">
+          <!-- Upload product image: assets/product-1.jpg -->
         </div>
-        <div class="products__grid grid grid--3">
-          <div class="card product-card fade-up stagger-1">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <span class="card__label">Module 01</span>
-            <h3 class="card__title">Product 1</h3>
-            <p class="card__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
-            <div class="product-specs">
-              <div class="spec"><span>Throughput</span><strong>XX t/day</strong></div>
-              <div class="spec"><span>Recovery</span><strong>XX%</strong></div>
-            </div>
-            <a href="platform.html#product-1" class="btn btn--secondary btn--sm mt-24">Learn More</a>
+        <div class="product-split__content">
+          <span class="product-split__label">Module 01</span>
+          <h3 class="product-split__title">Product 1</h3>
+          <p class="product-split__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+          <div class="product-split__specs">
+            <div class="spec"><span>Throughput</span><strong>XX t/day</strong></div>
+            <div class="spec"><span>Recovery</span><strong>XX%</strong></div>
           </div>
-          <div class="card product-card fade-up stagger-2">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
-            <span class="card__label">Module 02</span>
-            <h3 class="card__title">Product 2</h3>
-            <p class="card__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
-            <div class="product-specs">
-              <div class="spec"><span>Efficiency</span><strong>XX%</strong></div>
-              <div class="spec"><span>Output</span><strong>XX kWh</strong></div>
-            </div>
-            <a href="platform.html#product-2" class="btn btn--secondary btn--sm mt-24">Learn More</a>
+          <a href="platform.html#product-1" class="btn btn--primary mt-32">Learn More</a>
+        </div>
+      </div>
+
+      <div class="product-split product-split--flip fade-up">
+        <div class="product-split__image" style="background-color: #1c3428;">
+          <!-- Upload product image: assets/product-2.jpg -->
+        </div>
+        <div class="product-split__content">
+          <span class="product-split__label">Module 02</span>
+          <h3 class="product-split__title">Product 2</h3>
+          <p class="product-split__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+          <div class="product-split__specs">
+            <div class="spec"><span>Efficiency</span><strong>XX%</strong></div>
+            <div class="spec"><span>Output</span><strong>XX kWh</strong></div>
           </div>
-          <div class="card product-card fade-up stagger-3">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-            </div>
-            <span class="card__label">Module 03</span>
-            <h3 class="card__title">Product 3</h3>
-            <p class="card__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
-            <div class="product-specs">
-              <div class="spec"><span>Latency</span><strong>&lt;XX sec</strong></div>
-              <div class="spec"><span>Uptime SLA</span><strong>XX%</strong></div>
-            </div>
-            <a href="platform.html#product-3" class="btn btn--secondary btn--sm mt-24">Learn More</a>
+          <a href="platform.html#product-2" class="btn btn--primary mt-32">Learn More</a>
+        </div>
+      </div>
+
+      <div class="product-split fade-up">
+        <div class="product-split__image" style="background-color: #182b20;">
+          <!-- Upload product image: assets/product-3.jpg -->
+        </div>
+        <div class="product-split__content">
+          <span class="product-split__label">Module 03</span>
+          <h3 class="product-split__title">Product 3</h3>
+          <p class="product-split__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+          <div class="product-split__specs">
+            <div class="spec"><span>Latency</span><strong>&lt;XX sec</strong></div>
+            <div class="spec"><span>Uptime SLA</span><strong>XX%</strong></div>
           </div>
+          <a href="platform.html#product-3" class="btn btn--primary mt-32">Learn More</a>
         </div>
       </div>
     </section>
@@ -191,123 +192,112 @@
       </div>
     </section>
 
-    <!-- Technology -->
-    <section class="section tech-section" id="technology">
+    <!-- How It Works — dot timeline -->
+    <section class="section" id="technology">
       <div class="container">
-        <div class="tech-grid">
-          <div class="fade-up">
-            <span class="section__eyebrow">How It Works</span>
-            <h2 class="section__title">Lorem ipsum dolor sit amet consectetur</h2>
-            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
-            <div class="tech-pillars">
-              <div class="tech-pillar fade-up stagger-1">
-                <span class="tech-pillar__num">01</span>
-                <div>
-                  <h4 class="tech-pillar__title">Technology</h4>
-                  <p class="tech-pillar__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                </div>
-              </div>
-              <div class="tech-pillar fade-up stagger-2">
-                <span class="tech-pillar__num">02</span>
-                <div>
-                  <h4 class="tech-pillar__title">Research</h4>
-                  <p class="tech-pillar__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                </div>
-              </div>
-              <div class="tech-pillar fade-up stagger-3">
-                <span class="tech-pillar__num">03</span>
-                <div>
-                  <h4 class="tech-pillar__title">Integration</h4>
-                  <p class="tech-pillar__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                </div>
-              </div>
-            </div>
-            <a href="platform.html" class="btn btn--primary mt-32">View Full Platform</a>
+        <div class="section__header fade-up">
+          <span class="section__eyebrow">How It Works</span>
+          <h2 class="section__title">Lorem ipsum dolor sit amet consectetur</h2>
+        </div>
+        <div class="timeline fade-up" id="howTimeline">
+          <div class="timeline__track">
+            <button class="timeline__dot is-active" data-step="0" aria-expanded="true" aria-label="Step 1: Technology">
+              <span class="timeline__dot-num">01</span>
+            </button>
+            <button class="timeline__dot" data-step="1" aria-expanded="false" aria-label="Step 2: Research">
+              <span class="timeline__dot-num">02</span>
+            </button>
+            <button class="timeline__dot" data-step="2" aria-expanded="false" aria-label="Step 3: Integration">
+              <span class="timeline__dot-num">03</span>
+            </button>
+            <button class="timeline__dot" data-step="3" aria-expanded="false" aria-label="Step 4: Deployment">
+              <span class="timeline__dot-num">04</span>
+            </button>
+            <button class="timeline__dot" data-step="4" aria-expanded="false" aria-label="Step 5: Optimisation">
+              <span class="timeline__dot-num">05</span>
+            </button>
           </div>
-          <div class="tech-diagram fade-in stagger-2">
-            <div class="diag-node--top">
-              <span>Waste Input Stream</span>
+          <div class="timeline__panels">
+            <div class="timeline__panel is-active" data-panel="0">
+              <h4 class="timeline__title">Technology</h4>
+              <p class="timeline__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
             </div>
-            <div class="diag-flow">
-              <div class="diag-module">
-                <strong>Product 1</strong>
-                <p>Material Separation &amp; Recovery</p>
-              </div>
-              <div class="diag-arrow">&#8595;</div>
-              <div class="diag-module">
-                <strong>Product 2</strong>
-                <p>Thermal Energy Extraction</p>
-              </div>
-              <div class="diag-arrow">&#8595;</div>
-              <div class="diag-module">
-                <strong>Product 3</strong>
-                <p>Monitor, Analyze &amp; Report</p>
-              </div>
+            <div class="timeline__panel" data-panel="1">
+              <h4 class="timeline__title">Research</h4>
+              <p class="timeline__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
             </div>
-            <div class="diag-outputs">
-              <div class="diag-output"><span>Materials</span></div>
-              <div class="diag-output"><span>Energy</span></div>
-              <div class="diag-output"><span>Data</span></div>
+            <div class="timeline__panel" data-panel="2">
+              <h4 class="timeline__title">Integration</h4>
+              <p class="timeline__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+            </div>
+            <div class="timeline__panel" data-panel="3">
+              <h4 class="timeline__title">Deployment</h4>
+              <p class="timeline__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+            </div>
+            <div class="timeline__panel" data-panel="4">
+              <h4 class="timeline__title">Optimisation</h4>
+              <p class="timeline__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
             </div>
           </div>
+        </div>
+        <div class="text-center mt-32 fade-up">
+          <a href="platform.html" class="btn btn--primary">View Full Platform</a>
         </div>
       </div>
     </section>
 
-    <!-- Ecosystem -->
-    <section class="section section--slate ecosystem">
+    <!-- Long-Term Vision -->
+    <section class="section section--slate vision-section">
       <div class="container">
-        <div class="ecosystem-grid">
-          <div class="fade-up">
-            <span class="section__eyebrow">Long-Term Vision</span>
-            <h2 class="section__title">Lorem ipsum dolor sit amet<br>consectetur</h2>
-            <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris.</p>
-            <a href="about.html" class="btn btn--ghost mt-32">Our Mission</a>
-          </div>
-          <div class="ecosystem-features fade-up stagger-2">
-            <div class="eco-feature">
-              <div class="eco-feature__icon">
+        <div class="fade-up">
+          <span class="section__eyebrow">Long-Term Vision</span>
+          <h2 class="vision__headline">Lorem ipsum dolor sit amet<br>consectetur</h2>
+        </div>
+        <div class="vision-values fade-up stagger-2">
+          <button class="vision-value" aria-expanded="false">
+            <div class="vision-value__head">
+              <div class="vision-value__icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
-              <div>
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-              </div>
+              <h4 class="vision-value__title">Lorem ipsum dolor sit amet</h4>
+              <span class="vision-value__chevron" aria-hidden="true">+</span>
             </div>
-            <div class="eco-feature">
-              <div class="eco-feature__icon">
+            <p class="vision-value__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+          </button>
+          <button class="vision-value" aria-expanded="false">
+            <div class="vision-value__head">
+              <div class="vision-value__icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
               </div>
-              <div>
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-              </div>
+              <h4 class="vision-value__title">Lorem ipsum dolor sit amet</h4>
+              <span class="vision-value__chevron" aria-hidden="true">+</span>
             </div>
-            <div class="eco-feature">
-              <div class="eco-feature__icon">
+            <p class="vision-value__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+          </button>
+          <button class="vision-value" aria-expanded="false">
+            <div class="vision-value__head">
+              <div class="vision-value__icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
               </div>
-              <div>
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-              </div>
+              <h4 class="vision-value__title">Lorem ipsum dolor sit amet</h4>
+              <span class="vision-value__chevron" aria-hidden="true">+</span>
             </div>
-          </div>
+            <p class="vision-value__body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- Get Started -->
     <section class="section cta-section">
       <div class="container">
-        <div class="cta-inner fade-up">
-          <span class="section__eyebrow">Get Started</span>
-          <h2 class="section__title">Lorem ipsum dolor sit amet<br>consectetur adipiscing?</h2>
-          <p class="section__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</p>
+        <div class="cta-inner fade-up text-center">
+          <h2 class="cta-headline">Get Started</h2>
           <div class="cta-actions mt-32">
             <a href="contact.html" class="btn btn--primary btn--lg">Request a Site Assessment</a>
-            <a href="use-cases.html" class="btn btn--secondary btn--lg">Explore Use Cases</a>
+            <a href="contact.html" class="btn btn--secondary btn--lg">Any Questions?</a>
           </div>
+          <p class="cta-tagline">No stupid questions — we've heard it all. Don't be a stranger.</p>
         </div>
       </div>
     </section>
