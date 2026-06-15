@@ -12,6 +12,33 @@
 :root {
 
   /* ═══════════════════════════════════════
+     LOGO COLOR SCALES
+     Leaf sage green base: #6B9272
+     Wordmark slate base:  #516167
+  ═══════════════════════════════════════ */
+  --green-50:  #EFF6F1;
+  --green-100: #C9E2D3;
+  --green-200: #9DC7AE;
+  --green-300: #72AA8A;
+  --green-400: #6B9272;   /* logo leaf — exact */
+  --green-500: #527A65;   /* interactive primary */
+  --green-600: #3D6050;
+  --green-700: #2D4C3E;
+  --green-800: #1E362C;
+  --green-900: #112118;   /* darkest — overlay bg */
+
+  --slate-50:  #EFF2F3;
+  --slate-100: #D1DBDF;
+  --slate-200: #A8B9BE;
+  --slate-300: #7F9399;
+  --slate-400: #607079;
+  --slate-500: #516167;   /* logo wordmark — exact */
+  --slate-600: #3F4F55;
+  --slate-700: #2F3C41;
+  --slate-800: #1D272B;
+  --slate-900: #0E1417;
+
+  /* ═══════════════════════════════════════
      SURFACES
   ═══════════════════════════════════════ */
   --surface:                 #F4F0E6;   /* warm cream — editorial / body bg       */
@@ -20,17 +47,17 @@
   --surface-container-low:   #EDE8DE;
   --surface-container:       #E6E0D4;
   --surface-container-high:  #DDD7CA;
-  --on-surface:              #181c1c;
-  --on-surface-variant:      #414943;
-  --inverse-surface:         #2d3131;
-  --inverse-on-surface:      #eef1f0;
+  --on-surface:              #1D272B;   /* slate-800 */
+  --on-surface-variant:      #3F4F55;   /* slate-600 */
+  --inverse-surface:         #1D272B;   /* slate-800 */
+  --inverse-on-surface:      #D1DBDF;   /* slate-100 */
 
   /* ═══════════════════════════════════════
      DARK SURFACE  (header / overlay / footer)
   ═══════════════════════════════════════ */
-  --dark-surface:            #0e3725;   /* EvE deep forest green                  */
-  --dark-surface-mid:        #174d35;   /* slightly lighter — cards on dark        */
-  --dark-surface-rim:        #1c5a3e;   /* borders / dividers on dark             */
+  --dark-surface:            #112118;   /* green-900 — logo leaf darkest shade    */
+  --dark-surface-mid:        #1E362C;   /* green-800                              */
+  --dark-surface-rim:        #2D4C3E;   /* green-700                              */
   --dark-border:             rgba(255, 255, 255, 0.10);
   --on-dark:                 #ffffff;
   --on-dark-dim:             rgba(255, 255, 255, 0.58);
@@ -38,47 +65,47 @@
   /* ═══════════════════════════════════════
      PRIMARY GREEN  (EvE brand — unchanged)
   ═══════════════════════════════════════ */
-  --primary:                 #527A65;   /* EvE logo leaf sage — updated from dark forest */
+  --primary:                 #527A65;   /* green-500 — interactive primary        */
   --on-primary:              #ffffff;
-  --primary-container:       #2E5242;
-  --on-primary-container:    #A8CCBA;
-  --inverse-primary:         #8CC4A8;
-  --primary-fixed:           #C2E8D5;
-  --primary-fixed-dim:       #9ABCAB;
+  --primary-container:       #2D4C3E;   /* green-700 — hover / pressed state      */
+  --on-primary-container:    #9DC7AE;   /* green-200                              */
+  --inverse-primary:         #9DC7AE;   /* green-200 — accent on dark bg          */
+  --primary-fixed:           #C9E2D3;   /* green-100 — light tint on dark bg      */
+  --primary-fixed-dim:       #9DC7AE;   /* green-200                              */
 
   /* ═══════════════════════════════════════
      LIME ACCENT  (new — Rainmaker chartreuse)
   ═══════════════════════════════════════ */
   --lime:                    #BFEE44;   /* primary action, hover, brackets, active */
   --lime-dark:               #a3d038;   /* pressed / focus                         */
-  --on-lime:                 #0e3725;   /* text/icons placed on lime               */
+  --on-lime:                 #112118;   /* green-900 — text on lime                */
 
   /* ═══════════════════════════════════════
-     SECONDARY / TERTIARY  (backward-compat)
+     SECONDARY / TERTIARY  (slate scale)
   ═══════════════════════════════════════ */
-  --secondary:               #516167;
+  --secondary:               #516167;   /* slate-500 — logo wordmark exact        */
   --on-secondary:            #ffffff;
-  --secondary-container:     #d1e2e9;
-  --on-secondary-container:  #55656b;
-  --tertiary:                #023544;
+  --secondary-container:     #D1DBDF;   /* slate-100                              */
+  --on-secondary-container:  #3F4F55;   /* slate-600                              */
+  --tertiary:                #607079;   /* slate-400                              */
   --on-tertiary:             #ffffff;
-  --tertiary-container:      #214c5b;
-  --on-tertiary-container:   #92bbcd;
-  --tertiary-fixed:          #bee9fc;
+  --tertiary-container:      #3F4F55;   /* slate-600                              */
+  --on-tertiary-container:   #D1DBDF;   /* slate-100                              */
+  --tertiary-fixed:          #EFF2F3;   /* slate-50                               */
 
   /* ═══════════════════════════════════════
      LEGACY BRAND  (kept for backward-compat)
   ═══════════════════════════════════════ */
-  --industrial-slate:        #2D373C;
-  --bio-moss:                #6B8E7B;
-  --circuit-blue:            #E0E9ED;
+  --industrial-slate:        #2F3C41;   /* slate-700                              */
+  --bio-moss:                #6B9272;   /* green-400 — logo leaf exact            */
+  --circuit-blue:            #D1DBDF;   /* slate-100                              */
 
   /* ═══════════════════════════════════════
      OUTLINES
   ═══════════════════════════════════════ */
-  --outline:                 #717973;
-  --outline-variant:         #c1c8c1;
-  --outline-cream:           rgba(24, 28, 28, 0.10);
+  --outline:                 #7F9399;   /* slate-300                              */
+  --outline-variant:         #A8B9BE;   /* slate-200                              */
+  --outline-cream:           rgba(29, 39, 43, 0.10);   /* slate-800 based        */
 
   /* ═══════════════════════════════════════
      TYPOGRAPHY  — font families
