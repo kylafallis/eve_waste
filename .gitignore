@@ -1,0 +1,4 @@
+supabase/.temp/
+.vscode/
+.env
+.env.local
