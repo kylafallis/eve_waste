@@ -1,8 +1,12 @@
-// Follow this setup guide to integrate the Deno language server with your editor:
-// https://deno.land/manual/getting_started/setup_your_environment
-// This enables autocomplete, go to definition, etc.
+// ─── IMPORTS ─────────────────────────────────────────────────────────────────
+// External tools this file depends on:
+//   @supabase/functions-js  — VS Code error suppression only (see comment below)
+//   @supabase/server        — connects this function to the Supabase database
+//   database.types.ts       — the shape of every table in our Supabase database
+//   @aws-sdk/client-s3      — lets us upload/delete files in the AWS S3 bucket
+//   @aws-sdk/client-textract — lets us send PDFs to AWS Textract for reading
 
-// Setup type definitions for built-in Supabase Runtime APIs
+// Stops red errors in VS Code. Does not do anything when the function actually runs.
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 import type { Database } from "./database.types.ts";
@@ -13,8 +17,6 @@ import {
   StartDocumentAnalysisCommand,
   TextractClient,
 } from "@aws-sdk/client-textract";
-
-console.log("Hello from Functions!");
 
 // ─── SECTION 1: WHAT WE'RE EXTRACTING ────────────────────────────────────────
 // Blueprint of the 11 fields we want from every contract.
