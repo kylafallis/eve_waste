@@ -400,6 +400,7 @@ export type Database = {
       contract_services: {
         Row: {
           base_rate: number
+          container_size: string | null
           contract_id: string
           created_at: string
           frequency_per_week: number | null
@@ -409,6 +410,7 @@ export type Database = {
         }
         Insert: {
           base_rate: number
+          container_size?: string | null
           contract_id: string
           created_at?: string
           frequency_per_week?: number | null
@@ -418,6 +420,7 @@ export type Database = {
         }
         Update: {
           base_rate?: number
+          container_size?: string | null
           contract_id?: string
           created_at?: string
           frequency_per_week?: number | null
@@ -439,6 +442,7 @@ export type Database = {
         Row: {
           client_id: string
           created_at: string
+          hauler_name: string | null
           id: string
           is_active: boolean
           organization_id: string | null
@@ -450,6 +454,7 @@ export type Database = {
         Insert: {
           client_id: string
           created_at?: string
+          hauler_name?: string | null
           id?: string
           is_active?: boolean
           organization_id?: string | null
@@ -461,6 +466,7 @@ export type Database = {
         Update: {
           client_id?: string
           created_at?: string
+          hauler_name?: string | null
           id?: string
           is_active?: boolean
           organization_id?: string | null

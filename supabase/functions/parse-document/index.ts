@@ -25,6 +25,7 @@ interface ContractFields {
   startDate: string | null;
   endDate: string | null;
   contractTermLength: string | null;
+  haulerName: string | null;
   pickupFrequency: string | null;
   basePrice: string | null;
   fees: {
@@ -37,7 +38,7 @@ interface ContractFields {
   autoRenewal: string | null;
 }
 
-// ─── SECTION 2: THE 11 QUESTIONS WE ASK TEXTRACT ────────────────────────────
+// ─── SECTION 2: THE 12 QUESTIONS WE ASK TEXTRACT ────────────────────────────
 // Instead of searching for patterns like the old regex did, we send Textract a plain-English
 // question for each field. Textract reads the whole document and finds the best answer —
 // even if it's buried in a table or split across columns. The "Alias" is just a short
@@ -46,13 +47,14 @@ const TEXTRACT_QUERIES: { Text: string; Alias: string }[] = [
   { Text: "What is the start date or effective date of the contract?", Alias: "START_DATE" },
   { Text: "What is the end date or expiration date of the contract?", Alias: "END_DATE" },
   { Text: "What is the length of the initial contract term?", Alias: "TERM_LENGTH" },
-  { Text: "How often is waste picked up or collected?", Alias: "PICKUP_FREQUENCY" },
+  { Text: "What is the name of the waste hauler or service provider company?", Alias: "HAULER_NAME" },
+  { Text: "What is the collection or pickup frequency listed in the service description, such as 2x per week or weekly?", Alias: "PICKUP_FREQUENCY" },
   { Text: "What is the base price or base rate for service?", Alias: "BASE_PRICE" },
-  { Text: "What is the container or bin size?", Alias: "CONTAINER_SIZE" },
-  { Text: "What is the fuel surcharge or energy surcharge fee?", Alias: "FUEL_SURCHARGE" },
+  { Text: "What is the dumpster or container size listed in the Equipment column of the service summary?", Alias: "CONTAINER_SIZE" },
+  { Text: "What is the ENERGY charge dollar amount listed next to the base rate in the service summary?", Alias: "FUEL_SURCHARGE" },
   { Text: "What is the environmental fee?", Alias: "ENVIRONMENTAL_FEE" },
   { Text: "What is the administrative fee or charge?", Alias: "ADMIN_FEE" },
-  { Text: "How many days notice are required to cancel or not renew the contract?", Alias: "CANCELLATION_NOTICE" },
+  { Text: "What is the number of days advance written notice required for cancellation, renewal avoidance, or termination of this agreement?", Alias: "CANCELLATION_NOTICE" },
   { Text: "Does the contract automatically renew, and what are the terms?", Alias: "AUTO_RENEWAL" },
 ];
 
@@ -182,6 +184,7 @@ function buildContractFields(answers: Map<string, QueryAnswer>): ContractFields 
     startDate: get("START_DATE"),
     endDate: get("END_DATE"),
     contractTermLength: get("TERM_LENGTH"),
+    haulerName: get("HAULER_NAME"),
     pickupFrequency: get("PICKUP_FREQUENCY"),
     basePrice: get("BASE_PRICE"),
     fees: {
@@ -413,6 +416,7 @@ export default {
             source_file_id: rawFile.id,
             valid_from: validFrom,
             valid_to: parseDateToISO(fields.endDate),
+            hauler_name: fields.haulerName,
           })
           .select("id")
           .single();
@@ -428,6 +432,7 @@ export default {
             service_name: "Waste Collection",
             base_rate: baseRate,
             frequency_per_week: parseFrequencyPerWeek(fields.pickupFrequency),
+            container_size: fields.containerSize,
           });
           if (error) console.error("Failed to save contract service:", error);
         }
