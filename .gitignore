@@ -5,4 +5,4 @@ supabase/.temp/
 
 # Real customer contracts downloaded locally for testing — sensitive, not for version control.
 # Matches any future re-download too, since Google Drive names these with a fresh timestamp.
-drive-download-*/
+test-contracts/

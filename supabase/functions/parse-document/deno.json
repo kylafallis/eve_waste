@@ -2,6 +2,7 @@
   "imports": {
     "@supabase/functions-js": "jsr:@supabase/functions-js@^2",
     "@supabase/server": "npm:@supabase/server@^1",
-    "unpdf": "npm:unpdf@^1.6"
+    "@aws-sdk/client-s3": "npm:@aws-sdk/client-s3@^3",
+    "@aws-sdk/client-textract": "npm:@aws-sdk/client-textract@^3"
   }
 }

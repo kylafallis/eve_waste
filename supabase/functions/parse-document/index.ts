@@ -5,11 +5,20 @@
 // Setup type definitions for built-in Supabase Runtime APIs
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
-import { extractText, getDocumentProxy } from "unpdf";
 import type { Database } from "./database.types.ts";
+import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  type Block,
+  GetDocumentAnalysisCommand,
+  StartDocumentAnalysisCommand,
+  TextractClient,
+} from "@aws-sdk/client-textract";
 
 console.log("Hello from Functions!");
 
+// ─── SECTION 1: WHAT WE'RE EXTRACTING ────────────────────────────────────────
+// Blueprint of the 11 fields we want from every contract.
+// "string | null" means we might not find it — and that's okay, we still save what we can.
 interface ContractFields {
   startDate: string | null;
   endDate: string | null;
@@ -26,224 +35,175 @@ interface ContractFields {
   autoRenewal: string | null;
 }
 
-const DATE = String.raw`(?:\d{1,2}\/\d{1,2}\/\d{2,4}|\d{4}-\d{2}-\d{2}|[A-Za-z]+\s+\d{1,2},?\s+\d{4})`;
-
-const DATE_RANGE_PATTERNS = [
-  new RegExp(
-    `(?:term|agreement)[^.]{0,60}?(?:from|beginning)\\s+(${DATE})\\s+(?:to|through|until|-)\\s+(${DATE})`,
-    "i",
-  ),
-  new RegExp(
-    `commenc\\w*\\s+(?:on\\s+)?(${DATE})[^.]{0,40}?(?:through|until|to|ending)\\s+(${DATE})`,
-    "i",
-  ),
+// ─── SECTION 2: THE 11 QUESTIONS WE ASK TEXTRACT ────────────────────────────
+// Instead of searching for patterns like the old regex did, we send Textract a plain-English
+// question for each field. Textract reads the whole document and finds the best answer —
+// even if it's buried in a table or split across columns. The "Alias" is just a short
+// nickname we use to look up each answer in code (instead of repeating the full question).
+const TEXTRACT_QUERIES: { Text: string; Alias: string }[] = [
+  { Text: "What is the start date or effective date of the contract?", Alias: "START_DATE" },
+  { Text: "What is the end date or expiration date of the contract?", Alias: "END_DATE" },
+  { Text: "What is the length of the initial contract term?", Alias: "TERM_LENGTH" },
+  { Text: "How often is waste picked up or collected?", Alias: "PICKUP_FREQUENCY" },
+  { Text: "What is the base price or base rate for service?", Alias: "BASE_PRICE" },
+  { Text: "What is the container or bin size?", Alias: "CONTAINER_SIZE" },
+  { Text: "What is the fuel surcharge or energy surcharge fee?", Alias: "FUEL_SURCHARGE" },
+  { Text: "What is the environmental fee?", Alias: "ENVIRONMENTAL_FEE" },
+  { Text: "What is the administrative fee or charge?", Alias: "ADMIN_FEE" },
+  { Text: "How many days notice are required to cancel or not renew the contract?", Alias: "CANCELLATION_NOTICE" },
+  { Text: "Does the contract automatically renew, and what are the terms?", Alias: "AUTO_RENEWAL" },
 ];
 
-function firstMatch(text: string, patterns: RegExp[]): string | null {
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (match?.[1]) return match[1].trim();
+interface AwsConfig {
+  accessKeyId: string;
+  secretAccessKey: string;
+  region: string;
+  bucket: string;
+}
+
+// ─── SECTION 3: AWS CREDENTIALS ──────────────────────────────────────────────
+// Reads the 4 secret values stored in Supabase (Access Key, Secret, Region, Bucket).
+// If any are missing the whole function stops immediately — it can't run without them.
+function getAwsConfig(): AwsConfig {
+  const accessKeyId = Deno.env.get("AWS_ACCESS_KEY_ID");
+  const secretAccessKey = Deno.env.get("AWS_SECRET_ACCESS_KEY");
+  const region = Deno.env.get("AWS_REGION");
+  const bucket = Deno.env.get("AWS_TEXTRACT_BUCKET");
+  if (!accessKeyId || !secretAccessKey || !region || !bucket) {
+    throw new Error(
+      "AWS is not configured (need AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_TEXTRACT_BUCKET)",
+    );
   }
-  return null;
+  return { accessKeyId, secretAccessKey, region, bucket };
 }
 
-function formatAmount(value: string | null): string | null {
-  if (!value) return null;
-  return value.includes("%") ? value : `$${value}`;
-}
-
-function extractDateRange(text: string): { startDate: string | null; endDate: string | null } {
-  for (const pattern of DATE_RANGE_PATTERNS) {
-    const match = text.match(pattern);
-    if (match) return { startDate: match[1].trim(), endDate: match[2].trim() };
-  }
-
-  // PDF table headers commonly render as "6/15/2022Effective Date:" — the date glued
-  // immediately before its own label, not after it. Real-world PDF text extraction follows the
-  // order objects were drawn in the file, which doesn't always match the visual left-to-right
-  // reading order for a label/value pair laid out in a table cell.
-  return {
-    startDate: firstMatch(text, [
-      new RegExp(`(?:start date|commencement date|effective date)\\s*[:\\-]?\\s*(${DATE})`, "i"),
-      new RegExp(`(${DATE})\\s*(?=(?:start date|commencement date|effective date))`, "i"),
-    ]),
-    endDate: firstMatch(text, [
-      new RegExp(`(?:end date|expiration date|termination date)\\s*[:\\-]?\\s*(${DATE})`, "i"),
-      new RegExp(`(${DATE})\\s*(?=(?:end date|expiration date|termination date))`, "i"),
-    ]),
-  };
-}
-
-function extractPickupFrequency(text: string): string | null {
-  return firstMatch(text, [
-    /\b(daily|weekly|bi-weekly|biweekly|semi-weekly|monthly|on-call|as-needed)\b\s*(?:pickup|pick-up|collection|basis|service)/i,
-    /((?:\d+\s*(?:times?|x)|once|twice|three times|four times)\s*(?:per|a)\s*(?:week|month))/i,
-    // Some haulers abbreviate this on a rate table, e.g. "1XW" or "2X" for "times per week".
-    /\b(\d{1,2}\s*x\s*w)\b/i,
-    // Generic fallback. Bounded to a few tokens so it can't run on through an unrelated table
-    // row when there's no punctuation nearby to stop at.
-    /(?:pickup|pick-up|collection|service)\s*frequency\s*[:\-]?\s*([A-Za-z0-9]+(?:[\s-][A-Za-z0-9]+){0,2})/i,
-  ]);
-}
-
-function extractBasePrice(text: string): string | null {
-  return formatAmount(
-    firstMatch(text, [
-      // A two-column rate table ("Base Rate   ENERGY" over "$ 166.00   $ 0.00") extracts as
-      // "Base Rate ENERGY $ $ 166.00 0.00" — labels grouped together, then both values, with an
-      // extra "$" from the second column. The bounded gap and optional second "$" handle both
-      // this layout and the simple adjacent "Base Rate: $245.00" case.
-      /(?:base\s*(?:rate|price)|monthly\s*(?:service\s*)?(?:rate|charge|price)|service\s*rate).{0,40}?\$\s*\$?\s*([\d,]+\.\d{2}|[\d,]+)/i,
-      // "Garbage"/"Recurring" alone are too generic to assume a price follows without a $ sign
-      // present — e.g. a container-size table can read "Garbage: 1 2 6 10 95" with no price at all.
-      /garbage\s*[:\-]?\s*\$\s*([\d,]+\.\d{2}|[\d,]+)/i,
-      /recurring.{0,80}?\$\s*([\d,]+\.\d{2})/i,
-      /\$\s*([\d,]+\.\d{2})\s*(?:per\s*month|\/\s*month|monthly)/i,
-    ]),
-  );
-}
-
-function extractFee(text: string, label: string): string | null {
-  const pattern = new RegExp(
-    `${label}\\s*(?:[:\\-]|of|is|at)?\\s*\\$?\\s*([\\d,]+\\.\\d{2}|[\\d,]+(?:\\.\\d+)?\\s*%)`,
-    "i",
-  );
-  return formatAmount(text.match(pattern)?.[1]?.trim() ?? null);
-}
-
-function extractFees(text: string): ContractFields["fees"] {
-  return {
-    // Different haulers use different names for the same fee: Waste Management bills a
-    // "Energy Surcharge" (sometimes just labeled "ENERGY") where others say "fuel surcharge".
-    fuelSurcharge: extractFee(text, String.raw`(?:fuel\s*surcharge|energy\s*surcharge|energy)`),
-    environmentalFee: extractFee(text, String.raw`environmental\s*fee`),
-    // "Administrative Charge" is equally common as "admin fee".
-    adminFee: extractFee(text, String.raw`admin(?:istrative)?\s*(?:fee|charge)`),
-  };
-}
-
-function extractContainerSize(text: string): string | null {
-  const match = text.match(/(\d{1,3}(?:\.\d+)?)\s*[- ]?(cubic\s*yard|yard|yd|gallon|gal)s?\b/i);
-  if (!match) return null;
-  const unit = /y/i.test(match[2]) ? "yard" : "gallon";
-  return `${match[1]} ${unit}${match[1] === "1" ? "" : "s"}`;
-}
-
-function extractCancellationNotice(text: string): string | null {
-  // Day counts are often spelled out with the numeral in parens ("ninety (90) days"),
-  // with words like "prior"/"written" between the count and "notice" — not bare and adjacent.
-  const dayCount = String.raw`\(?(\d{1,3})\)?\s*[- ]?days?`;
-  const value = firstMatch(text, [
-    new RegExp(`notice.{0,80}?${dayCount}`, "i"),
-    new RegExp(`${dayCount}.{0,40}?(?:prior\\s*)?(?:written\\s*)?notice`, "i"),
-    new RegExp(`cancel(?:lation)?.{0,60}?${dayCount}`, "i"),
-  ]);
-  return value ? `${value} days` : null;
-}
-
-// Common abbreviations whose internal periods look like sentence boundaries to the
-// "match up to the next period" extractors below (e.g. "U.S." would otherwise cut a clause
-// in half right after "U.").
-const ABBREVIATIONS: [RegExp, string][] = [
-  [/\bU\.S\.A\.?/gi, "US"],
-  [/\bU\.S\.?/gi, "US"],
-  [/\b(Inc|Corp|Ltd|Mr|Mrs|Ms|Dr|No)\./gi, "$1"],
-];
-
-function stripAbbreviationPeriods(text: string): string {
-  return ABBREVIATIONS.reduce((result, [pattern, replacement]) => result.replace(pattern, replacement), text);
-}
-
-function extractContractTermLength(text: string): string | null {
-  return firstMatch(text, [
-    /(?:initial term|contract term|term of (?:this )?agreement)[^\d]{0,80}?(\d{1,3}\s*(?:years?|months?))/i,
-  ]);
-}
-
-// Even bounded, the 100-char cutoff can land mid-word or mid-number when nothing cleaner is in
-// reach (e.g. starting on "00" left over from "$150.00"). Drop a leading fragment like that
-// rather than return a clause that starts on a broken token.
-function dropLeadingFragment(value: string): string {
-  return /^[a-z0-9]/.test(value) ? value.replace(/^\S+\s+/, "") : value;
-}
-
-function extractAutoRenewal(text: string): string | null {
-  // A deal-specific override ("this agreement does not have a Renewal Term") should win over
-  // generic auto-renewal boilerplate that may appear elsewhere in the same document.
-  //
-  // The leading [^.]{0,100} (rather than unbounded [^.]*) caps how far back this can reach.
-  // Without that cap, a decimal currency amount ("$ 0.00") or a mangled date ("03/ 01.") earlier
-  // in the document reads as a sentence boundary, and the unbounded match would scoop up every
-  // character from there to the actual clause as "context."
-  const negation = text.match(
-    /[^.]{0,100}\b(?:does not|will not|shall not)\s+(?:have\s+a\s+)?(?:auto(?:matic(?:ally)?)?[-\s]*)?renew(?:able|al|s|ing)?[^.]*\./i,
-  );
-  if (negation) return dropLeadingFragment(negation[0].trim().replace(/\s+/g, " "));
-
-  const match = text.match(/[^.]{0,100}\bauto(?:matic(?:ally)?)?[-\s]*renew(?:able|al|s|ing)?\b[^.]*\./i);
-  return match ? dropLeadingFragment(match[0].trim().replace(/\s+/g, " ")) : null;
-}
-
-// OCR.space free tier caps requests at 1MB and 3 PDF pages — fine for filling the gap on
-// scanned documents, but not a general-purpose OCR backend. See: https://ocr.space/ocrapi
-const OCR_SPACE_MAX_FILE_SIZE = 1_000_000;
-
-interface OcrSpaceResponse {
-  IsErroredOnProcessing: boolean;
-  ErrorMessage?: string | string[];
-  ParsedResults?: { ParsedText?: string }[];
-}
-
-async function ocrSpaceExtractText(file: File): Promise<string> {
-  const apiKey = Deno.env.get("OCR_SPACE_API_KEY");
-  if (!apiKey) throw new Error("OCR_SPACE_API_KEY is not configured");
-
-  const formData = new FormData();
-  formData.append("file", file, file.name);
-  formData.append("language", "eng");
-  formData.append("OCREngine", "2");
-  formData.append("scale", "true");
-
-  const response = await fetch("https://api.ocr.space/parse/image", {
-    method: "POST",
-    headers: { apikey: apiKey },
-    body: formData,
+function s3Client(config: AwsConfig): S3Client {
+  return new S3Client({
+    region: config.region,
+    credentials: { accessKeyId: config.accessKeyId, secretAccessKey: config.secretAccessKey },
   });
-
-  const result: OcrSpaceResponse = await response.json();
-  if (!response.ok || result.IsErroredOnProcessing) {
-    const message = Array.isArray(result.ErrorMessage)
-      ? result.ErrorMessage.join(", ")
-      : result.ErrorMessage ?? `OCR.space request failed (${response.status})`;
-    throw new Error(message);
-  }
-
-  return (result.ParsedResults ?? []).map((page) => page.ParsedText ?? "").join("\n");
 }
 
-// Field extraction is heuristic (regex over extracted text), not a guaranteed parse —
-// contract wording that doesn't match these patterns will come back null.
-function extractContractFields(rawText: string): ContractFields {
-  const text = stripAbbreviationPeriods(rawText.replace(/\s+/g, " ").trim());
-  const { startDate, endDate } = extractDateRange(text);
+function textractClient(config: AwsConfig): TextractClient {
+  return new TextractClient({
+    region: config.region,
+    credentials: { accessKeyId: config.accessKeyId, secretAccessKey: config.secretAccessKey },
+  });
+}
 
+// ─── SECTION 4: S3 STAGING ───────────────────────────────────────────────────
+// Textract can't accept a raw file — it needs the file already sitting in S3 (Amazon's
+// file storage). We upload it there temporarily, Textract reads it, then we delete it.
+// The permanent copy is uploaded to Supabase storage separately later.
+async function uploadStagingCopy(config: AwsConfig, bytes: Uint8Array, key: string): Promise<void> {
+  await s3Client(config).send(
+    new PutObjectCommand({ Bucket: config.bucket, Key: key, Body: bytes, ContentType: "application/pdf" }),
+  );
+}
+
+async function deleteStagingCopy(config: AwsConfig, key: string): Promise<void> {
+  await s3Client(config).send(new DeleteObjectCommand({ Bucket: config.bucket, Key: key }));
+}
+
+interface QueryAnswer {
+  text: string;
+  confidence: number;
+}
+
+// ─── SECTION 5: THE TEXTRACT READING PROCESS (5 STEPS) ──────────────────────
+// Step 1 — send the 11 questions + the S3 file location to Textract. It returns a Job ID
+//          (like a ticket number) and starts processing in the background on AWS's servers.
+// Step 2 — poll every 2 seconds ("are you done yet?") until the status changes from
+//          IN_PROGRESS to SUCCEEDED. Most contracts finish in 10–30 seconds.
+// Step 3 — collect all the answer "Blocks" Textract sends back. A Block is one piece of
+//          data it found (a word, a line, a table cell, or a query answer).
+// Step 4 — match each of our 11 questions to its answer Block, and grab the confidence
+//          score (0–100%) that tells us how sure Textract was about that answer.
+async function runTextractQueries(config: AwsConfig, key: string): Promise<Map<string, QueryAnswer>> {
+  const textract = textractClient(config);
+
+  const start = await textract.send(
+    new StartDocumentAnalysisCommand({
+      DocumentLocation: { S3Object: { Bucket: config.bucket, Name: key } },
+      FeatureTypes: ["QUERIES"],
+      QueriesConfig: { Queries: TEXTRACT_QUERIES },
+    }),
+  );
+  const jobId = start.JobId;
+  if (!jobId) throw new Error("Textract did not return a JobId");
+
+  // Polling is waiting on network I/O, not CPU time, so it doesn't count against the Edge
+  // Function's CPU-time budget — only the (much more generous) wall-clock limit.
+  const POLL_INTERVAL_MS = 2000;
+  const MAX_ATTEMPTS = 60; // up to ~2 minutes
+  let status = "IN_PROGRESS";
+  for (let attempt = 0; attempt < MAX_ATTEMPTS && status === "IN_PROGRESS"; attempt++) {
+    await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
+    const check = await textract.send(new GetDocumentAnalysisCommand({ JobId: jobId }));
+    status = check.JobStatus ?? "IN_PROGRESS";
+  }
+  if (status !== "SUCCEEDED" && status !== "PARTIAL_SUCCESS") {
+    throw new Error(`Textract job did not complete successfully (status: ${status})`);
+  }
+
+  // Collect every block across all result pages before matching queries to answers.
+  const blocksById = new Map<string, Block>();
+  let nextToken: string | undefined;
+  do {
+    const page = await textract.send(new GetDocumentAnalysisCommand({ JobId: jobId, NextToken: nextToken }));
+    for (const block of page.Blocks ?? []) {
+      if (block.Id) blocksById.set(block.Id, block);
+    }
+    nextToken = page.NextToken;
+  } while (nextToken);
+
+  const answers = new Map<string, QueryAnswer>();
+  for (const block of blocksById.values()) {
+    if (block.BlockType !== "QUERY") continue;
+    const alias = block.Query?.Alias;
+    if (!alias) continue;
+    const answerId = block.Relationships?.find((r) => r.Type === "ANSWER")?.Ids?.[0];
+    const answerBlock = answerId ? blocksById.get(answerId) : undefined;
+    if (answerBlock?.Text) {
+      answers.set(alias, { text: answerBlock.Text, confidence: answerBlock.Confidence ?? 0 });
+    }
+  }
+  return answers;
+}
+
+// ─── SECTION 6: PACKAGE THE ANSWERS ──────────────────────────────────────────
+// Takes the raw answers from Textract and organizes them into the ContractFields shape.
+// Also builds a separate confidence map so we know which fields Textract was unsure about.
+function buildContractFields(answers: Map<string, QueryAnswer>): ContractFields {
+  const get = (alias: string) => answers.get(alias)?.text ?? null;
   return {
-    startDate,
-    endDate,
-    // Contracts usually state a duration ("36 months from the Effective Date") rather than a
-    // literal end date. We surface the duration as-is rather than computing an end date, since
-    // doing date math here could silently produce a wrong date instead of an honest "not stated."
-    contractTermLength: extractContractTermLength(text),
-    pickupFrequency: extractPickupFrequency(text),
-    basePrice: extractBasePrice(text),
-    fees: extractFees(text),
-    containerSize: extractContainerSize(text),
-    cancellationNoticePeriod: extractCancellationNotice(text),
-    autoRenewal: extractAutoRenewal(text),
+    startDate: get("START_DATE"),
+    endDate: get("END_DATE"),
+    contractTermLength: get("TERM_LENGTH"),
+    pickupFrequency: get("PICKUP_FREQUENCY"),
+    basePrice: get("BASE_PRICE"),
+    fees: {
+      fuelSurcharge: get("FUEL_SURCHARGE"),
+      environmentalFee: get("ENVIRONMENTAL_FEE"),
+      adminFee: get("ADMIN_FEE"),
+    },
+    containerSize: get("CONTAINER_SIZE"),
+    cancellationNoticePeriod: get("CANCELLATION_NOTICE"),
+    autoRenewal: get("AUTO_RENEWAL"),
   };
 }
 
-// --- Converting our text answers into the numbers/dates the real schema expects -----------
+function buildConfidence(answers: Map<string, QueryAnswer>): Record<string, number> {
+  return Object.fromEntries([...answers.entries()].map(([alias, answer]) => [alias, answer.confidence]));
+}
+
+// ─── SECTION 7: FORMAT CONVERTERS ────────────────────────────────────────────
+// Textract gives us answers as plain text (e.g. "6/15/2022" or "$166.00").
+// The database expects specific formats, so we convert them:
+//   parseDateToISO("6/15/2022")        → "2022-06-15"   (standard date format)
+//   parseCurrencyToNumber("$166.00")   → 166.00          (number, no $ sign)
+//   parseFrequencyPerWeek("2x weekly") → 2               (pickups per week as a number)
+// sha256Hex creates a unique fingerprint of the file to prevent saving duplicate contracts.
 
 async function sha256Hex(bytes: Uint8Array): Promise<string> {
   const digest = await crypto.subtle.digest("SHA-256", bytes as BufferSource);
@@ -285,9 +245,11 @@ function parseFrequencyPerWeek(value: string | null): number | null {
   return null;
 }
 
-// This endpoint uses 'publishable' | 'secret' access, apiKey is required.
-// Use publishable for Client-facing, key-validated endpoints
-// Use secret for Server-to-server, internal calls
+// ─── SECTION 8: THE MAIN HANDLER ─────────────────────────────────────────────
+// This is the entry point — what runs when someone sends a PDF to this function.
+// It validates the request (must be a POST, must have a PDF file and a client name),
+// then kicks off the Textract reading process above.
+// "publishable" and "secret" means this endpoint accepts both types of API keys.
 const DOCUMENTS_BUCKET = "documents";
 const ORGANIZATION_NAME = "EvE Waste";
 
@@ -326,49 +288,41 @@ export default {
     }
     const clientName = clientNameRaw.trim();
 
-    let rawText: string;
-    try {
-      const buffer = new Uint8Array(await file.arrayBuffer());
-      const pdf = await getDocumentProxy(buffer);
-      const { text } = await extractText(pdf, { mergePages: true });
-      rawText = text;
-    } catch (error) {
-      console.error("Failed to extract text from PDF:", error);
-      return Response.json({ error: "Failed to read PDF file" }, { status: 422 });
-    }
+    const fileBytes = new Uint8Array(await file.arrayBuffer());
 
-    // unpdf only reads an embedded text layer. Scanned/photographed PDFs have none, so fall
-    // back to OCR, which reads the page images directly instead.
-    //
-    // Some scans aren't fully empty, though — e.g. a digitally-added signature/date stamp can be
-    // the only real text on an otherwise-image page ("Dan Flores5/24/2022", 19 characters total).
-    // A real contract page runs at minimum into the hundreds of characters, so anything this
-    // short is effectively still a scan and needs the same OCR fallback, not just literal "".
-    const MIN_TEXT_LENGTH = 150;
-    let source: "text" | "ocr" = "text";
-    if (rawText.trim().length < MIN_TEXT_LENGTH) {
-      if (file.size > OCR_SPACE_MAX_FILE_SIZE) {
-        return Response.json(
-          { error: "No usable text layer found, and file exceeds the 1MB OCR fallback limit" },
-          { status: 422 },
+    let fields: ContractFields;
+    let confidence: Record<string, number>;
+    try {
+      const awsConfig = getAwsConfig();
+      const stagingKey = `${crypto.randomUUID()}-${file.name}`;
+      try {
+        await uploadStagingCopy(awsConfig, fileBytes, stagingKey);
+        const answers = await runTextractQueries(awsConfig, stagingKey);
+        fields = buildContractFields(answers);
+        confidence = buildConfidence(answers);
+      } finally {
+        // Clean up the staging copy regardless of success/failure — it's not the permanent copy
+        // (that's the separate upload to the "documents" bucket below).
+        await deleteStagingCopy(awsConfig, stagingKey).catch((error) =>
+          console.error("Failed to delete Textract staging file:", error)
         );
       }
-
-      try {
-        rawText = await ocrSpaceExtractText(file);
-        source = "ocr";
-      } catch (error) {
-        console.error("OCR fallback failed:", error);
-        return Response.json({ error: "Failed to OCR scanned PDF" }, { status: 422 });
-      }
+    } catch (error) {
+      console.error("Textract processing failed:", error);
+      return Response.json({ error: "Failed to read PDF via Textract" }, { status: 422 });
     }
 
-    if (!rawText.trim()) {
-      return Response.json({ error: "No extractable text found in PDF" }, { status: 422 });
-    }
-
-    const fields = extractContractFields(rawText);
-
+    // ─── SECTION 9: SAVE TO DATABASE (9 STEPS IN ORDER) ─────────────────────
+    // 1. Find or create the "EvE Waste" organization record
+    // 2. Find or create the client by name (e.g. "112 Sangamon LLC")
+    // 3. Auto-create a default site for any brand-new client
+    // 4. Upload the PDF permanently to Supabase storage
+    // 5. Save a raw_files record (logs the file + its duplicate-prevention fingerprint)
+    // 6. Save the contract (start date, end date) → only if we found a start date
+    // 7. Save the service (base price, pickup frequency) → contract_services table
+    // 8. Save the fees (fuel, environmental, admin) → contract_fees table
+    // 9. Save the clauses (term length, cancellation, auto-renewal) → contract_clauses table
+    // A failure in any step doesn't wipe the extraction — fields are always returned.
     // Persist the file and the structured fields. A failure partway through doesn't invalidate
     // the extraction itself — the response always includes `fields`; `saved` describes how far
     // the structured save actually got.
@@ -427,7 +381,6 @@ export default {
         .upload(storagePath, file, { contentType: "application/pdf" });
       if (uploadError) throw uploadError;
 
-      const fileBytes = new Uint8Array(await file.arrayBuffer());
       const { data: rawFile, error: rawFileError } = await ctx.supabaseAdmin
         .from("raw_files")
         .insert({
@@ -515,19 +468,20 @@ export default {
       console.error("Failed to save structured contract data:", error);
     }
 
-    return Response.json({ source, fields, saved, contractId });
+    return Response.json({ source: "textract", fields, confidence, saved, contractId });
   }),
 };
 
 /* To invoke locally:
 
-  1. Set the OCR fallback API key (free signup at https://ocr.space/ocrapi):
-     supabase secrets set OCR_SPACE_API_KEY=<your key>
+  1. Set the AWS credentials (see the IAM policy + S3 bucket setup steps from project notes):
+     supabase secrets set AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KEY=<secret> AWS_REGION=<region> AWS_TEXTRACT_BUCKET=<bucket>
   2. Run `supabase start` (see: https://supabase.com/docs/reference/cli/supabase-start)
   3. Make an HTTP request:
 
   curl -i --location --request POST 'http://127.0.0.1:54321/functions/v1/parse-document' \
     --header 'apiKey: sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH' \
-    --form 'file=@/path/to/contract.pdf;type=application/pdf'
+    --form 'file=@/path/to/contract.pdf;type=application/pdf' \
+    --form 'client_name=Acme Properties LLC'
 
 */
