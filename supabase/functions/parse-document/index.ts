@@ -11,15 +11,11 @@ import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 import type { Database } from "./database.types.ts";
 import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import {
-  type Block,
-  GetDocumentAnalysisCommand,
-  StartDocumentAnalysisCommand,
-  TextractClient,
-} from "@aws-sdk/client-textract";
+import { GetDocumentTextDetectionCommand, StartDocumentTextDetectionCommand, TextractClient } from "@aws-sdk/client-textract";
+import Anthropic from "@anthropic-ai/sdk";
 
 // ─── SECTION 1: WHAT WE'RE EXTRACTING ────────────────────────────────────────
-// Blueprint of the 11 fields we want from every contract.
+// Blueprint of the fields we want from every contract.
 // "string | null" means we might not find it — and that's okay, we still save what we can.
 interface ContractFields {
   startDate: string | null;
@@ -32,31 +28,61 @@ interface ContractFields {
     fuelSurcharge: string | null;
     environmentalFee: string | null;
     adminFee: string | null;
+    deliveryFee: string | null;
+    extraPickupFee: string | null;
   };
   containerSize: string | null;
+  containerType: string | null;
+  wasteStreams: string | null;
+  serviceAddress: string | null;
+  rateIncrease: string | null;
   cancellationNoticePeriod: string | null;
   autoRenewal: string | null;
 }
 
-// ─── SECTION 2: THE 12 QUESTIONS WE ASK TEXTRACT ────────────────────────────
-// Instead of searching for patterns like the old regex did, we send Textract a plain-English
-// question for each field. Textract reads the whole document and finds the best answer —
-// even if it's buried in a table or split across columns. The "Alias" is just a short
-// nickname we use to look up each answer in code (instead of repeating the full question).
-const TEXTRACT_QUERIES: { Text: string; Alias: string }[] = [
-  { Text: "What is the start date or effective date of the contract?", Alias: "START_DATE" },
-  { Text: "What is the end date or expiration date of the contract?", Alias: "END_DATE" },
-  { Text: "What is the length of the initial contract term?", Alias: "TERM_LENGTH" },
-  { Text: "What is the name of the waste hauler or service provider company?", Alias: "HAULER_NAME" },
-  { Text: "What is the collection or pickup frequency listed in the service description, such as 2x per week or weekly?", Alias: "PICKUP_FREQUENCY" },
-  { Text: "What is the base price or base rate for service?", Alias: "BASE_PRICE" },
-  { Text: "What is the dumpster or container size listed in the Equipment column of the service summary?", Alias: "CONTAINER_SIZE" },
-  { Text: "What is the ENERGY charge dollar amount listed next to the base rate in the service summary?", Alias: "FUEL_SURCHARGE" },
-  { Text: "What is the environmental fee?", Alias: "ENVIRONMENTAL_FEE" },
-  { Text: "What is the administrative fee or charge?", Alias: "ADMIN_FEE" },
-  { Text: "What is the number of days advance written notice required for cancellation, renewal avoidance, or termination of this agreement?", Alias: "CANCELLATION_NOTICE" },
-  { Text: "Does the contract automatically renew, and what are the terms?", Alias: "AUTO_RENEWAL" },
-];
+// ─── SECTION 2: CLAUDE EXTRACTION PROMPT ─────────────────────────────────────
+// After Textract reads all the text out of the PDF, this prompt is sent to Claude
+// (Haiku) along with the full contract text. Claude returns a JSON object with all
+// 12 fields filled in based on what it reads from the contract.
+
+const EXTRACTION_PROMPT = `You are a contract data extraction specialist. Read this waste management service contract and extract the following fields. Return ONLY a valid JSON object with no other text, explanation, or markdown.
+
+Fields to extract:
+- start_date: Contract start or effective date as written (e.g. "5/1/2023"), null if not found
+- end_date: Contract expiration or end date as written, null if not explicitly stated as a date
+- term_length: Initial contract term length as written (e.g. "36 months", "1 year"), null if not found
+- hauler_name: Full legal name of the waste collection company, null if not found
+- pickup_frequency: How often waste is collected (e.g. "2x per week", "weekly"), null if not found
+- base_price: Monthly base rate or service charge with dollar sign (e.g. "$166.00"), null if not found
+- container_size: Size of the waste container (e.g. "2 Yard", "8 Yard FEL"), null if not found
+- container_type: Mechanism type — "FEL" (front-end loader), "REL" (rear-end loader), "Compactor", "Cart", or "Roll-off", null if not specified
+- waste_streams: What is collected — "Trash", "Recycling", or "Both", null if unclear
+- service_address: Full street address of the service location as written (e.g. "123 Main St, Chicago, IL 60601"), null if not found
+- fuel_surcharge: Fuel surcharge, energy surcharge, or fuel recovery fee with dollar sign or %, null if not found
+- environmental_fee: Environmental fee or recovery fee with dollar sign or %, null if not found
+- admin_fee: Administrative or admin fee with dollar sign, null if not found
+- delivery_fee: One-time delivery or container set-up fee with dollar sign, null if not found
+- extra_pickup_fee: Fee for an on-demand or extra pickup beyond the normal schedule, with dollar sign, null if not found
+- rate_increase: Annual or periodic rate escalation clause as written (e.g. "3% per year", "CPI + 2%"), null if none specified
+- cancellation_notice: Notice period required to cancel or not renew (e.g. "30 days", "90 days"), null if not found
+- auto_renewal: "Yes" if contract auto-renews at end of term, "No" if it does not, null if unclear
+
+IMPORTANT — GRID/TABLE FORMAT CONTRACTS:
+Many contracts use a grid where column headers appear as a vertical list (e.g. "Qty.", "Size", "Freq.", "Effective Date", "Base Rate") followed immediately by the data values in the same order. Match headers to values by their position in this sequence. For example, if "Effective Date" is the 13th header and a date like "1/1/2024" is the 13th value below, that date is the start_date.
+
+FIELD-SPECIFIC GUIDANCE:
+- start_date: "Effective Date" in a grid table is the service start date. Also look for "DATE WHEN SERVICE COMMENCES."
+- hauler_name: Look for "[Company Name] HEREINAFTER REFERRED TO AS THE 'COMPANY'" or a company name at the top (e.g. "LRS" = Lakeshore Recycling Systems). Also check the signature block for the company's printed name.
+- container_size: A bare number like "8.00" or "6.00" in a grid after a "Size" header means yards — render as "8 Yard" or "6 Yard". "4.0 Yd(s)" means "4 Yard".
+- container_type: If container_size already contains FEL or REL (e.g. "2 Yard FEL"), derive container_type from that. "Front load" = FEL, "Rear load" = REL.
+- waste_streams: Look for "refuse", "trash", "garbage" (= Trash), "recycling", "commingled recyclables" (= Recycling), or both mentioned.
+- pickup_frequency: "4X/WK", "3/ 1/W", "2xPer Week", "1XW" all mean times per week. Normalize to e.g. "4x per week".
+- fuel_surcharge / environmental_fee / admin_fee: If the contract explicitly states these are "No" or "Exempt", return null. Only return a value if an actual dollar amount or percentage is specified.
+- rate_increase: Look for "Annual Rate Adjustment", "CPI", "escalation clause", "rate cap", or a fixed % increase. Return null if the contract has no rate increase provision.
+- If the PDF contains multiple agreements for different locations, extract from the FIRST complete agreement.
+
+CONTRACT TEXT:
+`;
 
 interface AwsConfig {
   accessKeyId: string;
@@ -109,97 +135,83 @@ async function deleteStagingCopy(config: AwsConfig, key: string): Promise<void> 
   await s3Client(config).send(new DeleteObjectCommand({ Bucket: config.bucket, Key: key }));
 }
 
-interface QueryAnswer {
-  text: string;
-  confidence: number;
-}
-
-// ─── SECTION 5: THE TEXTRACT READING PROCESS (5 STEPS) ──────────────────────
-// Step 1 — send the 11 questions + the S3 file location to Textract. It returns a Job ID
-//          (like a ticket number) and starts processing in the background on AWS's servers.
-// Step 2 — poll every 2 seconds ("are you done yet?") until the status changes from
-//          IN_PROGRESS to SUCCEEDED. Most contracts finish in 10–30 seconds.
-// Step 3 — collect all the answer "Blocks" Textract sends back. A Block is one piece of
-//          data it found (a word, a line, a table cell, or a query answer).
-// Step 4 — match each of our 11 questions to its answer Block, and grab the confidence
-//          score (0–100%) that tells us how sure Textract was about that answer.
-async function runTextractQueries(config: AwsConfig, key: string): Promise<Map<string, QueryAnswer>> {
+// ─── SECTION 5: TEXTRACT TEXT EXTRACTION ─────────────────────────────────────
+// Uploads the PDF to S3, asks Textract to read every word out of it (text-only mode —
+// no questions, just read), then joins all the lines into one big string.
+// That string is what gets sent to Claude in the next step.
+async function extractContractText(config: AwsConfig, key: string): Promise<string> {
   const textract = textractClient(config);
 
   const start = await textract.send(
-    new StartDocumentAnalysisCommand({
+    new StartDocumentTextDetectionCommand({
       DocumentLocation: { S3Object: { Bucket: config.bucket, Name: key } },
-      FeatureTypes: ["QUERIES"],
-      QueriesConfig: { Queries: TEXTRACT_QUERIES },
     }),
   );
   const jobId = start.JobId;
   if (!jobId) throw new Error("Textract did not return a JobId");
 
-  // Polling is waiting on network I/O, not CPU time, so it doesn't count against the Edge
-  // Function's CPU-time budget — only the (much more generous) wall-clock limit.
   const POLL_INTERVAL_MS = 2000;
-  const MAX_ATTEMPTS = 60; // up to ~2 minutes
+  const MAX_ATTEMPTS = 60;
   let status = "IN_PROGRESS";
   for (let attempt = 0; attempt < MAX_ATTEMPTS && status === "IN_PROGRESS"; attempt++) {
     await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
-    const check = await textract.send(new GetDocumentAnalysisCommand({ JobId: jobId }));
+    const check = await textract.send(new GetDocumentTextDetectionCommand({ JobId: jobId }));
     status = check.JobStatus ?? "IN_PROGRESS";
   }
   if (status !== "SUCCEEDED" && status !== "PARTIAL_SUCCESS") {
     throw new Error(`Textract job did not complete successfully (status: ${status})`);
   }
 
-  // Collect every block across all result pages before matching queries to answers.
-  const blocksById = new Map<string, Block>();
+  const lines: string[] = [];
   let nextToken: string | undefined;
   do {
-    const page = await textract.send(new GetDocumentAnalysisCommand({ JobId: jobId, NextToken: nextToken }));
+    const page = await textract.send(new GetDocumentTextDetectionCommand({ JobId: jobId, NextToken: nextToken }));
     for (const block of page.Blocks ?? []) {
-      if (block.Id) blocksById.set(block.Id, block);
+      if (block.BlockType === "LINE" && block.Text) lines.push(block.Text);
     }
     nextToken = page.NextToken;
   } while (nextToken);
 
-  const answers = new Map<string, QueryAnswer>();
-  for (const block of blocksById.values()) {
-    if (block.BlockType !== "QUERY") continue;
-    const alias = block.Query?.Alias;
-    if (!alias) continue;
-    const answerId = block.Relationships?.find((r) => r.Type === "ANSWER")?.Ids?.[0];
-    const answerBlock = answerId ? blocksById.get(answerId) : undefined;
-    if (answerBlock?.Text) {
-      answers.set(alias, { text: answerBlock.Text, confidence: answerBlock.Confidence ?? 0 });
-    }
-  }
-  return answers;
+  return lines.join("\n");
 }
 
-// ─── SECTION 6: PACKAGE THE ANSWERS ──────────────────────────────────────────
-// Takes the raw answers from Textract and organizes them into the ContractFields shape.
-// Also builds a separate confidence map so we know which fields Textract was unsure about.
-function buildContractFields(answers: Map<string, QueryAnswer>): ContractFields {
-  const get = (alias: string) => answers.get(alias)?.text ?? null;
+// ─── SECTION 6: FIELD EXTRACTION FROM TEXT ───────────────────────────────────
+// Sends the raw Textract text to Claude (Haiku) with the extraction prompt and
+// maps the returned snake_case JSON keys to the ContractFields camelCase shape.
+async function extractFieldsWithClaude(contractText: string): Promise<ContractFields> {
+  const apiKey = Deno.env.get("ANTHROPIC_API_KEY");
+  if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not configured");
+  const anthropic = new Anthropic({ apiKey });
+  const message = await anthropic.messages.create({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 1024,
+    messages: [{ role: "user", content: EXTRACTION_PROMPT + contractText }],
+  });
+  const raw = message.content[0].type === "text" ? message.content[0].text : "{}";
+  const cleaned = raw.replace(/^```(?:json)?\n?/i, "").replace(/\n?```$/i, "").trim();
+  const data = JSON.parse(cleaned);
   return {
-    startDate: get("START_DATE"),
-    endDate: get("END_DATE"),
-    contractTermLength: get("TERM_LENGTH"),
-    haulerName: get("HAULER_NAME"),
-    pickupFrequency: get("PICKUP_FREQUENCY"),
-    basePrice: get("BASE_PRICE"),
+    startDate: data.start_date ?? null,
+    endDate: data.end_date ?? null,
+    contractTermLength: data.term_length ?? null,
+    haulerName: data.hauler_name ?? null,
+    pickupFrequency: data.pickup_frequency ?? null,
+    basePrice: data.base_price ?? null,
     fees: {
-      fuelSurcharge: get("FUEL_SURCHARGE"),
-      environmentalFee: get("ENVIRONMENTAL_FEE"),
-      adminFee: get("ADMIN_FEE"),
+      fuelSurcharge: data.fuel_surcharge ?? null,
+      environmentalFee: data.environmental_fee ?? null,
+      adminFee: data.admin_fee ?? null,
+      deliveryFee: data.delivery_fee ?? null,
+      extraPickupFee: data.extra_pickup_fee ?? null,
     },
-    containerSize: get("CONTAINER_SIZE"),
-    cancellationNoticePeriod: get("CANCELLATION_NOTICE"),
-    autoRenewal: get("AUTO_RENEWAL"),
+    containerSize: data.container_size ?? null,
+    containerType: data.container_type ?? null,
+    wasteStreams: data.waste_streams ?? null,
+    serviceAddress: data.service_address ?? null,
+    rateIncrease: data.rate_increase ?? null,
+    cancellationNoticePeriod: data.cancellation_notice ?? null,
+    autoRenewal: data.auto_renewal ?? null,
   };
-}
-
-function buildConfidence(answers: Map<string, QueryAnswer>): Record<string, number> {
-  return Object.fromEntries([...answers.entries()].map(([alias, answer]) => [alias, answer.confidence]));
 }
 
 // ─── SECTION 7: FORMAT CONVERTERS ────────────────────────────────────────────
@@ -296,15 +308,13 @@ export default {
     const fileBytes = new Uint8Array(await file.arrayBuffer());
 
     let fields: ContractFields;
-    let confidence: Record<string, number>;
     try {
       const awsConfig = getAwsConfig();
       const stagingKey = `${crypto.randomUUID()}-${file.name}`;
       try {
         await uploadStagingCopy(awsConfig, fileBytes, stagingKey);
-        const answers = await runTextractQueries(awsConfig, stagingKey);
-        fields = buildContractFields(answers);
-        confidence = buildConfidence(answers);
+        const contractText = await extractContractText(awsConfig, stagingKey);
+        fields = await extractFieldsWithClaude(contractText);
       } finally {
         // Clean up the staging copy regardless of success/failure — it's not the permanent copy
         // (that's the separate upload to the "documents" bucket below).
@@ -313,8 +323,8 @@ export default {
         );
       }
     } catch (error) {
-      console.error("Textract processing failed:", error);
-      return Response.json({ error: "Failed to read PDF via Textract" }, { status: 422 });
+      console.error("Contract extraction failed:", error);
+      return Response.json({ error: "Failed to extract contract data" }, { status: 422 });
     }
 
     // ─── SECTION 9: SAVE TO DATABASE (9 STEPS IN ORDER) ─────────────────────
@@ -376,6 +386,7 @@ export default {
           organization_id: organizationId,
           client_id: clientId,
           name: `${clientName} - Primary Site`,
+          address: fields.serviceAddress ?? null,
         });
         if (siteInsertError) console.error("Failed to create default site:", siteInsertError);
       }
@@ -426,10 +437,13 @@ export default {
 
         const baseRate = parseCurrencyToNumber(fields.basePrice);
         if (baseRate !== null) {
+          const serviceName = fields.wasteStreams
+            ? `${fields.wasteStreams} Collection`
+            : "Waste Collection";
           const { error } = await ctx.supabaseAdmin.from("contract_services").insert({
             organization_id: organizationId,
             contract_id: contractId,
-            service_name: "Waste Collection",
+            service_name: serviceName,
             base_rate: baseRate,
             frequency_per_week: parseFrequencyPerWeek(fields.pickupFrequency),
             container_size: fields.containerSize,
@@ -441,6 +455,8 @@ export default {
           ["fuel_surcharge", fields.fees.fuelSurcharge],
           ["environmental_fee", fields.fees.environmentalFee],
           ["admin_fee", fields.fees.adminFee],
+          ["delivery_fee", fields.fees.deliveryFee],
+          ["extra_pickup_fee", fields.fees.extraPickupFee],
         ];
         for (const [feeType, rawValue] of fees) {
           const amount = parseCurrencyToNumber(rawValue);
@@ -459,6 +475,8 @@ export default {
           ["term_length", fields.contractTermLength],
           ["cancellation_notice", fields.cancellationNoticePeriod],
           ["auto_renewal", fields.autoRenewal],
+          ["rate_increase", fields.rateIncrease],
+          ["container_type", fields.containerType],
         ];
         for (const [clauseType, clauseText] of clauses) {
           if (!clauseText) continue;
@@ -475,7 +493,7 @@ export default {
       console.error("Failed to save structured contract data:", error);
     }
 
-    return Response.json({ source: "textract", fields, confidence, saved, contractId });
+    return Response.json({ source: "claude", fields, saved, contractId });
   }),
 };
 

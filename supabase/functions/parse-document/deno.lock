@@ -2,6 +2,7 @@
   "version": "5",
   "specifiers": {
     "jsr:@supabase/functions-js@2": "2.108.2",
+    "npm:@anthropic-ai/sdk@0.36": "0.36.3",
     "npm:@aws-sdk/client-s3@3": "3.1076.0",
     "npm:@aws-sdk/client-textract@3": "3.1076.0",
     "npm:@supabase/server@1": "1.1.0_@supabase+supabase-js@2.108.2",
@@ -16,6 +17,18 @@
     }
   },
   "npm": {
+    "@anthropic-ai/sdk@0.36.3": {
+      "integrity": "sha512-+c0mMLxL/17yFZ4P5+U6bTWiCSFZUKJddrv01ud2aFBWnTPLdRncYV76D3q1tqfnL7aCnhRtykFnoCFzvr4U3Q==",
+      "dependencies": [
+        "@types/node",
+        "@types/node-fetch",
+        "abort-controller",
+        "agentkeepalive",
+        "form-data-encoder",
+        "formdata-node",
+        "node-fetch"
+      ]
+    },
     "@aws-crypto/crc32@5.2.0": {
       "integrity": "sha512-nLbCWqQNgUiwwtFsen1AdzAtvuLRsQS8rYgMuxCrdKf9kOssamGLuPwyTY9wyYblNr9+1XM8v6zoDTPPSIeANg==",
       "dependencies": [
@@ -648,6 +661,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@supabase/functions-js@2",
+      "npm:@anthropic-ai/sdk@0.36",
       "npm:@aws-sdk/client-s3@3",
       "npm:@aws-sdk/client-textract@3",
       "npm:@supabase/server@1"

@@ -3,6 +3,7 @@
     "@supabase/functions-js": "jsr:@supabase/functions-js@^2",
     "@supabase/server": "npm:@supabase/server@^1",
     "@aws-sdk/client-s3": "npm:@aws-sdk/client-s3@^3",
-    "@aws-sdk/client-textract": "npm:@aws-sdk/client-textract@^3"
+    "@aws-sdk/client-textract": "npm:@aws-sdk/client-textract@^3",
+    "@anthropic-ai/sdk": "npm:@anthropic-ai/sdk@^0.36"
   }
 }
