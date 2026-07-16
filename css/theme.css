@@ -2,122 +2,109 @@
  * css/theme.css — Single source of truth for all design tokens.
  * Load this FIRST in every page's <head> (before styles.css).
  *
- * Design language: Rainmaker-inspired layout + motion.
- * Color palette:   EvE brand (dark forest green, warm cream, lime accent).
- * Headline font:   Fraunces (Google Fonts variable serif, loaded in HTML).
- *                  Swapped from IBM Plex Sans — closest free match to
- *                  Rainmaker's high-contrast editorial serif.
+ * Design language: EvE Waste Brand Guide v1.0 (Brenden Fowler).
+ * Color palette:   Forest Green / Clay Blue / Digestate Green /
+ *                  Cloud White / Seedling Green / Sprout Green / Stone Grey.
+ * Typography:      Inter (Google Fonts) — closest free substitute for the
+ *                  guide's Helvetica Now / Helvetica World, covering the
+ *                  same Black/Bold/Regular/Light/Italic weight roles.
  */
 
 :root {
 
   /* ═══════════════════════════════════════
-     LOGO COLOR SCALES
-     Leaf sage green base: #6B9272
-     Wordmark slate base:  #516167
+     EVE WASTE BRAND PALETTE (guide v1.0)
   ═══════════════════════════════════════ */
-  --green-50:  #EFF6F1;
-  --green-100: #C9E2D3;
-  --green-200: #9DC7AE;
-  --green-300: #72AA8A;
-  --green-400: #6B9272;   /* logo leaf — exact */
-  --green-500: #527A65;   /* interactive primary */
-  --green-600: #3D6050;
-  --green-700: #2D4C3E;
-  --green-800: #1E362C;
-  --green-900: #112118;   /* darkest — overlay bg */
-
-  --slate-50:  #EFF2F3;
-  --slate-100: #D1DBDF;
-  --slate-200: #A8B9BE;
-  --slate-300: #7F9399;
-  --slate-400: #607079;
-  --slate-500: #516167;   /* logo wordmark — exact */
-  --slate-600: #3F4F55;
-  --slate-700: #2F3C41;
-  --slate-800: #1D272B;
-  --slate-900: #0E1417;
+  --forest-green:     #15342D;   /* backgrounds, header/footer, hero, primary CTA */
+  --clay-blue:        #DAE1DE;   /* secondary / light page background            */
+  --digestate-green:  #152116;   /* headings on lite bg, dark overlay, infographics */
+  --cloud-white:      #FFFFFF;   /* body text, forms, icons on dark backgrounds   */
+  --seedling-green:   #4B714F;   /* buttons / links / interactive elements        */
+  --sprout-green:     #65976A;   /* metrics, stats, highlights                    */
+  --stone-grey:       #DED9D5;   /* borders, outlines                             */
 
   /* ═══════════════════════════════════════
      SURFACES
   ═══════════════════════════════════════ */
-  --surface:                 #F4F0E6;   /* warm cream — editorial / body bg       */
-  --surface-dim:             #E8E2D5;
-  --surface-container-lowest: #ffffff;
-  --surface-container-low:   #EDE8DE;
-  --surface-container:       #E6E0D4;
-  --surface-container-high:  #DDD7CA;
-  --on-surface:              #1D272B;   /* slate-800 */
-  --on-surface-variant:      #3F4F55;   /* slate-600 */
-  --inverse-surface:         #1D272B;   /* slate-800 */
-  --inverse-on-surface:      #D1DBDF;   /* slate-100 */
+  --surface:                  #DAE1DE;   /* Clay Blue — light page background      */
+  --surface-dim:              #CCD5D1;
+  --surface-container-lowest: #FFFFFF;   /* Cloud White — card bg                  */
+  --surface-container-low:    #E4E9E6;
+  --surface-container:        #EAEEEC;
+  --surface-container-high:   #F0F2F0;
+  --on-surface:               #152116;   /* Digestate Green — headings + body      */
+  --on-surface-variant:       rgba(21, 33, 22, 0.68);
+  --inverse-surface:          #15342D;   /* Forest Green — footer bg                */
+  --inverse-on-surface:       #DAE1DE;   /* Clay Blue on footer                     */
 
   /* ═══════════════════════════════════════
-     DARK SURFACE  (header / overlay / footer)
+     DARK SURFACE  (header / overlay / footer / hero)
   ═══════════════════════════════════════ */
-  --dark-surface:            #112118;   /* green-900 — logo leaf darkest shade    */
-  --dark-surface-mid:        #1E362C;   /* green-800                              */
-  --dark-surface-rim:        #2D4C3E;   /* green-700                              */
+  --dark-surface:            #15342D;   /* Forest Green                            */
+  --dark-surface-mid:        #1D473D;   /* lighter step of Forest Green            */
+  --dark-surface-deep:       #152116;   /* Digestate Green — high-contrast callout */
   --dark-border:             rgba(255, 255, 255, 0.10);
   --on-dark:                 #ffffff;
-  --on-dark-dim:             rgba(255, 255, 255, 0.58);
+  --on-dark-dim:              rgba(255, 255, 255, 0.58);
 
   /* ═══════════════════════════════════════
-     PRIMARY GREEN  (EvE brand — unchanged)
+     PRIMARY  (Seedling Green — buttons / links / interactive)
   ═══════════════════════════════════════ */
-  --primary:                 #527A65;   /* green-500 — interactive primary        */
+  --primary:                 #4B714F;   /* Seedling Green                          */
   --on-primary:              #ffffff;
-  --primary-container:       #2D4C3E;   /* green-700 — hover / pressed state      */
-  --on-primary-container:    #9DC7AE;   /* green-200                              */
-  --inverse-primary:         #9DC7AE;   /* green-200 — accent on dark bg          */
-  --primary-fixed:           #C9E2D3;   /* green-100 — light tint on dark bg      */
-  --primary-fixed-dim:       #9DC7AE;   /* green-200                              */
+  --primary-container:       #15342D;   /* Forest Green — hover / pressed state    */
+  --on-primary-container:    #DAE1DE;   /* Clay Blue                               */
+  --inverse-primary:         #65976A;   /* Sprout Green — accent on dark bg        */
+  --primary-fixed:           #DAE1DE;   /* Clay Blue — light tint on dark bg       */
+  --primary-fixed-dim:       #65976A;   /* Sprout Green                            */
 
   /* ═══════════════════════════════════════
-     LIME ACCENT  (new — Rainmaker chartreuse)
+     ACCENT  (Sprout Green — stats, highlights, CTA-on-dark)
   ═══════════════════════════════════════ */
-  --lime:                    #BFEE44;   /* primary action, hover, brackets, active */
-  --lime-dark:               #a3d038;   /* pressed / focus                         */
-  --on-lime:                 #112118;   /* green-900 — text on lime                */
+  --accent:                  #65976A;   /* stat values, eyebrow labels, dark CTA   */
+  --accent-dark:             #527d57;   /* pressed / focus                        */
+  --on-accent:               #152116;   /* Digestate Green — text on accent fill  */
 
   /* ═══════════════════════════════════════
-     SECONDARY / TERTIARY  (slate scale)
+     SECONDARY / TERTIARY
   ═══════════════════════════════════════ */
-  --secondary:               #516167;   /* slate-500 — logo wordmark exact        */
+  --secondary:               #4B714F;   /* Seedling Green                          */
   --on-secondary:            #ffffff;
-  --secondary-container:     #D1DBDF;   /* slate-100                              */
-  --on-secondary-container:  #3F4F55;   /* slate-600                              */
-  --tertiary:                #607079;   /* slate-400                              */
+  --secondary-container:     #DAE1DE;   /* Clay Blue                                */
+  --on-secondary-container:  #15342D;   /* Forest Green                             */
+  --tertiary:                #65976A;   /* Sprout Green                             */
   --on-tertiary:             #ffffff;
-  --tertiary-container:      #3F4F55;   /* slate-600                              */
-  --on-tertiary-container:   #D1DBDF;   /* slate-100                              */
-  --tertiary-fixed:          #EFF2F3;   /* slate-50                               */
+  --tertiary-container:      #15342D;   /* Forest Green                             */
+  --on-tertiary-container:   #DAE1DE;   /* Clay Blue                                */
+  --tertiary-fixed:          #EAEEEC;
 
   /* ═══════════════════════════════════════
-     LEGACY BRAND  (kept for backward-compat)
+     LEGACY ALIASES  (kept so existing call sites resolve)
   ═══════════════════════════════════════ */
-  --industrial-slate:        #2F3C41;   /* slate-700                              */
-  --bio-moss:                #6B9272;   /* green-400 — logo leaf exact            */
-  --circuit-blue:            #D1DBDF;   /* slate-100                              */
+  --industrial-slate:        #152116;   /* Digestate Green — .section--slate bg    */
+  --bio-moss:                #65976A;   /* Sprout Green — eyebrow / tag / label     */
+  --circuit-blue:            #DAE1DE;   /* Clay Blue                                */
 
   /* ═══════════════════════════════════════
      OUTLINES
   ═══════════════════════════════════════ */
-  --outline:                 #7F9399;   /* slate-300                              */
-  --outline-variant:         #A8B9BE;   /* slate-200                              */
-  --outline-cream:           rgba(29, 39, 43, 0.10);   /* slate-800 based        */
+  --outline:                 #C9C2BC;   /* Stone Grey, darkened for visibility     */
+  --outline-variant:         #DED9D5;   /* Stone Grey                              */
+  --outline-cream:           rgba(21, 33, 22, 0.10);
 
   /* ═══════════════════════════════════════
      TYPOGRAPHY  — font families
+     Single Inter family stands in for the guide's Helvetica Now /
+     Helvetica World pairing: weight does the work the guide splits
+     across two font names (Black hero, Bold headings, Regular/Light
+     labels, Italic tagline/quotes).
   ═══════════════════════════════════════ */
-  --font-headline: 'Fraunces', 'Georgia', serif;
-  /* ^ was 'IBM Plex Sans'. Fraunces (Google Fonts variable serif) is the
-       closest freely-usable substitute for Rainmaker's editorial headline face. */
-  --font-serif:    'Fraunces', 'Georgia', serif;   /* alias for new rules */
-  --font-body:     'Outfit', -apple-system, 'Helvetica Neue', sans-serif;
-  --font-sans:     'Outfit', -apple-system, 'Helvetica Neue', sans-serif;
-  --font-mono:     'Space Grotesk', -apple-system, monospace;
-  --font-label:    'Space Grotesk', -apple-system, sans-serif;
+  --font-headline: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif:    'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-body:     'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans:     'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:     'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-label:    'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
 
   /* ── type scale ── */
   --text-hero:       clamp(3rem, 9vw, 8rem);       /* full-bleed hero h1        */
@@ -165,7 +152,7 @@
   --space-32:  8rem;      /* 128px */
 
   /* ═══════════════════════════════════════
-     BORDERS & RADIUS
+     BORDERS & RADIUS  (sharp — no signature pill shape)
   ═══════════════════════════════════════ */
   --radius-sm:   0px;
   --radius:      0px;
@@ -173,7 +160,7 @@
   --radius-lg:   0px;
   --radius-xl:   0px;
   --radius-full: 0px;
-  --radius-pill: 100px;   /* pill buttons — the Rainmaker signature shape */
+  --radius-pill: 0px;
 
   /* ═══════════════════════════════════════
      TRANSITIONS
@@ -187,9 +174,9 @@
   /* ═══════════════════════════════════════
      SHADOWS
   ═══════════════════════════════════════ */
-  --shadow-sm: 0 1px 3px rgba(14, 55, 37, 0.08);
-  --shadow-md: 0 4px 16px rgba(14, 55, 37, 0.12);
-  --shadow-lg: 0 12px 40px rgba(14, 55, 37, 0.18);
+  --shadow-sm: 0 1px 3px rgba(21, 52, 45, 0.08);
+  --shadow-md: 0 4px 16px rgba(21, 52, 45, 0.12);
+  --shadow-lg: 0 12px 40px rgba(21, 52, 45, 0.18);
 
   /* ═══════════════════════════════════════
      Z-INDEX

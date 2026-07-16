@@ -43,7 +43,7 @@
 .form-field select:focus,
 .form-field textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(14,55,37,0.1);
+  box-shadow: 0 0 0 3px rgba(21,52,45,0.1);
 }
 .form-field textarea { resize: vertical; min-height: 120px; }
 .form-field select {

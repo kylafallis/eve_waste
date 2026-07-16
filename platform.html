@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Platform — EvE Modular Industrial</title>
-  <meta name="description" content="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.">
+  <title>Platform — EvE Waste</title>
+  <meta name="description" content="Explore EvE Waste's anaerobic digestion platform — the technology, research, and infrastructure behind turning organic waste into energy and fertilizer.">
   <!-- FAVICON: Upload icon to assets/favicon.ico for browser tabs and Google search results.
        Tip: also add assets/favicon-32.png (32x32) for sharper display on modern browsers. -->
   <link rel="icon" href="assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/platform.css">
@@ -21,8 +21,10 @@
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
       <a href="index.html" class="site-header__logo" aria-label="EvE — Home">
-        <!-- LOGO: Upload to assets/logo.svg then replace the span with:
-             <img src="assets/logo.svg" alt="EvE" class="logo-img"> -->
+        <svg class="logo-icon" width="24" height="24" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+          <path d="M16 28C6 23 3 13 8 3c3 9 5 17 8 25Z"/>
+          <path d="M16 28c10-5 13-15 8-25-3 9-5 17-8 25Z"/>
+        </svg>
         <span class="logo-mark">EvE</span>
       </a>
       <button class="menu-toggle" id="menuToggle"
@@ -47,15 +49,15 @@
         <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
       </ul>
       <div class="menu-overlay__aside">
-        <a href="contact.html" class="btn btn--lime menu-cta">Request Demo</a>
+        <a href="contact.html" class="btn btn--accent menu-cta">Request Demo</a>
         <div class="menu-contact">
           <p class="menu-contact__label">Get in touch</p>
-          <a href="mailto:hello@eve-modular.com" class="menu-contact__link">hello@eve-modular.com</a>
+          <a href="mailto:hello@evewaste.com" class="menu-contact__link">hello@evewaste.com</a>
         </div>
       </div>
     </nav>
     <div class="menu-overlay__footer">
-      <span>&copy; 2026 EvE Modular Industrial</span>
+      <span>&copy; 2026 EvE Waste</span>
       <span class="menu-overlay__location">Columbus, OH</span>
     </div>
   </div>
@@ -280,8 +282,14 @@
   <footer class="footer">
     <div class="footer__container">
       <div class="footer__brand">
-        <a href="index.html" class="nav__logo"><span class="nav__logo-mark">EvE</span></a>
-        <p>Industrial infrastructure for a regenerative economy.</p>
+        <a href="index.html" class="nav__logo">
+          <svg class="logo-icon" width="20" height="20" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <path d="M16 28C6 23 3 13 8 3c3 9 5 17 8 25Z"/>
+            <path d="M16 28c10-5 13-15 8-25-3 9-5 17-8 25Z"/>
+          </svg>
+          <span class="nav__logo-mark">EvE</span>
+        </a>
+        <p><em>Where every piece of waste has value.</em></p>
       </div>
       <div class="footer__links">
         <div class="footer__col"><h4>Platform</h4><ul>
@@ -292,9 +300,10 @@
         </ul></div>
         <div class="footer__col"><h4>Solutions</h4><ul>
           <li><a href="use-cases.html">Use Cases</a></li>
-          <li><a href="use-cases.html#manufacturing">Manufacturing</a></li>
-          <li><a href="use-cases.html#municipal">Municipal</a></li>
-          <li><a href="use-cases.html#agriculture">Agriculture</a></li>
+          <li><a href="use-cases.html#food-processing">Food Processing</a></li>
+          <li><a href="use-cases.html#healthcare-education">Healthcare &amp; Education</a></li>
+          <li><a href="use-cases.html#municipal-community">Municipal &amp; Community</a></li>
+          <li><a href="use-cases.html#corporate">Corporate Campuses</a></li>
         </ul></div>
         <div class="footer__col"><h4>Company</h4><ul>
           <li><a href="about.html">About EvE</a></li>
@@ -305,8 +314,8 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <p>&copy; 2026 EvE Modular Industrial. All rights reserved.</p>
-      <p>Regenerative industry, engineered.</p>
+      <p>&copy; 2026 EvE Waste. All rights reserved.</p>
+      <p>Anaerobic digestion, engineered for value.</p>
     </div>
   </footer>
 
