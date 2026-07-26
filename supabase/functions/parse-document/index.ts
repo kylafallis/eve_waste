@@ -179,6 +179,14 @@ async function extractContractText(config: AwsConfig, key: string): Promise<stri
 // Sends the raw Textract text to Claude (Haiku) with the extraction prompt and
 // maps the returned snake_case JSON keys to the ContractFields camelCase shape.
 async function extractFieldsWithClaude(contractText: string): Promise<ContractFields> {
+  // ─── TO SWAP IN YOUR OWN CLAUDE ACCOUNT ──────────────────────────────────
+  // 1. Go to console.anthropic.com → API Keys → Create Key
+  // 2. In Supabase Dashboard → Project Settings → Edge Functions → Secrets,
+  //    update ANTHROPIC_API_KEY with your new key.
+  // 3. To use a different model, change the "model" value below.
+  //    Current options: "claude-haiku-4-5-20251001" (fast/cheap),
+  //    "claude-sonnet-5" (more accurate), "claude-opus-4-8" (most capable).
+  // ─────────────────────────────────────────────────────────────────────────
   const apiKey = Deno.env.get("ANTHROPIC_API_KEY");
   if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not configured");
   const anthropic = new Anthropic({ apiKey });
