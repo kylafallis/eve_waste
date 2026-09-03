@@ -121,9 +121,22 @@ Render the basis label as a small caps line beneath each stat, e.g. `MODELED`.
 > Science Officer." Pick one. Fallback until resolved: render the title as
 > **"Founder"** only, and use the bio above with the officer title removed.
 
-**Headshots:** `NEEDS INPUT` — no image files are in the repo. Fallback: render an
-initials monogram tile in Forest Green with Cloud White letters at the same aspect
-ratio the photo will use, so no layout shift when photos arrive.
+**Kyla Fallis** — Co-founder & Chief Information Officer — `NEEDS INPUT: no @evewaste.com address`
+> Kyla Fallis is an engineering student at Ohio State and a researcher at NASA's Marshall Space Flight Center. She founded FairGame Initiative, which has brought science fair to more than 1,000 students, and co-founded EvE Waste, where she leads software. She has represented Ohio State at a UN climate conference and competed at ISEF.
+
+> Source: the approved "Short — 54 words" entry in *Bio Suite — Kyla Fallis*
+> (Media Kit v1.0, August 2026), used **verbatim** as that document instructs
+> ("Use these verbatim. They are checked. Rewriting them introduces errors").
+>
+> **TITLE CONFLICT — resolve before launch.** The same media kit lists her EvE
+> title as "Co-founder and Lead Software Developer." The site renders
+> "Co-founder & Chief Information Officer" per her direct instruction on
+> 2026-09-03. Pick one and make the media kit and the site agree.
+
+**Headshots:** supplied 2026-09-03 and now live on the page. Ben Rosenthal (cut-out,
+composited onto Forest Green), Brenden Fowler (grey studio), Kyla Fallis (NASA
+Marshall). All three are cropped to 3:4 by `tools/build-images.mjs`. The three
+backgrounds do not match each other — see `DECISIONS.md`.
 
 ---
 
