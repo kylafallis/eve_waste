@@ -1,5 +1,45 @@
 /* Home page interactions */
 
+// Newsletter signup -> Google Sheet via a deployed Apps Script Web App.
+// NEEDS INPUT: replace with the real /exec URL once the script is deployed (BUILD_BRIEF Phase 3.2).
+const NEWSLETTER_ENDPOINT = 'REPLACE_WITH_APPS_SCRIPT_WEB_APP_URL';
+
+const newsletterForm = document.getElementById('newsletterForm');
+if (newsletterForm) {
+  const newsletterSuccess = document.getElementById('newsletterSuccess');
+  const newsletterError = document.getElementById('newsletterError');
+
+  newsletterForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+    const submitLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    if (newsletterError) newsletterError.hidden = true;
+
+    try {
+      const res = await fetch(NEWSLETTER_ENDPOINT, {
+        method: 'POST',
+        // text/plain avoids a CORS preflight against the Apps Script Web App, which doesn't handle OPTIONS.
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          name: newsletterForm.name.value.trim(),
+          email: newsletterForm.email.value.trim()
+        })
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || 'Submission rejected');
+
+      newsletterForm.hidden = true;
+      if (newsletterSuccess) newsletterSuccess.hidden = false;
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitLabel;
+      if (newsletterError) newsletterError.hidden = false;
+    }
+  });
+}
+
 // Dot timeline (How It Works)
 const timelineEl = document.getElementById('howTimeline');
 if (timelineEl) {
