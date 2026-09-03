@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — EvE Waste</title>
   <meta name="description" content="Contact EvE Waste to request a pilot, set up a meeting, or reach us for sales, media, or partnership inquiries.">
-  <!-- FAVICON: Upload icon to assets/favicon.ico for browser tabs and Google search results.
-       Tip: also add assets/favicon-32.png (32x32) for sharper display on modern browsers. -->
-  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
@@ -81,6 +81,14 @@
           <div class="contact-form-wrap fade-up">
             <h2 class="type-headline-lg">Send us a message</h2>
             <form class="contact-form" id="contactForm" novalidate>
+              <!-- NEEDS INPUT: replace YOUR_WEB3FORMS_KEY with the real access key from web3forms.com
+                   (register ben@evewaste.com). Until then the form will NOT deliver. -->
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+              <input type="hidden" name="subject" value="New evewaste.com enquiry">
+              <input type="hidden" name="from_name" value="evewaste.com">
+              <!-- honeypot: bots fill it, humans never see it -->
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none"
+                     tabindex="-1" autocomplete="off">
               <div class="form-row">
                 <div class="form-field">
                   <label for="firstName">First name <span class="required">*</span></label>
@@ -100,8 +108,8 @@
                 <input type="text" id="company" name="company" autocomplete="organization" placeholder="Acme Industrial">
               </div>
               <div class="form-field">
-                <label for="inquiry">Inquiry type</label>
-                <select id="inquiry" name="inquiry">
+                <label for="inquiry">Inquiry type <span class="required">*</span></label>
+                <select id="inquiry" name="inquiry" required>
                   <option value="">Select one...</option>
                   <option value="information">Information inquiry</option>
                   <option value="meeting">Set up a meeting</option>
@@ -118,6 +126,10 @@
               <div class="form-success" id="formSuccess" aria-live="polite">
                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                 Thanks for reaching out! We will be in touch soon.
+              </div>
+              <div class="form-error" id="formError" role="alert">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Something went wrong. Email us at <a href="mailto:ben@evewaste.com">ben@evewaste.com</a>.</span>
               </div>
             </form>
           </div>

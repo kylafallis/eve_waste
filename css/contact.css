@@ -54,7 +54,28 @@
   cursor: pointer;
 }
 .form-field input.is-error,
+.form-field select.is-error,
 .form-field textarea.is-error { border-color: var(--error); }
+
+/* --error was referenced by the validation styles below but never defined in theme.css.
+   Defined here rather than in theme.css, which is not to be restructured. */
+.contact-form { --error: #8C2F27; }
+
+.form-error {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background-color: rgba(140, 47, 39, 0.08);
+  border: 1px solid var(--error);
+  border-radius: 0;
+  font-size: 14px;
+  color: var(--error);
+  font-weight: 500;
+}
+.form-error.is-visible { display: flex; }
+.form-error svg { flex-shrink: 0; }
+.form-error a { color: var(--error); text-decoration: underline; }
 
 .form-response-time {
   font-size: 13px;

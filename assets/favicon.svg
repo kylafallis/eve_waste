@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="EvE Waste">
+  <rect width="32" height="32" fill="#15342D"/>
+  <g fill="#FFFFFF" transform="translate(16 16) scale(0.86) translate(-16 -16)">
+    <path d="M16 28C6 23 3 13 8 3c3 9 5 17 8 25Z"/>
+    <path d="M16 28c10-5 13-15 8-25-3 9-5 17-8 25Z"/>
+  </g>
+</svg>

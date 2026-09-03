@@ -1,0 +1,26 @@
+/* 404 page styles */
+
+.not-found {
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  align-items: center;
+}
+.not-found__code {
+  font-family: var(--font-headline);
+  font-size: clamp(4rem, 14vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--primary-fixed-dim);
+  margin-bottom: 8px;
+}
+.not-found__lead {
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
