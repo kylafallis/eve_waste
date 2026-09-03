@@ -5,9 +5,8 @@
  * Design language: EvE Waste Brand Guide v1.0 (Brenden Fowler).
  * Color palette:   Forest Green / Clay Blue / Digestate Green /
  *                  Cloud White / Seedling Green / Sprout Green / Stone Grey.
- * Typography:      Inter (Google Fonts) — closest free substitute for the
- *                  guide's Helvetica Now / Helvetica World, covering the
- *                  same Black/Bold/Regular/Light/Italic weight roles.
+ * Typography:      Verdana (system) for body text, Archivo (Google Fonts)
+ *                  for headlines and labels.
  */
 
 :root {
@@ -94,26 +93,23 @@
 
   /* ═══════════════════════════════════════
      TYPOGRAPHY  — font families
-     Single Inter family stands in for the guide's Helvetica Now /
-     Helvetica World pairing: weight does the work the guide splits
-     across two font names (Black hero, Bold headings, Regular/Light
-     labels, Italic tagline/quotes).
+     Archivo for headlines/labels, Verdana (system) for body text.
   ═══════════════════════════════════════ */
-  --font-headline: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --font-serif:    'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --font-body:     'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --font-sans:     'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono:     'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --font-label:    'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-headline: 'Archivo', Verdana, Geneva, 'DejaVu Sans', sans-serif;
+  --font-body:     Verdana, Geneva, 'DejaVu Sans', sans-serif;
+  --font-sans:     Verdana, Geneva, 'DejaVu Sans', sans-serif;
+  --font-label:    'Archivo', Verdana, Geneva, sans-serif;
+  --font-serif:    'Archivo', Verdana, Geneva, sans-serif;
+  --font-mono:     ui-monospace, 'Cascadia Mono', Consolas, monospace;
 
   /* ── type scale ── */
   --text-hero:       clamp(3rem, 9vw, 8rem);       /* full-bleed hero h1        */
   --text-display:    clamp(2.5rem, 6vw, 5.5rem);   /* section h2                */
   --text-heading:    clamp(1.75rem, 3.5vw, 3rem);  /* h3                        */
   --text-subhead:    clamp(1.25rem, 2vw, 1.875rem);/* h4 / card titles          */
-  --text-body-lg:    1.125rem;
-  --text-body:       1rem;
-  --text-sm:         0.875rem;
+  --text-body-lg:    1.0625rem;   /* was 1.125rem — Verdana compensation */
+  --text-body:       0.9375rem;   /* was 1rem — Verdana compensation */
+  --text-sm:         0.8125rem;   /* was 0.875rem — Verdana compensation */
   --text-label:      0.6875rem;   /* 11px */
 
   /* ── leading ── */
@@ -154,13 +150,7 @@
   /* ═══════════════════════════════════════
      BORDERS & RADIUS  (sharp — no signature pill shape)
   ═══════════════════════════════════════ */
-  --radius-sm:   0px;
   --radius:      0px;
-  --radius-md:   0px;
-  --radius-lg:   0px;
-  --radius-xl:   0px;
-  --radius-full: 0px;
-  --radius-pill: 0px;
 
   /* ═══════════════════════════════════════
      TRANSITIONS

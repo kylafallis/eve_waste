@@ -9,6 +9,7 @@ body {
   background-color: var(--surface);
   color: var(--on-surface);
   line-height: 1.5;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -49,6 +50,10 @@ ul { list-style: none; }
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+h1, h2, h3, h4, .type-headline-xl, .type-headline-lg {
+  font-family: var(--font-headline);
+  letter-spacing: var(--tracking-tight);
 }
 
 /* --- Layout --- */
@@ -311,7 +316,9 @@ body.menu-is-open { overflow: hidden; }
   padding: 32px;
   transition: all var(--transition-base);
 }
-.card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--primary-fixed-dim); }
+/* Only the primary CTA card and the stat block lift — secondary cards (pillars, values, team, prototypes) stay flat */
+.card--elevated { box-shadow: var(--shadow-sm); }
+.card--elevated:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--primary-fixed-dim); }
 .card__label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -510,6 +517,9 @@ body.menu-is-open { overflow: hidden; }
   margin-top: 16px;
   max-width: 260px;
 }
+.footer__social { display: flex; gap: 16px; margin-top: 20px; }
+.footer__social a { color: rgba(238,241,240,0.55); display: flex; transition: color var(--transition-fast); }
+.footer__social a:hover { color: var(--inverse-primary); }
 .footer__links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .footer__col h4 {
   font-family: var(--font-mono);

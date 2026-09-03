@@ -9,7 +9,6 @@
   padding: 0;
   overflow: hidden;
 }
-.member-card:hover { transform: translateY(-4px); }
 
 .member-photo {
   width: 100%;
@@ -89,7 +88,7 @@
   justify-content: center;
   background-color: var(--forest-green);
 }
-.member-photo--monogram::after { content: none; }
+.member-photo--monogram::after { content: none !important; }
 .member-photo__initials {
   font-family: var(--font-headline);
   font-size: 44px;

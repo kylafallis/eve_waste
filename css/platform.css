@@ -153,6 +153,9 @@
   color: var(--on-surface);
 }
 
+/* --- Specs CTA card --- */
+.specs-cta { max-width: 720px; margin: 0 auto; padding: 56px 48px; }
+
 /* --- FAQ --- */
 .faq-list { border-top: 1px solid var(--outline-variant); margin-top: 32px; }
 .faq-item { border-bottom: 1px solid var(--outline-variant); padding: 24px 0; }
