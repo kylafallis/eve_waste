@@ -8,6 +8,14 @@
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#15342D">
+  <!-- Error page: kept out of the index and out of sitemap.xml. -->
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Marks that scripting is live so the scroll-reveal styles can apply.
+       Without it .fade-up stays at its visible resting state. -->
+  <script>document.documentElement.classList.add('js');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
@@ -17,6 +25,7 @@
   <link rel="stylesheet" href="css/404.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ════ HEADER ════ -->
   <header class="site-header" id="siteHeader">
@@ -28,7 +37,7 @@
         </svg>
         <span class="logo-mark">EvE</span>
       </a>
-      <button class="menu-toggle" id="menuToggle"
+      <button type="button" class="menu-toggle" id="menuToggle"
         aria-expanded="false" aria-controls="menuOverlay"
         aria-label="Open navigation menu">
         <span class="menu-toggle__icon" aria-hidden="true">
@@ -63,7 +72,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main" tabindex="-1">
 
     <section class="section not-found">
       <div class="container text-center">

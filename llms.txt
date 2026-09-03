@@ -1,0 +1,53 @@
+# EvE Waste
+
+> EvE Waste LLC is a Columbus, Ohio company that transforms food waste into
+> clean energy and nutrient-rich fertilizer using modular bio-reactors. The
+> system runs on the natural, microbial process of anaerobic digestion.
+
+Positioning is cost first: the bio-reactor processes food waste more affordably
+than a landfill and derives more value from it. Sustainability is the second
+argument, never the first.
+
+## What the system does
+
+Waste goes in, products come out. Food waste is broken down into digestate
+while producing biogas. The digestate is processed into fertilizer, and the
+biogas is converted into clean energy. The fertilizer is sold to agricultural
+and landscaping sectors, and the clean energy reduces the client's energy bill.
+
+The bio-reactor also contains AI waste tracking software that produces waste
+reports. Clients use them to find additional savings upstream and to comply
+with organic waste mandates.
+
+## Figures, with their basis
+
+Every figure below carries the basis it rests on. None of them are measured
+customer results — EvE Waste has no clients yet.
+
+- 19% — new economic value the process generates versus landfilling. Basis: modeled.
+- 15% — average annual increase in landfill tipping and hauling rates. Basis: industry data.
+- 5,000+ years — the span without an economical change in how we process waste. Basis: historical.
+
+No throughput, footprint, retention time, biogas yield, methane content,
+digestate output, utility connection or commissioning figures are published.
+They are available on request under NDA.
+
+## Feedstock
+
+Accepted: all food waste. No refusal list is published.
+
+## Pages
+
+- [Home](https://evewaste.com/): positioning, the four pillars, proof figures.
+- [Platform](https://evewaste.com/platform.html): how the bio-reactor works, FAQ, specification requests.
+- [How a pilot works](https://evewaste.com/use-cases.html): the pilot program and the prototypes built to date.
+- [About](https://evewaste.com/about.html): founding story and the three company values.
+- [Team](https://evewaste.com/team.html): Ben Rosenthal (Founder & CEO) and Brenden Fowler (Founder).
+- [Contact](https://evewaste.com/contact.html): the enquiry form. Replies within one week.
+
+## Contact
+
+All contact is routed through the form at https://evewaste.com/contact.html.
+There is no public phone number. Response time is within one week.
+
+Location: Columbus, Ohio.

@@ -1,0 +1,36 @@
+# EvE Waste LLC — evewaste.com
+
+# AI crawlers are explicitly welcome. EvE Waste wants to be citable in AI
+# answers about food-waste processing and anaerobic digestion; blocking these
+# removes the site from those results entirely.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://evewaste.com/sitemap.xml

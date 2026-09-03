@@ -1,0 +1,7 @@
+node_modules/
+
+# Full-resolution photograph originals. These are inputs to
+# `npm run build:images`, not shipped assets — only the generated
+# AVIF/WebP derivatives in images/ are committed. Masters live in Drive.
+images/source/
+images/_candidates/

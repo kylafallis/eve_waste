@@ -8,6 +8,76 @@
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#15342D">
+  <link rel="canonical" href="https://evewaste.com/platform.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EvE Waste">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://evewaste.com/platform.html">
+  <meta property="og:title" content="The EvE Waste bio-reactor">
+  <meta property="og:description" content="How EvE Waste's bio-reactor turns food waste into clean energy and nutrient-rich fertilizer through the process of anaerobic digestion.">
+  <meta property="og:image" content="https://evewaste.com/assets/og/platform.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="EvE Waste — waste goes in, products come out.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@EvEWaste1">
+  <meta name="twitter:title" content="The EvE Waste bio-reactor">
+  <meta name="twitter:description" content="How EvE Waste's bio-reactor turns food waste into clean energy and nutrient-rich fertilizer through the process of anaerobic digestion.">
+  <meta name="twitter:image" content="https://evewaste.com/assets/og/platform.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://evewaste.com/#organization",
+    "name": "EvE Waste LLC",
+    "alternateName": "EvE Waste",
+    "url": "https://evewaste.com/",
+    "logo": "https://evewaste.com/assets/logo-512.png",
+    "description": "EvE Waste transforms food waste into clean energy and nutrient-rich fertilizer through the process of anaerobic digestion.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Columbus",
+      "addressRegion": "OH",
+      "addressCountry": "US"
+    },
+    "areaServed": { "@type": "City", "name": "Columbus, Ohio" },
+    "sameAs": [
+      "https://www.linkedin.com/company/108059157",
+      "https://www.facebook.com/EvEWasteSolutions/",
+      "https://x.com/EvEWaste1",
+      "https://www.instagram.com/evewaste"
+    ]
+  }
+  </script>
+
+  <!-- FAQPage covers only the one question that is actually rendered on this page.
+       The second question in CONTENT.md §4 is NEEDS INPUT and is deliberately absent
+       from both the page and this markup. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://evewaste.com/platform.html#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does your system work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our system uses the natural, microbial process of anaerobic digestion to break down food waste into digestate while producing biogas. The digestate is processed into fertilizer, and the biogas is converted into clean energy. The fertilizer is sold to agricultural and landscaping sectors, and the clean energy reduces our client's energy bill."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Marks that scripting is live so the scroll-reveal styles can apply.
+       Without it .fade-up stays at its visible resting state. -->
+  <script>document.documentElement.classList.add('js');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
@@ -17,6 +87,7 @@
   <link rel="stylesheet" href="css/platform.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ════ HEADER ════ -->
   <header class="site-header" id="siteHeader">
@@ -28,7 +99,7 @@
         </svg>
         <span class="logo-mark">EvE</span>
       </a>
-      <button class="menu-toggle" id="menuToggle"
+      <button type="button" class="menu-toggle" id="menuToggle"
         aria-expanded="false" aria-controls="menuOverlay"
         aria-label="Open navigation menu">
         <span class="menu-toggle__icon" aria-hidden="true">
@@ -63,7 +134,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main" tabindex="-1">
 
     <section class="page-hero">
       <div class="container">
