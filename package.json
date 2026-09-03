@@ -5,7 +5,11 @@
   "description": "Static site for EvE Waste LLC. No build step for the site itself; sharp is a local devDependency used only by tools/build-images.mjs.",
   "type": "module",
   "scripts": {
-    "build:images": "node tools/build-images.mjs"
+    "build:images": "node tools/build-images.mjs",
+    "build:brand": "node tools/build-brand.mjs",
+    "build:og": "node tools/build-og.mjs",
+    "stamp": "node tools/stamp-assets.mjs",
+    "build": "npm run build:brand && npm run build:og && npm run build:images && npm run stamp"
   },
   "devDependencies": {
     "sharp": "^0.35.4"

@@ -61,9 +61,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/theme.css?v=cccd288b">
+  <link rel="stylesheet" href="css/styles.css?v=d2a939e5">
+  <link rel="stylesheet" href="css/home.css?v=c9d3c3fc">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,12 +71,10 @@
   <!-- ════ HEADER ════ -->
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
-      <a href="index.html" class="site-header__logo" aria-label="EvE — Home">
-        <svg class="logo-icon" width="24" height="24" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-          <path d="M16 28C6 23 3 13 8 3c3 9 5 17 8 25Z"/>
-          <path d="M16 28c10-5 13-15 8-25-3 9-5 17-8 25Z"/>
-        </svg>
-        <span class="logo-mark">EvE</span>
+      <a href="index.html" class="site-header__logo" aria-label="EvE Waste — Home">
+        <img class="logo-lockup" src="assets/eve-logo-176.png"
+             srcset="assets/eve-logo-176.png 1x, assets/eve-logo-352.png 2x"
+             width="176" height="50" alt="" loading="eager" decoding="async">
       </a>
       <button type="button" class="menu-toggle" id="menuToggle"
         aria-expanded="false" aria-controls="menuOverlay"
@@ -115,8 +113,23 @@
 
   <main id="main" tabindex="-1">
 
-    <!-- Hero — replace gradient in css/home.css with background-image when ready -->
     <section class="hero" id="hero">
+      <!-- Art-directed: 16:9 crop on desktop, 3:4 on handsets. The source is a
+           portrait phone photo, so a single crop would be gutted at one end or
+           the other. Eager + high priority because this is the LCP element. -->
+      <picture class="hero__media">
+        <source media="(min-width: 769px)" type="image/avif"
+          srcset="images/hero/reactor-smoke-test-wide-1280.avif 1280w, images/hero/reactor-smoke-test-wide-1920.avif 1920w" sizes="100vw">
+        <source media="(min-width: 769px)" type="image/webp"
+          srcset="images/hero/reactor-smoke-test-wide-1280.webp 1280w, images/hero/reactor-smoke-test-wide-1920.webp 1920w" sizes="100vw">
+        <source type="image/avif"
+          srcset="images/hero/reactor-smoke-test-tall-640.avif 640w, images/hero/reactor-smoke-test-tall-960.avif 960w" sizes="100vw">
+        <source type="image/webp"
+          srcset="images/hero/reactor-smoke-test-tall-640.webp 640w, images/hero/reactor-smoke-test-tall-960.webp 960w" sizes="100vw">
+        <img src="images/hero/reactor-smoke-test-wide-1920.webp" width="1920" height="1080"
+          loading="eager" fetchpriority="high" decoding="async"
+          alt="Steam rising from the open feed port on top of the EvE Waste bio-reactor during a test run.">
+      </picture>
       <div class="container hero__container">
         <div class="hero__content fade-up">
           <span class="type-label hero__eyebrow">Modular bio-reactors &middot; Columbus, Ohio</span>
@@ -217,12 +230,10 @@
   <footer class="footer">
     <div class="footer__container">
       <div class="footer__brand">
-        <a href="index.html" class="nav__logo">
-          <svg class="logo-icon" width="20" height="20" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-            <path d="M16 28C6 23 3 13 8 3c3 9 5 17 8 25Z"/>
-            <path d="M16 28c10-5 13-15 8-25-3 9-5 17-8 25Z"/>
-          </svg>
-          <span class="nav__logo-mark">EvE</span>
+        <a href="index.html" class="nav__logo" aria-label="EvE Waste — Home">
+          <img class="logo-lockup logo-lockup--footer" src="assets/eve-logo-176.png"
+               srcset="assets/eve-logo-176.png 1x, assets/eve-logo-352.png 2x"
+               width="176" height="50" alt="" loading="lazy" decoding="async">
         </a>
         <p><em>Where every piece of waste has value.</em></p>
         <div class="footer__social">
@@ -263,7 +274,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
-  <script src="js/home.js"></script>
+  <script src="js/main.js?v=63a328bd"></script>
+  <script src="js/home.js?v=2834ec45"></script>
 </body>
 </html>

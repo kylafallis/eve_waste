@@ -28,7 +28,15 @@
   X-Frame-Options: DENY
   Cross-Origin-Opener-Policy: same-origin
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  # HSTS is deliberately short and scoped to the apex for launch. A browser that
+  # sees this refuses plain HTTP for the covered hosts until it expires, and you
+  # cannot call it back — so ramp it rather than starting at a year:
+  #   1. launch at 86400 (one day), confirm every page and asset loads over HTTPS
+  #   2. after a week clean, raise to 31536000
+  #   3. only then add `includeSubDomains`, and only once EVERY subdomain you use
+  #      (mail, staging, anything) can serve HTTPS - it applies to all of them
+  #   4. `preload` is a separate, much harder-to-reverse commitment. Not set.
+  Strict-Transport-Security: max-age=86400
 
 # Images and static assets carry their size or purpose in the filename
 # (ad-system-prototype-1280.avif, favicon-32.png), so a new version is a new
@@ -39,17 +47,19 @@
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
-# CSS and JS deliberately are NOT immutable. This site has no build step, so
-# styles.css keeps its name forever and its contents change with every fix.
-# Marking it immutable would leave returning visitors on a stale stylesheet for
-# a year with no way to break out. An hour of freshness plus a day of
-# stale-while-revalidate keeps repeat views instant while letting a fix land.
-# If filename fingerprinting is ever added, move these to immutable.
+# CSS and JS are referenced with a content hash in the query string
+# (css/styles.css?v=d2a939e5), written by `npm run stamp`. The URL changes
+# whenever the file's bytes change, so caching them hard is safe: a returning
+# visitor asks for a URL they have never seen and gets the new file.
+#
+# THIS DEPENDS ON THE STAMP BEING CURRENT. Run `npm run stamp` (or `npm run
+# build`) after editing anything in css/ or js/ and before deploying. Skip it
+# and returning visitors keep the old file for a year.
 /css/*
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 
 /js/*
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 
 # HTML must not be cached hard, or a content fix will not reach anyone.
 /*.html

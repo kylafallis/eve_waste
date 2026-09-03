@@ -2,10 +2,13 @@
 /**
  * tools/build-og.mjs
  *
- * Renders the 1200x630 Open Graph card for each page family, plus the 512x512
- * Organization logo referenced by the JSON-LD. Run with `npm run build:og`.
- * sharp is a devDependency used only by this script — the site ships the
- * generated PNGs and gains no dependency.
+ * Renders the 1200x630 Open Graph card for each page family. Run with
+ * `npm run build:og`. sharp is a devDependency used only by this script — the
+ * site ships the generated PNGs and gains no dependency.
+ *
+ * The leaf and wordmark come from the real supplied lockup
+ * (images/source/brand/eve-logo.png), not from hand-drawn approximations.
+ * Run `npm run build:brand` first if the lockup ever changes.
  *
  * Every headline below is copy that already exists on the corresponding page
  * or in CONTENT.md. Do not add a card with invented copy.
@@ -17,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = path.join(__dirname, '..', 'assets', 'og');
-const LOGO_PATH = path.join(__dirname, '..', 'assets', 'logo-512.png');
+const LOGO_SRC = path.join(__dirname, '..', 'images', 'source', 'brand', 'eve-logo.png');
 
 const FOREST = '#15342D';
 const FOREST_MID = '#1D473D';
@@ -26,10 +29,9 @@ const CLAY = '#DAE1DE';
 const WHITE = '#FFFFFF';
 const FONT = "Verdana, Geneva, 'DejaVu Sans', sans-serif";
 
-const LEAF = [
-  'M16 28C6 23 3 13 8 3c3 9 5 17 8 25Z',
-  'M16 28c10-5 13-15 8-25-3 9-5 17-8 25Z'
-];
+// Ink bounding boxes measured from the source alpha channel.
+const LEAF = { left: 79, top: 55, width: 582, height: 432 };
+const LOCKUP = { left: 79, top: 55, width: 1536, height: 432 };
 
 const CARDS = [
   { slug: 'home', eyebrow: 'Modular bio-reactors', lines: ['Putting food waste', 'back to work.'] },
@@ -40,14 +42,22 @@ const CARDS = [
   { slug: 'contact', eyebrow: 'Contact', lines: ['Build with EvE.'] }
 ];
 
-function leafGroup(x, y, size, fill, opacity = 1) {
-  const scale = size / 32;
-  return `<g transform="translate(${x} ${y}) scale(${scale})" fill="${fill}" opacity="${opacity}">
-      ${LEAF.map(d => `<path d="${d}"/>`).join('\n      ')}
-    </g>`;
+/** The leaf silhouette recoloured, by pairing a solid fill with the leaf's alpha. */
+async function tintedLeaf(width, colour) {
+  const alpha = await sharp(LOGO_SRC)
+    .extract(LEAF)
+    .resize({ width })
+    .ensureAlpha()
+    .extractChannel(3)
+    .toBuffer();
+  const { height } = await sharp(alpha).metadata();
+  return sharp({ create: { width, height, channels: 3, background: colour } })
+    .joinChannel(alpha)
+    .png()
+    .toBuffer();
 }
 
-function card({ eyebrow, lines }) {
+function cardBase({ eyebrow, lines }) {
   const headlineSize = lines.length > 1 ? 76 : 88;
   const lineHeight = headlineSize * 1.22;
   const blockTop = 330 - ((lines.length - 1) * lineHeight) / 2;
@@ -60,10 +70,6 @@ function card({ eyebrow, lines }) {
 
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
     <rect width="1200" height="630" fill="${FOREST}"/>
-    ${leafGroup(830, 60, 520, FOREST_MID, 1)}
-    ${leafGroup(80, 62, 44, WHITE)}
-    <text x="140" y="98" font-family="${FONT}" font-size="34" font-weight="700"
-      fill="${WHITE}" letter-spacing="1">EvE Waste</text>
     <text x="80" y="196" font-family="${FONT}" font-size="22" font-weight="700"
       fill="${SPROUT}" letter-spacing="6">${eyebrow.toUpperCase()}</text>
     ${headline}
@@ -73,18 +79,20 @@ function card({ eyebrow, lines }) {
   </svg>`);
 }
 
-const logo = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" fill="${FOREST}"/>
-  ${leafGroup(88, 88, 336, WHITE)}
-</svg>`);
-
 await mkdir(OUT_DIR, { recursive: true });
+
+// Built once and reused across all six cards.
+const bigLeaf = await tintedLeaf(520, FOREST_MID);
+const lockup = await sharp(LOGO_SRC).extract(LOCKUP).resize({ width: 240 }).png().toBuffer();
 
 for (const spec of CARDS) {
   const out = path.join(OUT_DIR, `${spec.slug}.png`);
-  await sharp(card(spec)).png({ compressionLevel: 9 }).toFile(out);
+  await sharp(cardBase(spec))
+    .composite([
+      { input: bigLeaf, left: 830, top: 60 },
+      { input: lockup, left: 80, top: 58 }
+    ])
+    .png({ compressionLevel: 9 })
+    .toFile(out);
   console.log(`Wrote ${path.relative(process.cwd(), out)}`);
 }
-
-await sharp(logo).png({ compressionLevel: 9 }).toFile(LOGO_PATH);
-console.log(`Wrote ${path.relative(process.cwd(), LOGO_PATH)}`);

@@ -160,8 +160,9 @@ rows. Instead render a single block:
 
 ### Feedstock
 - **Accepted:** all food waste.
-- **Not accepted:** `NEEDS INPUT` — the intake sheet lists "Manure?" with a question
-  mark. Omit the refusal list entirely until confirmed. Do not guess.
+- **Not accepted:** **RESOLVED 2026-09-03 — no refusal list is published, and this
+  is now a settled decision rather than a pending one.** Do not add one later
+  without a source; "Manure?" from the intake sheet stays unpublished.
 - **Units:** publish as-received (per tonne as-received), not per-tonne-VS.
 - **Yield framing:** use **biogas** in marketing copy and on the home page. On this
   page only, give both biogas and CH₄ once actual figures exist. Until then, publish
