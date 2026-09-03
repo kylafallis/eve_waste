@@ -56,6 +56,11 @@
 .form-field input.is-error,
 .form-field textarea.is-error { border-color: var(--error); }
 
+.form-response-time {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  margin: -8px 0 0;
+}
 .form-success {
   display: none;
   align-items: center;

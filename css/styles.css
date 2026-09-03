@@ -416,6 +416,17 @@ body.menu-is-open { overflow: hidden; }
 }
 .section--dark .stat__value { color: var(--inverse-primary); }
 .section--dark .stat__label { color: var(--on-primary-container); }
+.stat__basis {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--outline);
+  margin-top: 4px;
+}
+.section--dark .stat__basis { color: var(--on-primary-container); }
 
 /* --- Icon box (sharp corners) --- */
 .icon-box {
