@@ -149,8 +149,6 @@
         <div class="cta-inner fade-up text-center">
           <h2 class="cta-headline">Do you believe in a cleaner future?</h2>
           <p class="cta-tagline">Join us on the journey.</p>
-          <!-- NEEDS INPUT: replace NEWSLETTER_ENDPOINT in js/home.js with the deployed Google Apps
-               Script Web App URL (see BUILD_BRIEF Phase 3.2). Until then submissions show the error state. -->
           <form class="newsletter-form mt-32" id="newsletterForm">
             <label for="newsletterName" class="sr-only">Name</label>
             <input type="text" id="newsletterName" name="name" placeholder="Your name" required autocomplete="name">
@@ -158,8 +156,8 @@
             <input type="email" id="newsletterEmail" name="email" placeholder="you@company.com" required autocomplete="email">
             <button type="submit" class="btn btn--primary btn--lg">Follow along</button>
           </form>
-          <p class="newsletter-success" id="newsletterSuccess" aria-live="polite" hidden>Thanks — you're on the list.</p>
-          <p class="newsletter-error" id="newsletterError" role="alert" hidden>Something went wrong. Try again or email <a href="mailto:ben@evewaste.com">ben@evewaste.com</a>.</p>
+          <p class="newsletter-success" id="newsletterSuccess" aria-live="polite">Thanks — you're on the list.</p>
+          <p class="newsletter-error" id="newsletterError" role="alert">Something went wrong. Try again or email <a href="mailto:ben@evewaste.com">ben@evewaste.com</a>.</p>
         </div>
       </div>
     </section>

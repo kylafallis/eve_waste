@@ -539,13 +539,19 @@
   transition: border-color var(--transition-fast);
 }
 .newsletter-form input:focus { border-color: var(--primary); }
-.newsletter-success {
+.newsletter-form.is-hidden { display: none; }
+.newsletter-success,
+.newsletter-error {
+  display: none;
   margin-top: 20px;
+}
+.newsletter-success.is-visible { display: block; }
+.newsletter-error.is-visible { display: block; }
+.newsletter-success {
   color: var(--primary);
   font-weight: 500;
 }
 .newsletter-error {
-  margin-top: 20px;
   color: var(--error, #8C2F27);
 }
 .newsletter-error a { color: inherit; text-decoration: underline; }

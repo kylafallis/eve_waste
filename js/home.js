@@ -1,8 +1,7 @@
 /* Home page interactions */
 
 // Newsletter signup -> Google Sheet via a deployed Apps Script Web App.
-// NEEDS INPUT: replace with the real /exec URL once the script is deployed (BUILD_BRIEF Phase 3.2).
-const NEWSLETTER_ENDPOINT = 'REPLACE_WITH_APPS_SCRIPT_WEB_APP_URL';
+const NEWSLETTER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyGYTjW8DVn3SR3veYQbnbJmqMgmMHA8c3yoyu16t13UjyAThWaivKsAhRvg6JXRx-vKQ/exec';
 
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
@@ -15,7 +14,7 @@ if (newsletterForm) {
     const submitLabel = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
-    if (newsletterError) newsletterError.hidden = true;
+    if (newsletterError) newsletterError.classList.remove('is-visible');
 
     try {
       const res = await fetch(NEWSLETTER_ENDPOINT, {
@@ -30,12 +29,12 @@ if (newsletterForm) {
       const data = await res.json();
       if (!data.success) throw new Error(data.error || 'Submission rejected');
 
-      newsletterForm.hidden = true;
-      if (newsletterSuccess) newsletterSuccess.hidden = false;
+      newsletterForm.classList.add('is-hidden');
+      if (newsletterSuccess) newsletterSuccess.classList.add('is-visible');
     } catch (err) {
       submitBtn.disabled = false;
       submitBtn.textContent = submitLabel;
-      if (newsletterError) newsletterError.hidden = false;
+      if (newsletterError) newsletterError.classList.add('is-visible');
     }
   });
 }
