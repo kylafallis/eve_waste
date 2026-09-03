@@ -113,6 +113,14 @@
   align-items: flex-start;
 }
 
+.prototypes-grid { align-items: start; }
+.prototype-photo {
+  aspect-ratio: 16 / 10;
+  background-color: var(--surface-container);
+  border: 1px solid var(--outline-variant);
+  margin-bottom: 20px;
+}
+
 @media (max-width: 1024px) {
   .cases-grid { grid-template-columns: 1fr; }
 }
