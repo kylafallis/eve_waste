@@ -135,7 +135,10 @@
               <input type="hidden" name="subject" value="New evewaste.com enquiry">
               <input type="hidden" name="from_name" value="evewaste.com">
               <!-- honeypot: bots fill it, humans never see it -->
-              <input type="checkbox" name="botcheck" class="hidden" style="display:none"
+              <!-- .hidden is display:none, which already removes this from the
+                   accessibility tree; aria-hidden on top of that would trip axe's
+                   aria-hidden-focus rule. -->
+              <input type="checkbox" name="botcheck" class="hidden"
                      tabindex="-1" autocomplete="off">
               <div class="form-row">
                 <div class="form-field">

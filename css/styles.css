@@ -670,6 +670,11 @@ main:focus { outline: none; }
 
 /* --- Utilities --- */
 .text-center { text-align: center; }
+/* Hides the contact form's honeypot. It used to carry style="display:none"
+   inline, which forced 'unsafe-inline' into the CSP in _headers for the sake of
+   one attribute. Keep this rule — without it the honeypot becomes visible and
+   real people start filling it in. */
+.hidden { display: none !important; }
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;

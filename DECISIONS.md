@@ -3,7 +3,7 @@
 Running list of everything the site build could not settle on its own. Updated at
 the end of each phase. Nothing here is blocking a deploy unless marked **BLOCKER**.
 
-Last updated: end of Phase 4 (2026-09-03).
+Last updated: end of Phase 5 (2026-09-03).
 
 ---
 
@@ -146,10 +146,34 @@ Targets: performance ≥ 90, accessibility ≥ 95, best practices ≥ 95, SEO 10
 
 ---
 
-## Deferred to Kyla's account setup
+## Deployment (Phase 5)
 
-### 23. Analytics provider
-Phase 5 needs a snippet. None chosen yet.
+### 23. Analytics provider — **not installed**
+No provider chosen, so no snippet was added. Nothing is measuring the site right now.
+**When you pick one:** add the snippet to the `<head>` of all six pages *and*
+extend the CSP in `_headers` — `script-src` for the script origin, `connect-src`
+for wherever it beacons to. Until both are done it will be blocked silently.
+A self-hosted or cookieless provider (Plausible, Fathom, Cloudflare Web Analytics)
+avoids a cookie banner; Google Analytics does not.
+
+### 27. CSP will silently block anything new
+The policy is allowlist-only, with no `'unsafe-inline'` and no `'unsafe-eval'`.
+That is the right posture, but it means any future embed, widget, font, or
+analytics tag fails with nothing but a console error. `_headers` documents this at
+the top. If a new inline `<script>` is ever added it needs its own sha256 hash.
+
+### 28. `Strict-Transport-Security` is set to one year
+`max-age=31536000; includeSubDomains`. Once a browser sees this it will refuse
+plain HTTP for evewaste.com and every subdomain for a year. Make sure every
+subdomain you intend to use can serve HTTPS before this goes live. No `preload`
+directive was added — that is much harder to reverse.
+
+### 29. CSS and JS are deliberately not cached `immutable`
+This site has no build step, so `styles.css` keeps its filename forever. Marking it
+immutable would strand returning visitors on a stale stylesheet for a year.
+They are set to `max-age=3600, stale-while-revalidate=86400` instead. Images and
+`/assets/*` carry their size in the filename and are cached hard for a year.
+**If filename fingerprinting is ever added, move css/js to immutable.**
 
 ### 24. Newsletter provider endpoint
 Wired in Phase 3. Confirm the list is live and a signup actually lands.

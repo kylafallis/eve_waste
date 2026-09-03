@@ -1,0 +1,69 @@
+# Cloudflare Pages headers for evewaste.com
+#
+# The CSP is allowlist-only: no 'unsafe-inline' and no 'unsafe-eval' anywhere.
+# Every external origin below is one the site actually calls. If you add a
+# provider (analytics, a new form endpoint, an embed), it will be blocked
+# silently until you add it here — check the browser console first.
+#
+# script-src carries one sha256 hash. That is the inline one-liner in every
+# page's <head>:
+#
+#     <script>document.documentElement.classList.add('js');</script>
+#
+# It marks that scripting is live so the scroll-reveal styles can apply. If you
+# edit that line by even one character the hash stops matching, the script is
+# blocked, and every .fade-up section stays in its visible resting state —
+# degraded, but never blank. Recompute with:
+#
+#     printf "%s" "document.documentElement.classList.add('js');" \
+#       | openssl dgst -sha256 -binary | openssl base64
+#
+# JSON-LD blocks are type="application/ld+json"; browsers treat those as data,
+# not executable script, so they need no hash.
+
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://script.google.com https://script.googleusercontent.com; manifest-src 'self'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Images and static assets carry their size or purpose in the filename
+# (ad-system-prototype-1280.avif, favicon-32.png), so a new version is a new
+# name. Safe to cache hard.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS and JS deliberately are NOT immutable. This site has no build step, so
+# styles.css keeps its name forever and its contents change with every fix.
+# Marking it immutable would leave returning visitors on a stale stylesheet for
+# a year with no way to break out. An hour of freshness plus a day of
+# stale-while-revalidate keeps repeat views instant while letting a fix land.
+# If filename fingerprinting is ever added, move these to immutable.
+/css/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/js/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# HTML must not be cached hard, or a content fix will not reach anyone.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Discovery files change independently of a deploy.
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/llms.txt
+  Cache-Control: public, max-age=3600
