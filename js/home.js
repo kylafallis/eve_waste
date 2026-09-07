@@ -178,3 +178,42 @@ document.querySelectorAll('.stat-block').forEach(block => {
     }
   });
 });
+
+// "Why EvE Waste" — mark whichever pillar is nearest the middle of the viewport
+// as active, and move the progress bar with it. Below 900px the CSS shows every
+// pillar at full contrast and ignores .is-active, so this is desktop dressing:
+// with JS off, the first pillar stays marked and the rest are still readable.
+const pillars = [...document.querySelectorAll('.pillar')];
+if (pillars.length) {
+  const barFill = document.getElementById('pillarsBarFill');
+  const indexOut = document.getElementById('pillarsIndex');
+  let current = -1;
+
+  const setActive = i => {
+    if (i === current) return;
+    current = i;
+    pillars.forEach((p, n) => p.classList.toggle('is-active', n === i));
+    if (barFill) barFill.style.width = `${((i + 1) / pillars.length) * 100}%`;
+    if (indexOut) indexOut.textContent = String(i + 1);
+  };
+
+  const pick = () => {
+    const middle = window.innerHeight / 2;
+    let best = 0, bestDist = Infinity;
+    pillars.forEach((p, i) => {
+      const box = p.getBoundingClientRect();
+      const dist = Math.abs(box.top + box.height / 2 - middle);
+      if (dist < bestDist) { bestDist = dist; best = i; }
+    });
+    setActive(best);
+  };
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { pick(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', pick, { passive: true });
+  pick();
+}

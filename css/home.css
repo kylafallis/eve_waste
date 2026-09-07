@@ -748,3 +748,112 @@
   .timeline__track { gap: 0; }
   .vision__headline { font-size: clamp(2rem, 9vw, 3rem); }
 }
+
+/* --- Why EvE Waste: sticky-scroll narrative ---
+   Heading column pins; the four pillars advance past it. The inactive state uses
+   a real colour (--on-surface-variant, 5.08:1) rather than reduced opacity —
+   fading text to 35% would put it far below AA. Active is --on-surface, 12.53:1.
+   Both pass; the difference is still clearly visible. */
+.pillars__layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 360px) 1fr;
+  gap: 88px;
+  align-items: start;
+}
+.pillars__aside {
+  position: sticky;
+  top: calc(var(--header-h) + 56px);
+}
+.pillars__heading { margin-bottom: 32px; }
+
+.pillars__progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.pillars__bar {
+  flex: 1;
+  height: 2px;
+  background-color: var(--outline-variant);
+  position: relative;
+  overflow: hidden;
+}
+.pillars__bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 25%;
+  background-color: var(--primary);
+  transition: width var(--transition-base);
+}
+.pillars__count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--on-surface-variant);
+  white-space: nowrap;
+}
+
+.pillars__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+}
+.pillar {
+  position: relative;
+  padding-left: 32px;
+  border-left: 2px solid var(--outline-variant);
+  transition: border-color var(--transition-base);
+}
+.pillar__index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--on-surface-variant);
+  margin-bottom: 14px;
+  transition: color var(--transition-base);
+}
+.pillar__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--on-surface-variant);
+  margin: 0 0 14px;
+  transition: color var(--transition-base);
+}
+.pillar__body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--on-surface-variant);
+  margin: 0;
+  max-width: 60ch;
+}
+
+.pillar.is-active { border-left-color: var(--primary); }
+.pillar.is-active .pillar__index { color: var(--primary); }
+.pillar.is-active .pillar__title { color: var(--on-surface); }
+
+@media (max-width: 900px) {
+  /* No pinning and no active state on small screens — every pillar reads at
+     full contrast rather than most of them sitting in the inactive colour. */
+  .pillars__layout { grid-template-columns: 1fr; gap: 40px; }
+  .pillars__aside { position: static; }
+  .pillars__progress { display: none; }
+  .pillars__list { gap: 44px; }
+  .pillar,
+  .pillar.is-active { border-left-color: var(--primary); }
+  .pillar__title,
+  .pillar.is-active .pillar__title { color: var(--on-surface); }
+  .pillar__index,
+  .pillar.is-active .pillar__index { color: var(--primary); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pillars__bar-fill, .pillar, .pillar__index, .pillar__title { transition: none; }
+}

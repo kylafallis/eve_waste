@@ -63,7 +63,7 @@
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap">
   <link rel="stylesheet" href="css/theme.css?v=cccd288b">
   <link rel="stylesheet" href="css/styles.css?v=eb3f79ee">
-  <link rel="stylesheet" href="css/home.css?v=088f1345">
+  <link rel="stylesheet" href="css/home.css?v=645fe623">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -216,34 +216,44 @@
       </div>
     </section>
 
-    <!-- Four Pillars -->
-    <section class="section" id="pillars">
+    <!-- Why EvE Waste — sticky-scroll narrative. The heading column pins while the
+         four pillars advance past it. Copy is CONTENT.md's four pillars, unchanged.
+         The inactive state is --on-surface-variant, NOT a dimmed opacity: an opacity
+         fade would drop the body text below WCAG AA. Both states clear 4.5:1. -->
+    <section class="section pillars" id="pillars">
       <div class="container">
-        <div class="section__header fade-up">
-          <span class="section__eyebrow">Why EvE Waste</span>
-          <h2 class="section__title">Four ways we put waste to work</h2>
-        </div>
-        <div class="grid grid--4 pillars-grid">
-          <div class="card fade-up stagger-1">
-            <div class="icon-box"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-            <h3 class="card__title">Transforming food waste for cost, value, and impact</h3>
-            <p class="card__body">Our bio-reactor processes food waste more affordably than a landfill and derives more value from it. Through the process of anaerobic digestion, our system transforms food waste into clean energy and fertilizer.</p>
+        <div class="pillars__layout">
+          <div class="pillars__aside">
+            <span class="section__eyebrow">Why EvE Waste</span>
+            <h2 class="section__title pillars__heading">Four ways we put waste to work</h2>
+            <div class="pillars__progress" aria-hidden="true">
+              <span class="pillars__bar"><span class="pillars__bar-fill" id="pillarsBarFill"></span></span>
+              <span class="pillars__count"><span id="pillarsIndex">1</span>&thinsp;/&thinsp;4</span>
+            </div>
           </div>
-          <div class="card fade-up stagger-2">
-            <div class="icon-box"><svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></div>
-            <h3 class="card__title">Managing waste for less than a landfill charges</h3>
-            <p class="card__body">Our process generates up to 19% in new economic value compared to landfilling. That is enough for us to pass the savings to our clients.</p>
-          </div>
-          <div class="card fade-up stagger-3">
-            <div class="icon-box"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-            <h3 class="card__title">First-of-its-kind waste tracking data</h3>
-            <p class="card__body">Our bio-reactor contains AI waste tracking software that produces waste reports. Clients use them to find additional savings upstream and to comply with organic waste mandates.</p>
-          </div>
-          <div class="card fade-up stagger-4">
-            <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h3 class="card__title">Doing it all while protecting the Earth</h3>
-            <p class="card__body">Our systems put economics first and the Earth second. We retain nutrients for the next crop of food, and we create clean energy doing it.</p>
-          </div>
+
+          <ol class="pillars__list">
+            <li class="pillar is-active">
+              <span class="pillar__index" aria-hidden="true">01</span>
+              <h3 class="pillar__title">Transforming food waste for cost, value, and impact</h3>
+              <p class="pillar__body">Our bio-reactor processes food waste more affordably than a landfill and derives more value from it. Through the process of anaerobic digestion, our system transforms food waste into clean energy and fertilizer.</p>
+            </li>
+            <li class="pillar">
+              <span class="pillar__index" aria-hidden="true">02</span>
+              <h3 class="pillar__title">Managing waste for less than a landfill charges</h3>
+              <p class="pillar__body">Our process generates up to 19% in new economic value compared to landfilling. That is enough for us to pass the savings to our clients.</p>
+            </li>
+            <li class="pillar">
+              <span class="pillar__index" aria-hidden="true">03</span>
+              <h3 class="pillar__title">First-of-its-kind waste tracking data</h3>
+              <p class="pillar__body">Our bio-reactor contains AI waste tracking software that produces waste reports. Clients use them to find additional savings upstream and to comply with organic waste mandates.</p>
+            </li>
+            <li class="pillar">
+              <span class="pillar__index" aria-hidden="true">04</span>
+              <h3 class="pillar__title">Doing it all while protecting the Earth</h3>
+              <p class="pillar__body">Our systems put economics first and the Earth second. We retain nutrients for the next crop of food, and we create clean energy doing it.</p>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
@@ -318,6 +328,6 @@
   </footer>
 
   <script src="js/main.js?v=63a328bd"></script>
-  <script src="js/home.js?v=883c5033"></script>
+  <script src="js/home.js?v=e92cc70d"></script>
 </body>
 </html>
