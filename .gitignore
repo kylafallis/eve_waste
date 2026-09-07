@@ -1,7 +1,20 @@
 node_modules/
 
+# ---- Marketing site ----
+
 # Full-resolution photograph originals. These are inputs to
 # `npm run build:images`, not shipped assets — only the generated
 # AVIF/WebP derivatives in images/ are committed. Masters live in Drive.
 images/source/
 images/_candidates/
+
+# ---- Backend / tooling ----
+
+supabase/.temp/
+.vscode/
+.env
+.env.local
+
+# Real customer contracts downloaded locally for testing — sensitive, not for version control.
+# Matches any future re-download too, since Google Drive names these with a fresh timestamp.
+test-contracts/
