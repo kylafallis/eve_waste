@@ -153,14 +153,40 @@ if (heroCanvas) {
   draw();
 }
 
-// Stat blocks, the panel itself is shown by CSS on :hover / :focus-within so
-// it works with JS off. This only keeps aria-expanded truthful for screen
-// readers, and makes a tap toggle rather than latch open on touch devices.
+// Stat blocks. The panel itself is shown by CSS on :hover / :focus-within so it
+// works with JS off. This does two things on top of that: keeps aria-expanded
+// truthful, and gives the panel the exact height of the figure it belongs to.
+//
+// The height has to come from script because CSS cannot read a sibling's box.
+// Without JS the panel falls back to the full height of the column, which is the
+// stylesheet's top/bottom pair and is perfectly usable, just less precise.
+const introGrid = document.querySelector('.intro__grid');
+const PANEL_SIDE_BY_SIDE = '(min-width: 1025px)';
+
 document.querySelectorAll('.stat-block').forEach(block => {
   const trigger = block.querySelector('.stat-block__trigger');
+  const panel = block.querySelector('.stat-block__detail');
   if (!trigger) return;
 
-  const set = open => trigger.setAttribute('aria-expanded', String(open));
+  const sizePanel = () => {
+    if (!panel || !introGrid) return;
+    // Below this width the panel is static and sits under its own figure, so any
+    // inline geometry would fight the stylesheet.
+    if (!window.matchMedia(PANEL_SIDE_BY_SIDE).matches) {
+      panel.style.top = '';
+      panel.style.height = '';
+      return;
+    }
+    const gridBox = introGrid.getBoundingClientRect();
+    const blockBox = block.getBoundingClientRect();
+    panel.style.top = `${blockBox.top - gridBox.top}px`;
+    panel.style.height = `${blockBox.height}px`;
+  };
+
+  const set = open => {
+    if (open) sizePanel();
+    trigger.setAttribute('aria-expanded', String(open));
+  };
 
   block.addEventListener('mouseenter', () => set(true));
   block.addEventListener('mouseleave', () => set(false));
@@ -177,6 +203,8 @@ document.querySelectorAll('.stat-block').forEach(block => {
       set(true);
     }
   });
+
+  window.addEventListener('resize', sizePanel, { passive: true });
 });
 
 // "Why EvE Waste", mark whichever pillar is nearest the middle of the viewport

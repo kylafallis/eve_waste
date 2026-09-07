@@ -1,8 +1,10 @@
 /* Contact page styles, sharp corners */
 
+/* Single column since the headquarters aside was removed. Capped so the form
+   does not stretch to a full 1440px, which makes the fields unusable. */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: minmax(0, 720px);
   gap: 80px;
   align-items: start;
 }
@@ -201,7 +203,7 @@
 .partner-type p { font-size: 14px; line-height: 1.55; color: var(--on-surface-variant); }
 
 @media (max-width: 1024px) {
-  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   .partners-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 768px) {
