@@ -161,30 +161,48 @@ if (heroCanvas) {
 // Without JS the panel falls back to the full height of the column, which is the
 // stylesheet's top/bottom pair and is perfectly usable, just less precise.
 const introGrid = document.querySelector('.intro__grid');
+const introStats = document.querySelector('.intro__stats');
 const PANEL_SIDE_BY_SIDE = '(min-width: 1025px)';
+const PANEL_PROPS = ['left', 'top', 'bottom', 'height', 'min-height'];
 
 document.querySelectorAll('.stat-block').forEach(block => {
   const trigger = block.querySelector('.stat-block__trigger');
   const panel = block.querySelector('.stat-block__detail');
   if (!trigger) return;
 
+  const clearPanel = () => {
+    if (panel) PANEL_PROPS.forEach(prop => panel.style.removeProperty(prop));
+  };
+
   const sizePanel = () => {
-    if (!panel || !introGrid) return;
-    // Below this width the panel is static and sits under its own figure, so any
-    // inline geometry would fight the stylesheet.
+    if (!panel || !introGrid || !introStats) return;
+
+    // Below this width the panel is static and sits under its own figure. Inline
+    // geometry would out-rank the stylesheet there, so it has to be removed, not
+    // just overridden.
     if (!window.matchMedia(PANEL_SIDE_BY_SIDE).matches) {
-      panel.style.top = '';
-      panel.style.height = '';
+      clearPanel();
       return;
     }
+
     const gridBox = introGrid.getBoundingClientRect();
+    const statsBox = introStats.getBoundingClientRect();
     const blockBox = block.getBoundingClientRect();
+
+    // Start where the number column actually ends rather than trusting a
+    // hard-coded 280px, and run to the container edge via right:0 in the CSS.
+    panel.style.left = `${statsBox.right - gridBox.left}px`;
     panel.style.top = `${blockBox.top - gridBox.top}px`;
-    panel.style.height = `${blockBox.height}px`;
+
+    // min-height, not height: the panel matches the figure it belongs to but
+    // grows if the sentence needs more room, so the text is always enclosed.
+    panel.style.bottom = 'auto';
+    panel.style.height = 'auto';
+    panel.style.minHeight = `${blockBox.height}px`;
   };
 
   const set = open => {
-    if (open) sizePanel();
+    if (open) sizePanel(); else clearPanel();
     trigger.setAttribute('aria-expanded', String(open));
   };
 
@@ -204,7 +222,10 @@ document.querySelectorAll('.stat-block').forEach(block => {
     }
   });
 
-  window.addEventListener('resize', sizePanel, { passive: true });
+  window.addEventListener('resize', () => {
+    if (trigger.getAttribute('aria-expanded') === 'true') sizePanel();
+    else clearPanel();
+  }, { passive: true });
 });
 
 // "Why EvE Waste", mark whichever pillar is nearest the middle of the viewport

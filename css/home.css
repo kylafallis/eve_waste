@@ -208,21 +208,20 @@
 
 .stat-block__detail {
   position: absolute;
-  /* Horizontal: flush with the right edge of the 280px number column, running to
-     the container's right content edge. right:0 resolves against .intro__grid, so
-     the gap on the right matches the page margin on the left exactly, with no
-     viewport maths and no scrollbar error.
-     Vertical: top/bottom here are the JS-off fallback (full column height).
-     home.js overrides them with the height of the figure being hovered, which is
-     what we actually want. An over-constrained box ignores `bottom`, so setting
-     top + height from script wins cleanly. */
+  /* Horizontal: runs from the right edge of the number column to the container's
+     right content edge, so its gap from the right of the screen matches the page
+     margin on the left. The 280px here is only the JS-off fallback; home.js
+     measures the column instead of trusting the number.
+     Vertical: top/bottom are also the JS-off fallback (full column height).
+     home.js aligns the panel to the figure being hovered and sets a MIN height,
+     never a fixed one, so the sentence can never be clipped. */
   left: 280px;
   right: 0;
   top: 0;
   bottom: 0;
   display: flex;
   align-items: center;
-  padding: 28px 44px;
+  padding: 32px 48px;
   background-color: var(--primary);
   color: var(--cloud-white);
   z-index: 5;
@@ -241,11 +240,10 @@
   margin: 0;
   color: inherit;
   font-family: var(--font-headline);
-  font-size: clamp(1rem, 1.55vw, 1.35rem);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -0.01em;
-  max-width: 62ch;
 }
 
 /* Below the trigger once there is no room beside it. */
