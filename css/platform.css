@@ -228,3 +228,18 @@
 @media (max-width: 900px) {
   .market-grid { grid-template-columns: 1fr; }
 }
+
+/* Answers now hold multiple paragraphs and a source line, so the block is a
+   <div>. The single-<p> rule above still applies to the older entries. */
+.faq-item__answer p { margin: 0 0 12px; }
+.faq-item__answer p:last-child { margin-bottom: 0; }
+.faq-item__source {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--outline);
+}
+.faq-item__source a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

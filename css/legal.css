@@ -1,0 +1,39 @@
+/* Legal pages — privacy policy, and anything else that is mostly prose. */
+
+.legal__updated {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--outline);
+  margin-bottom: 32px;
+}
+.legal__lead {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--on-surface);
+  margin-bottom: 40px;
+}
+.legal h2 {
+  font-family: var(--font-headline);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--on-surface);
+  margin: 44px 0 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--outline-variant);
+}
+.legal p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--on-surface-variant);
+  margin-bottom: 16px;
+}
+.legal p strong { color: var(--on-surface); }
+.legal a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

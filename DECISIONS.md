@@ -4,7 +4,8 @@ Running list of everything the site build could not settle on its own. Updated a
 the end of each phase. Resolved items move to the log at the bottom rather than
 being deleted, so the reasoning stays findable.
 
-Last updated: 2026-09-03, after the home/platform/pilot redesign round.
+Last updated: 2026-09-07, after the research round that closed the pilot values,
+the FAQ, the ledger and the privacy policy.
 
 ---
 
@@ -17,12 +18,6 @@ Nothing in the Drive export is identifiably this device. The card on
 
 ### 5. AD System Prototype — written description
 The photograph is live; the prose is not. The card shows a heading and image only.
-
-### 7. "What is anaerobic digestion?" FAQ answer
-Deliberately omitted rather than written on the founders' behalf. The Platform FAQ
-now runs to seven questions, all answered from copy that already existed in
-CONTENT.md; this one still has no source. The FAQPage JSON-LD mirrors exactly what
-renders — keep the two in sync if you add more.
 
 ### 16. Three prototype photos staged but unplaced
 `images/_candidates/` holds `ad-system-loading.jpg`, `ad-system-transport.jpg`,
@@ -72,63 +67,9 @@ not `file://` — several checks need real headers.
 
 ---
 
-## 23. Analytics — Umami
-
-Umami is the chosen provider. **The CSP in `_headers` has been opened for Umami
-Cloud already** (`https://cloud.umami.is` in `script-src` and `connect-src`, plus
-`https://api-gateway.umami.dev` in `connect-src`).
-
-**If you self-host Umami, change those entries to your own instance's origin** or
-the script is blocked silently, with only a console error.
-
-The snippet itself is NOT in the pages yet, because it needs your website ID:
-
-```html
-<script defer src="https://cloud.umami.is/script.js"
-        data-website-id="YOUR-WEBSITE-ID"></script>
-```
-
-Paste it just above `</head>` on the six real pages. Then deploy, load the site,
-and check the browser console — a CSP violation names any origin still missing.
-
-The rule for any provider: **allowlist the origin in `_headers` in the same commit
-as the snippet.** The CSP has no `'unsafe-inline'`.
-
 ---
 
-## 30. Privacy policy and terms of service — you probably need one page, not two
-
-**Terms of service: not required.** A marketing site with no accounts, no payments
-and no user-generated content has nothing to set terms over. Skip it.
-
-**Privacy policy: yes, add one — and it is a short one.** Two reasons, neither
-about Umami's cookie behaviour:
-
-1. **The contact form and newsletter.** These collect a name and an email address
-   and send them to Web3Forms and a Google Apps Script. That is personal data
-   handled by third-party processors, and it is what actually creates the
-   obligation. Even a US-only business gets asked about this in diligence.
-2. **Umami itself.** Umami is cookieless and does not collect personal data by
-   default, so you do **not** need a cookie consent banner for it. But GDPR
-   Article 13 still expects you to say what you collect and why if anyone in the
-   EU can reach the site, and a policy is the place to say it.
-
-What the page needs to say, roughly: what the contact form and newsletter collect,
-who processes it (Web3Forms, Google, Umami), that analytics are cookieless and
-aggregate, how long you keep enquiries, and how to ask for deletion. It is one
-page and it is mostly boilerplate — but the specifics above have to be accurate,
-so it is a NEEDS INPUT item, not something to generate.
-
-Link it from the footer next to the copyright line once it exists.
-
 ---
-
-## 31. Pilot timeline copy is structural only
-`use-cases.html` now has a five-stage timeline — site count, duration, data
-collected, success criteria, what you receive. Those are the five fields
-CONTENT.md §5 lists as undefined. Each panel currently says what the stage covers
-and "We will scope this with you." **The structure is real; the values are not
-written.** Fill the `<p>` in each panel when the founders decide.
 
 ## 32. Home stat panels — copy needs founder review
 Hovering a figure on the home page opens a panel explaining what its basis label
@@ -138,9 +79,48 @@ deliberately modest — the 19% panel says outright that EvE Waste has no client
 yet. **Worth a read-through before launch**; nothing there may become a measured
 or client claim until one exists.
 
-## 33. "Why EvE Waste" section — three options offered
-The four-box pillar grid is unchanged pending a choice between three
-alternatives. See the accompanying message.
+## 34. Two thresholds in the pilot success criteria — Brenden
+Criterion 1 publishes **95%** telemetry completeness. Criterion 2 currently says the
+accuracy tolerance is "stated in the pilot agreement" rather than naming a number,
+because the prototype has not produced enough ground truth to state one. Both are
+marked NEEDS INPUT in `use-cases.html`. Everything else in that list is a process
+commitment, not a performance claim.
+
+## 35. Phase 1 pricing — Ben
+Free, subsidised or paid. The page carries **no pricing statement at all**, which is
+deliberate: a hedge invites the question, silence lets the conversation start. Do not
+add "contact us for pricing".
+
+## 36. Three privacy facts still open
+1. **Umami Cloud or self-hosted?** The CSP and the policy both currently assume
+   Cloud. If self-hosted, swap the origin in `_headers` and replace one sentence in
+   `privacy.html` with "we run Umami on our own infrastructure" — a stronger claim.
+2. **A dedicated privacy mailbox.** The policy routes rights requests through the
+   contact form, which is consistent with CONTENT.md's "no public email" rule. A
+   `privacy@evewaste.com` address would be better practice.
+3. **What unsubscribing does to the Google Sheet row** — delete it, or flag it. The
+   current sentence is true either way, but if rows are only flagged, say so.
+
+Resolved in the repo, for the record: **no CAPTCHA** is enabled on the contact form
+(honeypot only), so the "no cookies at all" claim holds; and the newsletter writes to
+a **Google Sheet via an Apps Script web app**, not a Google Form.
+
+## 37. The 19% figure needs a source, not just a label
+`CONTENT.md` carries **19% — "new economic value our process generates versus
+landfilling", basis: Modeled** (§1 stats table, Pillar 2, and §6b). It renders on the
+home page and in the Platform FAQ.
+
+Tracing it: §6b shows it was the *resolution of a conflict* — the intake sheet
+supplied "+20% average waste management cost reduction for our clients", which was
+rejected because EvE has no clients, and 19% was kept from Pillar 2 instead. So the
+number's provenance inside the repo is the founders' intake sheet, and **no model
+document behind it has been identified.** "Modeled" is a basis label without a model
+attached.
+
+That is the one place on the site where the basis rule is satisfied in form but not
+in substance. **Needed:** the calculation, or a decision to pull the figure.
+It appears in `index.html` (stat block 2), `platform.html` (FAQ "How does the cost
+compare with a landfill?" and the market card) and `llms.txt`.
 
 ---
 
@@ -170,4 +150,9 @@ alternatives. See the accompanying message.
 | — | About page | **Retired.** Founding story → `platform.html#why`, values → `platform.html#values`. `about.html` is now a noindex stub with a canonical to Platform, and `_redirects` 301s the old URL. Removed from the menu, the footer, the sitemap and llms.txt. **The stub file can be deleted once nothing links to it — say the word.** |
 | — | Product specifications on Platform | **Removed as a section.** The "available under NDA" copy survives as an FAQ answer and as the hover panel on the AD prototype photo, so nothing was lost. Platform now leads on market opportunity, why we build, values, and the FAQ. |
 | — | Platform FAQ was one question | **Now seven.** Every added answer is copy that already existed in CONTENT.md — feedstock, cost vs landfill, data output, specifications, location, response time. None was written on the founders' behalf. "What is anaerobic digestion?" is still omitted. |
+| — | Pilot timeline values | **Resolved by research, not by asking.** Reframed as Phase 1: a 90-day monitoring pilot at 3 sites, per the Workstream II one-sheeter. Five process stages, a published data-category list, six falsifiable success criteria and eight things the host keeps. Two thresholds still open (item 34). |
+| — | FAQ beyond seven | **Eighteen now.** Eleven added, sourced to Ohio EPA, OAC, Ohio Dept. of Agriculture, 40 CFR 503 and EPA. `tools/sync-faq.mjs` regenerates the FAQPage schema from the rendered HTML so the two can never drift. |
+| — | Landfill vs EvE ledger | **Built**, on the home page. Eight rows, every figure carrying its year in the cell. Midwest tipping average cited rather than national, since the audience is Ohio. The CO₂e figure from the EPA report is deliberately NOT reproduced — that report renders it with a unit error. |
+| — | Privacy policy | **Written and live** at `privacy.html`, linked from every footer and in the sitemap. No unfilled brackets. Discloses that Web3Forms' spam filtering (CleanTalk, Akismet) receives submitter IP and email — the most substantive thing in it. Terms of service: not needed. |
+| — | Google Fonts | **Removed.** Archivo is self-hosted from `assets/fonts/` as one 34 KB variable file. That deletes two origins from the CSP, a render-blocking third-party request, and the disclosure of every visitor's IP to Google. |
 | — | Kyla's bio and email | **Rewritten** to lead on research and software, with FairGame in one clause and no NASA or UN. All facts still come from her own media kit. Email is now kylaevewaste@outlook.com. |

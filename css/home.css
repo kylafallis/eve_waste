@@ -857,3 +857,87 @@
 @media (prefers-reduced-motion: reduce) {
   .pillars__bar-fill, .pillar, .pillar__index, .pillar__title { transition: none; }
 }
+
+/* --- Landfill vs EvE ledger ---
+   Both columns are full-contrast body text. The landfill column is NOT muted:
+   de-emphasising it is exactly where contrast quietly fails, and the argument
+   is stronger when the unflattering column is as legible as ours. The column
+   header carries the distinction instead. */
+.ledger-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--outline-variant);
+  background-color: var(--surface-container-lowest);
+}
+.ledger {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  text-align: left;
+}
+.ledger th,
+.ledger td {
+  padding: 20px 22px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--outline-variant);
+}
+.ledger thead th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding-top: 22px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--outline-variant);
+}
+.ledger__rowhead-col { width: 20%; }
+.ledger__col { width: 40%; }
+.ledger__col--landfill { color: var(--on-surface-variant); }
+.ledger__col--eve { color: var(--primary); }
+
+.ledger tbody th {
+  font-family: var(--font-headline);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--on-surface);
+}
+.ledger tbody td {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--on-surface-variant);
+}
+.ledger tbody td strong { color: var(--on-surface); font-weight: 700; }
+.ledger__cite {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--outline);
+}
+.ledger tbody tr:last-child th,
+.ledger tbody tr:last-child td { border-bottom: none; }
+
+/* The admission row. Deliberately the most prominent row in the table. */
+.ledger__row--admission th,
+.ledger__row--admission td { background-color: var(--surface-container); }
+.ledger__row--admission td strong { color: var(--primary); }
+
+.ledger__sources {
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--on-surface-variant);
+}
+.ledger__sources a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .ledger th, .ledger td { padding: 16px 14px; }
+}

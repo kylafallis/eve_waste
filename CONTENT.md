@@ -1,5 +1,5 @@
 # EvE Waste — Content Deck
-**Single source of truth for all site copy. Rev 2026-09-03.**
+**Single source of truth for all site copy. Rev 2026-09-07.**
 
 > Rule for any agent working on this repo: **never invent a number, a customer, a
 > testimonial, a specification, or a date.** If a value below is marked `NEEDS INPUT`,
@@ -15,7 +15,7 @@
 | Domain | evewaste.com |
 | Location line | Columbus, Ohio |
 | Public phone | **None.** Do not publish a phone number. |
-| Public email | **None.** Route all contact through the form. |
+| Public email | **None.** Route all contact through the form. This is also the privacy-contact route on `privacy.html`. |
 | Form recipient | ben@evewaste.com |
 | Response time promise | Within one week |
 | Positioning | **Cost first.** Sustainability is the second argument, never the first. |
@@ -100,7 +100,9 @@ Render the basis label as a small caps line beneath each stat, e.g. `MODELED`.
 
 > **The About page was retired 2026-09-03.** The founding story lives at
 > `platform.html#why` and the three values at `platform.html#values`.
-> `about.html` is a noindex redirect stub and `_redirects` 301s the old URL.
+> `about.html` is kept as a canonical redirect stub — **deliberately not noindex**,
+> because noindex asks engines to drop the URL while the canonical asks them to
+> consolidate it, and consolidation is what we want. `_redirects` 301s the old URL.
 
 
 **Founding story** (use verbatim — this is founder voice, do not rewrite):
@@ -181,24 +183,44 @@ rows. Instead render a single block:
 
 ---
 
-## 5. Pilots (`use-cases.html` → retitle "How a pilot works")
+## 5. Pilots (`use-cases.html` — "How a pilot works")
 
-This page has **no customers and no case studies.** Do not invent company names,
-logos, quotes, or results. Rebuild it as a pilot-program explainer with two sections:
+**RESOLVED 2026-09-07.** The five fields were never blocked on the founders; they
+were blocked on the framing. EvE runs a **two-phase pilot**, which is documented in
+`EvE_Waste_Workstream_II_One_Sheeter.docx` v1.0 (2026-05-11):
 
-**Section A — How a pilot works**
-Fields to fill: site count, duration, data collected, success criteria, what the host
-site receives. All are `NEEDS INPUT`. Fallback: render the section headings with a
-short "we will scope this with you" line and a `Request a pilot` CTA — no numbers.
+- **Phase 1 — a 90-day monitoring pilot at 3 sites.** This is what the page describes.
+- **Phase 2 — digester deployment**, scoped only for sites that graduate. Target
+  graduation rate ≥ 40% in 12 months. **No digester throughput, footprint or payback
+  figure goes on this page** — those are spec-table rows under the basis rule.
 
-**Section B — What we have built** (this is real, use it)
-1. **AD System Prototype** — `NEEDS INPUT: description`
-2. **Waste Hauling Monitor Prototype** — `NEEDS INPUT: description`
+| Field | Value | Basis |
+|---|---|---|
+| Site count | Three | One-Sheeter v1.0 |
+| Duration | 90 days monitored, ~2 weeks survey before, ~2 weeks reporting after | One-Sheeter + proposed bookends |
+| Data collected | Categories published, not the schema. See the page. | One-Sheeter, Germination Protocol §6 |
+| Success criteria | Six, all falsifiable. See the page. | Proposed |
+| What the host receives | Eight items, framed as what they **keep**. See the page. | Proposed |
 
-Both need photographs. See BUILD_BRIEF §"Photography" — this is the single highest
-impact item on the whole project.
+**Why 90 days** (background for sales, compressed on the page): a performance-based
+waste audit samples 60–90 days; hauling invoices are monthly and three cycles is the
+least that distinguishes a pattern from an anomaly; and for graduating sites a
+mesophilic digester reaches steady state in roughly three HRTs, which lands in the
+same window. **Do not publish an HRT number** — Brenden owns that row.
 
----
+**Two thresholds still need Brenden:** the 95% data-completeness figure, and the
+ground-truth accuracy tolerance. Both are marked `NEEDS INPUT` in the HTML. The
+accuracy criterion currently names the pilot agreement as where the tolerance is
+fixed, which is honest and still falsifiable.
+
+**Pricing is deliberately absent.** Whether Phase 1 is free, subsidised or paid is
+Ben's call. The page carries **no pricing statement at all** — not even "contact us
+for pricing". A hedge invites the question; silence lets the conversation start.
+`NEEDS INPUT — Ben`
+
+### Section B — What we have built (this is real, use it)
+1. **AD System Prototype** — photograph live; written description still `NEEDS INPUT`.
+2. **Waste Hauling Monitor Prototype** — `NEEDS INPUT: description and photograph`.
 
 ## 6. Contact (`contact.html`)
 

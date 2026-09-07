@@ -7,13 +7,21 @@
   <meta name="description" content="The About page has moved. The EvE Waste founding story and values now live on the Platform page.">
 
   <!-- The About page was retired on 2026-09-03; its founding story and the three
-       values moved to platform.html#why and platform.html#values. This stub is kept
-       so the old URL keeps working for anything already linking to it — inbound
-       links, the LinkedIn profile, printed material. _redirects issues a real 301
-       on Cloudflare Pages; this page is the fallback if that ever stops matching.
-       It carries noindex plus a canonical to the Platform page so the two are
-       never treated as duplicate content. Safe to delete once nothing links here. -->
-  <meta name="robots" content="noindex, follow">
+       values moved to platform.html#why and platform.html#values.
+
+       This stub stays. The URL is publicly live right now
+       (kylafallis.github.io/eve_waste/about.html), so it is crawlable and may be
+       linked from anywhere — deleting the file turns a live URL into a 404.
+
+       NO noindex, deliberately. noindex asks search engines to DROP the URL; the
+       canonical asks them to CONSOLIDATE it into the destination. Consolidation is
+       what we want, and the two directives fight each other. _redirects issues a
+       real 301 on Cloudflare Pages, which is strictly better than this stub; the
+       stub is the fallback for hosts that cannot (GitHub Pages).
+
+       Delete only once the production domain has been live through a full crawl
+       cycle AND Search Console shows no impressions and no inbound links for
+       /about.html. That is a launch-checklist item, not a sprint item. -->
   <link rel="canonical" href="https://evewaste.com/platform.html">
   <meta http-equiv="refresh" content="0; url=platform.html">
 
@@ -22,12 +30,9 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <meta name="theme-color" content="#15342D">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap">
+  <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css?v=cccd288b">
-  <link rel="stylesheet" href="css/styles.css?v=eb3f79ee">
+  <link rel="stylesheet" href="css/styles.css?v=453dafa2">
 </head>
 <body>
   <main id="main" tabindex="-1">

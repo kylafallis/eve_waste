@@ -9,7 +9,8 @@
     "build:brand": "node tools/build-brand.mjs",
     "build:og": "node tools/build-og.mjs",
     "stamp": "node tools/stamp-assets.mjs",
-    "build": "npm run build:brand && npm run build:og && npm run build:images && npm run stamp"
+    "build": "npm run build:brand && npm run build:og && npm run build:images && npm run sync:faq && npm run stamp",
+    "sync:faq": "node tools/sync-faq.mjs"
   },
   "devDependencies": {
     "sharp": "^0.35.4"
