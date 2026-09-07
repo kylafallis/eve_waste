@@ -1,5 +1,11 @@
 # EvE Waste — Content Deck
-**Single source of truth for all site copy. Rev 2026-09-07.**
+**Single source of truth for all site copy. Rev 2026-09-07b.**
+
+> **Page map as of 2026-09-07:** index, platform, built, faq, team, contact, privacy.
+> `about.html` is a canonical stub. `use-cases.html` (the pilot) is temporarily
+> disabled and routed to 404 while the team confirms its data.
+>
+> **No em-dashes anywhere on the site.** Use a comma, a colon or a full stop.
 
 > Rule for any agent working on this repo: **never invent a number, a customer, a
 > testimonial, a specification, or a date.** If a value below is marked `NEEDS INPUT`,

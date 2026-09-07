@@ -1,4 +1,4 @@
-/* Platform page styles — sharp corners throughout */
+/* Platform page styles, sharp corners throughout */
 
 .platform-tabs-section { padding-top: 0; }
 .platform-tabs {
@@ -183,50 +183,155 @@
   .specs-row { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
 
-/* --- Market opportunity --- */
-.market-grid { align-items: stretch; }
-.market-card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 32px 28px;
-  background-color: var(--surface-container-lowest);
+/* --- Market opportunity: two numbers split on a diagonal ---
+   The green side is the container ground; the light side is a clipped overlay on
+   top of it. Done this way round so that if clip-path is ever unsupported the
+   fallback below can simply drop the overlay rather than leaving white text on a
+   white field. */
+.diagonal {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary);
   border: 1px solid var(--outline-variant);
 }
-.market-card__value {
-  font-family: var(--font-headline);
-  font-size: 44px;
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: var(--primary);
+.diagonal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--surface-container-lowest);
+  clip-path: polygon(0 0, 58% 0, 42% 100%, 0 100%);
 }
-.market-card__basis {
+.diagonal__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  min-height: 360px;
+  padding: 56px;
+  align-items: center;
+}
+.diagonal__half { display: flex; flex-direction: column; gap: 10px; }
+/* Keep the copy clear of the diagonal on both sides. */
+.diagonal__half--cost { padding-right: 14%; }
+.diagonal__half--value { padding-left: 14%; text-align: right; align-items: flex-end; }
+
+.diagonal__basis {
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--outline);
-  margin-bottom: 6px;
 }
-.market-card__body {
-  font-size: 15px;
-  line-height: 1.65;
+.diagonal__value {
+  font-family: var(--font-headline);
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.diagonal__body { font-size: 16px; line-height: 1.6; margin: 0; max-width: 30ch; }
+
+.diagonal__half--cost .diagonal__basis { color: var(--outline); }
+.diagonal__half--cost .diagonal__value { color: var(--primary); }
+.diagonal__half--cost .diagonal__body { color: var(--on-surface-variant); }
+
+/* Same reason as the versus check mark: --inverse-primary is a Forest Green
+   token and fails on the lighter --primary ground. */
+.diagonal__half--value .diagonal__basis { color: var(--primary-fixed); }
+.diagonal__half--value .diagonal__value { color: var(--cloud-white); }
+.diagonal__half--value .diagonal__body { color: rgba(255,255,255,0.92); }
+
+@supports not (clip-path: polygon(0 0, 1px 0, 1px 1px)) {
+  .diagonal::before { display: none; }
+  .diagonal__inner { grid-template-columns: 1fr; }
+  .diagonal__half--cost {
+    padding: 32px;
+    background-color: var(--surface-container-lowest);
+  }
+  .diagonal__half--value { padding: 32px; text-align: left; align-items: flex-start; }
+}
+
+/* --- Split: heading one side, prose the other --- */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+.split__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: var(--tracking-tight);
+  color: var(--on-surface);
+  margin: 12px 0 0;
+}
+.split__rule {
+  display: block;
+  width: 64px;
+  height: 1.5px;
+  background-color: var(--primary);
+  margin-top: 28px;
+}
+.split__body p {
+  font-size: 18px;
+  line-height: 1.8;
   color: var(--on-surface-variant);
   margin: 0;
 }
 
-/* --- Founding story (moved from the retired about page) --- */
-.founding-story p {
-  font-size: 19px;
-  line-height: 1.75;
+/* --- Values: full-width bands, outlined numeral --- */
+.values { list-style: none; margin: 0; padding: 0; }
+.value {
+  display: grid;
+  grid-template-columns: minmax(0, 180px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--outline-variant);
+}
+.value:last-child { border-bottom: 1px solid var(--outline-variant); }
+.value__num {
+  font-family: var(--font-headline);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--primary);
+}
+/* Outlined rather than filled, where the browser supports it. The fallback above
+   is a solid green numeral, which is fine on its own. */
+@supports (-webkit-text-stroke: 1px black) {
+  .value__num {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--primary);
+  }
+}
+.value__title {
+  font-family: var(--font-headline);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--on-surface);
+  margin: 0 0 8px;
+}
+.value__text p {
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--on-surface-variant);
   margin: 0;
+  max-width: 62ch;
 }
 
 @media (max-width: 900px) {
-  .market-grid { grid-template-columns: 1fr; }
+  .diagonal::before { display: none; }
+  .diagonal__inner { grid-template-columns: 1fr; gap: 0; padding: 0; min-height: 0; }
+  .diagonal__half { padding: 32px; }
+  .diagonal__half--cost { background-color: var(--surface-container-lowest); padding-right: 32px; }
+  .diagonal__half--value { padding-left: 32px; text-align: left; align-items: flex-start; }
+  .split { grid-template-columns: 1fr; gap: 28px; }
+  .split__rule { margin-top: 20px; }
+  .value { grid-template-columns: 1fr; gap: 14px; padding: 28px 0; }
 }
 
 /* Answers now hold multiple paragraphs and a source line, so the block is a

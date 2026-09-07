@@ -14,8 +14,8 @@
  * immutable for a year. Unchanged files keep their hash and stay cached.
  *
  * Run `npm run stamp` after ANY edit to a file in css/ or js/, and before every
- * deploy. `npm run build` does it for you. The script is idempotent — it strips
- * an existing ?v= before writing the new one — so running it twice is harmless.
+ * deploy. `npm run build` does it for you. The script is idempotent, it strips
+ * an existing ?v= before writing the new one, so running it twice is harmless.
  * Running it when nothing changed produces no diff.
  */
 import { readFile, writeFile, readdir } from 'node:fs/promises';

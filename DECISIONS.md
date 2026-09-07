@@ -4,8 +4,8 @@ Running list of everything the site build could not settle on its own. Updated a
 the end of each phase. Resolved items move to the log at the bottom rather than
 being deleted, so the reasoning stays findable.
 
-Last updated: 2026-09-07, after the research round that closed the pilot values,
-the FAQ, the ledger and the privacy policy.
+Last updated: 2026-09-07, after the layout round (hero panel, ledger, platform,
+nav split, em-dash sweep).
 
 ---
 
@@ -124,6 +124,30 @@ compare with a landfill?" and the market card) and `llms.txt`.
 
 ---
 
+## 38. The pilot page is temporarily switched off
+`use-cases.html` is disabled at Kyla's request so the team can confirm its details
+and data before any of it is public. The content is intact; the page is turned off
+by routing, not deletion:
+* `noindex, nofollow` plus a meta refresh to `404.html` in its head
+* a `/use-cases.html -> /404.html 404` rule in `_redirects`
+* removed from the menu, the footers and `sitemap.xml`
+
+**To bring it back**, the four steps are written in a comment at the top of the
+file. Nothing else needs touching.
+
+## 39. Values and the comparison block: alternatives on the shelf
+Two sections were redesigned without a formal choice being offered, so the
+alternatives are recorded here rather than lost:
+* **Comparison (home).** Now two stacked lists with cross/check marks. The other
+  candidates were a single-line-per-row two-column strip, and keeping a table but
+  cutting it to four rows. The marks version was chosen because it is the format
+  people actually scan.
+* **Values (platform).** Now full-width bands with an outlined numeral. The other
+  candidates were an offset/staggered stack and a single sentence per value with no
+  headings at all.
+
+---
+
 ## Resolved
 
 | # | Decision | Outcome |
@@ -155,4 +179,10 @@ compare with a landfill?" and the market card) and `llms.txt`.
 | — | Landfill vs EvE ledger | **Built**, on the home page. Eight rows, every figure carrying its year in the cell. Midwest tipping average cited rather than national, since the audience is Ohio. The CO₂e figure from the EPA report is deliberately NOT reproduced — that report renders it with a unit error. |
 | — | Privacy policy | **Written and live** at `privacy.html`, linked from every footer and in the sitemap. No unfilled brackets. Discloses that Web3Forms' spam filtering (CleanTalk, Akismet) receives submitter IP and email — the most substantive thing in it. Terms of service: not needed. |
 | — | Google Fonts | **Removed.** Archivo is self-hosted from `assets/fonts/` as one 34 KB variable file. That deletes two origins from the CSP, a render-blocking third-party request, and the disclosure of every visitor's IP to Google. |
+| — | Home "our approach" panel | **Fixed.** The green panel used to open on top of the headline. The headline now steps aside and the panel runs from the edge of the number block to the container edge. |
+| — | Landfill vs EvE ledger | **Cut down.** The eight-row table with a row-header column is gone; it is now two stacked lists of one-line claims with cross/check marks, plus the honesty note. |
+| — | Platform market opportunity | **Two numbers on a diagonal**, one sentence each. The third card ("Mandates") is gone: it was a word pretending to be a figure. |
+| — | Why we build / values layout | **Reworked.** Heading and rule on one side with the prose on the other; values are full-width bands with an outlined numeral rather than three boxes. |
+| — | FAQ and What we've built | **Now their own pages** (`faq.html`, `built.html`), both in the menu. `tools/sync-faq.mjs` follows the FAQ to its new home. |
+| — | Em-dashes | **Removed site-wide**, 71 of them, each replaced with the punctuation the sentence actually wanted rather than deleted. This matches the vocabulary rule already in CONTENT.md. |
 | — | Kyla's bio and email | **Rewritten** to lead on research and software, with FairGame in one clause and no NASA or UN. All facts still come from her own media kit. Email is now kylaevewaste@outlook.com. |

@@ -1,5 +1,5 @@
 /*
- * css/theme.css — Single source of truth for all design tokens.
+ * css/theme.css, Single source of truth for all design tokens.
  * Load this FIRST in every page's <head> (before styles.css).
  *
  * Design language: EvE Waste Brand Guide v1.0 (Brenden Fowler).
@@ -25,15 +25,15 @@
   /* ═══════════════════════════════════════
      SURFACES
   ═══════════════════════════════════════ */
-  --surface:                  #DAE1DE;   /* Clay Blue — light page background      */
+  --surface:                  #DAE1DE;   /* Clay Blue, light page background      */
   --surface-dim:              #CCD5D1;
-  --surface-container-lowest: #FFFFFF;   /* Cloud White — card bg                  */
+  --surface-container-lowest: #FFFFFF;   /* Cloud White, card bg                  */
   --surface-container-low:    #E4E9E6;
   --surface-container:        #EAEEEC;
   --surface-container-high:   #F0F2F0;
-  --on-surface:               #152116;   /* Digestate Green — headings + body      */
+  --on-surface:               #152116;   /* Digestate Green, headings + body      */
   --on-surface-variant:       rgba(21, 33, 22, 0.68);
-  --inverse-surface:          #15342D;   /* Forest Green — footer bg                */
+  --inverse-surface:          #15342D;   /* Forest Green, footer bg                */
   --inverse-on-surface:       #DAE1DE;   /* Clay Blue on footer                     */
 
   /* ═══════════════════════════════════════
@@ -41,28 +41,28 @@
   ═══════════════════════════════════════ */
   --dark-surface:            #15342D;   /* Forest Green                            */
   --dark-surface-mid:        #1D473D;   /* lighter step of Forest Green            */
-  --dark-surface-deep:       #152116;   /* Digestate Green — high-contrast callout */
+  --dark-surface-deep:       #152116;   /* Digestate Green, high-contrast callout */
   --dark-border:             rgba(255, 255, 255, 0.10);
   --on-dark:                 #ffffff;
   --on-dark-dim:              rgba(255, 255, 255, 0.58);
 
   /* ═══════════════════════════════════════
-     PRIMARY  (Seedling Green — buttons / links / interactive)
+     PRIMARY  (Seedling Green, buttons / links / interactive)
   ═══════════════════════════════════════ */
   --primary:                 #4B714F;   /* Seedling Green                          */
   --on-primary:              #ffffff;
-  --primary-container:       #15342D;   /* Forest Green — hover / pressed state    */
+  --primary-container:       #15342D;   /* Forest Green, hover / pressed state    */
   --on-primary-container:    #DAE1DE;   /* Clay Blue                               */
-  --inverse-primary:         #65976A;   /* Sprout Green — accent on dark bg        */
-  --primary-fixed:           #DAE1DE;   /* Clay Blue — light tint on dark bg       */
+  --inverse-primary:         #65976A;   /* Sprout Green, accent on dark bg        */
+  --primary-fixed:           #DAE1DE;   /* Clay Blue, light tint on dark bg       */
   --primary-fixed-dim:       #65976A;   /* Sprout Green                            */
 
   /* ═══════════════════════════════════════
-     ACCENT  (Sprout Green — stats, highlights, CTA-on-dark)
+     ACCENT  (Sprout Green, stats, highlights, CTA-on-dark)
   ═══════════════════════════════════════ */
   --accent:                  #65976A;   /* stat values, eyebrow labels, dark CTA   */
   --accent-dark:             #527d57;   /* pressed / focus                        */
-  --on-accent:               #152116;   /* Digestate Green — text on accent fill  */
+  --on-accent:               #152116;   /* Digestate Green, text on accent fill  */
 
   /* ═══════════════════════════════════════
      SECONDARY / TERTIARY
@@ -80,8 +80,8 @@
   /* ═══════════════════════════════════════
      LEGACY ALIASES  (kept so existing call sites resolve)
   ═══════════════════════════════════════ */
-  --industrial-slate:        #152116;   /* Digestate Green — .section--slate bg    */
-  --bio-moss:                #65976A;   /* Sprout Green — eyebrow / tag / label     */
+  --industrial-slate:        #152116;   /* Digestate Green, .section--slate bg    */
+  --bio-moss:                #65976A;   /* Sprout Green, eyebrow / tag / label     */
   --circuit-blue:            #DAE1DE;   /* Clay Blue                                */
 
   /* ═══════════════════════════════════════
@@ -92,7 +92,7 @@
   --outline-cream:           rgba(21, 33, 22, 0.10);
 
   /* ═══════════════════════════════════════
-     TYPOGRAPHY  — font families
+     TYPOGRAPHY , font families
      Archivo for headlines/labels, Verdana (system) for body text.
   ═══════════════════════════════════════ */
   --font-headline: 'Archivo', Verdana, Geneva, 'DejaVu Sans', sans-serif;
@@ -107,9 +107,9 @@
   --text-display:    clamp(2.5rem, 6vw, 5.5rem);   /* section h2                */
   --text-heading:    clamp(1.75rem, 3.5vw, 3rem);  /* h3                        */
   --text-subhead:    clamp(1.25rem, 2vw, 1.875rem);/* h4 / card titles          */
-  --text-body-lg:    1.0625rem;   /* was 1.125rem — Verdana compensation */
-  --text-body:       0.9375rem;   /* was 1rem — Verdana compensation */
-  --text-sm:         0.8125rem;   /* was 0.875rem — Verdana compensation */
+  --text-body-lg:    1.0625rem;   /* was 1.125rem, Verdana compensation */
+  --text-body:       0.9375rem;   /* was 1rem, Verdana compensation */
+  --text-sm:         0.8125rem;   /* was 0.875rem, Verdana compensation */
   --text-label:      0.6875rem;   /* 11px */
 
   /* ── leading ── */
@@ -148,7 +148,7 @@
   --space-32:  8rem;      /* 128px */
 
   /* ═══════════════════════════════════════
-     BORDERS & RADIUS  (sharp — no signature pill shape)
+     BORDERS & RADIUS  (sharp, no signature pill shape)
   ═══════════════════════════════════════ */
   --radius:      0px;
 

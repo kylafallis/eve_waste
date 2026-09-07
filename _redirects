@@ -5,3 +5,9 @@
 # lands on the section it was looking for rather than a 404.
 /about.html   /platform.html#why   301
 /about        /platform.html#why   301
+
+# The pilot page is temporarily disabled while the team confirms its details and
+# data (2026-09-07). Serves the 404 page with a real 404 status rather than
+# redirecting, so the URL is not treated as permanently moved. Delete this rule
+# and the two lines in use-cases.html's <head> to bring it back.
+/use-cases.html   /404.html   404

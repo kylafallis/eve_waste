@@ -3,7 +3,7 @@
 # The CSP is allowlist-only: no 'unsafe-inline' and no 'unsafe-eval' anywhere.
 # Every external origin below is one the site actually calls. If you add a
 # provider (analytics, a new form endpoint, an embed), it will be blocked
-# silently until you add it here — check the browser console first.
+# silently until you add it here, check the browser console first.
 #
 # script-src carries one sha256 hash. That is the inline one-liner in every
 # page's <head>:
@@ -12,7 +12,7 @@
 #
 # It marks that scripting is live so the scroll-reveal styles can apply. If you
 # edit that line by even one character the hash stops matching, the script is
-# blocked, and every .fade-up section stays in its visible resting state —
+# blocked, and every .fade-up section stays in its visible resting state,
 # degraded, but never blank. Recompute with:
 #
 #     printf "%s" "document.documentElement.classList.add('js');" \
@@ -23,7 +23,7 @@
 
 /*
   # Umami is allowlisted below for Umami Cloud (cloud.umami.is). IF YOU SELF-HOST
-  # UMAMI, replace both cloud.umami.is entries with your own instance's origin —
+  # UMAMI, replace both cloud.umami.is entries with your own instance's origin,
   # the script will be blocked otherwise, silently, with only a console error.
   # style-src and font-src are 'self' only: Archivo is self-hosted from
   # assets/fonts/, so fonts.googleapis.com and fonts.gstatic.com are gone from
@@ -38,7 +38,7 @@
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
   # HSTS is deliberately short and scoped to the apex for launch. A browser that
   # sees this refuses plain HTTP for the covered hosts until it expires, and you
-  # cannot call it back — so ramp it rather than starting at a year:
+  # cannot call it back, so ramp it rather than starting at a year:
   #   1. launch at 86400 (one day), confirm every page and asset loads over HTTPS
   #   2. after a week clean, raise to 31536000
   #   3. only then add `includeSubDomains`, and only once EVERY subdomain you use

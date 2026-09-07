@@ -1,4 +1,4 @@
-/* Contact page — form handling */
+/* Contact page, form handling */
 
 const form = document.getElementById('contactForm');
 const successMsg = document.getElementById('formSuccess');
@@ -42,7 +42,7 @@ if (form) {
       });
       const data = await res.json();
 
-      // The success state appears only on a confirmed success response — never optimistically.
+      // The success state appears only on a confirmed success response, never optimistically.
       if (data.success) {
         submitBtn.style.display = 'none';
         if (successMsg) successMsg.classList.add('is-visible');

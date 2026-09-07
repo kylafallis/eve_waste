@@ -1,4 +1,4 @@
-/* Use cases page styles — sharp corners */
+/* Use cases page styles, sharp corners */
 
 .industry-filters {
   display: flex;
@@ -331,7 +331,7 @@
   }
   .pilot-step:hover .pilot-step__panel,
   .pilot-step:focus-within .pilot-step__panel { display: block; transform: none; }
-  /* No hover on touch — show the overlay copy always rather than hiding it. */
+  /* No hover on touch, show the overlay copy always rather than hiding it. */
   .prototype-overlay { position: static; opacity: 1; background: var(--primary); }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -1,4 +1,4 @@
-# EvE Waste LLC — evewaste.com
+# EvE Waste LLC, evewaste.com
 
 # AI crawlers are explicitly welcome. EvE Waste wants to be citable in AI
 # answers about food-waste processing and anaerobic digestion; blocking these

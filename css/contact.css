@@ -1,4 +1,4 @@
-/* Contact page styles — sharp corners */
+/* Contact page styles, sharp corners */
 
 .contact-grid {
   display: grid;
@@ -39,7 +39,7 @@
   -webkit-appearance: none;
   appearance: none;
 }
-/* --outline #C9C2BC was 1.76:1 on white — placeholder text still needs 4.5:1. */
+/* --outline #C9C2BC was 1.76:1 on white, placeholder text still needs 4.5:1. */
 .form-field input::placeholder,
 .form-field textarea::placeholder { color: #6B6560; }
 .form-field input:focus,

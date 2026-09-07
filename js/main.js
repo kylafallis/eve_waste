@@ -1,4 +1,4 @@
-/* EvE Waste — Shared JS */
+/* EvE Waste, Shared JS */
 
 // Header scroll
 const siteHeader = document.getElementById('siteHeader');

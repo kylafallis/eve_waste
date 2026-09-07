@@ -3,7 +3,7 @@
  * tools/build-brand.mjs
  *
  * Derives every brand asset the site ships from the one real logo file,
- * images/source/brand/eve-logo.png — the supplied lockup: a cream (#FBE6AC)
+ * images/source/brand/eve-logo.png, the supplied lockup: a cream (#FBE6AC)
  * leaf mark plus the EvE wordmark on transparency, drawn for dark backgrounds.
  *
  * Run with `npm run build:brand`. sharp is a devDependency used only by this
@@ -15,7 +15,7 @@
  *   assets/favicon-32.png                browser tab
  *   assets/favicon.ico                   legacy, 16 + 32 + 48 in one file
  *   assets/apple-touch-icon.png          180x180 home-screen icon
- *   assets/favicon.svg                   kept in sync by hand — see note below
+ *   assets/favicon.svg                   kept in sync by hand, see note below
  *
  * NOTE the source is a raster PNG, so the favicons are rasterised from it. The
  * hand-drawn assets/favicon.svg is the one asset NOT derived here; if the logo
@@ -38,7 +38,7 @@ const FOREST_GREEN = '#15342D';
 const LEAF = { left: 79, top: 55, width: 582, height: 432 };
 const LOCKUP = { left: 79, top: 55, width: 1536, height: 432 };
 
-/** Minimal ICO container wrapping PNG frames — sharp cannot write .ico itself. */
+/** Minimal ICO container wrapping PNG frames, sharp cannot write .ico itself. */
 function buildIco(frames) {
   const header = Buffer.alloc(6);
   header.writeUInt16LE(0, 0);            // reserved
@@ -88,7 +88,7 @@ for (const width of [176, 352]) {
   console.log(`Wrote ${path.relative(process.cwd(), file)}`);
 }
 
-// 2. Organization JSON-LD logo — the lockup on Forest Green, since the artwork
+// 2. Organization JSON-LD logo, the lockup on Forest Green, since the artwork
 //    is cream and would vanish on the white background a consumer may assume.
 const lockup512 = await sharp(SRC)
   .extract(LOCKUP)

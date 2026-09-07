@@ -1,4 +1,4 @@
-/* Platform page — tab switching */
+/* Platform page, tab switching */
 
 const tabs = document.querySelectorAll('.platform-tab');
 const tabContents = document.querySelectorAll('.platform-tab-content');

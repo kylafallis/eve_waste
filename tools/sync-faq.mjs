@@ -2,7 +2,7 @@
 /**
  * tools/sync-faq.mjs
  *
- * Regenerates the FAQPage JSON-LD in platform.html from the FAQ that actually
+ * Regenerates the FAQPage JSON-LD in faq.html from the FAQ that actually
  * renders on the page. Run with `npm run sync:faq` after editing any FAQ entry.
  *
  * Why this is a script and not a hand-maintained block: Google treats a FAQPage
@@ -20,8 +20,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PAGE = path.join(__dirname, '..', 'platform.html');
-const PAGE_URL = 'https://evewaste.com/platform.html';
+const PAGE = path.join(__dirname, '..', 'faq.html');
+const PAGE_URL = 'https://evewaste.com/faq.html';
 
 const ENTITIES = {
   '&mdash;': '—', '&ndash;': '–', '&middot;': '·', '&amp;': '&',
@@ -55,7 +55,7 @@ for (const [, summary, body] of page.matchAll(
 }
 
 if (entries.length === 0) {
-  console.error('No FAQ entries found in platform.html — refusing to write an empty schema.');
+  console.error('No FAQ entries found in platform.html, refusing to write an empty schema.');
   process.exit(1);
 }
 
@@ -83,5 +83,5 @@ if (!existing.test(page)) {
 page = page.replace(existing, block);
 await writeFile(PAGE, page);
 
-console.log(`Synced ${entries.length} FAQ entries into platform.html's FAQPage schema.`);
+console.log(`Synced ${entries.length} FAQ entries into faq.html's FAQPage schema.`);
 for (const e of entries) console.log(`  - ${e.question}`);

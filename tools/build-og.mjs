@@ -3,7 +3,7 @@
  * tools/build-og.mjs
  *
  * Renders the 1200x630 Open Graph card for each page family. Run with
- * `npm run build:og`. sharp is a devDependency used only by this script — the
+ * `npm run build:og`. sharp is a devDependency used only by this script, the
  * site ships the generated PNGs and gains no dependency.
  *
  * The leaf and wordmark come from the real supplied lockup

@@ -4,7 +4,7 @@
  *
  * Generates AVIF + WebP responsive variants (640/1280/1920w) for every real
  * photograph dropped in images/source/. Run locally with `npm run build:images`
- * after `npm install` — sharp is a devDependency used only by this script.
+ * after `npm install`, sharp is a devDependency used only by this script.
  * The site itself ships only the generated static image files, no dependency.
  *
  * Usage:
@@ -29,7 +29,7 @@ const WIDTHS = [640, 1280, 1920];
 const SOURCE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.tiff']);
 
 // Headshots are cropped to the 3:4 the team card renders at, rather than being
-// scaled whole, and are emitted at only two widths — the card is never wider
+// scaled whole, and are emitted at only two widths, the card is never wider
 // than ~440 CSS px. Cut-out portraits (transparent PNGs) are flattened onto
 // Forest Green so they match the monogram tiles they replace.
 const TEAM_WIDTHS = [440, 880];
@@ -134,7 +134,7 @@ async function main() {
 
     for (const width of WIDTHS) {
       if (sourceWidth && sourceWidth < width) {
-        console.log(`Skipping ${name} @ ${width}w — source is only ${sourceWidth}px wide.`);
+        console.log(`Skipping ${name} @ ${width}w, source is only ${sourceWidth}px wide.`);
         continue;
       }
 

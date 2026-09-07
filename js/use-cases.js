@@ -1,4 +1,4 @@
-/* Use cases page — industry filter */
+/* Use cases page, industry filter */
 
 const filterBtns = document.querySelectorAll('.industry-filter');
 const caseCards = document.querySelectorAll('.case-card');
@@ -22,7 +22,7 @@ filterBtns.forEach(btn => {
   });
 });
 
-// Pilot timeline — the panel is shown by CSS on :hover / :focus-within so it
+// Pilot timeline, the panel is shown by CSS on :hover / :focus-within so it
 // works with JS off. This keeps aria-expanded truthful and makes a tap toggle
 // rather than latch open on touch, where there is no hover to end.
 document.querySelectorAll('.pilot-step').forEach(step => {

@@ -3,12 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How a Pilot Works — EvE Waste</title>
-  <meta name="description" content="How an EvE Waste pilot works, and the two real prototypes we've built: the AD System and the Waste Hauling Monitor.">
+  <title>How a Pilot Works | EvE Waste</title>
+  <meta name="description" content="How an EvE Waste pilot works.">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <meta name="theme-color" content="#15342D">
+  <!-- ============================================================
+       TEMPORARILY DISABLED 2026-09-07, at Kyla's request, so the team can
+       confirm the pilot details and data before any of it is public.
+
+       The content below is intact and untouched: this page is turned off by
+       routing, not by deletion. To bring it back:
+         1. delete the robots meta and the redirect script just below
+         2. restore its entry in sitemap.xml
+         3. put "How a Pilot Works" back in the menu (see nav in any page)
+         4. remove the /use-cases.html rule from _redirects
+       ============================================================ -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Sends anyone who reaches this URL to the 404 page. _redirects serves a real
+       404 on Cloudflare Pages; this is the belt-and-braces for hosts that ignore it,
+       such as GitHub Pages. A meta refresh rather than a script, so it needs no CSP
+       hash and still works with JavaScript disabled. -->
+  <meta http-equiv="refresh" content="0; url=404.html">
   <link rel="canonical" href="https://evewaste.com/use-cases.html">
 
   <meta property="og:type" content="website">
@@ -16,7 +33,7 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://evewaste.com/use-cases.html">
   <meta property="og:title" content="How an EvE Waste pilot works">
-  <meta property="og:description" content="How an EvE Waste pilot works, and the two real prototypes we've built: the AD System and the Waste Hauling Monitor.">
+  <meta property="og:description" content="How an EvE Waste pilot works.">
   <meta property="og:image" content="https://evewaste.com/assets/og/pilots.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -24,7 +41,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@EvEWaste1">
   <meta name="twitter:title" content="How an EvE Waste pilot works">
-  <meta name="twitter:description" content="How an EvE Waste pilot works, and the two real prototypes we've built: the AD System and the Waste Hauling Monitor.">
+  <meta name="twitter:description" content="How an EvE Waste pilot works.">
   <meta name="twitter:image" content="https://evewaste.com/assets/og/pilots.png">
 
   <script type="application/ld+json">
@@ -57,10 +74,12 @@
        Without it .fade-up stays at its visible resting state. -->
   <script>document.documentElement.classList.add('js');</script>
 
+
+
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/theme.css?v=cccd288b">
-  <link rel="stylesheet" href="css/styles.css?v=453dafa2">
-  <link rel="stylesheet" href="css/use-cases.css?v=300e43a0">
+  <link rel="stylesheet" href="css/theme.css?v=b677748b">
+  <link rel="stylesheet" href="css/styles.css?v=8cd95655">
+  <link rel="stylesheet" href="css/use-cases.css?v=2e54db58">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -68,7 +87,7 @@
   <!-- ════ HEADER ════ -->
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
-      <a href="index.html" class="site-header__logo" aria-label="EvE Waste — Home">
+      <a href="index.html" class="site-header__logo" aria-label="EvE Waste home">
         <img class="logo-lockup" src="assets/eve-logo-176.png"
              srcset="assets/eve-logo-176.png 1x, assets/eve-logo-352.png 2x"
              width="176" height="50" alt="" loading="eager" decoding="async">
@@ -91,7 +110,8 @@
       <ul class="menu-overlay__links">
         <li><a href="index.html" class="menu-link">Home<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
         <li><a href="platform.html" class="menu-link">Platform<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
-        <li><a href="use-cases.html" class="menu-link">How a Pilot Works<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="built.html" class="menu-link">What We've Built<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="faq.html" class="menu-link">FAQ<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
         <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
         <li><a href="contact.html" class="menu-link">Contact<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
       </ul>
@@ -144,7 +164,7 @@
           </div>
         </div>
 
-        <p class="pilot-note fade-up">Ninety days is not a round number. A performance-based waste audit &mdash; the manual alternative &mdash; samples for 60 to 90 days. Hauling invoices run monthly, and three full cycles is the least that lets us reconcile a pattern against a contract rather than an anomaly against a month.</p>
+        <p class="pilot-note fade-up">Ninety days is not a round number. A performance-based waste audit, the manual alternative, samples for 60 to 90 days. Hauling invoices run monthly, and three full cycles is the least that lets us reconcile a pattern against a contract rather than an anomaly against a month.</p>
 
         <ol class="pilot-timeline fade-up">
           <li class="pilot-step">
@@ -170,7 +190,7 @@
             <div class="pilot-step__panel" id="pilotStep-2">
               <h3 class="pilot-step__title">Install and baseline</h3>
               <p class="pilot-step__when">Day 1 &middot; a day per container, then fourteen days</p>
-              <p>We mount an edge camera at each monitored container. Faces and plates are blurred on the device, before any image leaves the site &mdash; that is how the system is built, not a setting.</p>
+              <p>We mount an edge camera at each monitored container. Faces and plates are blurred on the device, before any image leaves the site. That is how the system is built, not a setting.</p>
               <p>The first fourteen days are a baseline. We change nothing about your service, so everything after is measured against your real starting point.</p>
               <p class="pilot-step__need"><strong>Downtime to your operation:</strong> none.</p>
             </div>
@@ -197,7 +217,7 @@
             <div class="pilot-step__panel" id="pilotStep-4">
               <h3 class="pilot-step__title">Findings and action</h3>
               <p class="pilot-step__when">Rolling, from roughly day 30</p>
-              <p>Over-servicing and under-servicing flags, right-sizing options with the dollar figure attached, and &mdash; where your contract allows it &mdash; a drafted renegotiation or fee-dispute letter grounded in your own data.</p>
+              <p>Over-servicing and under-servicing flags, right-sizing options with the dollar figure attached, and, where your contract allows it, a drafted renegotiation or fee-dispute letter grounded in your own data.</p>
               <p>Nothing is sent to your hauler without your explicit approval. You decide what to act on; we do not act on your behalf.</p>
             </div>
           </li>
@@ -210,13 +230,13 @@
             <div class="pilot-step__panel" id="pilotStep-5">
               <h3 class="pilot-step__title">Decision</h3>
               <p class="pilot-step__when">Day 90</p>
-              <p>A closeout packet: the measured record, the savings actually realised, and an honest read on whether an on-site digester makes sense for your waste stream &mdash; including if the answer is no.</p>
+              <p>A closeout packet: the measured record, the savings actually realised, and an honest read on whether an on-site digester makes sense for your waste stream, including if the answer is no.</p>
               <p>Sites where the numbers work move to a digester scoping conversation. Sites where they do not keep the data and the recommendations, and we say so plainly.</p>
             </div>
           </li>
         </ol>
 
-        <p class="pilot-phase2 fade-up">Phase&nbsp;2 &mdash; the digester deployment &mdash; is scoped only for sites where Phase&nbsp;1 shows the numbers work. We would rather tell you it doesn't than sell you one that won't pay for itself.</p>
+        <p class="pilot-phase2 fade-up">Phase&nbsp;2, the digester deployment, is scoped only for sites where Phase&nbsp;1 shows the numbers work. We would rather tell you it doesn't than sell you one that won't pay for itself.</p>
       </div>
     </section>
 
@@ -240,7 +260,7 @@
           <div class="measure-card fade-up stagger-2">
             <h3 class="measure-card__title">From your paperwork</h3>
             <ul class="measure-list">
-              <li>Hauling contract terms &mdash; disposal cost, service frequency, cancellation and auto-renewal</li>
+              <li>Hauling contract terms: disposal cost, service frequency, cancellation and auto-renewal</li>
               <li>Hauler invoices, parsed line by line into a structured ledger</li>
               <li>Tipping-ticket scale data, where the site has it</li>
             </ul>
@@ -304,11 +324,11 @@
           <h2 class="section__title">Yours, not access to ours</h2>
         </div>
         <ul class="keep-list fade-up">
-          <li>The container inventory and contract summary from the survey &mdash; yours at the end of that stage, regardless of what happens next</li>
+          <li>The container inventory and contract summary from the survey, yours at the end of that stage, regardless of what happens next</li>
           <li>A monthly report for each of the three months</li>
-          <li>Every finding, with its evidence &mdash; the claim and the frames or invoice lines that produced it</li>
+          <li>Every finding, with its evidence: the claim and the frames or invoice lines that produced it</li>
           <li>Drafted renegotiation, frequency-reduction and fee-dispute letters, ready to send under your own letterhead. Nothing sends without your click</li>
-          <li>Your data, exported, at any time and at the end &mdash; the raw record, not a summary</li>
+          <li>Your data, exported, at any time and at the end: the raw record, not a summary</li>
           <li>A written go / no-go on an on-site digester, including the reasoning if the answer is no</li>
           <li>No obligation. Phase&nbsp;1 does not commit you to Phase&nbsp;2</li>
           <li><strong>Your name stays yours.</strong> We do not publish a host's name, logo, or site details without written permission. If you would rather we never mention you, that is a normal answer and it does not change anything about the pilot</li>
@@ -320,68 +340,12 @@
       </div>
     </section>
 
-    <section class="section section--tinted" id="prototypes">
-      <div class="container">
-        <div class="section__header fade-up">
-          <span class="section__eyebrow">Section B</span>
-          <h2 class="section__title">What we've built</h2>
-        </div>
-        <div class="grid grid--2 prototypes-grid">
-          <div class="card fade-up stagger-1">
-            <!-- Hovering or focusing the figure fades a green panel over the photograph.
-                 Its copy is the specifications-on-request block from CONTENT.md §4 —
-                 no specification VALUES exist, and none are invented here. -->
-            <figure class="prototype-figure" tabindex="0">
-              <div class="prototype-photo prototype-photo--filled">
-                <picture>
-                  <source type="image/avif"
-                    srcset="images/ad-system-prototype-640.avif 640w, images/ad-system-prototype-1280.avif 1280w, images/ad-system-prototype-1920.avif 1920w"
-                    sizes="(min-width: 1025px) 44vw, 92vw">
-                  <source type="image/webp"
-                    srcset="images/ad-system-prototype-640.webp 640w, images/ad-system-prototype-1280.webp 1280w, images/ad-system-prototype-1920.webp 1920w"
-                    sizes="(min-width: 1025px) 44vw, 92vw">
-                  <img src="images/ad-system-prototype-1280.webp" width="1280" height="1707"
-                    loading="lazy" decoding="async"
-                    alt="Two EvE Waste team members in white protective suits standing on either side of the AD system prototype, a pallet-mounted tank installed outdoors.">
-                </picture>
-              </div>
-              <figcaption class="prototype-overlay">
-                <span class="prototype-overlay__eyebrow">Full specifications</span>
-                <p>Throughput, footprint, retention time, biogas yield, methane content,
-                   digestate output, utility connections, and commissioning timelines are
-                   available on request under NDA.</p>
-                <span class="prototype-overlay__cta">Request specifications &rarr;</span>
-              </figcaption>
-            </figure>
-            <h3 class="card__title">AD System Prototype</h3>
-            <!-- NEEDS INPUT: written description not yet supplied. The photograph is a real
-                 EvE Waste build photo (Drive export, Sep 2026); the alt text describes only
-                 what is visible in the frame — no throughput or performance claim is made. -->
-            <a class="prototype-link" href="contact.html?inquiry=information">Request specifications</a>
-          </div>
-
-          <div class="card fade-up stagger-2">
-            <div class="prototype-photo">
-              <!-- NEEDS INPUT: photograph of the Waste Hauling Monitor Prototype — installed, and its data output on a screen (see BUILD_BRIEF "Photography") -->
-            </div>
-            <h3 class="card__title">Waste Hauling Monitor Prototype</h3>
-            <!-- NEEDS INPUT: description not yet supplied. No hover panel on this card —
-                 there is nothing substantiated to put in it yet. -->
-          </div>
-        </div>
-
-        <div class="pilot-cta fade-up">
-          <a href="contact.html" class="btn btn--primary btn--lg">Request a pilot</a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <footer class="footer">
     <div class="footer__container">
       <div class="footer__brand">
-        <a href="index.html" class="nav__logo" aria-label="EvE Waste — Home">
+        <a href="index.html" class="nav__logo" aria-label="EvE Waste home">
           <img class="logo-lockup logo-lockup--footer" src="assets/eve-logo-176.png"
                srcset="assets/eve-logo-176.png 1x, assets/eve-logo-352.png 2x"
                width="176" height="50" alt="" loading="lazy" decoding="async">
@@ -398,14 +362,13 @@
         <div class="footer__col"><h4>Platform</h4><ul>
           <li><a href="platform.html">How It Works</a></li>
           <li><a href="platform.html#market">Market Opportunity</a></li>
-          <li><a href="platform.html#faq">FAQ</a></li>
+          <li><a href="faq.html">FAQ</a></li>
         </ul></div>
-        <div class="footer__col"><h4>Pilot Program</h4><ul>
-          <li><a href="use-cases.html">How a Pilot Works</a></li>
-          <li><a href="use-cases.html#prototypes">What We've Built</a></li>
+        <div class="footer__col"><h4>Our Work</h4><ul>
+          <li><a href="built.html">What We've Built</a></li>
+          <li><a href="platform.html#why">Why We Build</a></li>
         </ul></div>
         <div class="footer__col"><h4>Company</h4><ul>
-          <li><a href="platform.html#why">Why We Build</a></li>
           <li><a href="team.html">Meet the Team</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul></div>
@@ -417,7 +380,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=63a328bd"></script>
-  <script src="js/use-cases.js?v=2d062c6f"></script>
+  <script src="js/main.js?v=29ee826c"></script>
+  <script src="js/use-cases.js?v=64a8f416"></script>
 </body>
 </html>

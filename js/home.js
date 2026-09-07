@@ -65,7 +65,7 @@ document.querySelectorAll('.vision-value').forEach(btn => {
   });
 });
 
-// Hero canvas (disabled — background is now CSS gradient)
+// Hero canvas (disabled, background is now CSS gradient)
 const heroCanvas = document.getElementById('heroCanvas');
 if (heroCanvas) {
   const ctx = heroCanvas.getContext('2d');
@@ -153,7 +153,7 @@ if (heroCanvas) {
   draw();
 }
 
-// Stat blocks — the panel itself is shown by CSS on :hover / :focus-within so
+// Stat blocks, the panel itself is shown by CSS on :hover / :focus-within so
 // it works with JS off. This only keeps aria-expanded truthful for screen
 // readers, and makes a tap toggle rather than latch open on touch devices.
 document.querySelectorAll('.stat-block').forEach(block => {
@@ -179,7 +179,7 @@ document.querySelectorAll('.stat-block').forEach(block => {
   });
 });
 
-// "Why EvE Waste" — mark whichever pillar is nearest the middle of the viewport
+// "Why EvE Waste", mark whichever pillar is nearest the middle of the viewport
 // as active, and move the progress bar with it. Below 900px the CSS shows every
 // pillar at full contrast and ignores .is-active, so this is desktop dressing:
 // with JS off, the first pillar stays marked and the rest are still readable.

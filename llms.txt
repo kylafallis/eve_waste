@@ -22,11 +22,11 @@ with organic waste mandates.
 ## Figures, with their basis
 
 Every figure below carries the basis it rests on. None of them are measured
-customer results — EvE Waste has no clients yet.
+customer results. EvE Waste has no clients yet.
 
-- 19% — new economic value the process generates versus landfilling. Basis: modeled.
-- 15% — average annual increase in landfill tipping and hauling rates. Basis: industry data.
-- 5,000+ years — the span without an economical change in how we process waste. Basis: historical.
+- 19%: new economic value the process generates versus landfilling. Basis: modeled.
+- 15%: average annual increase in landfill tipping and hauling rates. Basis: industry data.
+- 5,000+ years: the span without an economical change in how we process waste. Basis: historical.
 
 No throughput, footprint, retention time, biogas yield, methane content,
 digestate output, utility connection or commissioning figures are published.
@@ -40,13 +40,17 @@ Accepted: all food waste. No refusal list is published.
 
 - [Home](https://evewaste.com/): positioning, the four pillars, proof figures.
 - [Platform](https://evewaste.com/platform.html): how the bio-reactor works, the market
-  case, the founding story and company values, and the FAQ.
-- [How a pilot works](https://evewaste.com/use-cases.html): the pilot program and the prototypes built to date.
+  case, the founding story and company values.
+- [What we have built](https://evewaste.com/built.html): the prototypes built to date.
+- [FAQ](https://evewaste.com/faq.html): permitting, odour, digestate, air rules, cost
+  against landfill, and what the bio-reactor accepts.
 - [Team](https://evewaste.com/team.html): Ben Rosenthal (Founder & CEO), Brenden Fowler
   (Founder & COO) and Kyla Fallis (Founder & CIO).
 - [Contact](https://evewaste.com/contact.html): the enquiry form. Replies within one week.
+- [Privacy](https://evewaste.com/privacy.html).
 
 The About page was retired on 2026-09-03; its content is on the Platform page.
+The pilot page is temporarily offline while its details are confirmed.
 
 ## Contact
 
