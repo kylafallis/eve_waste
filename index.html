@@ -62,8 +62,8 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap">
   <link rel="stylesheet" href="css/theme.css?v=cccd288b">
-  <link rel="stylesheet" href="css/styles.css?v=d2a939e5">
-  <link rel="stylesheet" href="css/home.css?v=c9d3c3fc">
+  <link rel="stylesheet" href="css/styles.css?v=eb3f79ee">
+  <link rel="stylesheet" href="css/home.css?v=088f1345">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -92,10 +92,11 @@
     aria-label="Site navigation" aria-hidden="true">
     <nav class="menu-overlay__nav" aria-label="Main navigation">
       <ul class="menu-overlay__links">
-        <li><a href="platform.html" class="menu-link">Platform<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="use-cases.html" class="menu-link">How a Pilot Works<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="about.html" class="menu-link">About<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
+        <li><a href="index.html" class="menu-link">Home<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="platform.html" class="menu-link">Platform<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="use-cases.html" class="menu-link">How a Pilot Works<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="contact.html" class="menu-link">Contact<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
       </ul>
       <div class="menu-overlay__aside">
         <a href="contact.html" class="btn btn--accent menu-cta">Request Demo</a>
@@ -139,36 +140,77 @@
           <p class="type-body-lg hero__sub">
             EvE Waste is revolutionizing the waste management industry by transforming food waste into clean energy and nutrient-rich fertilizer.
           </p>
-          <div class="hero__ctas">
-            <a href="contact.html" class="btn btn--primary btn--lg">Request a pilot</a>
-            <a href="platform.html" class="btn btn--ghost btn--lg">How it works</a>
-          </div>
+        </div>
+        <div class="hero__actions fade-up stagger-2">
+          <a href="contact.html" class="btn btn--primary btn--lg">Request a pilot</a>
+          <a href="platform.html" class="btn btn--ghost btn--lg">How it works</a>
         </div>
       </div>
+
+      <a class="hero__scroll" href="#approach">
+        <span class="hero__scroll-label">Scroll</span>
+        <span class="hero__scroll-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14"/><path d="m19 12-7 7-7-7"/>
+          </svg>
+        </span>
+      </a>
     </section>
 
     <!-- Our Approach -->
-    <section class="section intro">
+    <section class="section intro" id="approach">
       <div class="container">
         <div class="intro__grid">
-          <div class="intro__stats card card--elevated fade-up">
-            <div class="intro__stat">
-              <div class="stat__value">5,000+ yrs</div>
-              <div class="stat__label">Without an economical change in how we process waste<span class="stat__basis">Historical</span></div>
+          <!-- Each figure opens a panel giving the provenance of the number.
+               The detail copy is drawn from CONTENT.md §6b (Claims Review) and
+               says plainly what each basis label means. NEEDS REVIEW: the
+               founders may want to expand these, but nothing here may become a
+               measured or client claim until one exists. -->
+          <div class="intro__stats fade-up">
+            <div class="stat-block">
+              <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-1">
+                <span class="stat__value">5,000+ yrs</span>
+                <span class="stat__label">Without an economical change in how we process waste</span>
+                <span class="stat__basis">Historical</span>
+              </button>
+              <div class="stat-block__detail" id="statDetail-1">
+                <p>A statement about the span of human waste disposal, not a measurement of
+                   anything EvE Waste has done. It is the baseline our economics have to beat.</p>
+              </div>
             </div>
-            <div class="intro__stat">
-              <div class="stat__value">19%</div>
-              <div class="stat__label">New economic value our process generates versus landfilling<span class="stat__basis">Modeled</span></div>
+
+            <div class="stat-block">
+              <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-2">
+                <span class="stat__value">19%</span>
+                <span class="stat__label">New economic value our process generates versus landfilling</span>
+                <span class="stat__basis">Modeled</span>
+              </button>
+              <div class="stat-block__detail" id="statDetail-2">
+                <p>A projection of the value our process generates compared with landfilling the
+                   same material. It is not a client result. EvE Waste has no clients yet, and
+                   nothing on this site is published as measured until it is.</p>
+              </div>
             </div>
-            <div class="intro__stat">
-              <div class="stat__value">15%</div>
-              <div class="stat__label">Average annual increase in landfill tipping and hauling rates<span class="stat__basis">Industry data</span></div>
+
+            <div class="stat-block">
+              <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-3">
+                <span class="stat__value">15%</span>
+                <span class="stat__label">Average annual increase in landfill tipping and hauling rates</span>
+                <span class="stat__basis">Industry data</span>
+              </button>
+              <div class="stat-block__detail" id="statDetail-3">
+                <p>The rate at which landfill tipping and hauling charges rise each year, taken
+                   from published industry figures rather than our own measurements. It is why
+                   the cost case moves against landfilling every year you wait.</p>
+              </div>
             </div>
           </div>
+
           <div class="fade-up stagger-2">
             <span class="section__eyebrow">Our Approach</span>
             <h2 class="intro__headline">Unwinding single-stream waste to unlock the value in every ton</h2>
-            <a href="about.html" class="btn btn--secondary mt-32">Why We Build</a>
+            <a href="platform.html" class="btn btn--secondary mt-32">Why We Build</a>
           </div>
         </div>
       </div>
@@ -248,7 +290,8 @@
           <h4>Platform</h4>
           <ul>
             <li><a href="platform.html">How It Works</a></li>
-            <li><a href="platform.html#faq">FAQ</a></li>
+            <li><a href="platform.html#market">Market Opportunity</a></li>
+          <li><a href="platform.html#faq">FAQ</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -261,7 +304,7 @@
         <div class="footer__col">
           <h4>Company</h4>
           <ul>
-            <li><a href="about.html">About EvE</a></li>
+            <li><a href="platform.html#why">Why We Build</a></li>
             <li><a href="team.html">Meet the Team</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -275,6 +318,6 @@
   </footer>
 
   <script src="js/main.js?v=63a328bd"></script>
-  <script src="js/home.js?v=2834ec45"></script>
+  <script src="js/home.js?v=883c5033"></script>
 </body>
 </html>

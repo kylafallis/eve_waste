@@ -84,6 +84,12 @@ h1, h2, h3, h4, .type-headline-xl, .type-headline-lg {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
+/* BUGFIX: position:fixed + z-index makes .site-header its own stacking context,
+   so the z-index on .menu-toggle and .site-header__logo resolved INSIDE it —
+   the whole header sat at z-index 100, under the overlay at 200. The close X
+   and the logo were painted beneath the open menu: invisible, unclickable, no
+   way out except the Escape key. Lift the header itself while the menu is open. */
+body.menu-is-open .site-header { z-index: calc(var(--z-overlay) + 1); }
 .site-header__inner {
   display: flex;
   align-items: center;

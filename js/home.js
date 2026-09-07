@@ -152,3 +152,29 @@ if (heroCanvas) {
   createParticles();
   draw();
 }
+
+// Stat blocks — the panel itself is shown by CSS on :hover / :focus-within so
+// it works with JS off. This only keeps aria-expanded truthful for screen
+// readers, and makes a tap toggle rather than latch open on touch devices.
+document.querySelectorAll('.stat-block').forEach(block => {
+  const trigger = block.querySelector('.stat-block__trigger');
+  if (!trigger) return;
+
+  const set = open => trigger.setAttribute('aria-expanded', String(open));
+
+  block.addEventListener('mouseenter', () => set(true));
+  block.addEventListener('mouseleave', () => set(false));
+  trigger.addEventListener('focus', () => set(true));
+  trigger.addEventListener('blur', () => set(false));
+
+  // On touch there is no hover, and focus alone would leave every tapped block
+  // stuck open. Tapping an already-open block closes it.
+  trigger.addEventListener('click', () => {
+    if (trigger.getAttribute('aria-expanded') === 'true') {
+      trigger.blur();
+      set(false);
+    } else {
+      set(true);
+    }
+  });
+});

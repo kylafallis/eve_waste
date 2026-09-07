@@ -39,11 +39,14 @@ Accepted: all food waste. No refusal list is published.
 ## Pages
 
 - [Home](https://evewaste.com/): positioning, the four pillars, proof figures.
-- [Platform](https://evewaste.com/platform.html): how the bio-reactor works, FAQ, specification requests.
+- [Platform](https://evewaste.com/platform.html): how the bio-reactor works, the market
+  case, the founding story and company values, and the FAQ.
 - [How a pilot works](https://evewaste.com/use-cases.html): the pilot program and the prototypes built to date.
-- [About](https://evewaste.com/about.html): founding story and the three company values.
-- [Team](https://evewaste.com/team.html): Ben Rosenthal (Founder & CEO) and Brenden Fowler (Founder).
+- [Team](https://evewaste.com/team.html): Ben Rosenthal (Founder & CEO), Brenden Fowler
+  (Founder & COO) and Kyla Fallis (Founder & CIO).
 - [Contact](https://evewaste.com/contact.html): the enquiry form. Replies within one week.
+
+The About page was retired on 2026-09-03; its content is on the Platform page.
 
 ## Contact
 

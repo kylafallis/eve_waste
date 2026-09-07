@@ -3,206 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — EvE Waste</title>
-  <meta name="description" content="EvE Waste's purpose is a world without landfills — where every piece of waste has a destination, value, and lifecycle.">
+  <title>Redirecting to Platform — EvE Waste</title>
+  <meta name="description" content="The About page has moved. The EvE Waste founding story and values now live on the Platform page.">
+
+  <!-- The About page was retired on 2026-09-03; its founding story and the three
+       values moved to platform.html#why and platform.html#values. This stub is kept
+       so the old URL keeps working for anything already linking to it — inbound
+       links, the LinkedIn profile, printed material. _redirects issues a real 301
+       on Cloudflare Pages; this page is the fallback if that ever stops matching.
+       It carries noindex plus a canonical to the Platform page so the two are
+       never treated as duplicate content. Safe to delete once nothing links here. -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://evewaste.com/platform.html">
+  <meta http-equiv="refresh" content="0; url=platform.html">
+
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <meta name="theme-color" content="#15342D">
-  <link rel="canonical" href="https://evewaste.com/about.html">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="EvE Waste">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:url" content="https://evewaste.com/about.html">
-  <meta property="og:title" content="About EvE Waste">
-  <meta property="og:description" content="EvE Waste's purpose is a world without landfills — where every piece of waste has a destination, value, and lifecycle.">
-  <meta property="og:image" content="https://evewaste.com/assets/og/about.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="About EvE Waste — waste is not our fault, but it is our problem.">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@EvEWaste1">
-  <meta name="twitter:title" content="About EvE Waste">
-  <meta name="twitter:description" content="EvE Waste's purpose is a world without landfills — where every piece of waste has a destination, value, and lifecycle.">
-  <meta name="twitter:image" content="https://evewaste.com/assets/og/about.png">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://evewaste.com/#organization",
-    "name": "EvE Waste LLC",
-    "alternateName": "EvE Waste",
-    "url": "https://evewaste.com/",
-    "logo": "https://evewaste.com/assets/logo-512.png",
-    "description": "EvE Waste transforms food waste into clean energy and nutrient-rich fertilizer through the process of anaerobic digestion.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Columbus",
-      "addressRegion": "OH",
-      "addressCountry": "US"
-    },
-    "areaServed": { "@type": "City", "name": "Columbus, Ohio" },
-    "sameAs": [
-      "https://www.linkedin.com/company/108059157",
-      "https://www.facebook.com/EvEWasteSolutions/",
-      "https://x.com/EvEWaste1",
-      "https://www.instagram.com/evewaste"
-    ]
-  }
-  </script>
-
-  <!-- Marks that scripting is live so the scroll-reveal styles can apply.
-       Without it .fade-up stays at its visible resting state. -->
-  <script>document.documentElement.classList.add('js');</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap">
   <link rel="stylesheet" href="css/theme.css?v=cccd288b">
-  <link rel="stylesheet" href="css/styles.css?v=d2a939e5">
-  <link rel="stylesheet" href="css/about.css?v=75e3fe90">
+  <link rel="stylesheet" href="css/styles.css?v=eb3f79ee">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <!-- ════ HEADER ════ -->
-  <header class="site-header" id="siteHeader">
-    <div class="site-header__inner">
-      <a href="index.html" class="site-header__logo" aria-label="EvE Waste — Home">
-        <img class="logo-lockup" src="assets/eve-logo-176.png"
-             srcset="assets/eve-logo-176.png 1x, assets/eve-logo-352.png 2x"
-             width="176" height="50" alt="" loading="eager" decoding="async">
-      </a>
-      <button type="button" class="menu-toggle" id="menuToggle"
-        aria-expanded="false" aria-controls="menuOverlay"
-        aria-label="Open navigation menu">
-        <span class="menu-toggle__icon" aria-hidden="true">
-          <span></span><span></span>
-        </span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ════ OVERLAY MENU ════ -->
-  <div class="menu-overlay" id="menuOverlay"
-    role="dialog" aria-modal="true"
-    aria-label="Site navigation" aria-hidden="true">
-    <nav class="menu-overlay__nav" aria-label="Main navigation">
-      <ul class="menu-overlay__links">
-        <li><a href="platform.html" class="menu-link">Platform<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="use-cases.html" class="menu-link">How a Pilot Works<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="about.html" class="menu-link">About<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-      </ul>
-      <div class="menu-overlay__aside">
-        <a href="contact.html" class="btn btn--accent menu-cta">Request Demo</a>
-        <div class="menu-contact">
-          <p class="menu-contact__label">Get in touch</p>
-          <a href="contact.html" class="menu-contact__link">Contact us</a>
-        </div>
-      </div>
-    </nav>
-    <div class="menu-overlay__footer">
-      <span>&copy; 2026 EvE Waste</span>
-      <span class="menu-overlay__location">Columbus, OH</span>
-    </div>
-  </div>
-
   <main id="main" tabindex="-1">
-
-    <section class="page-hero page-hero--about">
-      <div class="container">
-        <div class="page-hero__strip">
-          <a href="index.html" class="page-hero__back">Home</a>
-          <span class="page-hero__sep">/</span>
-          <h1 class="page-hero__title">About</h1>
-        </div>
+    <section class="section text-center">
+      <div class="container container--narrow">
+        <h1 class="section__title">This page has moved</h1>
+        <p class="section__lead">Why we build EvE Waste, and what we hold to, now live on the Platform page.</p>
+        <p><a class="btn btn--primary btn--lg" href="platform.html">Go to the Platform page</a></p>
       </div>
     </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="mission-grid">
-          <div class="mission-statement fade-up">
-            <span class="section__eyebrow">Our Purpose</span>
-            <h2 class="section__title">Waste isn't waste — it's value we haven't captured yet</h2>
-          </div>
-          <div class="mission-body fade-up stagger-2">
-            <p>Most people don't think much of trash. It is just something that kind of happens and is thrown out. Buried, never to be seen again. We at EvE quickly realized that something was wrong. All of the hard work and effort to create things just to be thrown out, just so we can make them all over again. Stripping the Earth to feed this cycle simply doesn't make sense. We realize composting works, but a more industrial solution is needed to keep up with the food waste we generate. We heard the call to fill that unrelenting "hole in the ground" with a waste revolution, and that led us to develop a solution that will rid the world of trash and help everyone understand the value in waste. Waste is not our fault, but it is our problem.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--tinted">
-      <div class="container">
-        <div class="section__header fade-up">
-          <span class="section__eyebrow">Our Values</span>
-          <h2 class="section__title">What drives us</h2>
-        </div>
-        <div class="grid grid--3 values-grid">
-          <div class="value-card card fade-up stagger-1">
-            <h3 class="card__title">Maximizing Value</h3>
-            <p class="card__body">Our most important value is to maximize the value we can derive from waste products.</p>
-          </div>
-          <div class="value-card card fade-up stagger-2">
-            <h3 class="card__title">Eliminating Landfills</h3>
-            <p class="card__body">Our motivation stems from the dangerous and faulty reliance on landfills.</p>
-          </div>
-          <div class="value-card card fade-up stagger-3">
-            <h3 class="card__title">Protecting the Earth</h3>
-            <p class="card__body">By reducing reliance on landfilling through waste valorization, we protect the Earth from the harms of mismanaged waste.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEEDS INPUT: no founding date, milestones, or timeline data supplied in CONTENT.md — the invented history and Join Us CTA that lived here have been removed rather than published unverified -->
-
   </main>
-
-  <footer class="footer">
-    <div class="footer__container">
-      <div class="footer__brand">
-        <a href="index.html" class="nav__logo" aria-label="EvE Waste — Home">
-          <img class="logo-lockup logo-lockup--footer" src="assets/eve-logo-176.png"
-               srcset="assets/eve-logo-176.png 1x, assets/eve-logo-352.png 2x"
-               width="176" height="50" alt="" loading="lazy" decoding="async">
-        </a>
-        <p><em>Where every piece of waste has value.</em></p>
-        <div class="footer__social">
-          <a href="https://www.linkedin.com/company/108059157" target="_blank" rel="noopener noreferrer" aria-label="EvE Waste on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/></svg></a>
-          <a href="https://www.facebook.com/EvEWasteSolutions/" target="_blank" rel="noopener noreferrer" aria-label="EvE Waste on Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="https://x.com/EvEWaste1" target="_blank" rel="noopener noreferrer" aria-label="EvE Waste on X"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg></a>
-          <a href="https://www.instagram.com/evewaste" target="_blank" rel="noopener noreferrer" aria-label="EvE Waste on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
-        </div>
-      </div>
-      <div class="footer__links">
-        <div class="footer__col"><h4>Platform</h4><ul>
-          <li><a href="platform.html">How It Works</a></li>
-          <li><a href="platform.html#faq">FAQ</a></li>
-        </ul></div>
-        <div class="footer__col"><h4>Pilot Program</h4><ul>
-          <li><a href="use-cases.html">How a Pilot Works</a></li>
-          <li><a href="use-cases.html#prototypes">What We've Built</a></li>
-        </ul></div>
-        <div class="footer__col"><h4>Company</h4><ul>
-          <li><a href="about.html">About EvE</a></li>
-          <li><a href="team.html">Meet the Team</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul></div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p>&copy; 2026 EvE Waste LLC. All rights reserved.</p>
-      <p>Columbus, Ohio &middot; Anaerobic digestion, engineered for value.</p>
-    </div>
-  </footer>
-
-  <script src="js/main.js?v=63a328bd"></script>
-  <script src="js/about.js?v=ba9df901"></script>
 </body>
 </html>

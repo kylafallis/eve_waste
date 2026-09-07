@@ -22,7 +22,10 @@
 # not executable script, so they need no hash.
 
 /*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://script.google.com https://script.googleusercontent.com; manifest-src 'self'; upgrade-insecure-requests
+  # Umami is allowlisted below for Umami Cloud (cloud.umami.is). IF YOU SELF-HOST
+  # UMAMI, replace both cloud.umami.is entries with your own instance's origin —
+  # the script will be blocked otherwise, silently, with only a console error.
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' https://cloud.umami.is; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://script.google.com https://script.googleusercontent.com https://cloud.umami.is https://api-gateway.umami.dev; manifest-src 'self'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY

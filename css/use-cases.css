@@ -138,3 +138,202 @@
   .case-stats { grid-template-columns: 1fr; }
   .cta-split { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
 }
+
+/* --- Pilot timeline ---
+   A horizontal track of numbered dots. Hover (pointer), focus (keyboard) or tap
+   (touch) opens the panel below. Revealed with CSS so it works with JS off;
+   use-cases.js only keeps aria-expanded truthful. */
+.pilot-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+}
+/* The connecting rule, behind the dots. */
+.pilot-timeline::before {
+  content: '';
+  position: absolute;
+  top: 27px;
+  left: 10%;
+  right: 10%;
+  height: 1.5px;
+  background-color: var(--outline-variant);
+}
+.pilot-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 8px;
+}
+.pilot-step__dot {
+  position: relative;
+  z-index: 1;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1.5px solid var(--outline-variant);
+  background-color: var(--surface-container-lowest);
+  color: var(--primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base);
+}
+.pilot-step__num {
+  font-family: var(--font-headline);
+  font-size: 18px;
+  font-weight: 700;
+}
+.pilot-step__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  text-align: center;
+  transition: color var(--transition-base);
+}
+.pilot-step:hover .pilot-step__dot,
+.pilot-step:focus-within .pilot-step__dot {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--cloud-white);
+}
+.pilot-step:hover .pilot-step__label,
+.pilot-step:focus-within .pilot-step__label { color: var(--primary); }
+
+.pilot-step__panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translate(-50%, -10px);
+  width: 300px;
+  max-width: 78vw;
+  padding: 24px;
+  background-color: var(--primary);
+  color: var(--cloud-white);
+  box-shadow: var(--shadow-md);
+  z-index: 4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+}
+.pilot-step:hover .pilot-step__panel,
+.pilot-step:focus-within .pilot-step__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.pilot-step__title {
+  font-family: var(--font-headline);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cloud-white);
+  margin: 0 0 8px;
+}
+.pilot-step__panel p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.88);
+  margin: 0;
+}
+/* Reserve room for the open panel so it never overlaps what follows. */
+.pilot-timeline { margin-bottom: 210px; }
+
+/* --- Prototype photo hover panel --- */
+.prototype-figure {
+  position: relative;
+  display: block;
+  margin: 0 0 20px;
+  overflow: hidden;
+}
+.prototype-figure .prototype-photo { margin-bottom: 0; }
+.prototype-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 28px 26px;
+  background: linear-gradient(to top, rgba(21,52,45,0.97) 0%, rgba(21,52,45,0.93) 55%, rgba(21,52,45,0.82) 100%);
+  color: var(--cloud-white);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+.prototype-figure:hover .prototype-overlay,
+.prototype-figure:focus-visible .prototype-overlay,
+.prototype-figure:focus-within .prototype-overlay { opacity: 1; }
+.prototype-overlay__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--inverse-primary);
+}
+.prototype-overlay p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.92);
+  margin: 0;
+}
+.prototype-overlay__cta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--inverse-primary);
+}
+.prototype-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.pilot-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+@media (max-width: 900px) {
+  /* Stack the timeline; the panel sits under its own step. */
+  .pilot-timeline { grid-template-columns: 1fr; gap: 8px; margin-bottom: 0; }
+  .pilot-timeline::before { display: none; }
+  .pilot-step {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 0;
+    border-bottom: 1px solid var(--outline-variant);
+    padding-top: 14px;
+  }
+  .pilot-step__panel {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    box-shadow: none;
+    display: none;
+    margin-bottom: 14px;
+  }
+  .pilot-step:hover .pilot-step__panel,
+  .pilot-step:focus-within .pilot-step__panel { display: block; transform: none; }
+  /* No hover on touch — show the overlay copy always rather than hiding it. */
+  .prototype-overlay { position: static; opacity: 1; background: var(--primary); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pilot-step__panel, .prototype-overlay { transition: none; }
+  .pilot-step__panel { transform: translate(-50%, 0); }
+}

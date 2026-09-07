@@ -24,6 +24,8 @@
 ### Team emails (team page only, not footer)
 - Ben Rosenthal — ben@evewaste.com
 - Brenden Fowler — brenden@evewaste.com
+- Kyla Fallis — kylaevewaste@outlook.com (not an @evewaste.com address; set at her
+  direction 2026-09-03)
 
 ### Social links (footer)
 - LinkedIn — https://www.linkedin.com/company/108059157
@@ -94,7 +96,12 @@ Render the basis label as a small caps line beneath each stat, e.g. `MODELED`.
 
 ---
 
-## 2. About (`about.html`)
+## 2. Why We Build (now on `platform.html`)
+
+> **The About page was retired 2026-09-03.** The founding story lives at
+> `platform.html#why` and the three values at `platform.html#values`.
+> `about.html` is a noindex redirect stub and `_redirects` 301s the old URL.
+
 
 **Founding story** (use verbatim — this is founder voice, do not rewrite):
 
@@ -113,25 +120,24 @@ Render the basis label as a small caps line beneath each stat, e.g. `MODELED`.
 **Ben Rosenthal** — Founder & Chief Executive Officer — ben@evewaste.com
 > Ben Rosenthal is a sustainability entrepreneur and the Founder and Chief Executive Officer of EvE Waste. Combining an Ohio State sustainability degree, a $60,000 award for designing a campus-wide composting program, and a relentless focus on waste economics, he leads commercial strategy and growth in waste-to-value systems.
 
-**Brenden Fowler** — `NEEDS INPUT: title conflict` — brenden@evewaste.com
+**Brenden Fowler** — Founder & Chief Operating Officer — brenden@evewaste.com
 > Brenden Fowler is a serial entrepreneur and a Founder of EvE Waste. Combining an Ohio State biochemistry degree, medical research experience in San Francisco, and a drive for venture creation, he leads continuous innovation in waste-to-energy systems.
 
-> **CONFLICT — resolve before launch.** The intake sheet lists Brenden as
-> "Founder / COO" and "COO [Founder]", but his supplied bio says "Founder and Chief
-> Science Officer." Pick one. Fallback until resolved: render the title as
-> **"Founder"** only, and use the bio above with the officer title removed.
+> **RESOLVED 2026-09-03.** The intake sheet said "Founder / COO" and "COO
+> [Founder]"; his supplied bio said "Founder and Chief Science Officer." Kyla
+> settled it: **Founder & Chief Operating Officer**.
 
-**Kyla Fallis** — Co-founder & Chief Information Officer — `NEEDS INPUT: no @evewaste.com address`
-> Kyla Fallis is an engineering student at Ohio State and a researcher at NASA's Marshall Space Flight Center. She founded FairGame Initiative, which has brought science fair to more than 1,000 students, and co-founded EvE Waste, where she leads software. She has represented Ohio State at a UN climate conference and competed at ISEF.
+**Kyla Fallis** — Founder & Chief Information Officer — kylaevewaste@outlook.com
+> Kyla Fallis is a chemical engineer and published researcher, and the Founder and Chief Information Officer of EvE Waste. She leads software, owning the architecture, database schema, and eighteen-month technical roadmap for a computer-vision system that estimates how full a waste container is before a truck is dispatched. Her research runs from compost-powered microbial fuel cells to deep-sea electrochemistry, with published work on dark oxygen flux and accepted work on machine learning for tidal energy site selection. She also founded FairGame Initiative.
 
-> Source: the approved "Short — 54 words" entry in *Bio Suite — Kyla Fallis*
-> (Media Kit v1.0, August 2026), used **verbatim** as that document instructs
-> ("Use these verbatim. They are checked. Rewriting them introduces errors").
+> Rewritten 2026-09-03 at Kyla's direction to lead on research and software
+> rather than NASA, FairGame and the UN. Every fact is drawn from her own media
+> kit (*Bio Suite — Kyla Fallis*, v1.0, Aug 2026 — the "Speaker" and "Long form"
+> entries), so nothing here is unsourced, but it is **no longer one of the kit's
+> verbatim lengths**. Worth adding back into the kit as an approved variant.
 >
-> **TITLE CONFLICT — resolve before launch.** The same media kit lists her EvE
-> title as "Co-founder and Lead Software Developer." The site renders
-> "Co-founder & Chief Information Officer" per her direct instruction on
-> 2026-09-03. Pick one and make the media kit and the site agree.
+> Title: **Founder & Chief Information Officer**, per her instruction. The media
+> kit still says "Co-founder and Lead Software Developer" — update the kit.
 
 **Headshots:** supplied 2026-09-03 and now live on the page. Ben Rosenthal (cut-out,
 composited onto Forest Green), Brenden Fowler (grey studio), Kyla Fallis (NASA

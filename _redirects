@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects. One rule per line: <from> <to> <status>
+#
+# The About page was retired on 2026-09-03. Its founding story and the three
+# values moved onto the Platform page, so anything already linking to /about.html
+# lands on the section it was looking for rather than a 404.
+/about.html   /platform.html#why   301
+/about        /platform.html#why   301

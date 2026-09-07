@@ -21,3 +21,26 @@ filterBtns.forEach(btn => {
     });
   });
 });
+
+// Pilot timeline — the panel is shown by CSS on :hover / :focus-within so it
+// works with JS off. This keeps aria-expanded truthful and makes a tap toggle
+// rather than latch open on touch, where there is no hover to end.
+document.querySelectorAll('.pilot-step').forEach(step => {
+  const dot = step.querySelector('.pilot-step__dot');
+  if (!dot) return;
+
+  const set = open => dot.setAttribute('aria-expanded', String(open));
+
+  step.addEventListener('mouseenter', () => set(true));
+  step.addEventListener('mouseleave', () => set(false));
+  dot.addEventListener('focus', () => set(true));
+  dot.addEventListener('blur', () => set(false));
+  dot.addEventListener('click', () => {
+    if (dot.getAttribute('aria-expanded') === 'true') {
+      dot.blur();
+      set(false);
+    } else {
+      set(true);
+    }
+  });
+});

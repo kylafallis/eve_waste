@@ -62,8 +62,8 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap">
   <link rel="stylesheet" href="css/theme.css?v=cccd288b">
-  <link rel="stylesheet" href="css/styles.css?v=d2a939e5">
-  <link rel="stylesheet" href="css/use-cases.css?v=3f94f06d">
+  <link rel="stylesheet" href="css/styles.css?v=eb3f79ee">
+  <link rel="stylesheet" href="css/use-cases.css?v=65f523fc">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -92,10 +92,11 @@
     aria-label="Site navigation" aria-hidden="true">
     <nav class="menu-overlay__nav" aria-label="Main navigation">
       <ul class="menu-overlay__links">
-        <li><a href="platform.html" class="menu-link">Platform<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="use-cases.html" class="menu-link">How a Pilot Works<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="about.html" class="menu-link">About<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
-        <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> →</span></a></li>
+        <li><a href="index.html" class="menu-link">Home<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="platform.html" class="menu-link">Platform<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="use-cases.html" class="menu-link">How a Pilot Works<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="contact.html" class="menu-link">Contact<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
       </ul>
       <div class="menu-overlay__aside">
         <a href="contact.html" class="btn btn--accent menu-cta">Request Demo</a>
@@ -123,15 +124,75 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="pilot">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">Section A</span>
           <h2 class="section__title">How a pilot works</h2>
-          <!-- NEEDS INPUT: site count, duration, data collected, success criteria, and what the host site receives are not yet defined. -->
-          <p class="section__lead">We will scope this with you.</p>
-          <a href="contact.html" class="btn btn--primary mt-32">Request a pilot</a>
+          <p class="section__lead">Five things we settle before a unit arrives. We will scope every one of them with you.</p>
         </div>
+
+        <!-- NEEDS INPUT: the five stages below are the fields CONTENT.md §5 lists as
+             undefined — site count, duration, data collected, success criteria, and what
+             the host site receives. The structure is real; the values are not written yet.
+             Fill the <p> in each panel and delete this comment. Do not invent numbers. -->
+        <ol class="pilot-timeline fade-up">
+          <li class="pilot-step">
+            <button type="button" class="pilot-step__dot" aria-expanded="false" aria-controls="pilotStep-1">
+              <span class="pilot-step__num">1</span>
+              <span class="sr-only">Site count</span>
+            </button>
+            <span class="pilot-step__label" aria-hidden="true">Site count</span>
+            <div class="pilot-step__panel" id="pilotStep-1">
+              <h3 class="pilot-step__title">Site count</h3>
+              <p>How many sites the pilot covers. We will scope this with you.</p>
+            </div>
+          </li>
+          <li class="pilot-step">
+            <button type="button" class="pilot-step__dot" aria-expanded="false" aria-controls="pilotStep-2">
+              <span class="pilot-step__num">2</span>
+              <span class="sr-only">Duration</span>
+            </button>
+            <span class="pilot-step__label" aria-hidden="true">Duration</span>
+            <div class="pilot-step__panel" id="pilotStep-2">
+              <h3 class="pilot-step__title">Duration</h3>
+              <p>How long the unit runs on site before we review. We will scope this with you.</p>
+            </div>
+          </li>
+          <li class="pilot-step">
+            <button type="button" class="pilot-step__dot" aria-expanded="false" aria-controls="pilotStep-3">
+              <span class="pilot-step__num">3</span>
+              <span class="sr-only">Data collected</span>
+            </button>
+            <span class="pilot-step__label" aria-hidden="true">Data collected</span>
+            <div class="pilot-step__panel" id="pilotStep-3">
+              <h3 class="pilot-step__title">Data collected</h3>
+              <p>What the bio-reactor's waste tracking software records over the pilot. We will scope this with you.</p>
+            </div>
+          </li>
+          <li class="pilot-step">
+            <button type="button" class="pilot-step__dot" aria-expanded="false" aria-controls="pilotStep-4">
+              <span class="pilot-step__num">4</span>
+              <span class="sr-only">Success criteria</span>
+            </button>
+            <span class="pilot-step__label" aria-hidden="true">Success criteria</span>
+            <div class="pilot-step__panel" id="pilotStep-4">
+              <h3 class="pilot-step__title">Success criteria</h3>
+              <p>What we both agree the pilot has to show to be worth continuing. We will scope this with you.</p>
+            </div>
+          </li>
+          <li class="pilot-step">
+            <button type="button" class="pilot-step__dot" aria-expanded="false" aria-controls="pilotStep-5">
+              <span class="pilot-step__num">5</span>
+              <span class="sr-only">What you receive</span>
+            </button>
+            <span class="pilot-step__label" aria-hidden="true">What you receive</span>
+            <div class="pilot-step__panel" id="pilotStep-5">
+              <h3 class="pilot-step__title">What you receive</h3>
+              <p>What the host site gets at the end of the pilot. We will scope this with you.</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -143,33 +204,50 @@
         </div>
         <div class="grid grid--2 prototypes-grid">
           <div class="card fade-up stagger-1">
-            <div class="prototype-photo prototype-photo--filled">
-              <picture>
-                <source type="image/avif"
-                  srcset="images/ad-system-prototype-640.avif 640w, images/ad-system-prototype-1280.avif 1280w, images/ad-system-prototype-1920.avif 1920w"
-                  sizes="(min-width: 1025px) 44vw, 92vw">
-                <source type="image/webp"
-                  srcset="images/ad-system-prototype-640.webp 640w, images/ad-system-prototype-1280.webp 1280w, images/ad-system-prototype-1920.webp 1920w"
-                  sizes="(min-width: 1025px) 44vw, 92vw">
-                <img src="images/ad-system-prototype-1280.webp" width="1280" height="1707"
-                  loading="lazy" decoding="async"
-                  alt="Two EvE Waste team members in white protective suits standing on either side of the AD system prototype, a pallet-mounted tank installed outdoors.">
-              </picture>
-            </div>
+            <!-- Hovering or focusing the figure fades a green panel over the photograph.
+                 Its copy is the specifications-on-request block from CONTENT.md §4 —
+                 no specification VALUES exist, and none are invented here. -->
+            <figure class="prototype-figure" tabindex="0">
+              <div class="prototype-photo prototype-photo--filled">
+                <picture>
+                  <source type="image/avif"
+                    srcset="images/ad-system-prototype-640.avif 640w, images/ad-system-prototype-1280.avif 1280w, images/ad-system-prototype-1920.avif 1920w"
+                    sizes="(min-width: 1025px) 44vw, 92vw">
+                  <source type="image/webp"
+                    srcset="images/ad-system-prototype-640.webp 640w, images/ad-system-prototype-1280.webp 1280w, images/ad-system-prototype-1920.webp 1920w"
+                    sizes="(min-width: 1025px) 44vw, 92vw">
+                  <img src="images/ad-system-prototype-1280.webp" width="1280" height="1707"
+                    loading="lazy" decoding="async"
+                    alt="Two EvE Waste team members in white protective suits standing on either side of the AD system prototype, a pallet-mounted tank installed outdoors.">
+                </picture>
+              </div>
+              <figcaption class="prototype-overlay">
+                <span class="prototype-overlay__eyebrow">Full specifications</span>
+                <p>Throughput, footprint, retention time, biogas yield, methane content,
+                   digestate output, utility connections, and commissioning timelines are
+                   available on request under NDA.</p>
+                <span class="prototype-overlay__cta">Request specifications &rarr;</span>
+              </figcaption>
+            </figure>
             <h3 class="card__title">AD System Prototype</h3>
-            <!-- NEEDS INPUT: written description not yet supplied. The photograph above is a real
-                 EvE Waste build photo (Drive export, Sep 2026); the alt text describes only what is
-                 visible in the frame — no throughput, siting or performance claim is made. -->
-            <!-- NEEDS INPUT: detail shot still wanted per BUILD_BRIEF "Photography" — candidates
-                 staged locally in images/_candidates/ (loading-via-funnel, unit loaded on a truck). -->
+            <!-- NEEDS INPUT: written description not yet supplied. The photograph is a real
+                 EvE Waste build photo (Drive export, Sep 2026); the alt text describes only
+                 what is visible in the frame — no throughput or performance claim is made. -->
+            <a class="prototype-link" href="contact.html?inquiry=information">Request specifications</a>
           </div>
+
           <div class="card fade-up stagger-2">
             <div class="prototype-photo">
               <!-- NEEDS INPUT: photograph of the Waste Hauling Monitor Prototype — installed, and its data output on a screen (see BUILD_BRIEF "Photography") -->
             </div>
             <h3 class="card__title">Waste Hauling Monitor Prototype</h3>
-            <!-- NEEDS INPUT: description not yet supplied -->
+            <!-- NEEDS INPUT: description not yet supplied. No hover panel on this card —
+                 there is nothing substantiated to put in it yet. -->
           </div>
+        </div>
+
+        <div class="pilot-cta fade-up">
+          <a href="contact.html" class="btn btn--primary btn--lg">Request a pilot</a>
         </div>
       </div>
     </section>
@@ -195,6 +273,7 @@
       <div class="footer__links">
         <div class="footer__col"><h4>Platform</h4><ul>
           <li><a href="platform.html">How It Works</a></li>
+          <li><a href="platform.html#market">Market Opportunity</a></li>
           <li><a href="platform.html#faq">FAQ</a></li>
         </ul></div>
         <div class="footer__col"><h4>Pilot Program</h4><ul>
@@ -202,7 +281,7 @@
           <li><a href="use-cases.html#prototypes">What We've Built</a></li>
         </ul></div>
         <div class="footer__col"><h4>Company</h4><ul>
-          <li><a href="about.html">About EvE</a></li>
+          <li><a href="platform.html#why">Why We Build</a></li>
           <li><a href="team.html">Meet the Team</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul></div>
@@ -215,6 +294,6 @@
   </footer>
 
   <script src="js/main.js?v=63a328bd"></script>
-  <script src="js/use-cases.js?v=b6203f4f"></script>
+  <script src="js/use-cases.js?v=2d062c6f"></script>
 </body>
 </html>
