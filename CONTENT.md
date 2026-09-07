@@ -30,8 +30,7 @@
 ### Team emails (team page only, not footer)
 - Ben Rosenthal — ben@evewaste.com
 - Brenden Fowler — brenden@evewaste.com
-- Kyla Fallis — kylaevewaste@outlook.com (not an @evewaste.com address; set at her
-  direction 2026-09-03)
+- Kyla Fallis — kylaevewaste@outlook.com 
 
 ### Social links (footer)
 - LinkedIn — https://www.linkedin.com/company/108059157
