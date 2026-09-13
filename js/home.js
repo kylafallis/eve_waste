@@ -161,7 +161,6 @@ if (heroCanvas) {
 // Without JS the panel falls back to the full height of the column, which is the
 // stylesheet's top/bottom pair and is perfectly usable, just less precise.
 const introGrid = document.querySelector('.intro__grid');
-const introStats = document.querySelector('.intro__stats');
 const PANEL_SIDE_BY_SIDE = '(min-width: 1025px)';
 const PANEL_PROPS = ['left', 'top', 'bottom', 'height', 'min-height'];
 
@@ -175,7 +174,7 @@ document.querySelectorAll('.stat-block').forEach(block => {
   };
 
   const sizePanel = () => {
-    if (!panel || !introGrid || !introStats) return;
+    if (!panel || !introGrid) return;
 
     // Below this width the panel is static and sits under its own figure. Inline
     // geometry would out-rank the stylesheet there, so it has to be removed, not
@@ -186,12 +185,11 @@ document.querySelectorAll('.stat-block').forEach(block => {
     }
 
     const gridBox = introGrid.getBoundingClientRect();
-    const statsBox = introStats.getBoundingClientRect();
     const blockBox = block.getBoundingClientRect();
 
-    // Start where the number column actually ends rather than trusting a
-    // hard-coded 280px, and run to the container edge via right:0 in the CSS.
-    panel.style.left = `${statsBox.right - gridBox.left}px`;
+    // Keep the explanation wide enough to read instead of squeezing it beside
+    // the number column.
+    panel.style.left = '0px';
     panel.style.top = `${blockBox.top - gridBox.top}px`;
 
     // min-height, not height: the panel matches the figure it belongs to but
@@ -227,6 +225,13 @@ document.querySelectorAll('.stat-block').forEach(block => {
     else clearPanel();
   }, { passive: true });
 });
+
+const hero = document.querySelector('.hero');
+if (hero) {
+  const updateHeroFade = () => hero.classList.toggle('is-scrolling', window.scrollY > 80);
+  updateHeroFade();
+  window.addEventListener('scroll', updateHeroFade, { passive: true });
+}
 
 // "Why EvE Waste", mark whichever pillar is nearest the middle of the viewport
 // as active, and move the progress bar with it. Below 900px the CSS shows every

@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "eve_waste",
+			"path": "."
+		},
+		{
+			"name": "drive-download-20260903T165000Z-1-001",
+			"path": "../../Downloads/drive-download-20260903T165000Z-1-001"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "eve_waste"
+	}
+}
