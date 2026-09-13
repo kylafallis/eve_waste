@@ -59,8 +59,8 @@
 
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css?v=b677748b">
-  <link rel="stylesheet" href="css/styles.css?v=8cd95655">
-  <link rel="stylesheet" href="css/home.css?v=956602d3">
+  <link rel="stylesheet" href="css/styles.css?v=e6568097">
+  <link rel="stylesheet" href="css/home.css?v=7e7d856e">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -159,13 +159,19 @@
     <!-- Our Approach -->
     <section class="section intro" id="approach">
       <div class="container">
-        <div class="intro__grid">
+        <!-- The reveal animation lives on .intro__grid and nowhere inside it.
+             .intro__grid is what the stat panels position against, and a
+             transform on any element BETWEEN the grid and a panel would take
+             over as the panel's containing block and squeeze it into the figure
+             column. On the grid itself it is harmless: same element, same box.
+             Do not move fade-up back onto .intro__stats or .intro__copy. -->
+        <div class="intro__grid fade-up">
           <!-- Each figure opens a panel giving the provenance of the number.
                The detail copy is drawn from CONTENT.md §6b (Claims Review) and
                says plainly what each basis label means. NEEDS REVIEW: the
                founders may want to expand these, but nothing here may become a
                measured or client claim until one exists. -->
-          <div class="intro__stats fade-up">
+          <div class="intro__stats">
             <div class="stat-block">
               <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-1">
                 <span class="stat__value">5,000+ yrs</span>
@@ -205,7 +211,7 @@
             </div>
           </div>
 
-          <div class="intro__copy fade-up stagger-2">
+          <div class="intro__copy">
             <span class="section__eyebrow">Our Approach</span>
             <h2 class="intro__headline">Unwinding single-stream waste to unlock the value in every ton</h2>
             <a href="platform.html" class="btn btn--secondary mt-32">Why We Build</a>
@@ -376,6 +382,6 @@
   </footer>
 
   <script src="js/main.js?v=29ee826c"></script>
-  <script src="js/home.js?v=7878ad2f"></script>
+  <script src="js/home.js?v=e4f09989"></script>
 </body>
 </html>

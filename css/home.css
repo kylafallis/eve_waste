@@ -3,7 +3,12 @@
 /* --- Hero (centered, background-ready) --- */
 .hero {
   position: relative;
+  /* Full screen the moment the page opens. 100dvh is the live visible area, so
+     on a phone the photograph fills what you can actually see instead of being
+     measured against a viewport the URL bar is covering; the 100vh line above
+     is the fallback for browsers without dvh. */
   min-height: 100vh;
+  min-height: 100dvh;
   /* Fallback ground if the photograph fails to load, the headline stays white
      on dark either way. */
   background-color: #0F1A16;
@@ -50,8 +55,9 @@
   );
   pointer-events: none;
 }
-/* The fade to the page ground is short and sits right at the bottom edge, so
-   the photograph holds full strength for almost the whole viewport. */
+/* The fade to the page ground. It is OFF at rest (opacity 0) and only fades in
+   once home.js sees the page scrolled, so the first screen is photograph edge to
+   edge with no white wash at the bottom. Do not give this a starting opacity. */
 .hero::after {
   content: '';
   position: absolute;
@@ -63,6 +69,7 @@
   transition: opacity 300ms ease;
   pointer-events: none;
 }
+/* home.js adds .is-scrolling past 80px of scroll. */
 .hero.is-scrolling::after { opacity: 1; }
 
 /* Copy on the left, actions on the right. */
@@ -182,8 +189,9 @@
   border: 1px solid var(--outline-variant);
 }
 .stat-block {
-  /* Deliberately NOT positioned: the detail panel positions against
-     .intro__grid so it can span the whole right-hand side. */
+  /* Deliberately NOT positioned, so the detail panel inside it positions against
+     .intro__grid and can run the full width of the row. See the contract on
+     .stat-block__detail before adding position/transform/filter here. */
   background-color: var(--surface-container-lowest);
 }
 .stat-block__trigger {
@@ -211,11 +219,22 @@
 
 .stat-block__detail {
   position: absolute;
-  /* Keep the explanation horizontal instead of squeezing it into a side column. */
+  /* CONTAINING-BLOCK CONTRACT: left/right/top here are measured from
+     .intro__grid, the nearest ancestor that is positioned. That only holds while
+     nothing between the grid and this panel carries a transform, filter,
+     backdrop-filter, perspective or contain:paint - any one of those takes over
+     as the containing block. This is the bug that kept coming back: .intro__stats
+     had .fade-up on it, whose resting state used to be transform:translateY(0),
+     so left:0/right:0 resolved against the 280px figure column and the panel came
+     out as a tall narrow strip instead of a wide band. The reveal now lives on
+     .intro__grid itself and .fade-up rests at transform:none. */
   left: 0;
   right: 0;
   top: 0;
-  min-height: 180px;
+  /* Wide and short: the sentence gets the whole row to run along, so this is a
+     floor for the band, not a target. home.js replaces it with the height of the
+     figure being hovered. */
+  min-height: 140px;
   display: flex;
   align-items: center;
   padding: 32px 48px;

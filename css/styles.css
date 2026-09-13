@@ -601,7 +601,13 @@ body.menu-is-open { overflow: hidden; }
   transform: translateY(28px);
   transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
 }
-.js .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+/* The resting state MUST be transform:none, never translateY(0). Any transform
+   value other than none makes the element a containing block for absolutely
+   positioned descendants, so a .fade-up wrapper silently captures any panel
+   inside it that is meant to position against something further up the tree.
+   That is what pinned the Our Approach panel inside the 280px figure column
+   (it resolved left/right against .intro__stats instead of .intro__grid). */
+.js .fade-up.is-visible { opacity: 1; transform: none; }
 .js .fade-in {
   opacity: 0;
   transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1);

@@ -187,9 +187,11 @@ document.querySelectorAll('.stat-block').forEach(block => {
     const gridBox = introGrid.getBoundingClientRect();
     const blockBox = block.getBoundingClientRect();
 
-    // Keep the explanation wide enough to read instead of squeezing it beside
-    // the number column.
-    panel.style.left = '0px';
+    // Horizontal span is the stylesheet's job and only the stylesheet's: the
+    // panel is left:0/right:0 against .intro__grid, so it already runs the whole
+    // width of the row. Setting it from here as well just gave the bug two
+    // places to hide. All this does is line the band up with the figure being
+    // hovered and make sure the sentence fits.
     panel.style.top = `${blockBox.top - gridBox.top}px`;
 
     // min-height, not height: the panel matches the figure it belongs to but
@@ -226,11 +228,16 @@ document.querySelectorAll('.stat-block').forEach(block => {
   }, { passive: true });
 });
 
+// Hero bottom fade. The photograph holds the full screen until the page is
+// actually scrolled; the fade to the white section below is what .is-scrolling
+// turns on. pageshow covers a back/forward restore, where the browser puts the
+// scroll position back without ever firing a scroll event.
 const hero = document.querySelector('.hero');
 if (hero) {
   const updateHeroFade = () => hero.classList.toggle('is-scrolling', window.scrollY > 80);
   updateHeroFade();
   window.addEventListener('scroll', updateHeroFade, { passive: true });
+  window.addEventListener('pageshow', updateHeroFade);
 }
 
 // "Why EvE Waste", mark whichever pillar is nearest the middle of the viewport
