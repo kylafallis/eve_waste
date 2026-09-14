@@ -36,7 +36,7 @@
     "alternateName": "EvE Waste",
     "url": "https://evewaste.com/",
     "logo": "https://evewaste.com/assets/logo-512.png",
-    "description": "EvE Waste transforms food waste into clean energy and nutrient-rich fertilizer through the process of anaerobic digestion.",
+    "description": "EvE Waste is developing a modular bio-reactor that turns food waste into clean energy and nutrient-rich fertilizer through the process of anaerobic digestion.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Columbus",
@@ -65,10 +65,18 @@
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "What stage are you at?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EvE Waste is a development-stage company. The AD system prototype is built and has been through test runs, the bio-reactor is in its second stage of development, and the waste-tracking model is in development. We are raising a pre-seed round and applying for grants to fund that work. We have no clients yet, and nothing on this site is published as a client result. What the round funds ."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "How does your system work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our system uses the natural, microbial process of anaerobic digestion to break down food waste into digestate while producing biogas. The digestate is processed into fertilizer, and the biogas is converted into clean energy. The fertilizer is sold to agricultural and landscaping sectors, and the clean energy reduces our client's energy bill."
+          "text": "Our system uses the natural, microbial process of anaerobic digestion to break down food waste into digestate while producing biogas. The digestate is processed into fertilizer, and the biogas is converted into clean energy. The fertilizer is sold into agricultural and landscaping markets, and the clean energy offsets the host site's energy bill."
         }
       },
       {
@@ -84,7 +92,7 @@
         "name": "How does the cost compare with a landfill?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our bio-reactor processes food waste more affordably than a landfill and derives more value from it. Our process generates up to 19% in new economic value compared to landfilling. That is enough for us to pass the savings to our clients."
+          "text": "The bio-reactor we are building processes food waste for less than a landfill charges and gets more value out of it. Our modelling puts the new economic value at up to 19% against landfilling, and a host site's savings come out of that margin. The figure is modelled, not measured. No unit has run on a client site yet, so there is no client result to quote."
         }
       },
       {
@@ -92,7 +100,7 @@
         "name": "Do we get data out of it?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Our bio-reactor contains AI waste tracking software that produces waste reports. Clients use them to find additional savings upstream and to comply with organic waste mandates."
+          "text": "That is what we are building now. The waste-tracking model reads what a site throws out and turns it into a report: where the waste comes from, what it costs, and what an organic waste mandate needs to see. The model is in development, so there is no live dashboard to show you yet."
         }
       },
       {
@@ -217,7 +225,7 @@
 
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css?v=b677748b">
-  <link rel="stylesheet" href="css/styles.css?v=e6568097">
+  <link rel="stylesheet" href="css/styles.css?v=b86e4b4b">
   <link rel="stylesheet" href="css/platform.css?v=ac74b704">
 </head>
 <body>
@@ -250,12 +258,13 @@
         <li><a href="index.html" class="menu-link">Home<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
         <li><a href="platform.html" class="menu-link">Platform<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
         <li><a href="built.html" class="menu-link">What We've Built<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
+        <li><a href="investors.html" class="menu-link">Investors<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
         <li><a href="faq.html" class="menu-link">FAQ<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
         <li><a href="team.html" class="menu-link">Team<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
         <li><a href="contact.html" class="menu-link">Contact<span class="menu-link__arrow" aria-hidden="true"> &rarr;</span></a></li>
       </ul>
       <div class="menu-overlay__aside">
-        <a href="contact.html" class="btn btn--accent menu-cta">Request Demo</a>
+        <a href="contact.html" class="btn btn--accent menu-cta">Start a conversation</a>
         <div class="menu-contact">
           <p class="menu-contact__label">Get in touch</p>
           <a href="contact.html" class="menu-contact__link">Contact us</a>
@@ -290,9 +299,15 @@
              here was written for the founders. Questions they have not answered are
              listed in DECISIONS.md rather than guessed at. -->
         <div class="faq-list fade-up">
+          <!-- Stage question first: it is the question that reframes every answer under
+               it, and answering it plainly is cheaper than being caught out later. -->
+          <details class="faq-item">
+            <summary class="faq-item__question">What stage are you at?</summary>
+            <p class="faq-item__answer">EvE Waste is a development-stage company. The AD system prototype is built and has been through test runs, the bio-reactor is in its second stage of development, and the waste-tracking model is in development. We are raising a pre-seed round and applying for grants to fund that work. We have no clients yet, and nothing on this site is published as a client result. <a href="investors.html">What the round funds</a>.</p>
+          </details>
           <details class="faq-item">
             <summary class="faq-item__question">How does your system work?</summary>
-            <p class="faq-item__answer">Our system uses the natural, microbial process of anaerobic digestion to break down food waste into digestate while producing biogas. The digestate is processed into fertilizer, and the biogas is converted into clean energy. The fertilizer is sold to agricultural and landscaping sectors, and the clean energy reduces our client's energy bill.</p>
+            <p class="faq-item__answer">Our system uses the natural, microbial process of anaerobic digestion to break down food waste into digestate while producing biogas. The digestate is processed into fertilizer, and the biogas is converted into clean energy. The fertilizer is sold into agricultural and landscaping markets, and the clean energy offsets the host site's energy bill.</p>
           </details>
           <details class="faq-item">
             <summary class="faq-item__question">What can we put into it?</summary>
@@ -300,11 +315,11 @@
           </details>
           <details class="faq-item">
             <summary class="faq-item__question">How does the cost compare with a landfill?</summary>
-            <p class="faq-item__answer">Our bio-reactor processes food waste more affordably than a landfill and derives more value from it. Our process generates up to 19% in new economic value compared to landfilling. That is enough for us to pass the savings to our clients.</p>
+            <p class="faq-item__answer">The bio-reactor we are building processes food waste for less than a landfill charges and gets more value out of it. Our modelling puts the new economic value at up to 19% against landfilling, and a host site's savings come out of that margin. The figure is modelled, not measured. No unit has run on a client site yet, so there is no client result to quote.</p>
           </details>
           <details class="faq-item">
             <summary class="faq-item__question">Do we get data out of it?</summary>
-            <p class="faq-item__answer">Yes. Our bio-reactor contains AI waste tracking software that produces waste reports. Clients use them to find additional savings upstream and to comply with organic waste mandates.</p>
+            <p class="faq-item__answer">That is what we are building now. The waste-tracking model reads what a site throws out and turns it into a report: where the waste comes from, what it costs, and what an organic waste mandate needs to see. The model is in development, so there is no live dashboard to show you yet.</p>
           </details>
           <details class="faq-item">
             <summary class="faq-item__question">Can we see full specifications?</summary>
@@ -437,6 +452,7 @@
           <li><a href="platform.html#why">Why We Build</a></li>
         </ul></div>
         <div class="footer__col"><h4>Company</h4><ul>
+          <li><a href="investors.html">Investors</a></li>
           <li><a href="team.html">Meet the Team</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul></div>

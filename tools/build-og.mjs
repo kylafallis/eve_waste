@@ -39,7 +39,8 @@ const CARDS = [
   { slug: 'platform', eyebrow: 'The bio-reactor', lines: ['Waste goes in.', 'Products come out.'] },
   { slug: 'team', eyebrow: 'Team', lines: ['Meet the founders.'] },
   { slug: 'pilots', eyebrow: 'Pilot program', lines: ['How a pilot works.'] },
-  { slug: 'contact', eyebrow: 'Contact', lines: ['Build with EvE.'] }
+  { slug: 'contact', eyebrow: 'Contact', lines: ['Build with EvE.'] },
+  { slug: 'investors', eyebrow: 'Investors', lines: ['We are raising', 'a pre-seed round.'] }
 ];
 
 /** The leaf silhouette recoloured, by pairing a solid fill with the leaf's alpha. */

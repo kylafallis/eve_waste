@@ -381,6 +381,17 @@ body.menu-is-open { overflow: hidden; }
   line-height: 1.6;
   color: var(--on-surface-variant);
 }
+/* Inline call to action at the end of a card body (the Where we are status cards
+   on index.html and built.html). Shared, not page-specific: it is on both. */
+.card__link {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.card__link:hover { color: var(--primary-container); }
 
 /* --- Tags (no background, plain colored labels) --- */
 .tag {
@@ -439,6 +450,8 @@ body.menu-is-open { overflow: hidden; }
 }
 .section--dark .section__lead,
 .section--slate .section__lead { color: var(--on-primary-container); }
+
+.section__lead + .section__lead { margin-top: 18px; }
 
 .section__header { margin-bottom: 60px; }
 .section__header--centered { text-align: center; display: flex; flex-direction: column; align-items: center; }

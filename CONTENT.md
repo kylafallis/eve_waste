@@ -1,7 +1,7 @@
 # EvE Waste — Content Deck
-**Single source of truth for all site copy. Rev 2026-09-07b.**
+**Single source of truth for all site copy. Rev 2026-09-14.**
 
-> **Page map as of 2026-09-07:** index, platform, built, faq, team, contact, privacy.
+> **Page map as of 2026-09-14:** index, platform, built, investors, faq, team, contact, privacy.
 > `about.html` is a canonical stub. `use-cases.html` (the pilot) is temporarily
 > disabled and routed to 404 while the team confirms its data.
 >
@@ -25,7 +25,8 @@
 | Form recipient | ben@evewaste.com |
 | Response time promise | Within one week |
 | Positioning | **Cost first.** Sustainability is the second argument, never the first. |
-| Meta description | Revolutionizing food waste management through our bio-reactor. EvE Waste transforms food waste into clean energy and nutrient-rich fertilizer. |
+| Meta description | EvE Waste is building a modular bio-reactor that turns food waste into clean energy and nutrient-rich fertilizer. In development in Columbus, Ohio. |
+| Stage (2026-09-14) | **Development stage.** AD system prototype built and test-run. Bio-reactor in its **second stage of development**. Waste-tracking model **in development**. Raising **pre-seed**, applying for **grants**. No clients, no revenue. |
 
 ### Team emails (team page only, not footer)
 - Ben Rosenthal — ben@evewaste.com
@@ -44,6 +45,12 @@
 - Say "the process of anaerobic digestion," not "AD" on first use.
 - "Waste goes in, products come out."
 - Delete every hedge: *may help, can potentially, is designed to, aims to.*
+- **Stage honesty beats hedging (added 2026-09-14).** The company is pre-product, so
+  do not write present-tense sentences that imply units in the field, clients, or
+  revenue. Fix it by stating the stage plainly once, then writing declaratively about
+  what the system does, rather than by hedging every sentence. Never write "our
+  clients" anywhere: there are none. "Host site" is the term for whoever the unit
+  would sit with.
 - No em-dash-heavy AI cadence. Short declarative sentences.
 
 ---
@@ -53,15 +60,30 @@
 **H1 (hero headline)**
 > Putting food waste back to work.
 
-**Sub-headline**
-> EvE Waste is revolutionizing the waste management industry by transforming food waste into clean energy and nutrient-rich fertilizer.
+**Sub-headline** (rev 2026-09-14, was "is revolutionizing the waste management industry by transforming")
+> EvE Waste is building a modular bio-reactor that turns food waste into clean energy and nutrient-rich fertilizer.
 
 **Hero eyebrow**
-> Modular bio-reactors · Columbus, Ohio
+> Modular bio-reactors in development · Columbus, Ohio
 
-**Hero CTAs**
-- Primary: `Request a pilot` → contact.html
+**Hero CTAs** (rev 2026-09-14)
+- Primary: `For investors` → investors.html. The pilot page is disabled and the raise
+  is the live ask, so the hero no longer offers a pilot.
 - Secondary: `How it works` → platform.html
+
+### Where we are (section, added 2026-09-14)
+
+Sits directly under the hero, and the hero's scroll cue points at it, so the stage
+is the first thing after the headline. Three cards:
+
+| Label | Title | Body |
+|---|---|---|
+| Bio-reactor | Second stage of development | The AD system prototype is built and has been through test runs. The second stage of the build is the work in front of us now. |
+| Waste tracking | Model in development | We are developing the waste-tracking model now. It reads what a site throws out and turns it into a report a site can act on. |
+| Company | Raising a pre-seed round | We are raising pre-seed funding and applying for grants to build stage two. No clients yet, and no revenue claimed until there is. Link: `What the round funds →` investors.html |
+
+`NEEDS INPUT` on this section: what stage two delivers, and any milestone dates. Neither
+is published.
 
 ### Proof stats — READ THE WARNING
 
@@ -78,21 +100,25 @@ Render the basis label as a small caps line beneath each stat, e.g. `MODELED`.
 
 ### Four pillars
 
+> **Pillars rewritten 2026-09-14** for stage honesty. The old text claimed a
+> bio-reactor that processes waste today, savings passed to clients, and AI software
+> that exists. Prior wording is in git history if it is ever needed.
+
 **Pillar 1** — icon `pillar-revenue.svg`
 > **Transforming food waste for cost, value, and impact**
-> Our bio-reactor processes food waste more affordably than a landfill and derives more value from it. Through the process of anaerobic digestion, our system transforms food waste into clean energy and fertilizer.
+> We are building a bio-reactor that processes food waste for less than a landfill charges and gets more value out of it. Through the process of anaerobic digestion, food waste becomes clean energy and fertilizer.
 
 **Pillar 2** — icon `pillar-modularity.svg`
 > **Managing waste for less than a landfill charges**
-> Our process generates up to 19% in new economic value compared to landfilling. That is enough for us to pass the savings to our clients.
+> Our modelling puts the new economic value at up to 19% against landfilling. The savings a host site sees come out of that margin, and the figure stays labelled as modelled until a running unit can measure it.
 
 **Pillar 3** — icon `pillar-engineering.svg`
-> **First-of-its-kind waste tracking data**
-> Our bio-reactor contains AI waste tracking software that produces waste reports. Clients use them to find additional savings upstream and to comply with organic waste mandates.
+> **Waste data that comes with the unit**
+> We are developing the waste-tracking model now. It reads what a site throws out and turns it into a report: where the waste comes from, what it costs, and what an organic waste mandate needs to see.
 
 **Pillar 4** — icon `pillar-loop.svg`
 > **Doing it all while protecting the Earth**
-> Our systems put economics first and the Earth second. We retain nutrients for the next crop of food, and we create clean energy doing it.
+> The system puts economics first and the Earth second. Nutrients stay in the loop for the next crop of food, and clean energy comes out of the same process.
 
 ### Closing CTA
 > **Do you believe in a cleaner future?**
@@ -159,7 +185,12 @@ backgrounds do not match each other — see `DECISIONS.md`.
 > Waste goes in. Products come out.
 
 **How it works** (FAQ answer 1, also the page's explainer):
-> Our system uses the natural, microbial process of anaerobic digestion to break down food waste into digestate while producing biogas. The digestate is processed into fertilizer, and the biogas is converted into clean energy. The fertilizer is sold to agricultural and landscaping sectors, and the clean energy reduces our client's energy bill.
+> Our system uses the natural, microbial process of anaerobic digestion to break down food waste into digestate while producing biogas. The digestate is processed into fertilizer, and the biogas is converted into clean energy. The fertilizer is sold into agricultural and landscaping markets, and the clean energy offsets the host site's energy bill.
+
+Followed on the page by the stage note (added 2026-09-14):
+
+> **The bio-reactor is in its second stage of development.** This page describes what
+> the unit does. It is not a report on units in the field, and it does not pretend to be.
 
 ### Specifications — DO NOT BUILD A SPEC TABLE
 No specification values exist yet. Do not publish a table of "available on request"
@@ -182,6 +213,8 @@ rows. Instead render a single block:
   no yield figures at all.
 
 ### FAQ
+0. **What stage are you at?** (added 2026-09-14, rendered first)
+   > EvE Waste is a development-stage company. The AD system prototype is built and has been through test runs, the bio-reactor is in its second stage of development, and the waste-tracking model is in development. We are raising a pre-seed round and applying for grants to fund that work. We have no clients yet, and nothing on this site is published as a client result.
 1. **How does your system work?** — answer above.
 2. **What is anaerobic digestion?** — `NEEDS INPUT`. Fallback: omit this question
    rather than writing an answer on the founders' behalf. Leave an HTML comment.
@@ -241,6 +274,8 @@ for pricing". A hedge invites the question; silence lets the conversation start.
 
 **Inquiry type options — replace the existing list with exactly these:**
 - Information inquiry
+- Investor or grant inquiry *(added 2026-09-14; value `investor`, which is what
+  `investors.html` and `js/contact.js` preselect via `?inquiry=investor`)*
 - Set up a meeting
 - Sales inquiry
 - Media request
@@ -259,6 +294,34 @@ for pricing". A hedge invites the question; silence lets the conversation start.
 - The entire `<address>` block. It currently says **Canada** with bracketed
   placeholders. Replace with the single line `Columbus, Ohio`.
 - The "within 1-2 business days" promise — it contradicts the one-week promise.
+
+---
+
+## 7. Investors (`investors.html`) — added 2026-09-14
+
+A separate page rather than a section on the home page, at Kyla's direction, and in
+the main navigation. The hero's primary CTA points here.
+
+**What the page says, and why each line is allowed to be there:**
+
+| Block | Source |
+|---|---|
+| "We are raising a pre-seed round." | Kyla, 2026-09-14 |
+| Second stage of the bio-reactor, model in development | Kyla, 2026-09-14 |
+| Two prototypes | Already published on `built.html` |
+| No clients, no revenue | §6b, already the site's position |
+| 15% and 19% with basis labels | Already published on home and platform |
+| EPA 58% / 61% methane figures with sources | Already published on home and in the FAQ |
+| Founder names and titles | §3 |
+
+**Absent by decision. Do not add any of it without the founders:** round size,
+instrument, valuation, target close, committed amount, allocation percentages,
+milestone dates, grant program names, pipeline, letters of intent, throughput.
+`NEEDS INPUT` comments mark each spot in the HTML.
+
+**The CTA is `Contact the founders` → `contact.html?inquiry=investor`.** It promises a
+conversation, not a document: no deck, one-pager or data room is published here, and
+the page must not imply one is waiting.
 
 ---
 
@@ -283,3 +346,12 @@ Three problems in the supplied stats. Resolve with the founders; do not paper ov
 
 Every stat on the site renders with a basis label: `Historical`, `Modeled`,
 `Industry data`, or `Measured`. Nothing gets published as `Measured` until it is.
+
+4. **Stage claims (added 2026-09-14).** The same rule now covers verbs, not just
+   numbers. The company is pre-product: the bio-reactor is in its second stage of
+   development and the waste-tracking model is in development. Copy may say what the
+   system does as a description of the product, but it may not imply that units are
+   installed, that clients exist, or that anyone has seen a result. The stage is
+   stated on the home page, on `built.html`, on `investors.html`, in the first FAQ
+   answer, in `llms.txt` and in a note on `platform.html`, so the rest of the copy can
+   stay declarative instead of hedged.

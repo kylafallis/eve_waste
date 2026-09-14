@@ -4,8 +4,8 @@ Running list of everything the site build could not settle on its own. Updated a
 the end of each phase. Resolved items move to the log at the bottom rather than
 being deleted, so the reasoning stays findable.
 
-Last updated: 2026-09-07, after the layout round (hero panel, ledger, platform,
-nav split, em-dash sweep).
+Last updated: 2026-09-14, after the stage-honesty pass (pre-seed positioning,
+investors page, copy corrected to development stage).
 
 ---
 
@@ -186,3 +186,8 @@ alternatives are recorded here rather than lost:
 | — | FAQ and What we've built | **Now their own pages** (`faq.html`, `built.html`), both in the menu. `tools/sync-faq.mjs` follows the FAQ to its new home. |
 | — | Em-dashes | **Removed site-wide**, 71 of them, each replaced with the punctuation the sentence actually wanted rather than deleted. This matches the vocabulary rule already in CONTENT.md. |
 | — | Kyla's bio and email | **Rewritten** to lead on research and software, with FairGame in one clause and no NASA or UN. All facts still come from her own media kit. Email is now kylaevewaste@outlook.com. |
+| — | Copy claimed a product that is not built yet | **Corrected site-wide, 2026-09-14.** The company is pre-product: second-stage bio-reactor, waste-tracking model in development, raising pre-seed and applying for grants. Removed every "our clients" (there are none), the AI software described as shipped, the savings "passed to our clients", and the present-tense hero claim. Added a "Where we are" section on the home page (the hero scroll cue now lands on it), a status section on `built.html`, a stage note on `platform.html`, a first FAQ answer, and a Stage block in `llms.txt`. Approach: state the stage plainly once per page, then keep the product copy declarative, rather than hedging every sentence. |
+| — | Investors page | **Built** at `investors.html`, in the menu and the footer, and the home hero's primary CTA now points at it instead of offering a pilot (the pilot page is still disabled). Carries the raise, the stage, what the round funds, why now, the basis-label discipline as a diligence argument, and the three founders. **No round size, instrument, valuation, close date, allocation, milestone date or grant name is published** — each is a `NEEDS INPUT` comment in the HTML. The CTA promises a conversation, not a document. |
+| — | "Request Demo" and "Request a pilot" | **Retired, 2026-09-14.** Both promised something deployable. The menu CTA is now `Start a conversation` → contact, and the hero's primary is `For investors`. |
+| — | Home footer linked the disabled pilot page | **Fixed.** The "Pilot Program" column pointed at `use-cases.html`, which `_redirects` serves as a 404. It is now the same "Our Work" column the other pages carry. |
+| — | Contact inquiry types | **Five now.** `Investor or grant inquiry` added, value `investor`, preselected by `investors.html` linking `contact.html?inquiry=investor`. |
