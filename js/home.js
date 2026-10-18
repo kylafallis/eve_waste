@@ -184,17 +184,5 @@ document.querySelectorAll('.stat-block').forEach(block => {
   });
 });
 
-// Hero bottom fade. The photograph holds the full screen until the page is
-// actually scrolled; the fade to the white section below is what .is-scrolling
-// turns on. pageshow covers a back/forward restore, where the browser puts the
-// scroll position back without ever firing a scroll event.
-const hero = document.querySelector('.hero');
-if (hero) {
-  const updateHeroFade = () => hero.classList.toggle('is-scrolling', window.scrollY > 80);
-  updateHeroFade();
-  window.addEventListener('scroll', updateHeroFade, { passive: true });
-  window.addEventListener('pageshow', updateHeroFade);
-}
-
 // "Why EvE Waste" needs no script: each pillar pins with position: sticky
 // (css/home.css, .chapter).

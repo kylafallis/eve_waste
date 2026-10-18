@@ -36,16 +36,12 @@ const TEAM_WIDTHS = [440, 880];
 const TEAM_RATIO = 3 / 4;
 const FOREST_GREEN = '#15342D';
 
-// The home hero is art-directed: a 16:9 crop on desktop and a 3:4 crop on
-// handsets, so a portrait phone photo does not get gutted on a wide screen and a
-// wide crop does not get gutted on a narrow one. Emitted as two separate sets
-// and selected with <source media> in index.html.
+// The home hero shows its photograph whole, uncropped, in a 3:4 frame beside the
+// headline (css/home.css), so the source is only scaled, never cropped. Widths
+// cover the frame at 1x and 2x: it is never wider than half the screen.
 const HERO_SRC_DIR = path.join(SRC_DIR, 'hero');
 const HERO_OUT_DIR = path.join(OUT_DIR, 'hero');
-const HERO_CROPS = [
-  { suffix: 'wide', ratio: 16 / 9, widths: [1280, 1920] },
-  { suffix: 'tall', ratio: 3 / 4, widths: [640, 960] }
-];
+const HERO_WIDTHS = [640, 960, 1440];
 
 async function buildHero() {
   if (!existsSync(HERO_SRC_DIR)) return;
@@ -59,18 +55,12 @@ async function buildHero() {
     const name = path.parse(file).name;
     const inputPath = path.join(HERO_SRC_DIR, file);
 
-    for (const { suffix, ratio, widths } of HERO_CROPS) {
-      for (const width of widths) {
-        const height = Math.round(width / ratio);
-        const base = sharp(inputPath)
-          .rotate()
-          .resize(width, height, { fit: 'cover', position: sharp.strategy.attention });
-
-        const stem = path.join(HERO_OUT_DIR, `${name}-${suffix}-${width}`);
-        await base.clone().webp({ quality: 80 }).toFile(`${stem}.webp`);
-        await base.clone().avif({ quality: 58 }).toFile(`${stem}.avif`);
-        console.log(`Wrote ${path.relative(process.cwd(), stem)}.webp + .avif (${width}x${height})`);
-      }
+    for (const width of HERO_WIDTHS) {
+      const base = sharp(inputPath).rotate().resize({ width });
+      const stem = path.join(HERO_OUT_DIR, `${name}-${width}`);
+      const info = await base.clone().webp({ quality: 80 }).toFile(`${stem}.webp`);
+      await base.clone().avif({ quality: 58 }).toFile(`${stem}.avif`);
+      console.log(`Wrote ${path.relative(process.cwd(), stem)}.webp + .avif (${info.width}x${info.height})`);
     }
   }
 }

@@ -60,7 +60,7 @@
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css?v=4ede8201">
   <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
-  <link rel="stylesheet" href="css/home.css?v=99cc0b2b">
+  <link rel="stylesheet" href="css/home.css?v=cd5213c6">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -114,21 +114,19 @@
   <main id="main" tabindex="-1">
 
     <section class="hero" id="hero">
-      <!-- Art-directed: 16:9 crop on desktop, 3:4 on handsets. The source is a
-           portrait phone photo, so a single crop would be gutted at one end or
-           the other. Eager + high priority because this is the LCP element. -->
+      <!-- The photograph is shown whole, uncropped, in a 3:4 frame on the right,
+           with a light green tint and fades into the green behind the headline
+           (css/home.css). Eager + high priority because this is the LCP element. -->
       <picture class="hero__media">
-        <source media="(min-width: 769px)" type="image/avif"
-          srcset="images/hero/reactor-smoke-test-wide-1280.avif 1280w, images/hero/reactor-smoke-test-wide-1920.avif 1920w" sizes="100vw">
-        <source media="(min-width: 769px)" type="image/webp"
-          srcset="images/hero/reactor-smoke-test-wide-1280.webp 1280w, images/hero/reactor-smoke-test-wide-1920.webp 1920w" sizes="100vw">
         <source type="image/avif"
-          srcset="images/hero/reactor-smoke-test-tall-640.avif 640w, images/hero/reactor-smoke-test-tall-960.avif 960w" sizes="100vw">
+          srcset="images/hero/ad-system-loading-640.avif 640w, images/hero/ad-system-loading-960.avif 960w, images/hero/ad-system-loading-1440.avif 1440w"
+          sizes="(min-width: 901px) 50vw, 100vw">
         <source type="image/webp"
-          srcset="images/hero/reactor-smoke-test-tall-640.webp 640w, images/hero/reactor-smoke-test-tall-960.webp 960w" sizes="100vw">
-        <img src="images/hero/reactor-smoke-test-wide-1920.webp" width="1920" height="1080"
+          srcset="images/hero/ad-system-loading-640.webp 640w, images/hero/ad-system-loading-960.webp 960w, images/hero/ad-system-loading-1440.webp 1440w"
+          sizes="(min-width: 901px) 50vw, 100vw">
+        <img src="images/hero/ad-system-loading-960.webp" width="960" height="1280"
           loading="eager" fetchpriority="high" decoding="async"
-          alt="Steam rising from the open feed port on top of the EvE Waste bio-reactor during a test run.">
+          alt="Two EvE Waste team members in white protective suits loading feedstock from a bucket through a funnel into the AD system prototype.">
       </picture>
       <div class="container hero__container">
         <div class="hero__content fade-up">
@@ -444,6 +442,6 @@
   </footer>
 
   <script src="js/main.js?v=29ee826c"></script>
-  <script src="js/home.js?v=a316f432"></script>
+  <script src="js/home.js?v=8ef60f9c"></script>
 </body>
 </html>

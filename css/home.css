@@ -1,30 +1,35 @@
 /* Home page styles */
 
-/* --- Hero (centered, background-ready) --- */
+/* --- Hero: headline on green, the photograph whole beside it ---
+   The photograph sits in a 3:4 frame (its own shape, so nothing is cropped) on
+   the right edge, as tall as the screen allows but never wider than half of it.
+   A light green tint sits over it, and its left, top and bottom edges fade into
+   the Digestate Green ground, so the photo melts into the headline side rather
+   than ending on a hard line. The headline sits on solid green, not on the
+   photo, so it holds contrast whatever the photograph does. */
 .hero {
+  --hero-photo-w: min(calc(100vh * 0.75), 50vw);
+  --hero-photo-w: min(calc(100dvh * 0.75), 50vw);
   position: relative;
-  /* Full screen the moment the page opens. 100dvh is the live visible area, so
-     on a phone the photograph fills what you can actually see instead of being
-     measured against a viewport the URL bar is covering; the 100vh line above
-     is the fallback for browsers without dvh. */
   min-height: 100vh;
   min-height: 100dvh;
-  /* Fallback ground if the photograph fails to load, the headline stays white
-     on dark either way. */
-  background-color: #0F1A16;
+  background-color: var(--dark-surface-deep);
   display: flex;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
-  text-align: center;
 }
 
-/* The photograph itself. An <img> rather than a CSS background so the preload
-   scanner can find it and fetchpriority actually applies. */
+/* An <img> rather than a CSS background so the preload scanner can find it and
+   fetchpriority actually applies. */
 .hero__media {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  right: 0;
   z-index: 0;
+  display: block;
+  width: var(--hero-photo-w);
+  aspect-ratio: 3 / 4;
+  transform: translateY(-50%);
 }
 .hero__media img {
   display: block;
@@ -32,102 +37,90 @@
   height: 100%;
   object-fit: cover;
 }
-
-/* Scrim. Carries the white headline to AA over the brightest part of the
-   photograph, see the contrast note in css/styles.css. Do not lighten it
-   without re-checking. */
-.hero::before {
+/* Tint: a light wash of Sprout Green, multiplied, so whites read faintly green
+   and the blue bucket and grey sky sit closer to the palette. */
+.hero__media::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -1px;
   z-index: 1;
-  /* Horizontal, not flat: heavy where the copy sits on the left, light on the
-     right so the photograph is actually visible. Verified against the real
-     pixels, white headline clears AA across the whole copy column. Do not
-     lighten the left stops without re-checking. */
-  background: linear-gradient(
-    to right,
-    rgba(9, 18, 15, 0.86) 0%,
-    rgba(9, 18, 15, 0.80) 32%,
-    rgba(9, 18, 15, 0.62) 56%,
-    rgba(9, 18, 15, 0.34) 78%,
-    rgba(9, 18, 15, 0.30) 100%
-  );
+  background-color: var(--accent);
+  mix-blend-mode: multiply;
+  opacity: 0.28;
   pointer-events: none;
 }
-/* The fade to the page ground. It is OFF at rest (opacity 0) and only fades in
-   once home.js sees the page scrolled, so the first screen is photograph edge to
-   edge with no white wash at the bottom. Do not give this a starting opacity. */
-.hero::after {
+/* Fade: the left, top and bottom edges dissolve into the ground colour. The
+   overlays run 1px past the frame: the frame is centred with a transform, so its
+   edges can land on a half pixel and leave a light seam otherwise. */
+.hero__media::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  inset: -1px;
   z-index: 2;
-  height: 110px;
-  background: linear-gradient(to top, var(--surface) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 300ms ease;
+  background:
+    linear-gradient(to right,  rgb(21, 33, 22) 0%, rgba(21, 33, 22, 0.55) 18%, rgba(21, 33, 22, 0) 42%),
+    linear-gradient(to bottom, rgb(21, 33, 22) 0%, rgba(21, 33, 22, 0) 20%),
+    linear-gradient(to top,    rgb(21, 33, 22) 0%, rgba(21, 33, 22, 0) 18%);
   pointer-events: none;
 }
-/* home.js adds .is-scrolling past 80px of scroll. */
-.hero.is-scrolling::after { opacity: 1; }
 
-/* Copy on the left, actions on the right. */
+/* Copy on the left, clear of the photograph. Not centred in .container: the
+   right padding reserves the photo's width, the left lines up with every
+   full-bleed band below. */
 .hero__container {
   position: relative;
-  /* Above the photograph (0), the scrim (1) and the bottom fade (2). */
   z-index: 3;
-  padding-top: 120px;
-  padding-bottom: 160px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 64px;
+  max-width: none;
+  padding: 120px calc(var(--hero-photo-w) + clamp(24px, 3vw, 56px)) 150px var(--bleed-pad);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   text-align: left;
   width: 100%;
 }
 .hero__content {
   max-width: 680px;
-  text-align: left;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 .hero__eyebrow {
-  color: var(--bio-moss);
+  color: var(--inverse-primary);
   display: block;
   margin-bottom: 24px;
 }
 .hero__headline {
   color: var(--primary-fixed);
+  font-size: clamp(2.4rem, 4.8vw, 4.75rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   margin-bottom: 28px;
+  text-wrap: balance;
 }
 .hero__sub {
-  color: rgba(218,225,222,0.78);
-  max-width: 560px;
+  color: rgba(218,225,222,0.82);
+  max-width: 540px;
   margin-bottom: 0;
-  text-align: left;
 }
 .hero__actions {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 16px;
-  align-items: stretch;
-  justify-self: end;
-  min-width: 220px;
 }
 .hero__actions .btn { justify-content: center; }
 
 /* --- Scroll cue --- */
+/* Under the copy on the left, not centred: the centre of the screen is the
+   photograph's edge. */
 .hero__scroll {
   position: absolute;
   z-index: 3;
-  left: 50%;
+  left: var(--bleed-pad);
   bottom: 34px;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   text-decoration: none;
   color: rgba(238,241,240,0.82);
@@ -286,7 +279,6 @@
   .stat-block__trigger { min-height: 230px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero::after,
   .stat-block__detail { transition: none; transform: none; }
 }
 
@@ -486,35 +478,30 @@
   .ecosystem-grid { grid-template-columns: 1fr; gap: 48px; }
 }
 @media (max-width: 900px) {
-  /* Once the layout stacks, the copy spans the full width, so the horizontal
-     scrim would leave the headline sitting on the bright right-hand side of the
-     photograph (measured 2.04:1). Go back to an even vertical scrim: 5.36:1. */
-  .hero::before {
-    background: linear-gradient(
-      to bottom,
-      rgba(9, 18, 15, 0.72) 0%,
-      rgba(9, 18, 15, 0.62) 50%,
-      rgba(21, 52, 45, 0.80) 100%
-    );
+  /* Stacked: the copy first, then the photograph whole at full width (capped so
+     a tablet does not get a screen-and-a-half of photo), fading in from above. */
+  .hero { flex-direction: column; align-items: stretch; min-height: 0; }
+  .hero__container { padding: 112px var(--bleed-pad) 32px; }
+  .hero__media {
+    order: 2;
+    position: relative;
+    top: auto;
+    transform: none;
+    width: min(100%, 560px);
+    margin-inline: auto;
   }
-
-  /* Actions drop under the copy rather than being squeezed beside it. */
-  .hero__container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding-top: 120px;
-    padding-bottom: 150px;
+  /* Under the copy now: every edge fades into the ground, so the frame never
+     shows as a hard line where it stops short of the screen edge. */
+  .hero__media::after {
+    background:
+      linear-gradient(to bottom, rgb(21, 33, 22) 0%, rgba(21, 33, 22, 0) 22%),
+      linear-gradient(to top,    rgb(21, 33, 22) 0%, rgba(21, 33, 22, 0) 16%),
+      linear-gradient(to right,  rgb(21, 33, 22) 0%, rgba(21, 33, 22, 0) 10%),
+      linear-gradient(to left,   rgb(21, 33, 22) 0%, rgba(21, 33, 22, 0) 10%);
   }
-  .hero__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-self: start;
-    min-width: 0;
-  }
+  .hero__scroll { display: none; }
 }
 @media (max-width: 768px) {
-  .hero__container { padding-top: 100px; }
-  .hero__actions { width: 100%; }
   .hero__actions .btn { flex: 1 1 100%; }
 }
 

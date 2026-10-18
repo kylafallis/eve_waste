@@ -19,10 +19,13 @@ Nothing in the Drive export is identifiably this device. The card on
 ### 5. AD System Prototype — written description
 The photograph is live; the prose is not. The card shows a heading and image only.
 
-### 16. Three prototype photos staged but unplaced
-`images/_candidates/` holds `ad-system-loading.jpg`, `ad-system-transport.jpg`,
-`build-night-team.jpg`. Not committed — unplaced images are the "dead repo weight"
-this project already cleaned out once.
+### 16. Prototype photos staged but unplaced
+`images/_candidates/` holds `ad-system-transport.jpg`, `build-night-team.jpg` and,
+since 2026-10-17, the retired hero source `reactor-smoke-test.jpg`. Not committed —
+unplaced images are the "dead repo weight" this project already cleaned out once.
+(`ad-system-loading.jpg` was placed as the home hero.) The build-night photo shows
+five people, only three of them founders: the other two would need to agree before
+it is used anywhere.
 **Needed:** a placement for each, or a decision to drop them.
 
 ### 27. `assets/favicon.svg` is stale and unreferenced
@@ -162,7 +165,7 @@ alternatives are recorded here rather than lost:
 | 12 | Brenden's headshot is low resolution | **Disregarded.** 765×1024 source, slightly upscaled on retina. |
 | 13 | `Eve Background Photo.jpg` | **Rejected.** A real photograph is used instead. |
 | 14 | Real logo | **Used site-wide.** Header and footer lockup, favicon, touch icon, `.ico`, JSON-LD logo, and all six OG cards now derive from `images/source/brand/eve-logo.png` via `tools/build-brand.mjs`. |
-| 15 | Home hero | **Real photograph.** The reactor smoke test, art-directed 16:9 on desktop and 3:4 on handsets, with a scrim that holds the white headline at 5.66:1. |
+| 15 | Home hero | **Real photograph, replaced 2026-10-17.** The reactor smoke test read as a dark grey blur when cropped wide. Now the loading photo (two of the team in suits feeding the prototype), shown whole and uncropped in a 3:4 frame on the right, lightly tinted Sprout Green and faded into the Digestate Green ground; the headline sits on solid green beside it. Stacks under the copy on phones. Source in `images/source/hero/`, built uncropped at 640/960/1440 by `tools/build-images.mjs`. |
 | 17 | HEIC originals | **Disregarded.** |
 | 18 | `Bennett Dial Headshot.jpeg` | **Disregarded.** Not on the site. |
 | 24 | Newsletter | **Works.** Confirmed. |
