@@ -58,8 +58,8 @@
   <script>document.documentElement.classList.add('js');</script>
 
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/theme.css?v=b677748b">
-  <link rel="stylesheet" href="css/styles.css?v=b86e4b4b">
+  <link rel="stylesheet" href="css/theme.css?v=4ede8201">
+  <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
   <link rel="stylesheet" href="css/home.css?v=7e7d856e">
 </head>
 <body>
@@ -164,8 +164,10 @@
          company has built or something Kyla stated on 2026-09-13: second-stage
          bio-reactor, waste-tracking model in development, pre-seed raise and grant
          applications. No milestone dates, amounts or throughput figures are stated,
-         because none have been supplied. -->
-    <section class="section section--tinted" id="status">
+         because none have been supplied.
+         Rendered as the full-width stage rail (styles.css): the fill stops at the
+         last node that is under way, so the line itself states the stage. -->
+    <section class="section section--dark" id="status">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">Where we are</span>
@@ -173,30 +175,38 @@
           <p class="section__lead">EvE Waste is a development-stage company in Columbus, Ohio. We would rather
             tell you exactly where we are than imply we are further along.</p>
         </div>
-        <div class="grid grid--3">
-          <div class="card fade-up">
-            <span class="card__label">Bio-reactor</span>
-            <h3 class="card__title">Second stage of development</h3>
-            <!-- NEEDS INPUT: what stage two delivers and when. Nothing is claimed here
-                 beyond the prototype, which is photographed on built.html. -->
-            <p class="card__body">The AD system prototype is built and has been through test runs. The second
-              stage of the build is the work in front of us now.</p>
-          </div>
-          <div class="card fade-up stagger-1">
-            <span class="card__label">Waste tracking</span>
-            <h3 class="card__title">Model in development</h3>
-            <p class="card__body">We are developing the waste-tracking model now. It reads what a site throws
-              out and turns it into a report a site can act on.</p>
-          </div>
-          <div class="card fade-up stagger-2">
-            <span class="card__label">Company</span>
-            <h3 class="card__title">Raising a pre-seed round</h3>
-            <p class="card__body">We are raising pre-seed funding and applying for grants to build stage two.
-              No clients yet, and no revenue claimed until there is.
-              <a class="card__link" href="investors.html">What the round funds &rarr;</a></p>
-          </div>
-        </div>
       </div>
+      <ol class="stage-rail fade-up">
+        <li class="stage-rail__node stage-rail__node--done">
+          <span class="stage-rail__dot" aria-hidden="true"></span>
+          <span class="stage-rail__status">Built</span>
+          <h3 class="stage-rail__title">AD system prototype</h3>
+          <p class="stage-rail__body">The prototype is built and has been through test runs.</p>
+        </li>
+        <li class="stage-rail__node stage-rail__node--now">
+          <span class="stage-rail__dot" aria-hidden="true"></span>
+          <span class="stage-rail__status">In progress</span>
+          <h3 class="stage-rail__title">Bio-reactor, second stage</h3>
+          <!-- NEEDS INPUT: what stage two delivers and when. Nothing is claimed here
+               beyond the prototype, which is photographed on built.html. -->
+          <p class="stage-rail__body">The second stage of the build is the work in front of us now.</p>
+        </li>
+        <li class="stage-rail__node stage-rail__node--now">
+          <span class="stage-rail__dot" aria-hidden="true"></span>
+          <span class="stage-rail__status">In development</span>
+          <h3 class="stage-rail__title">Waste-tracking model</h3>
+          <p class="stage-rail__body">We are developing the waste-tracking model now. It reads what a site throws
+            out and turns it into a report a site can act on.</p>
+        </li>
+        <li class="stage-rail__node stage-rail__node--next">
+          <span class="stage-rail__dot" aria-hidden="true"></span>
+          <span class="stage-rail__status">Raising</span>
+          <h3 class="stage-rail__title">Pre-seed round</h3>
+          <p class="stage-rail__body">We are raising pre-seed funding and applying for grants to build stage two.
+            No clients yet, and no revenue claimed until there is.</p>
+          <a class="stage-rail__link" href="investors.html">What the round funds &rarr;</a>
+        </li>
+      </ol>
     </section>
 
     <!-- Our Approach -->

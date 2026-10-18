@@ -58,9 +58,9 @@
   <script>document.documentElement.classList.add('js');</script>
 
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/theme.css?v=b677748b">
-  <link rel="stylesheet" href="css/styles.css?v=b86e4b4b">
-  <link rel="stylesheet" href="css/team.css?v=450713cf">
+  <link rel="stylesheet" href="css/theme.css?v=4ede8201">
+  <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
+  <link rel="stylesheet" href="css/team.css?v=2fb7c7a5">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -129,13 +129,17 @@
           <span class="section__eyebrow">Leadership</span>
           <h2 class="section__title">Meet the founders</h2>
         </div>
-        <div class="team-grid grid grid--3">
+      </div>
+      <!-- Expanding panels across the full width. One founder is open at a time;
+           hover, focus or tap another to open it (js/team.js). Without JS, or on
+           phones, every panel shows its full bio. -->
+      <div class="founder-panels fade-up" id="founderPanels">
 
-          <div class="member-card card fade-up stagger-1">
+          <article class="founder-panel is-open">
             <div class="member-photo">
               <picture>
-                <source type="image/avif" srcset="images/team/ben-rosenthal-440.avif 440w, images/team/ben-rosenthal-880.avif 880w" sizes="(min-width: 769px) 30vw, 92vw">
-                <source type="image/webp" srcset="images/team/ben-rosenthal-440.webp 440w, images/team/ben-rosenthal-880.webp 880w" sizes="(min-width: 769px) 30vw, 92vw">
+                <source type="image/avif" srcset="images/team/ben-rosenthal-440.avif 440w, images/team/ben-rosenthal-880.avif 880w" sizes="(min-width: 769px) 60vw, 100vw">
+                <source type="image/webp" srcset="images/team/ben-rosenthal-440.webp 440w, images/team/ben-rosenthal-880.webp 880w" sizes="(min-width: 769px) 60vw, 100vw">
                 <img src="images/team/ben-rosenthal-440.webp" width="440" height="587"
                   loading="lazy" decoding="async" alt="Ben Rosenthal">
               </picture>
@@ -146,13 +150,13 @@
               <p class="member-bio">Ben Rosenthal is a sustainability entrepreneur and the Founder and Chief Executive Officer of EvE Waste. Combining an Ohio State sustainability degree, a $60,000 award for designing a campus-wide composting program, and a relentless focus on waste economics, he leads commercial strategy and growth in waste-to-value systems.</p>
               <a href="mailto:ben@evewaste.com" class="member-email">ben@evewaste.com</a>
             </div>
-          </div>
+          </article>
 
-          <div class="member-card card fade-up stagger-2">
+          <article class="founder-panel">
             <div class="member-photo">
               <picture>
-                <source type="image/avif" srcset="images/team/brenden-fowler-440.avif 440w, images/team/brenden-fowler-880.avif 880w" sizes="(min-width: 769px) 30vw, 92vw">
-                <source type="image/webp" srcset="images/team/brenden-fowler-440.webp 440w, images/team/brenden-fowler-880.webp 880w" sizes="(min-width: 769px) 30vw, 92vw">
+                <source type="image/avif" srcset="images/team/brenden-fowler-440.avif 440w, images/team/brenden-fowler-880.avif 880w" sizes="(min-width: 769px) 60vw, 100vw">
+                <source type="image/webp" srcset="images/team/brenden-fowler-440.webp 440w, images/team/brenden-fowler-880.webp 880w" sizes="(min-width: 769px) 60vw, 100vw">
                 <img src="images/team/brenden-fowler-440.webp" width="440" height="587"
                   loading="lazy" decoding="async" alt="Brenden Fowler">
               </picture>
@@ -163,13 +167,13 @@
               <p class="member-bio">Brenden Fowler is a serial entrepreneur and a Founder of EvE Waste. Combining an Ohio State biochemistry degree, medical research experience in San Francisco, and a drive for venture creation, he leads continuous innovation in waste-to-energy systems.</p>
               <a href="mailto:brenden@evewaste.com" class="member-email">brenden@evewaste.com</a>
             </div>
-          </div>
+          </article>
 
-          <div class="member-card card fade-up stagger-3">
+          <article class="founder-panel">
             <div class="member-photo">
               <picture>
-                <source type="image/avif" srcset="images/team/kyla-fallis-440.avif 440w, images/team/kyla-fallis-880.avif 880w" sizes="(min-width: 769px) 30vw, 92vw">
-                <source type="image/webp" srcset="images/team/kyla-fallis-440.webp 440w, images/team/kyla-fallis-880.webp 880w" sizes="(min-width: 769px) 30vw, 92vw">
+                <source type="image/avif" srcset="images/team/kyla-fallis-440.avif 440w, images/team/kyla-fallis-880.avif 880w" sizes="(min-width: 769px) 60vw, 100vw">
+                <source type="image/webp" srcset="images/team/kyla-fallis-440.webp 440w, images/team/kyla-fallis-880.webp 880w" sizes="(min-width: 769px) 60vw, 100vw">
                 <img src="images/team/kyla-fallis-440.webp" width="440" height="587"
                   loading="lazy" decoding="async" alt="Kyla Fallis">
               </picture>
@@ -183,9 +187,8 @@
               <p class="member-bio">Kyla Fallis is a chemical engineer, a published researcher, and a dirt enthusiast. She manages the software side of EvE Waste. Her research has run from compost-powered fuel cells to deep-sea electrochemistry, which is a long way of saying she has always wanted to know what happens to things after we throw them out.</p>
               <a href="mailto:kylaevewaste@outlook.com" class="member-email">kylaevewaste@outlook.com</a>
             </div>
-          </div>
+          </article>
 
-        </div>
       </div>
     </section>
 
@@ -231,6 +234,6 @@
   </footer>
 
   <script src="js/main.js?v=29ee826c"></script>
-  <script src="js/team.js?v=8519de73"></script>
+  <script src="js/team.js?v=bca8e8b5"></script>
 </body>
 </html>

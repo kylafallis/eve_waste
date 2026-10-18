@@ -207,6 +207,13 @@ body.menu-is-open .site-header { z-index: calc(var(--z-overlay) + 1); }
   flex-direction: column;
   justify-content: space-between;
   padding: 104px var(--margin-desktop) 48px;
+  /* Seven links at up to 5rem outgrow a laptop-height viewport, and the body is
+     scroll-locked while the menu is open, so the overlay scrolls on its own.
+     overscroll-behavior stops the scroll chaining to the page underneath. */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--dark-border);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-12px);
@@ -215,6 +222,10 @@ body.menu-is-open .site-header { z-index: calc(var(--z-overlay) + 1); }
     visibility var(--transition-menu),
     transform var(--transition-menu);
 }
+.menu-overlay::-webkit-scrollbar { width: 8px; }
+.menu-overlay::-webkit-scrollbar-track { background: var(--dark-border); }
+.menu-overlay::-webkit-scrollbar-thumb { background: var(--accent); }
+.menu-overlay::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
 .menu-overlay.is-open {
   opacity: 1;
   visibility: visible;
@@ -485,6 +496,124 @@ body.menu-is-open { overflow: hidden; }
   margin-top: 4px;
 }
 .section--dark .stat__basis { color: var(--on-primary-container); }
+
+/* A section whose last child is a full-bleed band ends on that band, rather
+   than on a strip of empty padding under it. */
+.section--flush-end { padding-bottom: 0; }
+
+/* --- Stage rail (Where we are, home + built) ---
+   A full-width track that fills up to where the company actually is. Node
+   states: --done (filled dot), --now (half dot), --next (hollow dot). The
+   segment leaving a node is filled when the node after it is done or under
+   way, so the fill always stops at the last --now node.
+   Horizontal from 769px, vertical below it. */
+.stage-rail {
+  --rail-gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--bleed-pad);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--rail-gap);
+  position: relative;
+}
+.stage-rail::before,
+.stage-rail::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  height: 2px;
+  left: 0;
+}
+.stage-rail::before { right: 0; background: var(--dark-border); }
+.stage-rail::after { width: var(--bleed-pad); background: var(--accent); }
+.stage-rail__node {
+  position: relative;
+  padding-top: 44px;
+  min-width: 0;
+}
+.stage-rail__node:has(+ .stage-rail__node--done)::before,
+.stage-rail__node:has(+ .stage-rail__node--now)::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: calc(100% + var(--rail-gap));
+  height: 2px;
+  background: var(--accent);
+}
+.stage-rail__dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent);
+  background: var(--dark-surface);
+}
+.stage-rail__node--done .stage-rail__dot { background: var(--accent); }
+.stage-rail__node--now .stage-rail__dot {
+  background: linear-gradient(90deg, var(--accent) 50%, var(--dark-surface) 50%);
+}
+.stage-rail__node--next .stage-rail__dot { border-color: var(--on-dark-dim); }
+.stage-rail__status {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--inverse-primary);
+  margin-bottom: 8px;
+}
+.stage-rail__node--next .stage-rail__status { color: var(--on-dark-dim); }
+.stage-rail__title {
+  font-family: var(--font-headline);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--primary-fixed);
+  margin-bottom: 10px;
+}
+.stage-rail__body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--on-primary-container);
+}
+.stage-rail__link {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--inverse-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.stage-rail__link:hover { color: var(--on-dark); }
+.stage-rail :focus-visible { outline-color: var(--inverse-primary); }
+@media (max-width: 1024px) {
+  .stage-rail { --rail-gap: 24px; }
+}
+@media (max-width: 768px) {
+  .stage-rail { grid-template-columns: 1fr; --rail-gap: 36px; }
+  .stage-rail::before,
+  .stage-rail::after {
+    top: 0;
+    bottom: 0;
+    left: calc(var(--bleed-pad) + 9px);
+    width: 2px;
+    height: auto;
+  }
+  .stage-rail::after { display: none; }
+  .stage-rail__node { padding-top: 0; padding-left: 44px; }
+  .stage-rail__node:has(+ .stage-rail__node--done)::before,
+  .stage-rail__node:has(+ .stage-rail__node--now)::before {
+    top: 0;
+    left: 9px;
+    width: 2px;
+    height: calc(100% + var(--rail-gap));
+  }
+}
 
 /* --- Icon box (sharp corners) --- */
 .icon-box {

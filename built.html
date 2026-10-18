@@ -58,10 +58,10 @@
   <script>document.documentElement.classList.add('js');</script>
 
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/theme.css?v=b677748b">
-  <link rel="stylesheet" href="css/styles.css?v=b86e4b4b">
-  <link rel="stylesheet" href="css/use-cases.css?v=2e54db58">
-  <link rel="stylesheet" href="css/investors.css?v=e2270e35">
+  <link rel="stylesheet" href="css/theme.css?v=4ede8201">
+  <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
+  <link rel="stylesheet" href="css/use-cases.css?v=110a9caa">
+  <link rel="stylesheet" href="css/investors.css?v=bc5b23f5">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -128,7 +128,7 @@
          rather than only "what do you have a photo of". Every line is either a built
          artefact or a stage statement from Kyla: second-stage bio-reactor, model in
          development, pre-seed raise, grant applications. No milestone dates. -->
-    <section class="section section--tinted" id="status">
+    <section class="section section--dark" id="status">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">Where we are</span>
@@ -137,82 +137,100 @@
             Where a description is missing, it is missing because the detail has not been written down yet.
             A photograph of a real unit is worth more than a rendering of a finished one.</p>
         </div>
-        <div class="grid grid--3">
-          <div class="card fade-up">
-            <span class="card__label">Built</span>
-            <h3 class="card__title">Two prototypes</h3>
-            <p class="card__body">The AD system prototype, below, and the waste hauling monitor prototype.
-              The AD system has been through test runs.</p>
-          </div>
-          <div class="card fade-up stagger-1">
-            <span class="card__label">In development</span>
-            <h3 class="card__title">Stage two, and the model</h3>
-            <!-- NEEDS INPUT: what stage two delivers, and the milestones either side of
-                 it. Stated here only as the stage itself, which is what we were told. -->
-            <p class="card__body">The bio-reactor is in its second stage of development. The waste-tracking
-              model is being developed alongside it.</p>
-          </div>
-          <div class="card fade-up stagger-2">
-            <span class="card__label">Funding</span>
-            <h3 class="card__title">Pre-seed and grants</h3>
-            <p class="card__body">We are raising a pre-seed round and applying for grants to pay for that
-              work. <a class="card__link" href="investors.html">What the round funds &rarr;</a></p>
-          </div>
-        </div>
       </div>
+      <!-- Same stage rail as the home page (styles.css). -->
+      <ol class="stage-rail fade-up">
+        <li class="stage-rail__node stage-rail__node--done">
+          <span class="stage-rail__dot" aria-hidden="true"></span>
+          <span class="stage-rail__status">Built</span>
+          <h3 class="stage-rail__title">Two prototypes</h3>
+          <p class="stage-rail__body">The AD system prototype, below, and the waste hauling monitor prototype.
+            The AD system has been through test runs.</p>
+        </li>
+        <li class="stage-rail__node stage-rail__node--now">
+          <span class="stage-rail__dot" aria-hidden="true"></span>
+          <span class="stage-rail__status">In development</span>
+          <h3 class="stage-rail__title">Bio-reactor, stage two</h3>
+          <!-- NEEDS INPUT: what stage two delivers, and the milestones either side of
+               it. Stated here only as the stage itself, which is what we were told. -->
+          <p class="stage-rail__body">The bio-reactor is in its second stage of development.</p>
+        </li>
+        <li class="stage-rail__node stage-rail__node--now">
+          <span class="stage-rail__dot" aria-hidden="true"></span>
+          <span class="stage-rail__status">In development</span>
+          <h3 class="stage-rail__title">Waste-tracking model</h3>
+          <p class="stage-rail__body">The waste-tracking model is being developed alongside it.</p>
+        </li>
+        <li class="stage-rail__node stage-rail__node--next">
+          <span class="stage-rail__dot" aria-hidden="true"></span>
+          <span class="stage-rail__status">Funding</span>
+          <h3 class="stage-rail__title">Pre-seed and grants</h3>
+          <p class="stage-rail__body">We are raising a pre-seed round and applying for grants to pay for that
+            work.</p>
+          <a class="stage-rail__link" href="investors.html">What the round funds &rarr;</a>
+        </li>
+      </ol>
     </section>
 
-    <section class="section" id="prototypes">
+    <!-- Full-bleed bands: each photo runs to the screen edge and the sides swap
+         band to band. The monitor has no photograph yet, so its frame is a
+         deliberate hatched panel rather than an empty box. -->
+    <section class="section section--flush-end" id="prototypes">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">Prototypes</span>
           <h2 class="section__title">What we've built</h2>
         </div>
-        <div class="grid grid--2 prototypes-grid">
-          <div class="card fade-up stagger-1">
-            <!-- Hovering or focusing the figure fades a green panel over the photograph.
-                 Its copy is the specifications-on-request block from CONTENT.md §4,
-                 no specification VALUES exist, and none are invented here. -->
-            <figure class="prototype-figure" tabindex="0">
-              <div class="prototype-photo prototype-photo--filled">
-                <picture>
-                  <source type="image/avif"
-                    srcset="images/ad-system-prototype-640.avif 640w, images/ad-system-prototype-1280.avif 1280w, images/ad-system-prototype-1920.avif 1920w"
-                    sizes="(min-width: 1025px) 44vw, 92vw">
-                  <source type="image/webp"
-                    srcset="images/ad-system-prototype-640.webp 640w, images/ad-system-prototype-1280.webp 1280w, images/ad-system-prototype-1920.webp 1920w"
-                    sizes="(min-width: 1025px) 44vw, 92vw">
-                  <img src="images/ad-system-prototype-1280.webp" width="1280" height="1707"
-                    loading="lazy" decoding="async"
-                    alt="Two EvE Waste team members in white protective suits standing on either side of the AD system prototype, a pallet-mounted tank installed outdoors.">
-                </picture>
-              </div>
-              <figcaption class="prototype-overlay">
-                <span class="prototype-overlay__eyebrow">Full specifications</span>
-                <p>Throughput, footprint, retention time, biogas yield, methane content,
-                   digestate output, utility connections, and commissioning timelines are
-                   available on request under NDA.</p>
-                <span class="prototype-overlay__cta">Request specifications &rarr;</span>
-              </figcaption>
-            </figure>
-            <h3 class="card__title">AD System Prototype</h3>
-            <!-- NEEDS INPUT: written description not yet supplied. The photograph is a real
-                 EvE Waste build photo (Drive export, Sep 2026); the alt text describes only
-                 what is visible in the frame, no throughput or performance claim is made. -->
-            <a class="prototype-link" href="contact.html?inquiry=information">Request specifications</a>
-          </div>
-
-          <div class="card fade-up stagger-2">
-            <div class="prototype-photo">
-              <!-- NEEDS INPUT: photograph of the Waste Hauling Monitor Prototype, installed, and its data output on a screen (see BUILD_BRIEF "Photography") -->
-            </div>
-            <h3 class="card__title">Waste Hauling Monitor Prototype</h3>
-            <!-- NEEDS INPUT: description not yet supplied. No hover panel on this card,
-                 there is nothing substantiated to put in it yet. -->
-          </div>
-        </div>
-
       </div>
+
+      <article class="proto-band fade-up">
+        <!-- Hovering or focusing the figure fades a green panel over the photograph.
+             Its copy is the specifications-on-request block from CONTENT.md §4,
+             no specification VALUES exist, and none are invented here. -->
+        <figure class="prototype-figure proto-band__media" tabindex="0">
+          <div class="prototype-photo prototype-photo--filled">
+            <picture>
+              <source type="image/avif"
+                srcset="images/ad-system-prototype-640.avif 640w, images/ad-system-prototype-1280.avif 1280w, images/ad-system-prototype-1920.avif 1920w"
+                sizes="(min-width: 769px) 45vw, 100vw">
+              <source type="image/webp"
+                srcset="images/ad-system-prototype-640.webp 640w, images/ad-system-prototype-1280.webp 1280w, images/ad-system-prototype-1920.webp 1920w"
+                sizes="(min-width: 769px) 45vw, 100vw">
+              <img src="images/ad-system-prototype-1280.webp" width="1280" height="1707"
+                loading="lazy" decoding="async"
+                alt="Two EvE Waste team members in white protective suits standing on either side of the AD system prototype, a pallet-mounted tank installed outdoors.">
+            </picture>
+          </div>
+          <figcaption class="prototype-overlay">
+            <span class="prototype-overlay__eyebrow">Full specifications</span>
+            <p>Throughput, footprint, retention time, biogas yield, methane content,
+               digestate output, utility connections, and commissioning timelines are
+               available on request under NDA.</p>
+            <span class="prototype-overlay__cta">Request specifications &rarr;</span>
+          </figcaption>
+        </figure>
+        <div class="proto-band__text">
+          <span class="section__eyebrow">Built and test-run</span>
+          <h3 class="proto-band__title">AD System Prototype</h3>
+          <!-- NEEDS INPUT: written description not yet supplied. The photograph is a real
+               EvE Waste build photo (Drive export, Sep 2026); the alt text describes only
+               what is visible in the frame, no throughput or performance claim is made. -->
+          <a class="prototype-link" href="contact.html?inquiry=information">Request specifications</a>
+        </div>
+      </article>
+
+      <article class="proto-band proto-band--flip fade-up">
+        <div class="proto-band__media proto-band__pending">
+          <!-- NEEDS INPUT: photograph of the Waste Hauling Monitor Prototype, installed, and its data output on a screen (see BUILD_BRIEF "Photography") -->
+          <span class="proto-band__pending-label">Photograph to come</span>
+        </div>
+        <div class="proto-band__text">
+          <span class="section__eyebrow">Built</span>
+          <h3 class="proto-band__title">Waste Hauling Monitor Prototype</h3>
+          <!-- NEEDS INPUT: description not yet supplied. No hover panel on this band,
+               there is nothing substantiated to put in it yet. -->
+        </div>
+      </article>
     </section>
 
     <section class="section section--dark">

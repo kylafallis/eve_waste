@@ -301,6 +301,80 @@
   color: var(--primary);
 }
 
+/* --- Prototype bands (built.html) ---
+   Photo to one screen edge, text to the other, sides swapping band to band.
+   The photography is portrait, so the media column stays the narrower one and
+   the band height is capped; object-fit trims only a little top and bottom. */
+.proto-band {
+  display: grid;
+  grid-template-columns: 45fr 55fr;
+  height: clamp(460px, 68vh, 720px);
+}
+.proto-band--flip { grid-template-columns: 55fr 45fr; }
+.proto-band--flip .proto-band__media { order: 2; }
+.proto-band__media {
+  height: 100%;
+  min-width: 0;
+}
+.proto-band .prototype-figure { margin: 0; }
+.proto-band .prototype-photo {
+  aspect-ratio: auto;
+  height: 100%;
+  margin: 0;
+  border: 0;
+}
+.proto-band__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+  padding: 48px var(--bleed-pad) 48px clamp(32px, 5vw, 80px);
+  background-color: var(--surface-container-lowest);
+}
+.proto-band--flip .proto-band__text {
+  padding: 48px clamp(32px, 5vw, 80px) 48px var(--bleed-pad);
+  background-color: var(--surface-container-low);
+}
+.proto-band__title {
+  font-family: var(--font-headline);
+  font-size: var(--text-heading);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+/* No photograph yet: a hatched frame that reads as pending, not as broken. */
+.proto-band__pending {
+  position: relative;
+  background: repeating-linear-gradient(-45deg,
+    var(--surface-container) 0 14px,
+    var(--surface-container-low) 14px 28px);
+}
+.proto-band__pending-label {
+  position: absolute;
+  left: clamp(20px, 3vw, 40px);
+  bottom: clamp(20px, 3vw, 40px);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bio-moss);
+}
+@media (max-width: 900px) {
+  .proto-band,
+  .proto-band--flip { grid-template-columns: 1fr; height: auto; }
+  .proto-band--flip .proto-band__media { order: 0; }
+  .proto-band .prototype-photo { aspect-ratio: 1 / 1; height: auto; }
+  .proto-band__pending { aspect-ratio: 16 / 9; height: auto; }
+  .proto-band__text,
+  .proto-band--flip .proto-band__text { padding: 36px var(--bleed-pad) 48px; }
+}
+
 .pilot-cta {
   display: flex;
   justify-content: center;

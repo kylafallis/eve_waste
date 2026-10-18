@@ -185,26 +185,54 @@
 .job-card .btn { flex-shrink: 0; }
 
 /* --- Partners --- */
-.partners-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
+/* --- Partnership rows ---
+   Full-width rows in display type, hairlines running to both screen edges.
+   Hover or focus floods the row Seedling Green and nudges the text in. */
+.partner-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--outline);
 }
-.partners-types { display: flex; flex-direction: column; gap: 32px; }
-.partner-type { display: flex; align-items: flex-start; gap: 20px; }
-.partner-type h4 {
+.partner-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: clamp(20px, 2.6vw, 34px) var(--bleed-pad);
+  border-top: 1px solid var(--outline);
   font-family: var(--font-headline);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: clamp(1.75rem, 5vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
   color: var(--on-surface);
-  margin-bottom: 6px;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast), padding var(--transition-fast);
 }
-.partner-type p { font-size: 14px; line-height: 1.55; color: var(--on-surface-variant); }
+.partner-row__arrow {
+  font-weight: 400;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+.partner-row:hover,
+.partner-row:focus-visible {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  padding-left: calc(var(--bleed-pad) + 16px);
+}
+.partner-row:hover .partner-row__arrow,
+.partner-row:focus-visible .partner-row__arrow { transform: translateX(8px); }
+.partner-row:focus-visible { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+  .partner-row,
+  .partner-row__arrow { transition: none; }
+  .partner-row:hover,
+  .partner-row:focus-visible { padding-left: var(--bleed-pad); }
+}
 
 @media (max-width: 1024px) {
   .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
-  .partners-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 768px) {
   .form-row { grid-template-columns: 1fr; }

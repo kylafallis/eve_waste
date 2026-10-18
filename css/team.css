@@ -1,111 +1,141 @@
 /* Team page styles, sharp corners */
 
-.team-grid { align-items: start; }
-
-.member-card {
+/* --- Founder panels ---
+   Three portraits side by side across the full width, edge to edge. The open
+   panel widens to show the bio; the others narrow to a strip with name and role.
+   js/team.js moves .is-open on hover, focus and tap. The bio is hidden in closed
+   panels only under html.js, so without JS every bio stays readable. The bio is
+   faded rather than display:none, so the email link stays in the tab order and
+   focusing it opens its panel. Stacks with every bio visible below 769px. */
+.founder-panels {
   display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 0;
-  overflow: hidden;
+  height: clamp(540px, 80vh, 780px);
 }
+.founder-panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--dark-surface);
+  cursor: pointer;
+  transition: flex-grow 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.founder-panel.is-open { flex-grow: 2.6; cursor: default; }
 
 .member-photo {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background-color: var(--surface-container);
-  border-bottom: 1px solid var(--outline-variant);
-  overflow: hidden;
-  position: relative;
+  position: absolute;
+  inset: 0;
 }
-.member-photo--sm {
-  aspect-ratio: 4 / 3;
-}
+.member-photo picture,
 .member-photo img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  object-position: center 20%;
 }
+.member-photo img { transition: filter 0.4s ease; }
+.founder-panel:not(.is-open) .member-photo img { filter: grayscale(0.4) brightness(0.78); }
 
-/* Placeholder pattern when no photo */
-.member-photo:not(:has(img))::after {
-  content: '';
+/* Scrim under the text: holds white type above 4.5:1 over any part of a photo. */
+.founder-panel::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 8px,
-      rgba(75,113,79,0.08) 8px,
-      rgba(75,113,79,0.08) 9px
-    );
+  background: linear-gradient(to top,
+    rgba(21, 33, 22, 0.94) 0%,
+    rgba(21, 33, 22, 0.82) 32%,
+    rgba(21, 33, 22, 0) 62%);
+  pointer-events: none;
 }
 
 .member-info {
-  padding: 24px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  flex: 1;
+  padding: 36px clamp(20px, 2.5vw, 40px);
 }
+.founder-panel:first-child .member-info { padding-left: var(--bleed-pad); }
+.founder-panel:last-child .member-info { padding-right: var(--bleed-pad); }
 
 .member-name {
   font-family: var(--font-headline);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--on-surface);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--on-dark);
 }
-
 .member-role {
+  display: block;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--bio-moss);
-  display: block;
-  margin-bottom: 8px;
+  color: var(--inverse-primary);
 }
-
 .member-bio {
+  margin-top: 10px;
+  max-width: 52ch;
   font-size: 14px;
-  line-height: 1.6;
-  color: var(--on-surface-variant);
+  line-height: 1.65;
+  color: var(--on-primary-container);
 }
-
 .member-email {
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--primary);
-  margin-top: 4px;
+  color: var(--on-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  align-self: flex-start;
 }
+.member-email:hover { color: var(--inverse-primary); }
+.founder-panel :focus-visible { outline-color: var(--inverse-primary); }
 
-.member-photo--monogram {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--forest-green);
+.js .founder-panel .member-bio,
+.js .founder-panel .member-email {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.4s ease;
 }
-.member-photo--monogram::after { content: none !important; }
-.member-photo__initials {
-  font-family: var(--font-headline);
-  font-size: 44px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--cloud-white);
-}
-
-/* Leadership row has taller photos */
-.section:not(.section--tinted) .team-grid.grid--3 .member-photo {
-  aspect-ratio: 3 / 4;
+.js .founder-panel.is-open .member-bio,
+.js .founder-panel.is-open .member-email,
+.js .founder-panel:focus-within .member-bio,
+.js .founder-panel:focus-within .member-email {
+  max-height: 320px;
+  opacity: 1;
+  transition-delay: 0.15s;
 }
 
 @media (max-width: 1024px) {
-  .grid--4.team-grid { grid-template-columns: repeat(2, 1fr); }
+  .founder-panel.is-open { flex-grow: 3.2; }
 }
 @media (max-width: 768px) {
-  .grid--3.team-grid,
-  .grid--4.team-grid { grid-template-columns: 1fr; }
+  .founder-panels { flex-direction: column; height: auto; }
+  /* flex:none, or the zero flex-basis plus overflow:hidden collapses each
+     panel to nothing in a column with no set height. */
+  .founder-panel { flex: none; cursor: default; }
+  .founder-panel::after { content: none; }
+  .member-photo { position: static; aspect-ratio: 4 / 5; }
+  .founder-panel:not(.is-open) .member-photo img { filter: none; }
+  .member-info,
+  .founder-panel:first-child .member-info,
+  .founder-panel:last-child .member-info {
+    position: static;
+    padding: 28px var(--bleed-pad) 40px;
+  }
+  .js .founder-panel .member-bio,
+  .js .founder-panel .member-email { max-height: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .founder-panel,
+  .member-photo img,
+  .js .founder-panel .member-bio,
+  .js .founder-panel .member-email { transition: none; }
 }

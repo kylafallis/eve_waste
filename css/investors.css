@@ -1,9 +1,10 @@
 /* Investors page styles.
 
    Everything structural on this page (sections, cards, stat blocks, buttons)
-   comes from styles.css. This file only carries the four pieces that page does
-   not already have: the CTA pair under the opening statement, the numbered
-   "what the round funds" list, the market stat pair, and the founder row. */
+   comes from styles.css. This file only carries the pieces that page does not
+   already have: the CTA pair under the opening statement, the Done / Not yet
+   split, the "what the round funds" band, the full-bleed number halves, and the
+   founder row. */
 
 /* --- Opening statement --- */
 .invest-actions {
@@ -13,43 +14,107 @@
   margin-top: 36px;
 }
 
-/* --- What the round funds ---
-   A hairline-separated stack rather than cards: there are only two items and
-   they are sequential, so a grid of boxes would overstate them. */
-.fund-list {
+/* --- Where we are: Done / Not yet ---
+   Full-bleed halves. Each half's outer padding is --bleed-pad, so its text sits
+   on the same line as the section heading above. */
+.stage-split {
   display: grid;
-  gap: 1px;
-  background-color: var(--outline-variant);
-  border: 1px solid var(--outline-variant);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.fund-item {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 24px;
-  align-items: start;
-  padding: 36px 32px;
+.stage-split__half { padding: clamp(48px, 6vw, 88px) clamp(32px, 4vw, 64px); }
+.stage-split__half--done {
+  padding-left: var(--bleed-pad);
+  background-color: var(--dark-surface);
+  color: var(--on-primary-container);
+}
+.stage-split__half--ahead {
+  padding-right: var(--bleed-pad);
   background-color: var(--surface-container-lowest);
+  color: var(--on-surface-variant);
 }
-.fund-item__num {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--bio-moss);
-  padding-top: 5px;
-}
-.fund-item__title {
+.stage-split__heading {
   font-family: var(--font-headline);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--on-surface);
-  margin-bottom: 10px;
+  font-size: var(--text-display);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 36px;
 }
-.fund-item__body {
+.stage-split__half--done .stage-split__heading { color: var(--primary-fixed); }
+.stage-split__half--ahead .stage-split__heading { color: var(--on-surface); }
+.stage-split__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+  max-width: 560px;
+}
+.stage-split__list li {
+  padding-top: 20px;
+  border-top: 1px solid var(--outline-variant);
   font-size: 15px;
   line-height: 1.65;
-  color: var(--on-surface-variant);
+}
+.stage-split__half--done .stage-split__list li { border-top-color: var(--dark-border); }
+.stage-split__item {
+  display: block;
+  font-family: var(--font-headline);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.stage-split__half--done .stage-split__item { color: var(--on-dark); }
+.stage-split__half--ahead .stage-split__item { color: var(--on-surface); }
+.stage-split__half--done a { color: var(--inverse-primary); text-decoration: underline; text-underline-offset: 3px; }
+.stage-split__half--done :focus-visible { outline-color: var(--inverse-primary); }
+
+/* --- What the round funds ---
+   A full-width Forest Green band, one row per budget line, with the outlined
+   numeral the platform values bands use. */
+.fund-band {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark-surface);
+}
+.fund-row {
+  display: grid;
+  grid-template-columns: calc(var(--bleed-pad) + clamp(96px, 12vw, 180px)) minmax(0, 1fr);
+  align-items: start;
+  border-top: 1px solid var(--dark-border);
+}
+.fund-row:first-child { border-top: 0; }
+.fund-row__num {
+  padding: 40px 0 40px var(--bleed-pad);
+  font-family: var(--font-headline);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--inverse-primary);
+}
+@supports (-webkit-text-stroke: 1px black) {
+  .fund-row__num {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--inverse-primary);
+  }
+}
+.fund-row__text { padding: 44px var(--bleed-pad) 44px 0; }
+.fund-row__title {
+  font-family: var(--font-headline);
+  font-size: var(--text-subhead);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--primary-fixed);
+  margin-bottom: 12px;
+}
+.fund-row__body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--on-primary-container);
+  max-width: 680px;
 }
 .fund-note {
   margin-top: 28px;
@@ -62,18 +127,47 @@
 /* --- Market pair ---
    The same two figures the home and platform pages carry, with the same basis
    labels. No figure appears here that is not already published elsewhere. */
-.market-stats {
+.number-halves {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.market-stat {
-  padding: 36px 32px;
-  border: 1px solid var(--outline-variant);
-  background-color: var(--surface-container-lowest);
+.number-half {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(48px, 6vw, 88px) clamp(32px, 4vw, 64px);
 }
-.market-stat .stat__value { display: block; margin-bottom: 12px; }
-.market-stat .stat__label { display: block; margin-bottom: 14px; }
+.number-half--cost {
+  padding-left: var(--bleed-pad);
+  background-color: var(--dark-surface-deep);
+  color: var(--on-primary-container);
+}
+.number-half--value {
+  padding-right: var(--bleed-pad);
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+.number-half__basis {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.number-half--cost .number-half__basis { color: var(--inverse-primary); }
+.number-half__value {
+  font-family: var(--font-headline);
+  font-size: clamp(4rem, 11vw, 9rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin: 16px 0 20px;
+}
+.number-half--cost .number-half__value { color: var(--on-dark); }
+.number-half__label {
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 34ch;
+}
 .market-sources {
   margin-top: 28px;
   font-size: 14px;
@@ -115,10 +209,14 @@
 }
 
 @media (max-width: 900px) {
-  .market-stats { grid-template-columns: 1fr; }
+  .stage-split,
+  .number-halves { grid-template-columns: 1fr; }
+  .stage-split__half,
+  .number-half { padding-left: var(--bleed-pad); padding-right: var(--bleed-pad); }
   .founders { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .fund-item { grid-template-columns: 1fr; gap: 12px; padding: 28px 24px; }
-  .fund-item__num { padding-top: 0; }
+  .fund-row { grid-template-columns: 1fr; }
+  .fund-row__num { padding: 36px var(--bleed-pad) 0; }
+  .fund-row__text { padding: 20px var(--bleed-pad) 40px; }
 }

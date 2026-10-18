@@ -58,9 +58,9 @@
   <script>document.documentElement.classList.add('js');</script>
 
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/theme.css?v=b677748b">
-  <link rel="stylesheet" href="css/styles.css?v=b86e4b4b">
-  <link rel="stylesheet" href="css/investors.css?v=e2270e35">
+  <link rel="stylesheet" href="css/theme.css?v=4ede8201">
+  <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
+  <link rel="stylesheet" href="css/investors.css?v=bc5b23f5">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -158,7 +158,10 @@
       </div>
     </section>
 
-    <section class="section section--tinted">
+    <!-- Done / Not yet: the four stage facts split across the full width, built
+         work on the dark half and everything still ahead on the light half. Same
+         facts and wording as the four cards this replaced. -->
+    <section class="section section--tinted section--flush-end">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">Where we are</span>
@@ -166,33 +169,41 @@
           <p class="section__lead">A company at this stage is worth what it has built and what it knows.
             Here is both, without the gloss.</p>
         </div>
-        <div class="grid grid--2">
-          <div class="card fade-up">
-            <span class="card__label">Bio-reactor</span>
-            <h3 class="card__title">Second stage of development</h3>
-            <p class="card__body">The AD system prototype is built and has been through test runs. The second
-              stage of the build is the work in front of us now.</p>
-          </div>
-          <div class="card fade-up stagger-1">
-            <span class="card__label">Waste tracking</span>
-            <h3 class="card__title">Model in development</h3>
-            <p class="card__body">The waste-tracking model is being developed now. It reads what a site
-              throws out and turns it into a report: where the waste comes from, what it costs, and what an
-              organic waste mandate needs to see.</p>
-          </div>
-          <div class="card fade-up stagger-2">
-            <span class="card__label">Built so far</span>
-            <h3 class="card__title">Two prototypes</h3>
-            <p class="card__body">The AD system prototype and the waste hauling monitor prototype.
+      </div>
+      <div class="stage-split fade-up">
+        <div class="stage-split__half stage-split__half--done">
+          <h3 class="stage-split__heading">Done</h3>
+          <ul class="stage-split__list">
+            <li>
+              <strong class="stage-split__item">Two prototypes</strong>
+              The AD system prototype and the waste hauling monitor prototype.
               <a href="built.html">Both are on the What We&rsquo;ve Built page</a>, in photographs rather than
-              renderings.</p>
-          </div>
-          <div class="card fade-up stagger-3">
-            <span class="card__label">Commercial</span>
-            <h3 class="card__title">No clients yet</h3>
-            <p class="card__body">No clients, no revenue, and no client results anywhere on this site. When
-              that changes, it will be stated here with the same directness.</p>
-          </div>
+              renderings.
+            </li>
+            <li>
+              <strong class="stage-split__item">Test runs</strong>
+              The AD system prototype is built and has been through test runs.
+            </li>
+          </ul>
+        </div>
+        <div class="stage-split__half stage-split__half--ahead">
+          <h3 class="stage-split__heading">Not yet</h3>
+          <ul class="stage-split__list">
+            <li>
+              <strong class="stage-split__item">Bio-reactor, second stage of development</strong>
+              The second stage of the build is the work in front of us now.
+            </li>
+            <li>
+              <strong class="stage-split__item">Waste-tracking model, in development</strong>
+              It reads what a site throws out and turns it into a report: where the waste comes from, what it
+              costs, and what an organic waste mandate needs to see.
+            </li>
+            <li>
+              <strong class="stage-split__item">No clients yet</strong>
+              No clients, no revenue, and no client results anywhere on this site. When that changes, it will be
+              stated here with the same directness.
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -203,29 +214,32 @@
           <span class="section__eyebrow">Use of funds</span>
           <h2 class="section__title">What the round funds</h2>
         </div>
-        <!-- NEEDS INPUT: the split between these two, and any third line item
-             (regulatory, site scoping, first install). Two items are listed because
-             two are known. -->
-        <div class="fund-list fade-up">
-          <div class="fund-item">
-            <span class="fund-item__num">01</span>
-            <div>
-              <h3 class="fund-item__title">The second stage of the bio-reactor</h3>
-              <p class="fund-item__body">Taking the prototype forward into the next stage of its build. The
-                specification that comes out of that work is what a host site is eventually quoted against, which
-                is why no throughput, footprint or payback figure is published anywhere on this site yet.</p>
-            </div>
+      </div>
+      <!-- NEEDS INPUT: the split between these two, and any third line item
+           (regulatory, site scoping, first install). Two items are listed because
+           two are known. Numbered because these are line items in a budget; the
+           outlined numeral matches the values bands on platform.html. -->
+      <ol class="fund-band fade-up">
+        <li class="fund-row">
+          <span class="fund-row__num" aria-hidden="true">01</span>
+          <div class="fund-row__text">
+            <h3 class="fund-row__title">The second stage of the bio-reactor</h3>
+            <p class="fund-row__body">Taking the prototype forward into the next stage of its build. The
+              specification that comes out of that work is what a host site is eventually quoted against, which
+              is why no throughput, footprint or payback figure is published anywhere on this site yet.</p>
           </div>
-          <div class="fund-item">
-            <span class="fund-item__num">02</span>
-            <div>
-              <h3 class="fund-item__title">The waste-tracking model</h3>
-              <p class="fund-item__body">The software half of the company. It reads what a site throws out and
-                turns it into a report the site can act on, and it is the part that can reach a site before a
-                bio-reactor does.</p>
-            </div>
+        </li>
+        <li class="fund-row">
+          <span class="fund-row__num" aria-hidden="true">02</span>
+          <div class="fund-row__text">
+            <h3 class="fund-row__title">The waste-tracking model</h3>
+            <p class="fund-row__body">The software half of the company. It reads what a site throws out and
+              turns it into a report the site can act on, and it is the part that can reach a site before a
+              bio-reactor does.</p>
           </div>
-        </div>
+        </li>
+      </ol>
+      <div class="container">
         <p class="fund-note">The regulatory groundwork is already done, and it is public. Ohio permitting,
           digestate product status, air thresholds and the liquid fraction are worked through in the
           <a href="faq.html">FAQ</a>, with sources, because a site asks those questions before it asks about
@@ -239,18 +253,21 @@
           <span class="section__eyebrow">Why now</span>
           <h2 class="section__title">The cost of doing nothing goes up every year</h2>
         </div>
-        <div class="market-stats fade-up">
-          <div class="market-stat">
-            <span class="stat__value">15%</span>
-            <span class="stat__label">Average annual increase in landfill tipping and hauling rates</span>
-            <span class="stat__basis">Industry data</span>
-          </div>
-          <div class="market-stat">
-            <span class="stat__value">19%</span>
-            <span class="stat__label">New economic value our process generates versus landfilling</span>
-            <span class="stat__basis">Modeled</span>
-          </div>
+      </div>
+      <!-- The two figures fill half the screen each. Basis labels stay on both. -->
+      <div class="number-halves fade-up">
+        <div class="number-half number-half--cost">
+          <span class="number-half__basis">Industry data</span>
+          <span class="number-half__value">15%</span>
+          <p class="number-half__label">Average annual increase in landfill tipping and hauling rates</p>
         </div>
+        <div class="number-half number-half--value">
+          <span class="number-half__basis">Modeled</span>
+          <span class="number-half__value">19%</span>
+          <p class="number-half__label">New economic value our process generates versus landfilling</p>
+        </div>
+      </div>
+      <div class="container">
         <p class="market-sources fade-up">EPA attributes 58% of the methane municipal landfills release to
           landfilled food waste, and estimates that 61% of the methane generated by landfilled food waste is
           never captured. Figures: EPA, 2020&ndash;2023
