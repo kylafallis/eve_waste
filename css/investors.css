@@ -3,8 +3,8 @@
    Everything structural on this page (sections, cards, stat blocks, buttons)
    comes from styles.css. This file only carries the pieces that page does not
    already have: the CTA pair under the opening statement, the Done / Not yet
-   split, the "what the round funds" band, the full-bleed number halves, and the
-   founder row. */
+   split, the "what the round funds" band, the full-bleed number halves, the
+   opening statement, the basis-label strip and the founder rows. */
 
 /* --- Opening statement --- */
 .invest-actions {
@@ -180,40 +180,110 @@
   text-underline-offset: 2px;
 }
 
-/* --- Founders --- */
-.founders {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background-color: rgba(218, 225, 222, 0.22);
-  border: 1px solid rgba(218, 225, 222, 0.22);
-}
-.founder {
-  padding: 32px 28px;
-  background-color: var(--dark-surface);
-}
-.founder__name {
+/* --- Opening statement ---
+   The pre-seed line at display size across the full width, the two paragraphs
+   side by side under it. */
+.statement__title {
   font-family: var(--font-headline);
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--primary-fixed);
-  margin-bottom: 8px;
+  font-size: clamp(2.6rem, 8vw, 8.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  color: var(--on-surface);
+  margin: 0 0 clamp(32px, 4vw, 56px);
+  text-wrap: balance;
 }
-.founder__role {
+.statement__body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px clamp(32px, 5vw, 80px);
+}
+.statement__body .section__lead { max-width: none; margin: 0; }
+
+/* --- Diligence: the four basis labels ---
+   Least certain to most: white, Sprout Green, Seedling Green, Forest Green. */
+.basis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+.basis__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: clamp(180px, 16vw, 240px);
+  padding: clamp(28px, 3vw, 44px) clamp(20px, 2.4vw, 36px);
+}
+.basis__item:first-child { padding-left: var(--bleed-pad); }
+.basis__item:last-child { padding-right: var(--bleed-pad); }
+.basis__item:nth-child(1) { background-color: var(--surface-container-lowest); color: var(--on-surface); }
+.basis__item:nth-child(2) { background-color: var(--accent); color: var(--on-accent); }
+.basis__item:nth-child(3) { background-color: var(--primary); color: var(--on-primary); }
+.basis__item:nth-child(4) { background-color: var(--dark-surface); color: var(--on-primary-container); }
+.basis__term {
+  font-family: var(--font-headline);
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.basis__item:nth-child(4) .basis__term { color: var(--primary-fixed); }
+.basis__desc { margin: 0; font-size: 14px; line-height: 1.6; max-width: 30ch; }
+
+/* --- Founders ---
+   Names as full-width display rows, hairlines to both screen edges. Each row
+   links to that founder's panel on the team page and floods Sprout Green on
+   hover or focus. */
+.founder-rows { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--dark-border); }
+.founder-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  padding: clamp(20px, 2.4vw, 32px) var(--bleed-pad);
+  border-top: 1px solid var(--dark-border);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+.founder-row__name {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 5.6vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--primary-fixed);
+  margin: 0;
+  transition: color var(--transition-fast);
+}
+.founder-row__role {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--primary-fixed-dim);
+  color: var(--inverse-primary);
+  transition: color var(--transition-fast);
 }
+.founder-row:hover,
+.founder-row:focus-visible { background-color: var(--accent); outline: none; }
+.founder-row:hover .founder-row__name,
+.founder-row:hover .founder-row__role,
+.founder-row:focus-visible .founder-row__name,
+.founder-row:focus-visible .founder-row__role { color: var(--on-accent); }
+.founder-rows + .container .invest-actions { margin-top: 40px; }
 
 @media (max-width: 900px) {
   .stage-split,
   .number-halves { grid-template-columns: 1fr; }
   .stage-split__half,
   .number-half { padding-left: var(--bleed-pad); padding-right: var(--bleed-pad); }
-  .founders { grid-template-columns: 1fr; }
+  .statement__body { grid-template-columns: 1fr; }
+  .basis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .basis__item,
+  .basis__item:first-child,
+  .basis__item:last-child { padding-left: var(--bleed-pad); padding-right: var(--bleed-pad); }
 }
 @media (max-width: 600px) {
   .fund-row { grid-template-columns: 1fr; }

@@ -60,7 +60,7 @@
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css?v=4ede8201">
   <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
-  <link rel="stylesheet" href="css/home.css?v=7e7d856e">
+  <link rel="stylesheet" href="css/home.css?v=99cc0b2b">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -209,116 +209,117 @@
       </ol>
     </section>
 
-    <!-- Our Approach -->
-    <section class="section intro" id="approach">
+    <!-- Our Approach. The headline sits above three figures that run the full
+         width of the screen as columns. Each figure opens a panel giving the
+         provenance of the number: hovering, focusing or tapping a column floods
+         it dark and replaces the label with the explanation, in place, so nothing
+         below moves. The detail copy is drawn from CONTENT.md §6b (Claims Review)
+         and says plainly what each basis label means. NEEDS REVIEW: the founders
+         may want to expand these, but nothing here may become a measured or
+         client claim until one exists. -->
+    <section class="section section--flush-end intro" id="approach">
       <div class="container">
-        <!-- The reveal animation lives on .intro__grid and nowhere inside it.
-             .intro__grid is what the stat panels position against, and a
-             transform on any element BETWEEN the grid and a panel would take
-             over as the panel's containing block and squeeze it into the figure
-             column. On the grid itself it is harmless: same element, same box.
-             Do not move fade-up back onto .intro__stats or .intro__copy. -->
-        <div class="intro__grid fade-up">
-          <!-- Each figure opens a panel giving the provenance of the number.
-               The detail copy is drawn from CONTENT.md §6b (Claims Review) and
-               says plainly what each basis label means. NEEDS REVIEW: the
-               founders may want to expand these, but nothing here may become a
-               measured or client claim until one exists. -->
-          <div class="intro__stats">
-            <div class="stat-block">
-              <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-1">
-                <span class="stat__value">5,000+ yrs</span>
-                <span class="stat__label">Without an economical change in how we process waste</span>
-                <span class="stat__basis">Historical</span>
-              </button>
-              <div class="stat-block__detail" id="statDetail-1">
-                <p>A statement about the span of human waste disposal, not a measurement of
-                   anything EvE Waste has done. It is the baseline our economics have to beat.</p>
-              </div>
-            </div>
-
-            <div class="stat-block">
-              <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-2">
-                <span class="stat__value">19%</span>
-                <span class="stat__label">New economic value our process generates versus landfilling</span>
-                <span class="stat__basis">Modeled</span>
-              </button>
-              <div class="stat-block__detail" id="statDetail-2">
-                <p>A projection of the value our process generates compared with landfilling the
-                   same material. It is not a client result. EvE Waste has no clients yet, and
-                   nothing on this site is published as measured until it is.</p>
-              </div>
-            </div>
-
-            <div class="stat-block">
-              <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-3">
-                <span class="stat__value">15%</span>
-                <span class="stat__label">Average annual increase in landfill tipping and hauling rates</span>
-                <span class="stat__basis">Industry data</span>
-              </button>
-              <div class="stat-block__detail" id="statDetail-3">
-                <p>The rate at which landfill tipping and hauling charges rise each year, taken
-                   from published industry figures rather than our own measurements. It is why
-                   the cost case moves against landfilling every year you wait.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="intro__copy">
+        <div class="intro__head fade-up">
+          <div>
             <span class="section__eyebrow">Our Approach</span>
             <h2 class="intro__headline">Unwinding single-stream waste to unlock the value in every ton</h2>
-            <a href="platform.html" class="btn btn--secondary mt-32">Why We Build</a>
+          </div>
+          <a href="platform.html" class="btn btn--secondary">Why We Build</a>
+        </div>
+      </div>
+      <div class="intro__stats fade-up">
+        <div class="stat-block">
+          <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-1">
+            <span class="stat__value">5,000+ yrs</span>
+            <span class="stat__label">Without an economical change in how we process waste</span>
+            <span class="stat__basis">Historical</span>
+          </button>
+          <div class="stat-block__detail" id="statDetail-1">
+            <p>A statement about the span of human waste disposal, not a measurement of
+               anything EvE Waste has done. It is the baseline our economics have to beat.</p>
+          </div>
+        </div>
+        <div class="stat-block">
+          <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-2">
+            <span class="stat__value">19%</span>
+            <span class="stat__label">New economic value our process generates versus landfilling</span>
+            <span class="stat__basis">Modeled</span>
+          </button>
+          <div class="stat-block__detail" id="statDetail-2">
+            <p>A projection of the value our process generates compared with landfilling the
+               same material. It is not a client result. EvE Waste has no clients yet, and
+               nothing on this site is published as measured until it is.</p>
+          </div>
+        </div>
+        <div class="stat-block">
+          <button type="button" class="stat-block__trigger" aria-expanded="false" aria-controls="statDetail-3">
+            <span class="stat__value">15%</span>
+            <span class="stat__label">Average annual increase in landfill tipping and hauling rates</span>
+            <span class="stat__basis">Industry data</span>
+          </button>
+          <div class="stat-block__detail" id="statDetail-3">
+            <p>The rate at which landfill tipping and hauling charges rise each year, taken
+               from published industry figures rather than our own measurements. It is why
+               the cost case moves against landfilling every year you wait.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Why EvE Waste, sticky-scroll narrative. The heading column pins while the
-         four pillars advance past it. Copy is CONTENT.md's four pillars, unchanged.
-         The inactive state is --on-surface-variant, NOT a dimmed opacity: an opacity
-         fade would drop the body text below WCAG AA. Both states clear 4.5:1. -->
-    <section class="section pillars" id="pillars">
-      <div class="container">
-        <div class="pillars__layout">
-          <div class="pillars__aside">
-            <span class="section__eyebrow">Why EvE Waste</span>
-            <h2 class="section__title pillars__heading">Four ways we put waste to work</h2>
-            <div class="pillars__progress" aria-hidden="true">
-              <span class="pillars__bar"><span class="pillars__bar-fill" id="pillarsBarFill"></span></span>
-              <span class="pillars__count"><span id="pillarsIndex">1</span>&thinsp;/&thinsp;4</span>
-            </div>
-          </div>
-
-          <ol class="pillars__list">
-            <li class="pillar is-active">
-              <span class="pillar__index" aria-hidden="true">01</span>
-              <h3 class="pillar__title">Transforming food waste for cost, value, and impact</h3>
-              <p class="pillar__body">We are building a bio-reactor that processes food waste for less than a landfill charges and gets more value out of it. Through the process of anaerobic digestion, food waste becomes clean energy and fertilizer.</p>
-            </li>
-            <li class="pillar">
-              <span class="pillar__index" aria-hidden="true">02</span>
-              <h3 class="pillar__title">Managing waste for less than a landfill charges</h3>
-              <p class="pillar__body">Our modelling puts the new economic value at up to 19% against landfilling. The savings a host site sees come out of that margin, and the figure stays labelled as modelled until a running unit can measure it.</p>
-            </li>
-            <li class="pillar">
-              <span class="pillar__index" aria-hidden="true">03</span>
-              <h3 class="pillar__title">Waste data that comes with the unit</h3>
-              <p class="pillar__body">We are developing the waste-tracking model now. It reads what a site throws out and turns it into a report: where the waste comes from, what it costs, and what an organic waste mandate needs to see.</p>
-            </li>
-            <li class="pillar">
-              <span class="pillar__index" aria-hidden="true">04</span>
-              <h3 class="pillar__title">Doing it all while protecting the Earth</h3>
-              <p class="pillar__body">The system puts economics first and the Earth second. Nutrients stay in the loop for the next crop of food, and clean energy comes out of the same process.</p>
-            </li>
-          </ol>
+    <!-- Why EvE Waste, one pillar per screen. Each pillar is a full-viewport panel
+         that pins (position: sticky) while the next one slides up over it, with
+         the background stepping through the brand greens. CSS only, no scroll
+         script. Copy is CONTENT.md's four pillars, unchanged. Below 769px the
+         panels stop pinning and simply stack. -->
+    <section class="chapters" id="pillars" aria-labelledby="pillarsTitle">
+      <div class="chapters__intro">
+        <div class="container">
+          <span class="section__eyebrow">Why EvE Waste</span>
+          <h2 class="section__title" id="pillarsTitle">Four ways we put waste to work</h2>
         </div>
       </div>
+      <ol class="chapters__list">
+        <li class="chapter">
+          <span class="chapter__num" aria-hidden="true">01</span>
+          <div class="chapter__text">
+            <span class="chapter__count" aria-hidden="true">01 / 04</span>
+            <h3 class="chapter__title">Transforming food waste for cost, value, and impact</h3>
+            <p class="chapter__body">We are building a bio-reactor that processes food waste for less than a landfill charges and gets more value out of it. Through the process of anaerobic digestion, food waste becomes clean energy and fertilizer.</p>
+          </div>
+        </li>
+        <li class="chapter">
+          <span class="chapter__num" aria-hidden="true">02</span>
+          <div class="chapter__text">
+            <span class="chapter__count" aria-hidden="true">02 / 04</span>
+            <h3 class="chapter__title">Managing waste for less than a landfill charges</h3>
+            <p class="chapter__body">Our modelling puts the new economic value at up to 19% against landfilling. The savings a host site sees come out of that margin, and the figure stays labelled as modelled until a running unit can measure it.</p>
+          </div>
+        </li>
+        <li class="chapter">
+          <span class="chapter__num" aria-hidden="true">03</span>
+          <div class="chapter__text">
+            <span class="chapter__count" aria-hidden="true">03 / 04</span>
+            <h3 class="chapter__title">Waste data that comes with the unit</h3>
+            <p class="chapter__body">We are developing the waste-tracking model now. It reads what a site throws out and turns it into a report: where the waste comes from, what it costs, and what an organic waste mandate needs to see.</p>
+          </div>
+        </li>
+        <li class="chapter">
+          <span class="chapter__num" aria-hidden="true">04</span>
+          <div class="chapter__text">
+            <span class="chapter__count" aria-hidden="true">04 / 04</span>
+            <h3 class="chapter__title">Doing it all while protecting the Earth</h3>
+            <p class="chapter__body">The system puts economics first and the Earth second. Nutrients stay in the loop for the next crop of food, and clean energy comes out of the same process.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
-    <!-- Landfill vs EvE, compact.
-         Was an eight-row table with a row-header column; nobody read it. Now two
-         stacked lists of one-line claims with cross/check marks, which is the
-         format that actually gets scanned.
+    <!-- Landfill vs EvE, paired rows.
+         The six landfill lines and the six EvE lines answer each other one to one,
+         so they sit on the same row: a real two-column table, edge to edge, with
+         the landfill side NOT muted (de-emphasising it is where contrast quietly
+         fails, and the argument is stronger when the unflattering side is as
+         legible as ours).
          Figures keep their year. The CO2-equivalent figure from the EPA
          food-waste report is still deliberately NOT reproduced: that report
          renders it with a unit error. The 58% / 61% percentages are unambiguous.
@@ -331,33 +332,40 @@
           <p class="section__lead">The landfill column is sourced and current. The EvE Waste column is what the
             system is built to do, and it stays a design target on this site until a unit runs on a real site.</p>
         </div>
-
-        <div class="versus fade-up">
-          <div class="versus__side versus__side--landfill">
-            <h3 class="versus__title">Landfill</h3>
-            <ul class="versus__list">
-              <li><span class="versus__mark" aria-hidden="true">&#215;</span> Buried. 62.5 million tons of US food waste in 2020.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#215;</span> Tipping fees rose 10% in a single year.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#215;</span> You get a receipt.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#215;</span> Third-largest source of US methane emissions.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#215;</span> Ranked 10th of 12 by the EPA, above only incineration and the drain.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#215;</span> Diversion figures you cannot independently check.</li>
-            </ul>
-          </div>
-
-          <div class="versus__side versus__side--eve">
-            <h3 class="versus__title">EvE Waste</h3>
-            <ul class="versus__list">
-              <li><span class="versus__mark" aria-hidden="true">&#10003;</span> Digested on the site that produced it.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#10003;</span> Priced against volume we measured first.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#10003;</span> You get fertilizer and clean energy.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#10003;</span> Gas captured by design, in a sealed vessel.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#10003;</span> Ranked 6th of 12 by the EPA, above composting.</li>
-              <li><span class="versus__mark" aria-hidden="true">&#10003;</span> Diversion you can measure, once instrumented.</li>
-            </ul>
-          </div>
-        </div>
-
+      </div>
+      <table class="pairs fade-up">
+        <caption class="sr-only">Landfill compared with EvE Waste, point by point</caption>
+        <thead>
+          <tr><th scope="col">Landfill</th><th scope="col">EvE Waste</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#215;</span> Buried. 62.5 million tons of US food waste in 2020.</span></td>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#10003;</span> Digested on the site that produced it.</span></td>
+          </tr>
+          <tr>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#215;</span> Tipping fees rose 10% in a single year.</span></td>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#10003;</span> Priced against volume we measured first.</span></td>
+          </tr>
+          <tr>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#215;</span> You get a receipt.</span></td>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#10003;</span> You get fertilizer and clean energy.</span></td>
+          </tr>
+          <tr>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#215;</span> Third-largest source of US methane emissions.</span></td>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#10003;</span> Gas captured by design, in a sealed vessel.</span></td>
+          </tr>
+          <tr>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#215;</span> Ranked 10th of 12 by the EPA, above only incineration and the drain.</span></td>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#10003;</span> Ranked 6th of 12 by the EPA, above composting.</span></td>
+          </tr>
+          <tr>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#215;</span> Diversion figures you cannot independently check.</span></td>
+            <td><span class="pairs__cell"><span class="pairs__mark" aria-hidden="true">&#10003;</span> Diversion you can measure, once instrumented.</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="container">
         <p class="versus__sources fade-up">
           Figures: EPA, 2020&ndash;2023
           (<a href="https://www.epa.gov/system/files/documents/2023-10/food-waste-landfill-methane-10-8-23-final_508-compliant.pdf" target="_blank" rel="noopener noreferrer">landfill methane</a>,
@@ -367,22 +375,21 @@
       </div>
     </section>
 
-    <!-- Get Started -->
+    <!-- Get Started. The headline is sized to span the screen and the name, email
+         and button join into one full-width bar. -->
     <section class="section cta-section">
-      <div class="container">
-        <div class="cta-inner fade-up text-center">
-          <h2 class="cta-headline">Do you believe in a cleaner future?</h2>
-          <p class="cta-tagline">Join us on the journey.</p>
-          <form class="newsletter-form mt-32" id="newsletterForm">
-            <label for="newsletterName" class="sr-only">Name</label>
-            <input type="text" id="newsletterName" name="name" placeholder="Your name" required autocomplete="name">
-            <label for="newsletterEmail" class="sr-only">Email</label>
-            <input type="email" id="newsletterEmail" name="email" placeholder="you@company.com" required autocomplete="email">
-            <button type="submit" class="btn btn--primary btn--lg">Follow along</button>
-          </form>
-          <p class="newsletter-success" id="newsletterSuccess" aria-live="polite">Thanks, you're on the list.</p>
-          <p class="newsletter-error" id="newsletterError" role="alert">Something went wrong. Try again or email <a href="mailto:ben@evewaste.com">ben@evewaste.com</a>.</p>
-        </div>
+      <div class="signup fade-up">
+        <h2 class="cta-headline">Do you believe in a cleaner future?</h2>
+        <p class="cta-tagline">Join us on the journey.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <label for="newsletterName" class="sr-only">Name</label>
+          <input type="text" id="newsletterName" name="name" placeholder="Your name" required autocomplete="name">
+          <label for="newsletterEmail" class="sr-only">Email</label>
+          <input type="email" id="newsletterEmail" name="email" placeholder="you@company.com" required autocomplete="email">
+          <button type="submit" class="btn btn--primary btn--lg">Follow along</button>
+        </form>
+        <p class="newsletter-success" id="newsletterSuccess" aria-live="polite">Thanks, you're on the list.</p>
+        <p class="newsletter-error" id="newsletterError" role="alert">Something went wrong. Try again or email <a href="mailto:ben@evewaste.com">ben@evewaste.com</a>.</p>
       </div>
     </section>
 
@@ -437,6 +444,6 @@
   </footer>
 
   <script src="js/main.js?v=29ee826c"></script>
-  <script src="js/home.js?v=e4f09989"></script>
+  <script src="js/home.js?v=a316f432"></script>
 </body>
 </html>

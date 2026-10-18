@@ -60,7 +60,7 @@
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css?v=4ede8201">
   <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
-  <link rel="stylesheet" href="css/contact.css?v=7982a62c">
+  <link rel="stylesheet" href="css/contact.css?v=fd019fce">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -123,11 +123,25 @@
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-grid">
-          <div class="contact-form-wrap fade-up">
-            <h2 class="type-headline-lg">Send us a message</h2>
+    <!-- Split: the heading and the two contact facts on a dark half, the form on a
+         white half. Both facts were already on the site (the one-week reply line
+         under the button, and Columbus from the FAQ); the reply line moved here
+         rather than appearing twice. -->
+    <section class="contact-split" id="contact">
+      <div class="contact-split__intro fade-up">
+        <h2 class="contact-split__title">Send us a message</h2>
+        <dl class="contact-split__facts">
+          <div>
+            <dt>Reply time</dt>
+            <dd>We reply to every message within one week.</dd>
+          </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>Columbus, Ohio.</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="contact-split__form fade-up stagger-1">
             <form class="contact-form" id="contactForm" novalidate>
               <input type="hidden" name="access_key" value="7ce5dad0-ba27-4f15-a17e-71395a906e8e">
               <input type="hidden" name="subject" value="New evewaste.com enquiry">
@@ -174,7 +188,6 @@
                 <textarea id="message" name="message" required rows="5" placeholder="Tell us about your operation, waste stream, or question..."></textarea>
               </div>
               <button type="submit" class="btn btn--primary">Send Message</button>
-              <p class="form-response-time">We reply to every message within one week.</p>
               <div class="form-success" id="formSuccess" aria-live="polite">
                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                 Thanks for reaching out! We will be in touch soon.
@@ -184,8 +197,6 @@
                 <span>Something went wrong. Email us at <a href="mailto:ben@evewaste.com">ben@evewaste.com</a>.</span>
               </div>
             </form>
-          </div>
-        </div>
       </div>
     </section>
 

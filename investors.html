@@ -60,7 +60,7 @@
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css?v=4ede8201">
   <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
-  <link rel="stylesheet" href="css/investors.css?v=bc5b23f5">
+  <link rel="stylesheet" href="css/investors.css?v=8fc0c376">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -136,17 +136,20 @@
       </div>
     </section>
 
-    <section class="section">
+    <!-- Opening statement, set at display size across the full width. -->
+    <section class="section statement">
       <div class="container">
-        <div class="section__header fade-up">
+        <div class="fade-up">
           <span class="section__eyebrow">Pre-seed</span>
-          <h2 class="section__title">We are raising a pre-seed round.</h2>
+          <h2 class="statement__title">We are raising a pre-seed round.</h2>
+          <div class="statement__body">
           <p class="section__lead">EvE Waste is building a modular bio-reactor that turns food waste into
             clean energy and nutrient-rich fertilizer, and a waste-tracking model that tells a site what it is
             throwing away. The prototype is built. The second stage of the bio-reactor and the model are what
             this round funds.</p>
           <p class="section__lead">We are also applying for grants. Non-dilutive funding is part of the plan
             rather than a fallback, and the work it pays for is the same work.</p>
+          </div>
           <!-- NEEDS INPUT: round size, instrument (SAFE or priced), target close and any
                committed amount. Nothing is stated above, because nothing has been supplied.
                Do not fill these in from a pitch deck without the founders confirming. -->
@@ -277,7 +280,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section--flush-end">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">Diligence</span>
@@ -289,6 +292,28 @@
             the honest answer rather than the placeholder one.</p>
         </div>
       </div>
+      <!-- The four basis labels the paragraph names, as a strip from least to most
+           certain. Each description is reworded from the paragraph above and the
+           home page's stat panels; nothing new is claimed. "Measured" is the dark
+           end and says plainly that nothing is measured yet. -->
+      <dl class="basis fade-up">
+        <div class="basis__item">
+          <dt class="basis__term">Historical</dt>
+          <dd class="basis__desc">Describes the past. Not a measurement of anything EvE Waste has done.</dd>
+        </div>
+        <div class="basis__item">
+          <dt class="basis__term">Modeled</dt>
+          <dd class="basis__desc">A projection, labelled as one. It is not a client result.</dd>
+        </div>
+        <div class="basis__item">
+          <dt class="basis__term">Industry data</dt>
+          <dd class="basis__desc">Taken from published industry figures rather than our own measurements.</dd>
+        </div>
+        <div class="basis__item">
+          <dt class="basis__term">Measured</dt>
+          <dd class="basis__desc">Nothing yet. Nothing is published as Measured until something measures it.</dd>
+        </div>
+      </dl>
     </section>
 
     <section class="section section--dark">
@@ -297,20 +322,29 @@
           <span class="section__eyebrow">Who you would be backing</span>
           <h2 class="section__title">Three founders, in Columbus, Ohio</h2>
         </div>
-        <div class="founders fade-up">
-          <div class="founder">
-            <h3 class="founder__name">Ben Rosenthal</h3>
-            <p class="founder__role">Founder &amp; Chief Executive Officer</p>
-          </div>
-          <div class="founder">
-            <h3 class="founder__name">Brenden Fowler</h3>
-            <p class="founder__role">Founder &amp; Chief Operating Officer</p>
-          </div>
-          <div class="founder">
-            <h3 class="founder__name">Kyla Fallis</h3>
-            <p class="founder__role">Founder &amp; Chief Information Officer</p>
-          </div>
-        </div>
+      </div>
+      <!-- Each name links to that founder's panel on the team page, which opens it. -->
+      <ul class="founder-rows fade-up">
+        <li>
+          <a class="founder-row" href="team.html#ben-rosenthal">
+            <h3 class="founder-row__name">Ben Rosenthal</h3>
+            <span class="founder-row__role">Founder &amp; Chief Executive Officer</span>
+          </a>
+        </li>
+        <li>
+          <a class="founder-row" href="team.html#brenden-fowler">
+            <h3 class="founder-row__name">Brenden Fowler</h3>
+            <span class="founder-row__role">Founder &amp; Chief Operating Officer</span>
+          </a>
+        </li>
+        <li>
+          <a class="founder-row" href="team.html#kyla-fallis">
+            <h3 class="founder-row__name">Kyla Fallis</h3>
+            <span class="founder-row__role">Founder &amp; Chief Information Officer</span>
+          </a>
+        </li>
+      </ul>
+      <div class="container">
         <div class="invest-actions">
           <a href="team.html" class="btn btn--accent">Read the full bios</a>
           <a href="contact.html?inquiry=investor" class="btn btn--ghost">Contact the founders</a>

@@ -21,6 +21,8 @@
   transition: flex-grow 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .founder-panel.is-open { flex-grow: 2.6; cursor: default; }
+/* Clear the fixed header when arriving from a team.html#<founder> link. */
+.founder-panel { scroll-margin-top: var(--header-h); }
 
 .member-photo {
   position: absolute;

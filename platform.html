@@ -61,7 +61,7 @@
   <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/theme.css?v=4ede8201">
   <link rel="stylesheet" href="css/styles.css?v=aa2d93d7">
-  <link rel="stylesheet" href="css/platform.css?v=ac74b704">
+  <link rel="stylesheet" href="css/platform.css?v=0dbc1c1c">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -124,100 +124,130 @@
       </div>
     </section>
 
-    <section class="section">
+    <!-- The bio-reactor as a full-width process flow. The paragraph this replaced
+         already described a sequence, so it is drawn as one: four steps across the
+         screen, ending in the two products. Every step is a phrase from that
+         paragraph (CONTENT.md), nothing added. -->
+    <section class="section section--dark" id="process">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">The Bio-Reactor</span>
           <h2 class="section__title">Waste goes in. Products come out.</h2>
-          <p class="section__lead">Our system uses the natural, microbial process of anaerobic digestion to break down food waste into digestate while producing biogas. The digestate is processed into fertilizer, and the biogas is converted into clean energy. The fertilizer is sold into agricultural and landscaping markets, and the clean energy offsets the host site's energy bill.</p>
-          <!-- Stage note. This page describes the unit, and the unit is still being
-               built, so the stage is stated here rather than left for the reader to
-               assume. See the status section on index.html. -->
-          <p class="section__lead"><strong>The bio-reactor is in its second stage of development.</strong> This page
-            describes what the unit does. It is not a report on units in the field, and it does not pretend to be.
-            <a href="built.html">See what we have built &rarr;</a></p>
         </div>
+      </div>
+      <ol class="flow fade-up">
+        <li class="flow__step">
+          <span class="flow__label">In</span>
+          <h3 class="flow__title">Food waste</h3>
+          <p class="flow__body">From the host site.</p>
+        </li>
+        <li class="flow__step">
+          <span class="flow__label">Process</span>
+          <h3 class="flow__title">Anaerobic digestion</h3>
+          <p class="flow__body">The natural, microbial process that breaks the food waste down.</p>
+        </li>
+        <li class="flow__step">
+          <span class="flow__label">Produces</span>
+          <h3 class="flow__title">Digestate and biogas</h3>
+          <p class="flow__body">The food waste breaks down into digestate while producing biogas.</p>
+        </li>
+        <li class="flow__step flow__step--out">
+          <div class="flow__product">
+            <span class="flow__label">Out</span>
+            <h3 class="flow__title">Fertilizer</h3>
+            <p class="flow__body">The digestate is processed into fertilizer, sold into agricultural and landscaping markets.</p>
+          </div>
+          <div class="flow__product">
+            <span class="flow__label">Out</span>
+            <h3 class="flow__title">Clean energy</h3>
+            <p class="flow__body">The biogas is converted into clean energy, which offsets the host site's energy bill.</p>
+          </div>
+        </li>
+      </ol>
+      <div class="container">
+        <!-- Stage note. This page describes the unit, and the unit is still being
+             built, so the stage is stated here rather than left for the reader to
+             assume. See the status section on index.html. -->
+        <p class="flow__note fade-up"><strong>The bio-reactor is in its second stage of development.</strong> This page
+          describes what the unit does. It is not a report on units in the field, and it does not pretend to be.
+          <a href="built.html">See what we have built &rarr;</a></p>
       </div>
     </section>
 
-    <!-- Market opportunity. Two numbers, split on a diagonal: the cost of staying
-         against the value of moving. Both already published on the home page with
-         the same basis labels. No new numbers. The third card ("Mandates") is gone:
-         it was a word pretending to be a figure. -->
-    <section class="section section--tinted" id="market">
+    <!-- Market opportunity. Two numbers, split on a diagonal that runs from screen
+         edge to screen edge: the cost of staying against the value of moving. Both
+         already published on the home page with the same basis labels. No new
+         numbers. The third card ("Mandates") is gone: it was a word pretending to
+         be a figure. -->
+    <section class="section section--tinted section--flush-end" id="market">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">Market Opportunity</span>
           <h2 class="section__title">The cost of doing nothing goes up every year</h2>
         </div>
-
-        <div class="diagonal fade-up">
-          <div class="diagonal__inner">
-            <div class="diagonal__half diagonal__half--cost">
-              <span class="diagonal__basis">Industry data</span>
-              <span class="diagonal__value">15%</span>
-              <p class="diagonal__body">Average annual increase in landfill tipping and hauling rates.</p>
-            </div>
-            <div class="diagonal__half diagonal__half--value">
-              <span class="diagonal__basis">Modeled</span>
-              <span class="diagonal__value">19%</span>
-              <p class="diagonal__body">New economic value our process generates versus landfilling.</p>
-            </div>
+      </div>
+      <div class="diagonal fade-up">
+        <div class="diagonal__inner">
+          <div class="diagonal__half diagonal__half--cost">
+            <span class="diagonal__basis">Industry data</span>
+            <span class="diagonal__value">15%</span>
+            <p class="diagonal__body">Average annual increase in landfill tipping and hauling rates.</p>
+          </div>
+          <div class="diagonal__half diagonal__half--value">
+            <span class="diagonal__basis">Modeled</span>
+            <span class="diagonal__value">19%</span>
+            <p class="diagonal__body">New economic value our process generates versus landfilling.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Founding story, moved here from the retired about page.
-         CONTENT.md section 2: founder voice, used verbatim, do not rewrite. -->
-    <section class="section" id="why">
-      <div class="container">
-        <div class="split fade-up">
-          <div class="split__aside">
-            <span class="section__eyebrow">Why We Build</span>
-            <h2 class="split__title">Waste is not our fault, but it is our problem.</h2>
-            <span class="split__rule" aria-hidden="true"></span>
-          </div>
-          <div class="split__body">
-            <p>Most people don't think much of trash. It is just something that kind of happens and is thrown out. Buried, never to be seen again. We at EvE quickly realized that something was wrong. All of the hard work and effort to create things just to be thrown out, just so we can make them all over again. Stripping the Earth to feed this cycle simply doesn't make sense. We realize composting works, but a more industrial solution is needed to keep up with the food waste we generate. We heard the call to fill that unrelenting "hole in the ground" with a waste revolution, and that led us to develop a solution that will rid the world of trash and help everyone understand the value in waste. Waste is not our fault, but it is our problem.</p>
-          </div>
-        </div>
+    <!-- Founding story, moved here from the retired about page, set as a
+         manifesto across the full width.
+         CONTENT.md section 2: founder voice, used verbatim, do not rewrite. The
+         text below is the original paragraph unchanged: its closing sentence is
+         set apart as the large line at the end rather than repeated. -->
+    <section class="section manifesto" id="why">
+      <div class="container fade-up">
+        <h2 class="section__eyebrow">Why We Build</h2>
+        <p class="manifesto__story">Most people don't think much of trash. It is just something that kind of happens and is thrown out. Buried, never to be seen again. <strong>We at EvE quickly realized that something was wrong.</strong> All of the hard work and effort to create things just to be thrown out, just so we can make them all over again. Stripping the Earth to feed this cycle simply doesn't make sense. We realize composting works, but a more industrial solution is needed to keep up with the food waste we generate. We heard the call to fill that unrelenting "hole in the ground" with a waste revolution, and that led us to develop a solution that will rid the world of trash and help everyone understand the value in waste.</p>
+        <p class="manifesto__line">Waste is not our fault, but it is our problem.</p>
       </div>
     </section>
 
     <!-- CONTENT.md section 2: there are THREE values. Do not invent a fourth.
-         Rendered as full-width bands with an outlined numeral rather than three
-         cards, so they do not read as another box grid. -->
-    <section class="section section--tinted" id="values">
+         Rendered as three full-width colour stripes, light to dark, each with a
+         solid numeral bleeding off its bottom edge. -->
+    <section class="section section--tinted section--flush-end" id="values">
       <div class="container">
         <div class="section__header fade-up">
           <span class="section__eyebrow">Our Values</span>
           <h2 class="section__title">What we hold to</h2>
         </div>
-        <ol class="values">
-          <li class="value fade-up stagger-1">
-            <span class="value__num" aria-hidden="true">01</span>
-            <div class="value__text">
-              <h3 class="value__title">Maximizing Value</h3>
-              <p>Our most important value is to maximize the value we can derive from waste products.</p>
-            </div>
-          </li>
-          <li class="value fade-up stagger-2">
-            <span class="value__num" aria-hidden="true">02</span>
-            <div class="value__text">
-              <h3 class="value__title">Eliminating Landfills</h3>
-              <p>Our motivation stems from the dangerous and faulty reliance on landfills.</p>
-            </div>
-          </li>
-          <li class="value fade-up stagger-3">
-            <span class="value__num" aria-hidden="true">03</span>
-            <div class="value__text">
-              <h3 class="value__title">Protecting the Earth</h3>
-              <p>By reducing reliance on landfilling through waste valorization, we protect the Earth from the harms of mismanaged waste.</p>
-            </div>
-          </li>
-        </ol>
       </div>
+      <ol class="values">
+        <li class="value">
+          <span class="value__num" aria-hidden="true">01</span>
+          <div class="value__text">
+            <h3 class="value__title">Maximizing Value</h3>
+            <p>Our most important value is to maximize the value we can derive from waste products.</p>
+          </div>
+        </li>
+        <li class="value">
+          <span class="value__num" aria-hidden="true">02</span>
+          <div class="value__text">
+            <h3 class="value__title">Eliminating Landfills</h3>
+            <p>Our motivation stems from the dangerous and faulty reliance on landfills.</p>
+          </div>
+        </li>
+        <li class="value">
+          <span class="value__num" aria-hidden="true">03</span>
+          <div class="value__text">
+            <h3 class="value__title">Protecting the Earth</h3>
+            <p>By reducing reliance on landfilling through waste valorization, we protect the Earth from the harms of mismanaged waste.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
   </main>

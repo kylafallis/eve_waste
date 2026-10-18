@@ -1,15 +1,56 @@
 /* Contact page styles, sharp corners */
 
-/* Single column since the headquarters aside was removed. Capped so the form
-   does not stretch to a full 1440px, which makes the fields unusable. */
-.contact-grid {
+/* --- Contact split ---
+   Dark half: the heading and the two contact facts. White half: the form,
+   held to a usable measure (fields stretched across a full 1440px are hard
+   to scan). Both halves run to their screen edge. */
+.contact-split {
   display: grid;
-  grid-template-columns: minmax(0, 720px);
-  gap: 80px;
-  align-items: start;
+  grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+}
+.contact-split__intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 56px;
+  padding: clamp(56px, 7vw, 112px) clamp(32px, 4vw, 72px) clamp(56px, 7vw, 112px) var(--bleed-pad);
+  background-color: var(--dark-surface);
+  color: var(--on-primary-container);
+}
+.contact-split__title {
+  font-family: var(--font-headline);
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--primary-fixed);
+  margin: 0;
+  text-wrap: balance;
+}
+.contact-split__facts { display: grid; gap: 20px; margin: 0; }
+.contact-split__facts div { padding-top: 16px; border-top: 1px solid var(--dark-border); }
+.contact-split__facts dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--inverse-primary);
+  margin-bottom: 6px;
+}
+.contact-split__facts dd { margin: 0; font-size: 16px; line-height: 1.6; }
+.contact-split__form {
+  padding: clamp(56px, 7vw, 112px) var(--bleed-pad) clamp(56px, 7vw, 112px) clamp(32px, 4vw, 72px);
+  background-color: var(--surface-container-lowest);
+}
+.contact-split__form .contact-form { max-width: 720px; }
+@media (max-width: 900px) {
+  .contact-split { grid-template-columns: 1fr; }
+  .contact-split__intro,
+  .contact-split__form { padding: 56px var(--bleed-pad); }
+  .contact-split__intro { gap: 36px; }
 }
 
-.contact-form-wrap h2 { margin-bottom: 32px; }
 .contact-form { display: flex; flex-direction: column; gap: 20px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form-field { display: flex; flex-direction: column; gap: 8px; }
@@ -82,11 +123,6 @@
 .form-error svg { flex-shrink: 0; }
 .form-error a { color: var(--error); text-decoration: underline; }
 
-.form-response-time {
-  font-size: 13px;
-  color: var(--on-surface-variant);
-  margin: -8px 0 0;
-}
 .form-success {
   display: none;
   align-items: center;
@@ -231,9 +267,6 @@
   .partner-row:focus-visible { padding-left: var(--bleed-pad); }
 }
 
-@media (max-width: 1024px) {
-  .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
-}
 @media (max-width: 768px) {
   .form-row { grid-template-columns: 1fr; }
   .job-card { flex-direction: column; align-items: flex-start; gap: 16px; }
