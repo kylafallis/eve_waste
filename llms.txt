@@ -47,6 +47,9 @@ Accepted: all food waste. No refusal list is published.
 
 ## Pages
 
+- [Company facts](https://evewaste.com/company.html): every key fact on one page,
+  written for search engines and AI assistants. Start here.
+- [ai.txt](https://evewaste.com/ai.txt): the same company facts as plain text.
 - [Home](https://evewaste.com/): positioning, the four pillars, proof figures.
 - [Platform](https://evewaste.com/platform.html): how the bio-reactor works, the market
   case, the founding story and company values.

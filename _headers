@@ -85,3 +85,6 @@
 
 /llms.txt
   Cache-Control: public, max-age=3600
+
+/ai.txt
+  Cache-Control: public, max-age=3600
