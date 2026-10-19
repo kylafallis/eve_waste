@@ -290,14 +290,14 @@
 .prototype-overlay__cta {
   font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--weight-body);
   letter-spacing: 0.06em;
   color: var(--inverse-primary);
 }
 .prototype-link {
   font-family: var(--font-mono);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--weight-body);
   color: var(--primary);
 }
 
