@@ -66,9 +66,9 @@
 .founder-panel:last-child .member-info { padding-right: var(--bleed-pad); }
 
 .member-name {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: clamp(20px, 2vw, 28px);
-  font-weight: 700;
+  font-weight: var(--weight-subhead);
   line-height: 1.15;
   color: var(--on-dark);
 }

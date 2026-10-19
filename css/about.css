@@ -60,9 +60,9 @@
   text-align: right;
 }
 .timeline-item__content h4 {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: 17px;
-  font-weight: 600;
+  font-weight: var(--weight-subhead);
   color: var(--on-surface);
   margin-bottom: 8px;
 }

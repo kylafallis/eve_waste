@@ -5,8 +5,8 @@
  * Design language: EvE Waste Brand Guide v1.0 (Brenden Fowler).
  * Color palette:   Forest Green / Clay Blue / Digestate Green /
  *                  Cloud White / Seedling Green / Sprout Green / Stone Grey.
- * Typography:      Verdana (system) for body text, Archivo (Google Fonts)
- *                  for headlines and labels.
+ * Typography:      Cinzel for headlines, Barlow (Light for body and
+ *                  subheadings), both self-hosted.
  */
 
 :root {
@@ -93,23 +93,29 @@
 
   /* ═══════════════════════════════════════
      TYPOGRAPHY , font families
-     Archivo for headlines/labels, Verdana (system) for body text.
+     Cinzel for headlines, Barlow for everything else.
   ═══════════════════════════════════════ */
-  --font-headline: 'Archivo', Verdana, Geneva, 'DejaVu Sans', sans-serif;
-  --font-body:     Verdana, Geneva, 'DejaVu Sans', sans-serif;
-  --font-sans:     Verdana, Geneva, 'DejaVu Sans', sans-serif;
-  --font-label:    'Archivo', Verdana, Geneva, sans-serif;
-  --font-serif:    'Archivo', Verdana, Geneva, sans-serif;
-  --font-mono:     ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  /* Cinzel for headings and display lines; Barlow for subheadings, labels and
+     body. Barlow Light (300) is the body and subheading weight. Both are
+     self-hosted (css/styles.css @font-face), never loaded from Google. */
+  --font-headline: 'Cinzel', Georgia, 'Times New Roman', serif;
+  --font-serif:    'Cinzel', Georgia, 'Times New Roman', serif;
+  --font-subhead:  'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:     'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans:     'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --font-label:    'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:     'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --weight-body:    300;
+  --weight-subhead: 300;
 
   /* ── type scale ── */
   --text-hero:       clamp(3rem, 9vw, 8rem);       /* full-bleed hero h1        */
   --text-display:    clamp(2.5rem, 6vw, 5.5rem);   /* section h2                */
   --text-heading:    clamp(1.75rem, 3.5vw, 3rem);  /* h3                        */
   --text-subhead:    clamp(1.25rem, 2vw, 1.875rem);/* h4 / card titles          */
-  --text-body-lg:    1.0625rem;   /* was 1.125rem, Verdana compensation */
-  --text-body:       0.9375rem;   /* was 1rem, Verdana compensation */
-  --text-sm:         0.8125rem;   /* was 0.875rem, Verdana compensation */
+  --text-body-lg:    1.125rem;
+  --text-body:       1rem;
+  --text-sm:         0.875rem;
   --text-label:      0.6875rem;   /* 11px */
 
   /* ── leading ── */
@@ -119,7 +125,7 @@
   --leading-loose:   1.7;
 
   /* ── tracking ── */
-  --tracking-tight:  -0.03em;
+  --tracking-tight:  0.01em;
   --tracking-wide:    0.12em;
 
   /* ═══════════════════════════════════════

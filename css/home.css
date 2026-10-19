@@ -94,7 +94,7 @@
   font-size: clamp(2.4rem, 4.8vw, 4.75rem);
   font-weight: 700;
   line-height: 1.02;
-  letter-spacing: -0.035em;
+  letter-spacing: 0.01em;
   margin-bottom: 28px;
   text-wrap: balance;
 }
@@ -215,7 +215,7 @@
 .stat-block__trigger .stat__value {
   font-size: clamp(2.6rem, 5.4vw, 4.75rem);
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.01em;
 }
 .stat-block__trigger .stat__label { max-width: 32ch; margin-top: auto; }
 .stat-block__trigger .stat__label,
@@ -301,9 +301,9 @@
   color: var(--outline);
 }
 .spec strong {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: var(--weight-subhead);
   color: var(--primary);
 }
 
@@ -347,9 +347,9 @@
   flex-shrink: 0;
 }
 .tech-pillar__title {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: var(--weight-subhead);
   color: var(--on-surface);
   margin-bottom: 4px;
 }
@@ -453,9 +453,9 @@
   color: var(--inverse-primary);
 }
 .eco-feature h4 {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: var(--weight-subhead);
   color: var(--primary-fixed);
   margin-bottom: 6px;
 }
@@ -680,9 +680,9 @@
   transition: color var(--transition-fast);
 }
 .vision-value__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-subhead);
   font-size: clamp(1.1rem, 2vw, 1.5rem);
-  font-weight: 600;
+  font-weight: var(--weight-subhead);
   color: var(--on-dark-dim);
   flex: 1;
   transition: color var(--transition-fast);
@@ -725,7 +725,7 @@
   font-size: clamp(3rem, 8.6vw, 9.5rem);
   font-weight: 800;
   line-height: 0.92;
-  letter-spacing: -0.045em;
+  letter-spacing: 0.01em;
   color: var(--on-surface);
   margin-bottom: 0;
   text-wrap: balance;
@@ -830,7 +830,7 @@
   font-size: clamp(9rem, 24vw, 22rem);
   font-weight: 900;
   line-height: 0.78;
-  letter-spacing: -0.06em;
+  letter-spacing: 0.01em;
   color: var(--inverse-primary);
   margin-bottom: -0.04em;
 }
@@ -853,7 +853,7 @@
   font-size: clamp(2rem, 4.4vw, 4rem);
   font-weight: 800;
   line-height: 1.02;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.01em;
   color: var(--primary-fixed);
   margin: 0 0 24px;
   max-width: 18ch;
@@ -902,7 +902,7 @@
   font-family: var(--font-headline);
   font-size: clamp(1.6rem, 3.4vw, 2.8rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   line-height: 1;
   padding-top: clamp(28px, 3vw, 40px);
   padding-bottom: clamp(20px, 2vw, 28px);

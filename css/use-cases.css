@@ -67,7 +67,7 @@
   font-size: 22px;
   font-weight: 700;
   color: var(--primary);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 .case-stat span {
   font-family: var(--font-mono);
@@ -233,9 +233,9 @@
   transform: translate(-50%, 0);
 }
 .pilot-step__title {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: var(--weight-subhead);
   color: var(--cloud-white);
   margin: 0 0 8px;
 }
@@ -342,7 +342,7 @@
   font-size: var(--text-heading);
   font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   color: var(--on-surface);
   margin-bottom: 20px;
   text-wrap: balance;
@@ -434,7 +434,7 @@
   font-size: 48px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.01em;
   color: var(--primary);
 }
 .pilot-fact__label {
@@ -523,9 +523,9 @@
   background-color: var(--surface-container-lowest);
 }
 .criterion__title {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: 17px;
-  font-weight: 700;
+  font-weight: var(--weight-subhead);
   color: var(--on-surface);
   margin: 0 0 8px;
 }

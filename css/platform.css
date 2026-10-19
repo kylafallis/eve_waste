@@ -81,7 +81,7 @@
   font-size: 28px;
   font-weight: 700;
   color: var(--primary-fixed);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 .metric__label {
   font-family: var(--font-mono);
@@ -107,9 +107,9 @@
 }
 .module-feature:hover { background-color: var(--surface-container-low); }
 .module-feature h4 {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--weight-subhead);
   color: var(--on-surface);
   margin-bottom: 8px;
 }
@@ -147,9 +147,9 @@
 .specs-row:last-child { border-bottom: none; }
 .specs-row span { font-size: 14px; color: var(--on-surface-variant); }
 .specs-row strong {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: var(--weight-subhead);
   color: var(--on-surface);
 }
 
@@ -170,11 +170,11 @@
   align-items: baseline;
   gap: 24px;
   padding: clamp(20px, 2.2vw, 30px) var(--bleed-pad);
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: clamp(1.1rem, 2vw, 1.6rem);
-  font-weight: 700;
+  font-weight: var(--weight-subhead);
   line-height: 1.25;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
   color: var(--on-surface);
   cursor: pointer;
   list-style: none;
@@ -281,11 +281,11 @@ div.faq-item__answer > p { max-width: none; break-inside: avoid; }
 }
 .flow__step--out .flow__label { color: var(--on-accent); }
 .flow__title {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: clamp(1.25rem, 2vw, 1.7rem);
-  font-weight: 800;
+  font-weight: var(--weight-subhead);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   color: var(--primary-fixed);
   margin: 0 0 10px;
 }
@@ -352,7 +352,7 @@ div.faq-item__answer > p { max-width: none; break-inside: avoid; }
   font-size: clamp(4rem, 10vw, 9rem);
   font-weight: 800;
   line-height: 0.9;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.01em;
 }
 .diagonal__body { font-size: 16px; line-height: 1.6; margin: 0; max-width: 30ch; }
 
@@ -386,9 +386,9 @@ div.faq-item__answer > p { max-width: none; break-inside: avoid; }
 .manifesto .section__eyebrow { color: var(--inverse-primary); }
 .manifesto__story {
   margin: 8px 0 0;
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: clamp(1.15rem, 1.9vw, 1.65rem);
-  font-weight: 500;
+  font-weight: var(--weight-body);
   line-height: 1.5;
   color: var(--on-primary-container);
   columns: 2 30ch;
@@ -403,7 +403,7 @@ div.faq-item__answer > p { max-width: none; break-inside: avoid; }
   font-size: clamp(2.4rem, 6.6vw, 7rem);
   font-weight: 900;
   line-height: 0.95;
-  letter-spacing: -0.045em;
+  letter-spacing: 0.01em;
   color: var(--inverse-primary);
   text-wrap: balance;
 }
@@ -428,7 +428,7 @@ div.faq-item__answer > p { max-width: none; break-inside: avoid; }
   font-size: clamp(7rem, 17vw, 15rem);
   font-weight: 900;
   line-height: 0.78;
-  letter-spacing: -0.07em;
+  letter-spacing: 0.01em;
   margin-bottom: -0.06em;
 }
 .value:nth-child(1) .value__num { color: var(--primary); }
@@ -439,11 +439,11 @@ div.faq-item__answer > p { max-width: none; break-inside: avoid; }
   padding: clamp(40px, 5vw, 72px) var(--bleed-pad) clamp(40px, 5vw, 72px) 0;
 }
 .value__title {
-  font-family: var(--font-headline);
+  font-family: var(--font-subhead);
   font-size: clamp(1.4rem, 2.6vw, 2.2rem);
-  font-weight: 800;
+  font-weight: var(--weight-subhead);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   margin: 0 0 12px;
 }
 .value:nth-child(3) .value__title { color: var(--primary-fixed); }
