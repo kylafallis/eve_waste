@@ -197,3 +197,23 @@ alternatives are recorded here rather than lost:
 | — | Sections already worked on, taken full width | **Done, 2026-10-17**, picked as 1A 2B 3B 4A 5B 6A 7B 8B 9A 10B 11B 12B from widen-or-redesign mockups. Home: approach figures as full-width columns, each opening its provenance panel in place; pillars as four full-screen sticky panels (CSS only; the scroll script is gone); the comparison as a paired two-column table; the newsletter headline spanning the screen over a one-bar form. Platform: the bio-reactor paragraph drawn as a four-step process flow, the diagonal edge to edge, the founder story as a two-column manifesto ending on its closing line, values as three colour stripes. FAQ rows edge to edge. Contact split into a dark facts half and a form half (the one-week reply line moved there). Investors: the opening line at display size, the four basis labels as a strip, founders as name rows linking to `team.html#<founder>`, which opens that panel. Supersedes the shelved alternatives in item 39. |
 | — | Fact page for search engines and AI assistants | **Added 2026-10-19** at `company.html`. Not in the menu or footer; reached through `sitemap.xml`, the first link in `llms.txt`, and its Organization + AboutPage structured data (founders, slogan, topics). Crawlable, not hidden from bots. Every line restates something already published, plus a short "for anyone summarizing" list (development stage, 19% is modeled, publish no estimates). A plain-text copy lives at `ai.txt` (named at Kyla's request; note the name is also used by Spawning's AI-permissions proposal, which this file is not). **Keep all three in step:** when a fact changes anywhere on the site, change it in `company.html`, `ai.txt` and `llms.txt`. |
 | — | Contact inquiry types | **Five now.** `Investor or grant inquiry` added, value `investor`, preselected by `investors.html` linking `contact.html?inquiry=investor`. |
+
+
+---
+
+## 39. Launch pre-flight, 2026-10-27 (before the social launch posts)
+Changed, per Kyla:
+- **Reply promise** is now *one business day* everywhere (contact, FAQ, company, llms.txt, ai.txt). Supersedes the one-week line in CONTENT.md. The team must actually meet it.
+- **Footer FAQ link** on the home page pointed at the missing `platform.html#faq`; now `faq.html`.
+- **Claims ahead of evidence** softened: "processes food waste for less than a landfill charges" is now "designed to"; "All food waste" now lists what is accepted and says contamination limits are under review; "The regulatory groundwork is already done" is now "Ohio permitting is mapped… pre-application meetings are the next step"; built.html no longer says everything is photographed.
+- **Home stat strip:** the unsourced *5,000+ yrs* is replaced by **24%** (food's share of US landfilled material, US EPA, industry data). The *19%* (no model behind it, see #37) is replaced on the home page by **1,000 lb/day** (system design target from the SRR). Pillar 02 no longer quotes 19%.
+- **Signup** now reads "Follow the build. One short email when we finish something or measure something new."
+- **Hero and home metadata** add "on-site food waste digester" and "anaerobic digestion" for search. *Bio-reactor stays the product noun* (CONTENT.md rule kept).
+- **Analytics:** Umami loader added to `js/main.js`, OFF until `UMAMI_WEBSITE_ID` is filled in. Click events tagged: `cta_click`, `signup_submit`, `contact_submit`, `faq_open`. `tools/sync-faq.mjs` now tolerates extra attributes on the FAQ `<summary>`.
+
+Still open after this pass:
+- **19%** still appears on platform.html, investors.html, faq.html, company.html, llms.txt and ai.txt. Ben: supply the calculation or approve removal (#37).
+- **15%/yr** (home stat 3) vs **10% in one year** (comparison table): add the source and the measure for each.
+- **Umami website ID** (Kyla): create the site at cloud.umami.is, paste the ID, `npm run stamp`, deploy. privacy.html already says Umami is used, so this makes that sentence true.
+- **Booking link** on the contact page: none exists yet. Add once a scheduler (Calendly or Google Calendar booking page) is set up.
+- **Kyla's email** is still `kylaevewaste@outlook.com`; swap to an @evewaste.com address once that mailbox exists.

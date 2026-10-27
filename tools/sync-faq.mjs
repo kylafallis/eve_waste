@@ -41,7 +41,7 @@ let page = await readFile(PAGE, 'utf8');
 // Pull every rendered <details class="faq-item"> in document order.
 const entries = [];
 for (const [, summary, body] of page.matchAll(
-  /<details class="faq-item">\s*<summary class="faq-item__question">([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g
+  /<details class="faq-item">\s*<summary class="faq-item__question"[^>]*>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g
 )) {
   // Drop HTML comments so NEEDS INPUT notes never leak into the schema.
   const answer = plain(body.replace(/<!--[\s\S]*?-->/g, ''));
@@ -55,7 +55,7 @@ for (const [, summary, body] of page.matchAll(
 }
 
 if (entries.length === 0) {
-  console.error('No FAQ entries found in platform.html, refusing to write an empty schema.');
+  console.error('No FAQ entries found in faq.html, refusing to write an empty schema.');
   process.exit(1);
 }
 

@@ -32,7 +32,7 @@ site what it is throwing away. Tagline: "Where every piece of waste has value."
   Operating Officer), Kyla Fallis (Chief Information Officer).
 - Website: https://evewaste.com/
 - Contact: the form at https://evewaste.com/contact.html. Every message gets a
-  reply within one week. There is no public phone number.
+  reply within one business day. There is no public phone number.
 - Social: https://www.linkedin.com/company/108059157,
   https://www.facebook.com/EvEWasteSolutions/, https://x.com/EvEWaste1,
   https://www.instagram.com/evewaste
@@ -43,7 +43,7 @@ The system uses the natural, microbial process of anaerobic digestion. Food
 waste goes in and is broken down into digestate while producing biogas. The
 digestate is processed into fertilizer, sold into agricultural and landscaping
 markets, and the biogas is converted into clean energy that offsets the host
-site's energy bill. The system accepts all food waste.
+site's energy bill. It is designed for most pre-consumer and post-consumer food waste; non-food items are removed first, and contamination limits are still under review.
 
 The waste-tracking model, in development, reads what a site throws out and turns
 it into a report: where the waste comes from, what it costs, and what an organic
@@ -90,7 +90,8 @@ a measured client result.
 
 - 19%: new economic value the process generates versus landfilling. Basis: modeled.
 - 15%: average annual increase in landfill tipping and hauling rates. Basis: industry data.
-- 5,000+ years: the span without an economical change in how we process waste. Basis: historical.
+- 24%: share of material landfilled in the US that is food, the largest single material. Basis: industry data (US EPA).
+- 1,000 lb a day: the food waste the system is being designed to process. Basis: design target.
 
 Throughput, footprint, retention time, biogas yield, methane content, digestate
 output, utility connections and commissioning timelines are not published. They

@@ -125,7 +125,7 @@
     </section>
 
     <!-- Split: the heading and the two contact facts on a dark half, the form on a
-         white half. Both facts were already on the site (the one-week reply line
+         white half. Both facts were already on the site (the reply-time line
          under the button, and Columbus from the FAQ); the reply line moved here
          rather than appearing twice. -->
     <section class="contact-split" id="contact">
@@ -134,7 +134,7 @@
         <dl class="contact-split__facts">
           <div>
             <dt>Reply time</dt>
-            <dd>We reply to every message within one week.</dd>
+            <dd>We reply to every message within one business day.</dd>
           </div>
           <div>
             <dt>Based in</dt>
@@ -188,7 +188,7 @@
                 <label for="message">Message <span class="required">*</span></label>
                 <textarea id="message" name="message" required rows="5" placeholder="Tell us about your operation, waste stream, or question..."></textarea>
               </div>
-              <button type="submit" class="btn btn--primary">Send Message</button>
+              <button type="submit" class="btn btn--primary" data-umami-event="contact_submit">Send Message</button>
               <div class="form-success" id="formSuccess" aria-live="polite">
                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                 Thanks for reaching out! We will be in touch soon.
@@ -260,7 +260,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=29ee826c"></script>
+  <script src="js/main.js?v=0395eab9"></script>
   <script src="js/contact.js?v=8ffa4aa1"></script>
 </body>
 </html>

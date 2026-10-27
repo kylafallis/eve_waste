@@ -35,7 +35,8 @@ customer results. EvE Waste has no clients yet.
 
 - 19%: new economic value the process generates versus landfilling. Basis: modeled.
 - 15%: average annual increase in landfill tipping and hauling rates. Basis: industry data.
-- 5,000+ years: the span without an economical change in how we process waste. Basis: historical.
+- 24%: share of material landfilled in the US that is food, the largest single material. Basis: industry data (US EPA).
+- 1,000 lb a day: the food waste the system is being designed to process. Basis: design target.
 
 No throughput, footprint, retention time, biogas yield, methane content,
 digestate output, utility connection or commissioning figures are published.
@@ -43,7 +44,7 @@ They are available on request under NDA.
 
 ## Feedstock
 
-Accepted: all food waste. No refusal list is published.
+Accepted: most pre-consumer and post-consumer food waste. Non-food items are removed before feeding. Contamination limits are under review and not yet published.
 
 ## Pages
 
@@ -60,7 +61,7 @@ Accepted: all food waste. No refusal list is published.
   rules, cost against landfill, and what the bio-reactor accepts.
 - [Team](https://evewaste.com/team.html): Ben Rosenthal (Founder & CEO), Brenden Fowler
   (Founder & COO) and Kyla Fallis (Founder & CIO).
-- [Contact](https://evewaste.com/contact.html): the enquiry form. Replies within one week.
+- [Contact](https://evewaste.com/contact.html): the enquiry form. Replies within one business day.
 - [Privacy](https://evewaste.com/privacy.html).
 
 The About page was retired on 2026-09-03; its content is on the Platform page.
@@ -69,6 +70,6 @@ The pilot page is temporarily offline while its details are confirmed.
 ## Contact
 
 All contact is routed through the form at https://evewaste.com/contact.html.
-There is no public phone number. Response time is within one week.
+There is no public phone number. Response time is within one business day.
 
 Location: Columbus, Ohio.

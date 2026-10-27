@@ -23,7 +23,7 @@
 | Public phone | **None.** Do not publish a phone number. |
 | Public email | **None.** Route all contact through the form. This is also the privacy-contact route on `privacy.html`. |
 | Form recipient | ben@evewaste.com |
-| Response time promise | Within one week |
+| Response time promise | Within one business day (changed 2026-10-27) |
 | Positioning | **Cost first.** Sustainability is the second argument, never the first. |
 | Meta description | EvE Waste is building a modular bio-reactor that turns food waste into clean energy and nutrient-rich fertilizer. In development in Columbus, Ohio. |
 | Stage (2026-09-14) | **Development stage.** AD system prototype built and test-run. Bio-reactor in its **second stage of development**. Waste-tracking model **in development**. Raising **pre-seed**, applying for **grants**. No clients, no revenue. |
@@ -92,8 +92,8 @@ carry a basis label** so no claim reads as measured customer data. See §6 for w
 
 | # | Value | Unit | Label | Basis label (required, rendered) |
 |---|---|---|---|---|
-| 1 | 5,000+ | years | Without an economical change in how we process waste | Historical |
-| 2 | 19% | — | New economic value our process generates versus landfilling | Modeled |
+| 1 | 24% | — | Of what US landfills take in is food, the largest single material (US EPA) | Industry data |
+| 2 | 1,000 lb | per day | Food waste the system is being designed to process | Design target |
 | 3 | 15% | — | Average annual increase in landfill tipping and hauling rates | Industry data |
 
 Render the basis label as a small caps line beneath each stat, e.g. `MODELED`.
@@ -121,7 +121,7 @@ Render the basis label as a small caps line beneath each stat, e.g. `MODELED`.
 > The system puts economics first and the Earth second. Nutrients stay in the loop for the next crop of food, and clean energy comes out of the same process.
 
 ### Closing CTA
-> **Do you believe in a cleaner future?**
+> **Follow the build.** (changed 2026-10-27 from "Do you believe in a cleaner future?")
 > Join us on the journey.
 > Button: `Follow along` → newsletter signup (see BUILD_BRIEF Phase 3)
 
@@ -203,7 +203,7 @@ rows. Instead render a single block:
 > Button: `Request specifications` → contact.html?inquiry=information
 
 ### Feedstock
-- **Accepted:** all food waste.
+- **Accepted:** most pre- and post-consumer food waste; non-food items removed first; contamination limits under review (changed 2026-10-27).
 - **Not accepted:** **RESOLVED 2026-09-03 — no refusal list is published, and this
   is now a settled decision rather than a pending one.** Do not add one later
   without a source; "Manure?" from the intake sheet stays unpublished.
@@ -286,7 +286,7 @@ for pricing". A hedge invites the question; silence lets the conversation start.
 > Thanks for reaching out! We will be in touch soon.
 
 **Response time line (visible near the form):**
-> We reply to every message within one week.
+> We reply to every message within one business day.
 
 **Delete from this page:**
 - hello@evewaste.com, engineering@evewaste.com, careers@evewaste.com — these
