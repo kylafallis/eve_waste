@@ -204,7 +204,7 @@
    Least certain to most: white, Sprout Green, Seedling Green, Forest Green. */
 .basis {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   margin: 0;
 }
 .basis__item {
@@ -281,6 +281,7 @@
   .number-half { padding-left: var(--bleed-pad); padding-right: var(--bleed-pad); }
   .statement__body { grid-template-columns: 1fr; }
   .basis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .basis__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .basis__item,
   .basis__item:first-child,
   .basis__item:last-child { padding-left: var(--bleed-pad); padding-right: var(--bleed-pad); }

@@ -110,3 +110,20 @@ const counterObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+
+// Analytics: Umami Cloud (cookieless; already allowed by the CSP in _headers and
+// described in privacy.html). OFF until a website ID is pasted below.
+// Get it at cloud.umami.is → Settings → Websites → Add website (domain: evewaste.com)
+// → Edit → copy "Website ID". Then run `npm run stamp` and deploy.
+// Click events are declared in the HTML with data-umami-event (cta_click,
+// signup_submit, contact_submit, faq_open). UTM tags on social links are
+// recorded automatically.
+const UMAMI_WEBSITE_ID = '';
+if (UMAMI_WEBSITE_ID) {
+  const umami = document.createElement('script');
+  umami.defer = true;
+  umami.src = 'https://cloud.umami.is/script.js';
+  umami.dataset.websiteId = UMAMI_WEBSITE_ID;
+  umami.dataset.domains = 'evewaste.com';
+  document.head.appendChild(umami);
+}
